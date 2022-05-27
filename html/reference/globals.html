@@ -1,0 +1,255 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Magic Global Functions &mdash; xlSlim beta documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Data Conversions Between Excel and Python" href="data_conversions.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> xlSlim
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/keyword_args.html">Optional arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/passing_simple_types.html">Passing simple data types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/passing_arrays.html">Passing lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/passing_objects.html">Passing Python objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/passing_dicts.html">Passing Python dictionaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/udfs.html">Calling VBA and other Excel add-in functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/numpy.html">numpy Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/series.html">pandas Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/dataframes.html">pandas DataFrames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/subprocess.html">Running Python in a background process</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../samples/read_json_from_web.html">Read JSON data from a URL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/read_csv.html">Read CSV data from a file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/sqlite.html">Using SQLite to analyse data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/yfinance.html">Loading Stock Prices from Yahoo! Finance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/pca.html">Principal Components Analysis of Index Prices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/monte_carlo.html">Monte Carlo Option Pricing</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="environments.html">Python Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Excel Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_conversions.html">Data Conversions Between Excel and Python</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Magic Global Functions</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">xlSlim</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Magic Global Functions</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/reference/globals.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="magic-global-functions">
+<span id="globals"></span><h1>Magic Global Functions<a class="headerlink" href="#magic-global-functions" title="Permalink to this headline">¶</a></h1>
+<p>xlSlim has two magic global functions that are always available in Python code running within xlSlim: <a class="reference internal" href="#XLSIM_UDFFUNC" title="XLSIM_UDFFUNC"><code class="xref py py-func docutils literal notranslate"><span class="pre">XLSIM_UDFFUNC()</span></code></a> and <a class="reference internal" href="#XLSLIM_INWINDOWFUNC" title="XLSLIM_INWINDOWFUNC"><code class="xref py py-func docutils literal notranslate"><span class="pre">XLSLIM_INWINDOWFUNC()</span></code></a></p>
+<dl class="function">
+<dt id="XLSIM_UDFFUNC">
+<code class="descname">XLSIM_UDFFUNC</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#XLSIM_UDFFUNC" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>This global function can be used to access VBA functions as well as functions defined in other Excel add-ins.</p>
+<p>An example is this function that calls the <cite>EUROCONVERT()</cite> Excel add-in function. See <a class="reference internal" href="../user/udfs.html#udfs"><span class="std std-ref">Calling VBA and other Excel add-in functions</span></a> for a detailed example.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">eur_conversion</span><span class="p">(</span><span class="n">amount</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">from_currency</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">to_currency</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Convert to EUR using the Excel addin function EUROCONVERT.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">XLSIM_UDFFUNC</span><span class="p">(</span><span class="s2">&quot;EUROCONVERT&quot;</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">from_currency</span><span class="p">,</span> <span class="n">to_currency</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="function">
+<dt id="XLSLIM_INWINDOWFUNC">
+<code class="descname">XLSLIM_INWINDOWFUNC</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#XLSLIM_INWINDOWFUNC" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>This global function can be used to check if the code is running while the user has the Excel Function Wizard open. In some cases, such as if the code is slow or has side effects, you may wish to not execute the function when the Function Wizard is open.</p>
+<p>This Python code shows how it can be used to control which path a function executes:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">XLSLIM_INWINDOWFUNC</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="k">def</span> <span class="nf">slow_func</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">XLSLIM_INWINDOWFUNC</span><span class="p">():</span>
+                <span class="k">return</span> <span class="s2">&quot;Fast result&quot;</span>
+        <span class="k">return</span> <span class="s2">&quot;Slow result&quot;</span>
+</pre></div>
+</div>
+<p>When in the Excel Function Wizard the Python code returns “Fast result”.</p>
+<a class="reference internal image-reference" href="../_images/global_function_in_func_wizard.png"><img alt="Function in Excel Function Wizard" src="../_images/global_function_in_func_wizard.png" style="width: 400px;" /></a>
+<p>Else the Python code returns “Slow result”.</p>
+<a class="reference internal image-reference" href="../_images/global_function_not_in_func_wizard.png"><img alt="Function not in Excel Function Wizard" src="../_images/global_function_not_in_func_wizard.png" style="width: 400px;" /></a>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="data_conversions.html" class="btn btn-neutral float-left" title="Data Conversions Between Excel and Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2022, Russel Webber
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

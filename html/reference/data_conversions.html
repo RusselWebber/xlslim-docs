@@ -1,0 +1,522 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Data Conversions Between Excel and Python &mdash; xlSlim beta documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Magic Global Functions" href="globals.html" />
+    <link rel="prev" title="Excel Functions" href="api.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> xlSlim
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/keyword_args.html">Optional arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/passing_simple_types.html">Passing simple data types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/passing_arrays.html">Passing lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/passing_objects.html">Passing Python objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/passing_dicts.html">Passing Python dictionaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/udfs.html">Calling VBA and other Excel add-in functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/numpy.html">numpy Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/series.html">pandas Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/dataframes.html">pandas DataFrames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/subprocess.html">Running Python in a background process</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../samples/read_json_from_web.html">Read JSON data from a URL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/read_csv.html">Read CSV data from a file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/sqlite.html">Using SQLite to analyse data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/yfinance.html">Loading Stock Prices from Yahoo! Finance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/pca.html">Principal Components Analysis of Index Prices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/monte_carlo.html">Monte Carlo Option Pricing</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="environments.html">Python Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Excel Functions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Data Conversions Between Excel and Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#function-inputs">Function Inputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#function-outputs">Function Outputs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="globals.html">Magic Global Functions</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">xlSlim</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Data Conversions Between Excel and Python</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/reference/data_conversions.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="data-conversions-between-excel-and-python">
+<h1>Data Conversions Between Excel and Python<a class="headerlink" href="#data-conversions-between-excel-and-python" title="Permalink to this headline">¶</a></h1>
+<p>xlSlim always tries to determine the appropriate conversions when passing data between Excel and Python. Without type hints xlSlim will handle numbers, strings, bools and datetimes. Adding type hints allows xlSlim to handle Python dictionaries and instances of custom classes. Lists of simple data types are also better handled when type hints are provided.</p>
+<p>See <a class="reference internal" href="../user/passing_simple_types.html#simpletypes"><span class="std std-ref">Passing simple data types</span></a>, <a class="reference internal" href="../user/passing_objects.html#objects"><span class="std std-ref">Passing Python objects</span></a>, <a class="reference internal" href="../user/passing_dicts.html#dicts"><span class="std std-ref">Passing Python dictionaries</span></a>, <a class="reference internal" href="../user/passing_arrays.html#arrays"><span class="std std-ref">Passing lists</span></a>, <a class="reference internal" href="../user/numpy.html#numpy"><span class="std std-ref">numpy Arrays</span></a>, <a class="reference internal" href="../user/series.html#series"><span class="std std-ref">pandas Series</span></a> and <a class="reference internal" href="../user/dataframes.html#dataframes"><span class="std std-ref">pandas DataFrames</span></a> for worked examples.</p>
+<div class="section" id="function-inputs">
+<h2>Function Inputs<a class="headerlink" href="#function-inputs" title="Permalink to this headline">¶</a></h2>
+<p>Python functions without type hints are handled well enough for many use cases.</p>
+<table border="1" class="docutils" id="table-1">
+<caption><span class="caption-text">Data Type Conversions Without Type Hints</span><a class="headerlink" href="#table-1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Type in Excel</th>
+<th class="head">Type passed to Python</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>integer</td>
+<td>float</td>
+</tr>
+<tr class="row-odd"><td>double</td>
+<td>float</td>
+</tr>
+<tr class="row-even"><td>string</td>
+<td>string</td>
+</tr>
+<tr class="row-odd"><td>bool</td>
+<td>bool</td>
+</tr>
+<tr class="row-even"><td>datetime</td>
+<td>float</td>
+</tr>
+<tr class="row-odd"><td>Range</td>
+<td>.Net array of objects, can usually be treated as a Python list.</td>
+</tr>
+</tbody>
+</table>
+<p>For more advanced use cases, Python type hints open up the full potential of xlSlim.</p>
+<table border="1" class="docutils" id="table-2">
+<caption><span class="caption-text">Data Type Conversions With Type Hints</span><a class="headerlink" href="#table-2" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="22%" />
+<col width="22%" />
+<col width="56%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Type in Excel</th>
+<th class="head">Type passed to Python</th>
+<th class="head">Supported Type Hints</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>integer</td>
+<td>integer</td>
+<td><ul class="first last simple">
+<li>int</li>
+<li>Optional[int]</li>
+<li>Union[int, None]</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>double</td>
+<td>float</td>
+<td><ul class="first last simple">
+<li>float</li>
+<li>Optional[float]</li>
+<li>Union[float, None]</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>string</td>
+<td>string</td>
+<td><ul class="first last simple">
+<li>str</li>
+<li>Optional[str]</li>
+<li>Union[str, None]</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>bool</td>
+<td>bool</td>
+<td><ul class="first last simple">
+<li>bool</li>
+<li>Optional[bool]</li>
+<li>Union[bool, None]</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>datetime</td>
+<td>datetime</td>
+<td><ul class="first last simple">
+<li>datetime.datetime</li>
+<li>Optional[datetime.datetime]</li>
+<li>Union[datetime.datetime, None]</li>
+<li>datetime.date</li>
+<li>Optional[datetime.date]</li>
+<li>Union[datetime.date, None]</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>cached object handle</td>
+<td>Python object</td>
+<td><ul class="first last simple">
+<li><em>Any Python class</em></li>
+<li>Dict</li>
+<li>np.ndarray</li>
+<li>pd.Series</li>
+<li>pd.DataFrame</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>Range of ints</td>
+<td>List of floats</td>
+<td><ul class="first last simple">
+<li>List[int]</li>
+<li>Iterable[int]</li>
+<li>Optional[List[int]]</li>
+<li>Optional[Iterable[int]]</li>
+<li>Union[List[int], None]</li>
+<li>Union[Iterable[int], None]</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>Range of doubles</td>
+<td>List of floats</td>
+<td><ul class="first last simple">
+<li>List[float]</li>
+<li>Iterable[float]</li>
+<li>Optional[List[float]]</li>
+<li>Optional[Iterable[float]]</li>
+<li>Union[List[float], None]</li>
+<li>Union[Iterable[float], None]</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>Range of strings</td>
+<td>List of strings</td>
+<td><ul class="first last simple">
+<li>List[str]</li>
+<li>Iterable[str]</li>
+<li>Optional[List[str]]</li>
+<li>Optional[Iterable[str]]</li>
+<li>Union[List[str], None]</li>
+<li>Union[Iterable[str], None]</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>Range of datetimes</td>
+<td>List of floats</td>
+<td><ul class="first last simple">
+<li>List[datetime.datetime]</li>
+<li>List[datetime.date]</li>
+<li>Iterable[datetime.datetime]</li>
+<li>Iterable[datetime.date]</li>
+<li>Optional[List[datetime.datetime]]</li>
+<li>Optional[List[datetime.date]]</li>
+<li>Optional[Iterable[datetime.datetime]]</li>
+<li>Optional[Iterable[datetime.date]]</li>
+<li>Union[List[datetime.datetime], None]</li>
+<li>Union[List[datetime.date], None]</li>
+<li>Union[Iterable[datetime.datetime], None]</li>
+<li>Union[Iterable[datetime.date], None]</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>Range</td>
+<td>np.ndarray</td>
+<td>np.ndarray</td>
+</tr>
+<tr class="row-odd"><td><dl class="first last docutils">
+<dt>Range</dt>
+<dd><ul class="first last simple">
+<li>first column is the index</li>
+<li>second column is the data</li>
+</ul>
+</dd>
+</dl>
+</td>
+<td>pd.Series</td>
+<td>pd.Series</td>
+</tr>
+<tr class="row-even"><td><dl class="first last docutils">
+<dt>Range</dt>
+<dd><ul class="first last simple">
+<li>first column is the index</li>
+<li>first row is the column names</li>
+<li>the top left cell is ignored</li>
+</ul>
+</dd>
+</dl>
+</td>
+<td>pd.DataFrame</td>
+<td>pd.DataFrame</td>
+</tr>
+<tr class="row-odd"><td>Range of cached object handles</td>
+<td>List of Python objects</td>
+<td><ul class="first last simple">
+<li>List[<em>Any Python class</em>]</li>
+<li>Iterable[<em>Any Python class</em>]</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>Range of cached object handles</td>
+<td>List of np.ndarray</td>
+<td><ul class="first last simple">
+<li>List[np.ndarray]</li>
+<li>Iterable[np.ndarray]</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>Range of cached object handles</td>
+<td>List of pd.Series</td>
+<td><ul class="first last simple">
+<li>List[pd.Series]</li>
+<li>Iterable[pd.Series]</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>Range of cached object handles</td>
+<td>List of pd.DataFrame</td>
+<td><ul class="first last simple">
+<li>List[pd.DataFrame]</li>
+<li>Iterable[pd.DataFrame]</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="function-outputs">
+<h2>Function Outputs<a class="headerlink" href="#function-outputs" title="Permalink to this headline">¶</a></h2>
+<p>The results of Python functions are handled equally well with or without type hints.</p>
+<table border="1" class="docutils" id="table-3">
+<caption><span class="caption-text">Data Type Conversions</span><a class="headerlink" href="#table-3" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Type in Python</th>
+<th class="head">Result type in Excel</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>integer</td>
+<td>double</td>
+</tr>
+<tr class="row-odd"><td>float</td>
+<td>double</td>
+</tr>
+<tr class="row-even"><td>bool</td>
+<td>bool</td>
+</tr>
+<tr class="row-odd"><td>datetime</td>
+<td>float (this is correct as all Excel datetimes are floats)</td>
+</tr>
+<tr class="row-even"><td>string</td>
+<td>string</td>
+</tr>
+<tr class="row-odd"><td>dict</td>
+<td>cached object handle</td>
+</tr>
+<tr class="row-even"><td>Python object (an instance of a custom class)</td>
+<td>cached object handle</td>
+</tr>
+<tr class="row-odd"><td>np.ndarray</td>
+<td>cached object handle</td>
+</tr>
+<tr class="row-even"><td>pd.Series</td>
+<td>cached object handle</td>
+</tr>
+<tr class="row-odd"><td>pd.DataFrame</td>
+<td>cached object handle</td>
+</tr>
+<tr class="row-even"><td>list of integers</td>
+<td>Range of doubles</td>
+</tr>
+<tr class="row-odd"><td>list of floats</td>
+<td>Range of doubles</td>
+</tr>
+<tr class="row-even"><td>list of bool</td>
+<td>Range of bool</td>
+</tr>
+<tr class="row-odd"><td>list of strings</td>
+<td>Range of strings</td>
+</tr>
+<tr class="row-even"><td>list of strings, ints, floats and bools</td>
+<td>Range of strings, ints, floats and bools</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="globals.html" class="btn btn-neutral float-right" title="Magic Global Functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="api.html" class="btn btn-neutral float-left" title="Excel Functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2022, Russel Webber
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

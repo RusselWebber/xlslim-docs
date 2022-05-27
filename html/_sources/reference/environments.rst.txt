@@ -1,0 +1,45 @@
+.. _environments:
+
+Python Environments
+===================
+
+.. note::
+	The Python environment can only be set on the first call to :func:`RegisterPyModule`. Excel needs to be restarted to change the environment after modules have been registered. 
+
+Bundled Python
+--------------
+
+.. _numpy: https://numpy.org/
+.. _pandas: https://pandas.pydata.org/
+.. _requests: https://docs.python-requests.org/en/latest/
+.. _venv: https://docs.python.org/3/tutorial/venv.html#tut-venv
+.. _conda: https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html
+
+
+xlSlim is bundled with Python 3.10 This bundled version is installed when xlSlim starts. Usually this is installed at %HOMEPATH%\AppData\Local The bundled installation contain the Python standard library only, this excludes common packages such as `requests`_, `numpy`_ and `pandas`_.
+
+You can always revert to using the bundled Python by running :func:`ClearSavedPythonEnv`
+
+External Python environments
+----------------------------
+
+For more advanced Python functionality you can use external Python environments. xlSlim supports Python 3.7, 3.8, 3.9 and 3.10. xlSlim supports default Python installations as well as virtual environments created with `venv`_ or `conda`_.
+
+External Python environments are set when :func:`RegisterPyModule` is called. The `ExecutablePath` parameter is used to set the location of the Python executable.
+
+As an example, this registers the `numpy.py` module from :ref:`numpy` for use with the `conda`_ Python 3.9 environment at "c:\\users\\russe\\anaconda3\\envs\\py39" ::
+
+    =RegisterPyModule("c:\users\russe\documents\numpy.py","c:\users\russe\anaconda3\envs\py39")
+
+.. image:: ../_static/pyenvs_conda_numpy_register.png
+  :width: 400
+  :alt: Register xlSlim with conda Py39
+
+.. note::
+	The last `ExecutablePath` value used is stored so you don't need to include `ExecutablePath` after the first call to :func:`RegisterPyModule`. 
+
+Full details of the Python environment being used can be viewed with :func:`PythonDetails`, this shows that xlSlim is using the `conda`_ Python 3.9 environment as expected.
+
+.. image:: ../_static/pyenvs_conda_python_details.png
+  :width: 400
+  :alt: Show Python details for conda Py39 env

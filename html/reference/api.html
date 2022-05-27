@@ -1,0 +1,373 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Excel Functions &mdash; xlSlim beta documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Data Conversions Between Excel and Python" href="data_conversions.html" />
+    <link rel="prev" title="Python Environments" href="environments.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> xlSlim
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/keyword_args.html">Optional arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/passing_simple_types.html">Passing simple data types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/passing_arrays.html">Passing lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/passing_objects.html">Passing Python objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/passing_dicts.html">Passing Python dictionaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/udfs.html">Calling VBA and other Excel add-in functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/numpy.html">numpy Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/series.html">pandas Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/dataframes.html">pandas DataFrames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/subprocess.html">Running Python in a background process</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../samples/read_json_from_web.html">Read JSON data from a URL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/read_csv.html">Read CSV data from a file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/sqlite.html">Using SQLite to analyse data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/yfinance.html">Loading Stock Prices from Yahoo! Finance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/pca.html">Principal Components Analysis of Index Prices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/monte_carlo.html">Monte Carlo Option Pricing</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="environments.html">Python Environments</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Excel Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#registering-modules">Registering modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#viewing-cached-objects">Viewing cached objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-ranges">Creating ranges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#diagnostics">Diagnostics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#clear-caches">Clear Caches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#use-the-bundled-python">Use the bundled Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#get-the-current-workbook-location">Get the current workbook location</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data_conversions.html">Data Conversions Between Excel and Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="globals.html">Magic Global Functions</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">xlSlim</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Excel Functions</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/reference/api.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="excel-functions">
+<h1>Excel Functions<a class="headerlink" href="#excel-functions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="registering-modules">
+<h2>Registering modules<a class="headerlink" href="#registering-modules" title="Permalink to this headline">¶</a></h2>
+<p>To register a Python module for use within Excel you use the <a class="reference internal" href="#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a> function:</p>
+<dl class="function">
+<dt id="RegisterPyModule">
+<code class="descname">RegisterPyModule</code><span class="sig-paren">(</span><em>PythonModulePath</em>, <em>ExecutablePath=None</em>, <em>ModulePrefix=None</em>, <em>UseBackgroundProcess=None</em><span class="sig-paren">)</span><a class="headerlink" href="#RegisterPyModule" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers a Python module for use in Excel.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>PythonModulePath</strong> (<em>str</em>) – The full path to the Python module to load.</li>
+<li><strong>ExecutablePath</strong> (<em>str</em><em> or </em><em>None</em>) – Optional location of the Python environment to use.</li>
+<li><strong>ModulePrefix</strong> (<em>str</em><em> or </em><em>None</em>) – Optional prefix to apply to the function names.</li>
+<li><strong>UseBackgroundProcess</strong> (<em>bool</em><em> or </em><em>None</em>) – Should xlSlim Python code run a seperate process?</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<p>See <a class="reference internal" href="environments.html#environments"><span class="std std-ref">Python Environments</span></a> for details of the <cite>ExecutablePath</cite> parameter.
+See <a class="reference internal" href="../user/passing_arrays.html#arrays"><span class="std std-ref">Passing lists</span></a> for an example using the <cite>ModulePrefix</cite> parameter.
+See <a class="reference internal" href="../user/subprocess.html#subprocess"><span class="std std-ref">Running Python in a background process</span></a> for an example using the <cite>UseBackgroundProcess</cite> parameter.</p>
+</div>
+<div class="section" id="viewing-cached-objects">
+<h2>Viewing cached objects<a class="headerlink" href="#viewing-cached-objects" title="Permalink to this headline">¶</a></h2>
+<p>xlSlim automatically caches Python object. The <a class="reference internal" href="#ViewPyObject" title="ViewPyObject"><code class="xref py py-func docutils literal notranslate"><span class="pre">ViewPyObject()</span></code></a> function can be used to view these objects.</p>
+<dl class="function">
+<dt id="ViewPyObject">
+<code class="descname">ViewPyObject</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#ViewPyObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>View a cached Python object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>key</strong> (<em>str</em>) – An xlSlim cached object handle.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An error message if the object was not found or an array of objects suitable for display in Excel.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str or list[object]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="creating-ranges">
+<h2>Creating ranges<a class="headerlink" href="#creating-ranges" title="Permalink to this headline">¶</a></h2>
+<p>Often xlSlim functions will expect a list to be passed by using a contiguous Excel range. The <a class="reference internal" href="#CreateRange" title="CreateRange"><code class="xref py py-func docutils literal notranslate"><span class="pre">CreateRange()</span></code></a> function takes a set of non-adjacent ranges and creates a new Excel range object suitable for passing to xlSlim functions.</p>
+<dl class="function">
+<dt id="CreateRange">
+<code class="descname">CreateRange</code><span class="sig-paren">(</span><em>range1</em>, <em>range2</em>, <em>... rangen</em><span class="sig-paren">)</span><a class="headerlink" href="#CreateRange" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new Excel range from non-adjacent cells.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>range1</strong> (<em>Excel range</em>) – An Excel range, can be a single cell or range.</li>
+<li><strong>range2</strong> (<em>Excel range</em>) – An Excel range, can be a single cell or range.</li>
+<li><strong>rangen</strong> (<em>Excel range</em>) – An Excel range, can be a single cell or range.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A new Excel range object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Excel range</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="diagnostics">
+<h2>Diagnostics<a class="headerlink" href="#diagnostics" title="Permalink to this headline">¶</a></h2>
+<p>To troubleshoot the Python environment used in Excel you can use the <a class="reference internal" href="#PythonDetails" title="PythonDetails"><code class="xref py py-func docutils literal notranslate"><span class="pre">PythonDetails()</span></code></a> function:</p>
+<dl class="function">
+<dt id="PythonDetails">
+<code class="descname">PythonDetails</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PythonDetails" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns comprehensive details about the Python environment, including the module search paths and loaded packages.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Details of the Python environment.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list[str]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="clear-caches">
+<h2>Clear Caches<a class="headerlink" href="#clear-caches" title="Permalink to this headline">¶</a></h2>
+<p>To remove all cached objects you can use the <a class="reference internal" href="#ClearCaches" title="ClearCaches"><code class="xref py py-func docutils literal notranslate"><span class="pre">ClearCaches()</span></code></a> function:</p>
+<dl class="function">
+<dt id="ClearCaches">
+<code class="descname">ClearCaches</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ClearCaches" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes all cached objects from xlSlim’s internal memory caches.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="use-the-bundled-python">
+<h2>Use the bundled Python<a class="headerlink" href="#use-the-bundled-python" title="Permalink to this headline">¶</a></h2>
+<p>xlSlim has a bundled version of Python 3.10. This bundled Python is used by default. However you can specify another Python environment when registering modules with <a class="reference internal" href="#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a>. The <a class="reference internal" href="#ClearSavedPythonEnv" title="ClearSavedPythonEnv"><code class="xref py py-func docutils literal notranslate"><span class="pre">ClearSavedPythonEnv()</span></code></a> function will revert back to using the bundled Python.</p>
+<dl class="function">
+<dt id="ClearSavedPythonEnv">
+<code class="descname">ClearSavedPythonEnv</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ClearSavedPythonEnv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reverts xlSlim to using the bundled Python environment.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="get-the-current-workbook-location">
+<h2>Get the current workbook location<a class="headerlink" href="#get-the-current-workbook-location" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="#WorkbookLocation" title="WorkbookLocation"><code class="xref py py-func docutils literal notranslate"><span class="pre">WorkbookLocation()</span></code></a> function can be used to get the current workbook’s location.</p>
+<dl class="function">
+<dt id="WorkbookLocation">
+<code class="descname">WorkbookLocation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#WorkbookLocation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the location of the current Excel workbook. Unlike the standard Excel <cite>CELL()</cite> function this function is not volatile.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The path (excluding filename) of the current workbook.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="data_conversions.html" class="btn btn-neutral float-right" title="Data Conversions Between Excel and Python" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="environments.html" class="btn btn-neutral float-left" title="Python Environments" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2022, Russel Webber
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

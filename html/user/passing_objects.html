@@ -1,0 +1,317 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Passing Python objects &mdash; xlSlim beta documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Passing Python dictionaries" href="passing_dicts.html" />
+    <link rel="prev" title="Passing lists" href="passing_arrays.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> xlSlim
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="keyword_args.html">Optional arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="passing_simple_types.html">Passing simple data types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="passing_arrays.html">Passing lists</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Passing Python objects</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#passing-lists-of-python-objects">Passing lists of Python objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#viewing-python-objects">Viewing Python objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#clearing-cached-python-objects">Clearing cached Python objects</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="passing_dicts.html">Passing Python dictionaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="udfs.html">Calling VBA and other Excel add-in functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">numpy Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="series.html">pandas Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataframes.html">pandas DataFrames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="subprocess.html">Running Python in a background process</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../samples/read_json_from_web.html">Read JSON data from a URL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/read_csv.html">Read CSV data from a file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/sqlite.html">Using SQLite to analyse data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/yfinance.html">Loading Stock Prices from Yahoo! Finance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/pca.html">Principal Components Analysis of Index Prices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/monte_carlo.html">Monte Carlo Option Pricing</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/environments.html">Python Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/api.html">Excel Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/data_conversions.html">Data Conversions Between Excel and Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/globals.html">Magic Global Functions</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">xlSlim</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Passing Python objects</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/user/passing_objects.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="passing-python-objects">
+<span id="objects"></span><h1>Passing Python objects<a class="headerlink" href="#passing-python-objects" title="Permalink to this headline">¶</a></h1>
+<p>xlSlim fully supports Python objects. Python objects returned by Python functions are automatically cached by xlSlim and a cache handle is returned to Excel. These cache handles can be supplied to any function that expects an instance of the cached object.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Type hints are essential for xlSlim to determine how to handle Python objects passed between your functions.</p>
+</div>
+<p>This Python module defines the <cite>Person</cite> class. The <cite>create_person()</cite> function creates new instances of the <cite>Person</cite> class. The <cite>describe()</cite> function accepts a <cite>Person</cite> object and returns a description of the person. Finally, the <cite>average_age()</cite> function accepts a list of people and returns their average age. As usual the code has <em>no changes</em> to support xlSlim.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+
+
+<span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
+        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">first_name</span><span class="p">,</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">first_name</span> <span class="o">=</span> <span class="n">first_name</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">last_name</span> <span class="o">=</span> <span class="n">last_name</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
+
+
+<span class="k">def</span> <span class="nf">create_person</span><span class="p">(</span><span class="n">first_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">last_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Person</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Creates a new Person object.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Person</span><span class="p">(</span><span class="n">first_name</span><span class="p">,</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">age</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">describe</span><span class="p">(</span><span class="n">p</span><span class="p">:</span> <span class="n">Person</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Returns a string describing the person.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">first_name</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">last_name</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">age</span><span class="si">}</span><span class="s2"> years old.&quot;</span>
+
+
+<span class="k">def</span> <span class="nf">average_age</span><span class="p">(</span><span class="n">people</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Person</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Returns the average age of the people.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">((</span><span class="nb">getattr</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">people</span><span class="p">))</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">people</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">All the Python code and Excel files shown are available from github in the <a class="reference external" href="https://github.com/RusselWebber/xlslim-code-samples/archive/refs/heads/main.zip">xlslim-code-samples</a> repo. I highly recommend downloading the samples from github. The Excel workbooks contain many tips and tricks.</p>
+</div>
+<p>Save the Python code as a new file on your PC. I saved the file in my Documents folder.</p>
+<p>Open Excel and enter this <a class="reference internal" href="../reference/api.html#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a> formula (amending the location to match where you saved the file):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">RegisterPyModule</span><span class="p">(</span><span class="s2">&quot;C:\Users</span><span class="se">\r</span><span class="s2">usse\Documents\passing_objects.py&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Let’s create a new person, Bob.</p>
+<a class="reference internal image-reference" href="../_images/passing_objects_create_person.png"><img alt="Create Person from Excel" src="../_images/passing_objects_create_person.png" style="width: 400px;" /></a>
+<p>The Python function created a new Person object, however a string “[Book2]Sheet1$A$3&#64;2” was passed back to Excel.</p>
+<a class="reference internal image-reference" href="../_images/passing_objects_object_handle.png"><img alt="A cache handle in Excel" src="../_images/passing_objects_object_handle.png" style="width: 400px;" /></a>
+<p>What is going on?</p>
+<p>xlSlim put the Person object created by <cite>create_person()</cite> into a memory cache and returned a handle to the cached item. FYI, the number after the &#64; increments every time the object is updated. If you repeatedly call the Excel function (use F2 on the cell or Ctrl-Alt-F9 to recalc the workbook) you will see the number increasing. This allows you to create dependencies between cells using standard Excel dependency trees.</p>
+<p>The cache handle can be used as an input to any function that expects a <cite>Person</cite> object. Let’s call the <cite>describe()</cite> function.</p>
+<a class="reference internal image-reference" href="../_images/passing_objects_describe_person.png"><img alt="Call function expecting Person in Excel" src="../_images/passing_objects_describe_person.png" style="width: 400px;" /></a>
+<p>Internally xlSlim fetches the Person object from the memory cache and passes the object to the Python <cite>describe()</cite> function.</p>
+<a class="reference internal image-reference" href="../_images/passing_objects_describe_person_result.png"><img alt="Result of call to function expecting Person in Excel" src="../_images/passing_objects_describe_person_result.png" style="width: 400px;" /></a>
+<p>The function returns a string describing the person. xlSlim hid all the technical details around object caching and no Python code changes were needed.</p>
+<div class="section" id="passing-lists-of-python-objects">
+<h2>Passing lists of Python objects<a class="headerlink" href="#passing-lists-of-python-objects" title="Permalink to this headline">¶</a></h2>
+<p>Our Python module contains this <cite>average_age()</cite> function that expects a list of <cite>Person</cite> objects</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">average_age</span><span class="p">(</span><span class="n">people</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Person</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Returns the average age of the people.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">((</span><span class="nb">getattr</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">people</span><span class="p">))</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">people</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>xlSlim recognises the type hint “List[Person]” and creates an Excel function that takes in a range of cache handles.</p>
+<a class="reference internal image-reference" href="../_images/passing_objects_average_age.png"><img alt="Function expecting a list of PyObjects in Excel" src="../_images/passing_objects_average_age.png" style="width: 400px;" /></a>
+<p>Let’s create more people and calculate their average age.</p>
+<a class="reference internal image-reference" href="../_images/passing_objects_average_age_call.png"><img alt="Call function expecting a list of PyObjects in Excel" src="../_images/passing_objects_average_age_call.png" style="width: 400px;" /></a>
+<p>The average age is 30 as expected.</p>
+<a class="reference internal image-reference" href="../_images/passing_objects_average_age_result.png"><img alt="Result of function call expecting a list of PyObjects in Excel" src="../_images/passing_objects_average_age_result.png" style="width: 400px;" /></a>
+</div>
+<div class="section" id="viewing-python-objects">
+<h2>Viewing Python objects<a class="headerlink" href="#viewing-python-objects" title="Permalink to this headline">¶</a></h2>
+<p>The xlSlim function <a class="reference internal" href="../reference/api.html#ViewPyObject" title="ViewPyObject"><code class="xref py py-func docutils literal notranslate"><span class="pre">ViewPyObject()</span></code></a> can be used to view any Python object stored in the memory cache.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">ViewPyObject</span><span class="p">(</span><span class="n">A5</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/passing_objects_view_object.png"><img alt="View a cached PyObject in Excel" src="../_images/passing_objects_view_object.png" style="width: 400px;" /></a>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <a class="reference internal" href="../reference/api.html#ViewPyObject" title="ViewPyObject"><code class="xref py py-func docutils literal notranslate"><span class="pre">ViewPyObject()</span></code></a> function can be used to view any object xlSlim has cached.</p>
+</div>
+</div>
+<div class="section" id="clearing-cached-python-objects">
+<h2>Clearing cached Python objects<a class="headerlink" href="#clearing-cached-python-objects" title="Permalink to this headline">¶</a></h2>
+<p>You may need to clear cached Python objects if your Excel spreadsheet is open for a long time or creates a large number of cached objects.</p>
+<p>The xlSlim utility function <a class="reference internal" href="../reference/api.html#ClearCaches" title="ClearCaches"><code class="xref py py-func docutils literal notranslate"><span class="pre">ClearCaches()</span></code></a> will clear all cached objects.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">ClearCaches</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="passing_dicts.html" class="btn btn-neutral float-right" title="Passing Python dictionaries" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="passing_arrays.html" class="btn btn-neutral float-left" title="Passing lists" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2022, Russel Webber
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

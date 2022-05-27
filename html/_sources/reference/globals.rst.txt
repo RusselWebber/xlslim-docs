@@ -1,0 +1,45 @@
+.. _globals:
+
+Magic Global Functions
+======================
+
+xlSlim has two magic global functions that are always available in Python code running within xlSlim: :func:`XLSIM_UDFFUNC` and :func:`XLSLIM_INWINDOWFUNC`
+
+.. py:function:: XLSIM_UDFFUNC()
+
+This global function can be used to access VBA functions as well as functions defined in other Excel add-ins. 
+
+An example is this function that calls the `EUROCONVERT()` Excel add-in function. See :ref:`udfs` for a detailed example.
+
+.. code-block:: python
+
+	def eur_conversion(amount: float, from_currency: str, to_currency: str) -> float:
+		"""Convert to EUR using the Excel addin function EUROCONVERT."""
+		return XLSIM_UDFFUNC("EUROCONVERT", amount, from_currency, to_currency)
+
+.. py:function:: XLSLIM_INWINDOWFUNC()
+
+This global function can be used to check if the code is running while the user has the Excel Function Wizard open. In some cases, such as if the code is slow or has side effects, you may wish to not execute the function when the Function Wizard is open.
+
+This Python code shows how it can be used to control which path a function executes:
+
+.. code-block:: python
+
+	XLSLIM_INWINDOWFUNC = None
+
+	def slow_func():
+		if XLSLIM_INWINDOWFUNC():
+			return "Fast result"
+		return "Slow result"
+		
+When in the Excel Function Wizard the Python code returns "Fast result".
+
+.. image:: ../_static/global_function_in_func_wizard.png
+  :width: 400
+  :alt: Function in Excel Function Wizard
+
+Else the Python code returns "Slow result".
+  
+.. image:: ../_static/global_function_not_in_func_wizard.png
+  :width: 400
+  :alt: Function not in Excel Function Wizard  

@@ -1,0 +1,383 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pandas Series &mdash; xlSlim beta documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="pandas DataFrames" href="dataframes.html" />
+    <link rel="prev" title="numpy Arrays" href="numpy.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> xlSlim
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="keyword_args.html">Optional arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="passing_simple_types.html">Passing simple data types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="passing_arrays.html">Passing lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="passing_objects.html">Passing Python objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="passing_dicts.html">Passing Python dictionaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="udfs.html">Calling VBA and other Excel add-in functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">numpy Arrays</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">pandas Series</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#creating-pandas-series">Creating pandas Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#passing-pandas-series-to-python-functions">Passing pandas Series to Python functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#passing-multiple-pandas-series-to-python-functions">Passing multiple pandas Series to Python functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dataframes.html">pandas DataFrames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="subprocess.html">Running Python in a background process</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../samples/read_json_from_web.html">Read JSON data from a URL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/read_csv.html">Read CSV data from a file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/sqlite.html">Using SQLite to analyse data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/yfinance.html">Loading Stock Prices from Yahoo! Finance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/pca.html">Principal Components Analysis of Index Prices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/monte_carlo.html">Monte Carlo Option Pricing</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/environments.html">Python Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/api.html">Excel Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/data_conversions.html">Data Conversions Between Excel and Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/globals.html">Magic Global Functions</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">xlSlim</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>pandas Series</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/user/series.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="pandas-series">
+<span id="series"></span><h1>pandas Series<a class="headerlink" href="#pandas-series" title="Permalink to this headline">¶</a></h1>
+<p>xlSlim was designed to support pandas Series efficiently while keeping the interaction with Excel as intuitive as possible.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Type hints are essential for xlSlim to recognise pandas Series passed between your functions.</p>
+</div>
+<div class="section" id="creating-pandas-series">
+<h2>Creating pandas Series<a class="headerlink" href="#creating-pandas-series" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>pandas Series can be created in three ways:</dt>
+<dd><ul class="first last simple">
+<li>within a Python function</li>
+<li>from an Excel range</li>
+<li>from an Excel range of numbers (<strong>optimised</strong>)</li>
+</ul>
+</dd>
+</dl>
+<div class="section" id="pandas-series-from-a-python-function">
+<h3>pandas Series from a Python function<a class="headerlink" href="#pandas-series-from-a-python-function" title="Permalink to this headline">¶</a></h3>
+<p>This Python code defines a function <cite>create_random_ds()</cite> that returns a Series of random numbers between 0 and the number of rows, the index is a series of integers from 0 to the number of rows.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">create_random_ds</span><span class="p">(</span><span class="n">rows</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Create a Series of random integers&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">rows</span><span class="p">,)),</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">rows</span><span class="p">)))</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">All the Python code and Excel files shown are available from github in the <a class="reference external" href="https://github.com/RusselWebber/xlslim-code-samples/archive/refs/heads/main.zip">xlslim-code-samples</a> repo. I highly recommend downloading the samples from github. The Excel workbooks contain many tips and tricks.</p>
+</div>
+<p>Save the Python code as a new file on your PC. I saved the file in my Documents folder.</p>
+<p>Open Excel and enter this <a class="reference internal" href="../reference/api.html#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a> formula (amending the location to match where you saved the file):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">RegisterPyModule</span><span class="p">(</span><span class="s2">&quot;c:\users</span><span class="se">\r</span><span class="s2">usse\documents\Series.py&quot;</span><span class="p">,</span><span class="s2">&quot;C:\Users</span><span class="se">\r</span><span class="s2">usse</span><span class="se">\a</span><span class="s2">naconda3\envs\py37&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">pandas and numpy are not available in the Python installation bundled with xlSlim. The Python module must be registered with an existing Python installation that has numpy and pandas installed.</p>
+</div>
+<p>If we call the <cite>create_random_ds()</cite> function we see that the result is automatically cached and a cache handle is returned to Excel.</p>
+<a class="reference internal image-reference" href="../_images/Series_create_random_array.png"><img alt="Create Series in Python" src="../_images/Series_create_random_array.png" style="width: 400px;" /></a>
+<p>The xlSlim function <a class="reference internal" href="../reference/api.html#ViewPyObject" title="ViewPyObject"><code class="xref py py-func docutils literal notranslate"><span class="pre">ViewPyObject()</span></code></a> can be used to view any Python object stored in the memory cache.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">ViewPyObject</span><span class="p">(</span><span class="n">A3</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/Series_view_random_array.png"><img alt="View a cached PyObject in Excel" src="../_images/Series_view_random_array.png" style="width: 400px;" /></a>
+</div>
+<div class="section" id="pandas-series-from-an-excel-range">
+<h3>pandas Series from an Excel Range<a class="headerlink" href="#pandas-series-from-an-excel-range" title="Permalink to this headline">¶</a></h3>
+<p>Any two column Excel range can be used to create a pandas Series. The first column is assumed to be the index and the second column is assumed to be the data. This does prevent the use of advanced indexing, Series with advanced indexing should be created within Python functions as shown above.</p>
+<p>Add this <cite>describe_ds()</cite> function to the Python code and re-register the module with <a class="reference internal" href="../reference/api.html#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">describe_ds</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Describe this Series.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This function describes the pandas Series passed in, we’ll use it to show how xlSlim creates pandas Series directly from Excel if the Python function has a type hint for <cite>pd.Series</cite>.</p>
+<p>We create a table of strings and numbers in Excel and pass this to the <cite>describe_ds()</cite> function.</p>
+<a class="reference internal image-reference" href="../_images/Series_create_array_from_range.png"><img alt="Create Series array from Excel" src="../_images/Series_create_array_from_range.png" style="width: 400px;" /></a>
+<p>The function returns a cached object handle to Excel.</p>
+<a class="reference internal image-reference" href="../_images/Series_create_array_from_range_result.png"><img alt="Create Series array from Excel" src="../_images/Series_create_array_from_range_result.png" style="width: 400px;" /></a>
+<p>A few things have happened here. xlSlim created a pandas Series from the range A2:B4 <em>before</em> passing the data to the Python code. The Python code received a regular pandas Series as expected. The Python function <cite>describe_ds()</cite> then returned a new pandas Series. xlSlim automatically put this pandas Series into a memory cache and returned the cache handle to Excel.</p>
+<p>Using <a class="reference internal" href="../reference/api.html#ViewPyObject" title="ViewPyObject"><code class="xref py py-func docutils literal notranslate"><span class="pre">ViewPyObject()</span></code></a> we can see the Series has been created and passed around as expected.</p>
+<a class="reference internal image-reference" href="../_images/Series_create_array_from_range_view_result.png"><img alt="Create Series array from Excel view result" src="../_images/Series_create_array_from_range_view_result.png" style="width: 400px;" /></a>
+</div>
+<div class="section" id="pandas-series-from-an-excel-range-of-numbers">
+<h3>pandas Series from an Excel Range of numbers<a class="headerlink" href="#pandas-series-from-an-excel-range-of-numbers" title="Permalink to this headline">¶</a></h3>
+<p>xlSlim is optimised to create pandas Series from Excel ranges of numbers. Ranges of numbers are converted to pandas Series very efficiently with only direct memory copies being used.</p>
+<p>xlSlim cannot determine if the Excel range passed in only contains numbers (Technically it could but this would be very slow). Therefore xlSlim creates a special version of every Python function that expects one or more pandas Series - these special functions have the same names with “_num_only” appended.</p>
+<p>Let’s create a range of numbers and try the <cite>describe_ds_num_only()</cite> function.</p>
+<a class="reference internal image-reference" href="../_images/Series_create_array_from_range_num_only_view_result.png"><img alt="Create Series from Excel numeric range" src="../_images/Series_create_array_from_range_num_only_view_result.png" style="width: 400px;" /></a>
+<p>The function <cite>describe_ds_num_only()</cite> behaves exactly the same as <cite>describe_ds()</cite> however it is <em>far</em> more efficient when passing in a range of numbers.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For optimal performance always use the “_num_only” versions of xlSlim functions when creating numeric pandas Series from Excel Ranges.</p>
+</div>
+</div>
+</div>
+<div class="section" id="passing-pandas-series-to-python-functions">
+<h2>Passing pandas Series to Python functions<a class="headerlink" href="#passing-pandas-series-to-python-functions" title="Permalink to this headline">¶</a></h2>
+<p>As shown above, pandas Series can be created from Excel Ranges. xlSlim will create a pandas Series from an Excel Range before passing the pandas Series to the Python function.</p>
+<p>Another way to pass pandas Series is to use the cache object handles corresponding to pandas Series in xlSlim’s memory cache.</p>
+<p>Let’s create a Series using the <cite>create_random_ds()</cite> function we defined before.</p>
+<a class="reference internal image-reference" href="../_images/Series_pass_handle_create_Series.png"><img alt="Create a pandas Series handle" src="../_images/Series_pass_handle_create_Series.png" style="width: 400px;" /></a>
+<p>The <a class="reference internal" href="../reference/api.html#ViewPyObject" title="ViewPyObject"><code class="xref py py-func docutils literal notranslate"><span class="pre">ViewPyObject()</span></code></a> in A3 shows the Series.</p>
+<p>Remove the <a class="reference internal" href="../reference/api.html#ViewPyObject" title="ViewPyObject"><code class="xref py py-func docutils literal notranslate"><span class="pre">ViewPyObject()</span></code></a> function and replace it with the <cite>describe_ds_from_handle()</cite> function</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">describe_ds_from_handle</span><span class="p">(</span><span class="n">A2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This takes in the cache object handle from A2, gets the associated pandas Series from xlSlim’s memory cache, passes the pandas Series to the <cite>describe_ds()</cite> Python function, and finally stores the result in the memory cache passing a cache object handle back to Excel.</p>
+<a class="reference internal image-reference" href="../_images/Series_pass_array_handle.png"><img alt="Pass an object cache handle for a Series" src="../_images/Series_pass_array_handle.png" style="width: 400px;" /></a>
+<p>The pandas Series describing the object referred to in A2 can be viewed with <a class="reference internal" href="../reference/api.html#ViewPyObject" title="ViewPyObject"><code class="xref py py-func docutils literal notranslate"><span class="pre">ViewPyObject()</span></code></a> as usual.</p>
+<a class="reference internal image-reference" href="../_images/Series_view_description.png"><img alt="View description of Series" src="../_images/Series_view_description.png" style="width: 400px;" /></a>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Passing pandas Series using cache object handles is <em>much</em> more efficient than creating pandas Series from Excel Ranges.</p>
+</div>
+</div>
+<div class="section" id="passing-multiple-pandas-series-to-python-functions">
+<h2>Passing multiple pandas Series to Python functions<a class="headerlink" href="#passing-multiple-pandas-series-to-python-functions" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>Multiple pandas Series can be passed to Python functions in two ways:</dt>
+<dd><ul class="first last simple">
+<li>As separate arguments as shown in the <cite>concat_two_ds()</cite> function below</li>
+<li>As a list of numpy arrays as shown in the <cite>concat_ds()</cite> function below</li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span class="n">XLSLIM_INWINDOWFUNC</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="k">def</span> <span class="nf">concat_two_ds</span><span class="p">(</span>
+        <span class="n">ds_a</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span>
+        <span class="n">ds_b</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span>
+        <span class="n">axis</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">join</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;outer&quot;</span><span class="p">,</span>
+        <span class="n">ignore_index</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Concatenate the two supplied Series.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">concat_df</span><span class="p">([</span><span class="n">ds_a</span><span class="p">,</span> <span class="n">ds_b</span><span class="p">],</span> <span class="n">axis</span><span class="p">,</span> <span class="n">join</span><span class="p">,</span> <span class="n">ignore_index</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">concat_ds</span><span class="p">(</span>
+        <span class="n">Series</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">],</span>
+        <span class="n">axis</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">join</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;outer&quot;</span><span class="p">,</span>
+        <span class="n">ignore_index</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Concatenate the supplied Series.&quot;&quot;&quot;</span>
+        <span class="c1"># Note how this global function can be used to skip</span>
+        <span class="c1"># running slow code in the Excel function wizard</span>
+        <span class="k">if</span> <span class="n">XLSLIM_INWINDOWFUNC</span> <span class="ow">and</span> <span class="n">XLSLIM_INWINDOWFUNC</span><span class="p">():</span>
+                <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">Series</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">join</span><span class="o">=</span><span class="n">join</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="n">ignore_index</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Given this sheet, where cache object handles in B2 and D2 reference pandas Series created from <cite>create_random_ds()</cite> and <a class="reference internal" href="../reference/api.html#ViewPyObject" title="ViewPyObject"><code class="xref py py-func docutils literal notranslate"><span class="pre">ViewPyObject()</span></code></a> is used to display the Series at B3 and D3:</p>
+<a class="reference internal image-reference" href="../_images/Series_multiple_array_data.png"><img alt="Passing multiple Series" src="../_images/Series_multiple_array_data.png" style="width: 400px;" /></a>
+<p>For the first case, functions with separate arguments, any of the techniques discussed so far can be use. These are all valid</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">concat_two_ds</span><span class="p">(</span><span class="n">B3</span><span class="c1">#,D3#,,&quot;outer&quot;)</span>
+<span class="o">=</span><span class="n">concat_two_ds_num_only</span><span class="p">(</span><span class="n">B3</span><span class="c1">#,D3#,,&quot;outer&quot;)</span>
+<span class="o">=</span><span class="n">concat_two_ds_from_handle</span><span class="p">(</span><span class="n">B2</span><span class="p">,</span><span class="n">D2</span><span class="p">,,</span><span class="s2">&quot;outer&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>However for the second case, functions expecting a list, only a list of cache object handles can be supplied.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">concat_ds</span><span class="p">(</span><span class="n">CreateRange</span><span class="p">(</span><span class="n">B2</span><span class="p">,</span><span class="n">D2</span><span class="p">),,</span><span class="s2">&quot;outer&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We use the <a class="reference internal" href="../reference/api.html#CreateRange" title="CreateRange"><code class="xref py py-func docutils literal notranslate"><span class="pre">CreateRange()</span></code></a> utility function to create a range as B2 and D2 are not adjacent cells.</p>
+<p>Note the use of <a class="reference internal" href="../reference/globals.html#XLSLIM_INWINDOWFUNC" title="XLSLIM_INWINDOWFUNC"><code class="xref py py-func docutils literal notranslate"><span class="pre">XLSLIM_INWINDOWFUNC()</span></code></a> to not concatenate Series if the Excel function wizard is open.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="dataframes.html" class="btn btn-neutral float-right" title="pandas DataFrames" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="numpy.html" class="btn btn-neutral float-left" title="numpy Arrays" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2022, Russel Webber
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

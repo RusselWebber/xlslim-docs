@@ -1,0 +1,63 @@
+.. _read_csv:
+
+Read CSV data from a file
+=========================
+
+A very common task is reading data stored in comma-separated value (csv) files. Excel has very good built-in functionailty to read csv files. However, it is often useful to do pre-processing in Python before loading the data into Excel. You may also only want to write the pre-processing code once and use it within Excel and your other Python projects.
+
+We will use this Python code to read a csv file:
+
+.. code-block:: python
+
+	# Load a csv file for use in Excel
+	import os
+	import csv
+
+
+	def read_csv(filepath, dialect="excel"):
+		"""Reads the csv file at filepath.
+		
+		Uses the Python csv module as described at https://docs.python.org/3/library/csv.html
+		"""
+		rows = []
+		if not os.path.exists(filepath):
+			raise ValueError(f"{filepath} does not exist.")
+		with open(filepath) as csvfile:
+			rows.extend(csv.reader(csvfile, dialect))
+		return rows
+
+
+	if __name__ == "__main__":
+		# Data from https://eforexcel.com/wp/downloads-18-sample-csv-files-data-sets-for-testing-sales/
+		print(read_csv(r"D:\github\xlslim-code-samples\data\10000SalesRecords.csv"))
+
+
+.. note::
+	All the Python code and Excel files shown are available from github in the `xlslim-code-samples`_ repo.
+
+.. _xlslim-code-samples: https://github.com/RusselWebber/xlslim-code-samples/archive/refs/heads/main.zip
+
+
+Save the Python code as a new file on your PC. I saved the file in my Documents folder.
+
+Open Excel and enter this :func:`RegisterPyModule` formula (amending the location to match where you saved the file): ::
+
+	=RegisterPyModule("c:\users\russe\documents\read_csv.py")
+
+You should see a message similar to this confirming the module registration:
+
+.. image:: ../_static/read_csv_registration.png
+  :width: 400
+  :alt: Register CSV function
+  
+The `read_csv()` function is now available in Excel and can be called by entering this formula (amending the csv file to one on your PC): ::
+
+    =read_csv("c:\users\russe\documents\10000SalesRecords.csv")
+
+As easy as that! The data is now available in Excel.
+
+.. image:: ../_static/read_csv_result.png
+  :width: 400
+  :alt: CSV data in Excel
+
+Typically the Python code would be doing some pre-processing of the data, perhaps merging with other data sources, before passing the data to Excel.

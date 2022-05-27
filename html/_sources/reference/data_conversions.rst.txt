@@ -1,0 +1,200 @@
+Data Conversions Between Excel and Python
+=========================================
+
+xlSlim always tries to determine the appropriate conversions when passing data between Excel and Python. Without type hints xlSlim will handle numbers, strings, bools and datetimes. Adding type hints allows xlSlim to handle Python dictionaries and instances of custom classes. Lists of simple data types are also better handled when type hints are provided.
+
+See :ref:`simpletypes`, :ref:`objects`, :ref:`dicts`, :ref:`arrays`, :ref:`numpy`, :ref:`series` and :ref:`dataframes` for worked examples.
+
+Function Inputs
++++++++++++++++
+
+Python functions without type hints are handled well enough for many use cases.
+
+.. list-table:: Data Type Conversions Without Type Hints
+   :widths: 25 50
+   :header-rows: 1
+
+   * - Type in Excel
+     - Type passed to Python
+   * - integer
+     - float
+   * - double
+     - float
+   * - string
+     - string
+   * - bool
+     - bool
+   * - datetime
+     - float
+   * - Range
+     - .Net array of objects, can usually be treated as a Python list.
+
+For more advanced use cases, Python type hints open up the full potential of xlSlim.
+
+.. list-table:: Data Type Conversions With Type Hints
+   :widths: 20 20 50
+   :header-rows: 1
+
+   * - Type in Excel
+     - Type passed to Python
+     - Supported Type Hints
+   * - integer
+     - integer
+     - 
+		- int 
+		- Optional[int] 
+		- Union[int, None]
+   * - double
+     - float
+     - 
+		- float 
+		- Optional[float] 
+		- Union[float, None]	 
+   * - string
+     - string
+     - 
+		- str 
+		- Optional[str] 
+		- Union[str, None]
+   * - bool
+     - bool
+     - 
+		- bool 
+		- Optional[bool] 
+		- Union[bool, None]
+   * - datetime
+     - datetime
+     - 
+		- datetime.datetime 
+		- Optional[datetime.datetime] 
+		- Union[datetime.datetime, None] 
+		- datetime.date 
+		- Optional[datetime.date] 
+		- Union[datetime.date, None]
+   * - cached object handle
+     - Python object
+     - 
+		- *Any Python class*
+		- Dict
+		- np.ndarray
+		- pd.Series
+		- pd.DataFrame
+   * - Range of ints
+     - List of floats
+     - 
+		- List[int] 
+		- Iterable[int] 
+		- Optional[List[int]] 
+		- Optional[Iterable[int]] 
+		- Union[List[int], None] 
+		- Union[Iterable[int], None]
+   * - Range of doubles
+     - List of floats
+     - 
+		- List[float] 
+		- Iterable[float] 
+		- Optional[List[float]] 
+		- Optional[Iterable[float]] 
+		- Union[List[float], None] 
+		- Union[Iterable[float], None]
+   * - Range of strings
+     - List of strings
+     - 
+		- List[str] 
+		- Iterable[str] 
+		- Optional[List[str]] 
+		- Optional[Iterable[str]] 
+		- Union[List[str], None] 
+		- Union[Iterable[str], None]
+   * - Range of datetimes
+     - List of floats
+     - 
+		- List[datetime.datetime] 
+		- List[datetime.date] 		
+		- Iterable[datetime.datetime] 
+		- Iterable[datetime.date] 		
+		- Optional[List[datetime.datetime]] 
+		- Optional[List[datetime.date]] 		
+		- Optional[Iterable[datetime.datetime]] 
+		- Optional[Iterable[datetime.date]] 		
+		- Union[List[datetime.datetime], None] 
+		- Union[List[datetime.date], None] 		
+		- Union[Iterable[datetime.datetime], None]		
+		- Union[Iterable[datetime.date], None]				
+   * - Range 
+     - np.ndarray
+     - np.ndarray
+   * - Range 
+        - first column is the index
+        - second column is the data
+     - pd.Series
+     - pd.Series
+   * - Range 
+        - first column is the index
+        - first row is the column names
+        - the top left cell is ignored
+     - pd.DataFrame
+     - pd.DataFrame
+   * - Range of cached object handles
+     - List of Python objects
+     - 
+        - List[*Any Python class*]
+        - Iterable[*Any Python class*]
+   * - Range of cached object handles
+     - List of np.ndarray
+     - 		
+        - List[np.ndarray]
+        - Iterable[np.ndarray]
+   * - Range of cached object handles
+     - List of pd.Series
+     - 				
+        - List[pd.Series]
+        - Iterable[pd.Series]
+   * - Range of cached object handles
+     - List of pd.DataFrame
+     - 				
+        - List[pd.DataFrame]
+        - Iterable[pd.DataFrame]
+	 
+Function Outputs
+++++++++++++++++
+
+The results of Python functions are handled equally well with or without type hints.
+
+.. list-table:: Data Type Conversions
+   :widths: 25 50
+   :header-rows: 1
+
+   * - Type in Python
+     - Result type in Excel
+   * - integer
+     - double
+   * - float
+     - double
+   * - bool
+     - bool
+   * - datetime
+     - float (this is correct as all Excel datetimes are floats)
+   * - string
+     - string
+   * - dict
+     - cached object handle
+   * - Python object (an instance of a custom class)
+     - cached object handle	 
+   * - np.ndarray
+     - cached object handle	 
+   * - pd.Series
+     - cached object handle	 
+   * - pd.DataFrame
+     - cached object handle	 	 
+   * - list of integers
+     - Range of doubles
+   * - list of floats
+     - Range of doubles
+   * - list of bool
+     - Range of bool
+   * - list of strings
+     - Range of strings
+   * - list of strings, ints, floats and bools
+     - Range of strings, ints, floats and bools
+

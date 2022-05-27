@@ -1,0 +1,100 @@
+Excel Functions
+===============
+
+Registering modules
+-------------------
+
+To register a Python module for use within Excel you use the :func:`RegisterPyModule` function:
+
+.. py:function:: RegisterPyModule(PythonModulePath, ExecutablePath=None, ModulePrefix=None, UseBackgroundProcess=None)
+
+   Registers a Python module for use in Excel.
+
+   :param PythonModulePath: The full path to the Python module to load.
+   :type PythonModulePath: str
+   :param ExecutablePath: Optional location of the Python environment to use.
+   :type ExecutablePath: str or None
+   :param ModulePrefix: Optional prefix to apply to the function names.
+   :type ModulePrefix: str or None
+   :param UseBackgroundProcess: Should xlSlim Python code run a seperate process?
+   :type UseBackgroundProcess: bool or None
+
+See :ref:`environments` for details of the `ExecutablePath` parameter.
+See :ref:`arrays` for an example using the `ModulePrefix` parameter.
+See :ref:`subprocess` for an example using the `UseBackgroundProcess` parameter.
+
+Viewing cached objects
+----------------------
+
+xlSlim automatically caches Python object. The :func:`ViewPyObject` function can be used to view these objects.
+
+.. py:function:: ViewPyObject(key)
+
+   View a cached Python object.
+
+   :param key: An xlSlim cached object handle.
+   :type key: str
+   :return: An error message if the object was not found or an array of objects suitable for display in Excel.
+   :rtype: str or list[object]
+
+Creating ranges
+---------------
+
+Often xlSlim functions will expect a list to be passed by using a contiguous Excel range. The :func:`CreateRange` function takes a set of non-adjacent ranges and creates a new Excel range object suitable for passing to xlSlim functions.
+
+.. py:function:: CreateRange(range1, range2, ... rangen)
+
+   Creates a new Excel range from non-adjacent cells.
+
+   :param range1: An Excel range, can be a single cell or range.
+   :type range1: Excel range
+   :param range2: An Excel range, can be a single cell or range.
+   :type range2: Excel range
+   :param rangen: An Excel range, can be a single cell or range.
+   :type rangen: Excel range   
+   :return: A new Excel range object.
+   :rtype: Excel range
+
+
+Diagnostics
+-----------
+
+To troubleshoot the Python environment used in Excel you can use the :func:`PythonDetails` function:
+
+.. py:function:: PythonDetails()
+
+   Returns comprehensive details about the Python environment, including the module search paths and loaded packages.
+
+   :return: Details of the Python environment.
+   :rtype: list[str]
+
+Clear Caches
+------------
+
+To remove all cached objects you can use the :func:`ClearCaches` function:
+
+.. py:function:: ClearCaches()
+
+   Removes all cached objects from xlSlim's internal memory caches.
+   
+Use the bundled Python
+----------------------
+
+xlSlim has a bundled version of Python 3.10. This bundled Python is used by default. However you can specify another Python environment when registering modules with :func:`RegisterPyModule`. The :func:`ClearSavedPythonEnv()` function will revert back to using the bundled Python.
+
+.. py:function:: ClearSavedPythonEnv()
+
+   Reverts xlSlim to using the bundled Python environment.
+
+
+Get the current workbook location
+---------------------------------
+
+The :func:`WorkbookLocation()` function can be used to get the current workbook's location.
+
+.. py:function:: WorkbookLocation()
+
+   Returns the location of the current Excel workbook. Unlike the standard Excel `CELL()` function this function is not volatile.
+
+   :return: The path (excluding filename) of the current workbook.
+   :rtype: str

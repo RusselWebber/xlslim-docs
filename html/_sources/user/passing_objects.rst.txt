@@ -1,0 +1,137 @@
+.. _objects:
+
+Passing Python objects
+======================
+
+xlSlim fully supports Python objects. Python objects returned by Python functions are automatically cached by xlSlim and a cache handle is returned to Excel. These cache handles can be supplied to any function that expects an instance of the cached object.
+
+.. note::
+	Type hints are essential for xlSlim to determine how to handle Python objects passed between your functions.
+
+This Python module defines the `Person` class. The `create_person()` function creates new instances of the `Person` class. The `describe()` function accepts a `Person` object and returns a description of the person. Finally, the `average_age()` function accepts a list of people and returns their average age. As usual the code has *no changes* to support xlSlim.
+
+.. code-block:: python
+
+	from typing import List
+
+
+	class Person:
+		def __init__(self, first_name, last_name, age):
+			self.first_name = first_name
+			self.last_name = last_name
+			self.age = age
+
+
+	def create_person(first_name: str, last_name: str, age: int) -> Person:
+		"""Creates a new Person object."""
+		return Person(first_name, last_name, age)
+
+
+	def describe(p: Person) -> str:
+		"""Returns a string describing the person."""
+		return f"{p.first_name} {p.last_name} is {p.age} years old."
+
+
+	def average_age(people: List[Person]) -> float:
+		"""Returns the average age of the people."""
+		return sum((getattr(p, "age") for p in people)) / len(people)
+
+
+.. note::
+	All the Python code and Excel files shown are available from github in the `xlslim-code-samples`_ repo. I highly recommend downloading the samples from github. The Excel workbooks contain many tips and tricks.
+
+
+.. _xlslim-code-samples: https://github.com/RusselWebber/xlslim-code-samples/archive/refs/heads/main.zip
+
+
+
+Save the Python code as a new file on your PC. I saved the file in my Documents folder.
+
+Open Excel and enter this :func:`RegisterPyModule` formula (amending the location to match where you saved the file): ::
+
+	=RegisterPyModule("C:\Users\russe\Documents\passing_objects.py")
+	
+Let's create a new person, Bob.
+
+.. image:: ../_static/passing_objects_create_person.png
+  :width: 400
+  :alt: Create Person from Excel
+ 
+The Python function created a new Person object, however a string "[Book2]Sheet1$A$3@2" was passed back to Excel. 
+
+.. image:: ../_static/passing_objects_object_handle.png
+  :width: 400
+  :alt: A cache handle in Excel
+
+What is going on?
+
+xlSlim put the Person object created by `create_person()` into a memory cache and returned a handle to the cached item. FYI, the number after the @ increments every time the object is updated. If you repeatedly call the Excel function (use F2 on the cell or Ctrl-Alt-F9 to recalc the workbook) you will see the number increasing. This allows you to create dependencies between cells using standard Excel dependency trees.
+
+The cache handle can be used as an input to any function that expects a `Person` object. Let's call the `describe()` function.
+
+.. image:: ../_static/passing_objects_describe_person.png
+  :width: 400
+  :alt: Call function expecting Person in Excel
+
+Internally xlSlim fetches the Person object from the memory cache and passes the object to the Python `describe()` function.
+
+.. image:: ../_static/passing_objects_describe_person_result.png
+  :width: 400
+  :alt: Result of call to function expecting Person in Excel  
+  
+The function returns a string describing the person. xlSlim hid all the technical details around object caching and no Python code changes were needed.
+
+Passing lists of Python objects
+-------------------------------
+
+Our Python module contains this `average_age()` function that expects a list of `Person` objects
+
+.. code-block:: python
+
+	def average_age(people: List[Person]) -> float:
+		"""Returns the average age of the people."""
+		return sum((getattr(p, "age") for p in people)) / len(people)
+
+xlSlim recognises the type hint "List[Person]" and creates an Excel function that takes in a range of cache handles.
+
+.. image:: ../_static/passing_objects_average_age.png
+  :width: 400
+  :alt: Function expecting a list of PyObjects in Excel
+
+Let's create more people and calculate their average age.
+
+.. image:: ../_static/passing_objects_average_age_call.png
+  :width: 400
+  :alt: Call function expecting a list of PyObjects in Excel
+
+The average age is 30 as expected.
+
+.. image:: ../_static/passing_objects_average_age_result.png
+  :width: 400
+  :alt: Result of function call expecting a list of PyObjects in Excel
+  
+Viewing Python objects
+----------------------
+
+The xlSlim function :func:`ViewPyObject` can be used to view any Python object stored in the memory cache. ::
+
+	=ViewPyObject(A5)
+
+.. image:: ../_static/passing_objects_view_object.png
+  :width: 400
+  :alt: View a cached PyObject in Excel
+
+
+
+.. note::
+	The :func:`ViewPyObject()` function can be used to view any object xlSlim has cached.
+
+Clearing cached Python objects
+------------------------------
+
+You may need to clear cached Python objects if your Excel spreadsheet is open for a long time or creates a large number of cached objects. 
+
+The xlSlim utility function :func:`ClearCaches` will clear all cached objects. ::
+
+	=ClearCaches()
+

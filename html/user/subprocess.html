@@ -1,0 +1,269 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Running Python in a background process &mdash; xlSlim beta documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Read JSON data from a URL" href="../samples/read_json_from_web.html" />
+    <link rel="prev" title="pandas DataFrames" href="dataframes.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> xlSlim
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="keyword_args.html">Optional arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="passing_simple_types.html">Passing simple data types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="passing_arrays.html">Passing lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="passing_objects.html">Passing Python objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="passing_dicts.html">Passing Python dictionaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="udfs.html">Calling VBA and other Excel add-in functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">numpy Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="series.html">pandas Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataframes.html">pandas DataFrames</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Running Python in a background process</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#controlling-dll-loading">Controlling DLL loading</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../samples/read_json_from_web.html">Read JSON data from a URL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/read_csv.html">Read CSV data from a file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/sqlite.html">Using SQLite to analyse data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/yfinance.html">Loading Stock Prices from Yahoo! Finance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/pca.html">Principal Components Analysis of Index Prices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/monte_carlo.html">Monte Carlo Option Pricing</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/environments.html">Python Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/api.html">Excel Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/data_conversions.html">Data Conversions Between Excel and Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/globals.html">Magic Global Functions</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">xlSlim</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Running Python in a background process</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/user/subprocess.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="running-python-in-a-background-process">
+<span id="subprocess"></span><h1>Running Python in a background process<a class="headerlink" href="#running-python-in-a-background-process" title="Permalink to this headline">¶</a></h1>
+<p>A common problem with Windows is that generally only one version of a DLL can be loaded into a process. This can be a problem if common DLLs are being loaded by both an Excel add-in and Python code. For example, you could have a valuation library that is available as both an Excel add-in and a Python library, in which case xlSlim would encounter problems if the Excel add-in and Python package used different versions of the valuation library’s DLLs. Another common problem is that Excel processes can use a lot of system resources, both memory and CPU.</p>
+<p>xlSlim has the ability to run Python code in a background process. This background process is spawned as a sub-process of Excel. Commmunication with the sub-process is efficient.</p>
+<p>We will use the <a class="reference internal" href="../samples/sqlite.html#csvsqlite"><span class="std std-ref">Using SQLite to analyse data</span></a> example to show how the background process works. Please work through the example to get to the stage that the sales by region are shown in Excel.</p>
+<a class="reference internal image-reference" href="../_images/sqlite_result1.png"><img alt="SQLite data in Excel" src="../_images/sqlite_result1.png" style="width: 400px;" /></a>
+<p>We need to amend the call to <a class="reference internal" href="../reference/api.html#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a> so a background process is used. Edit the function in A1, passing TRUE for the <em>UseBackgroundProcess</em> parameter</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">RegisterPyModule</span><span class="p">(</span><span class="s2">&quot;c:\users</span><span class="se">\r</span><span class="s2">usse\documents\sqlite.py&quot;</span><span class="p">,,,</span><span class="n">TRUE</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/subprocess_amend_registration.png"><img alt="Amend registration to use background process" src="../_images/subprocess_amend_registration.png" style="width: 400px;" /></a>
+<p>The results are processed the same as before, the background processing does not affect how the xlSlim functions behave.</p>
+<a class="reference internal image-reference" href="../_images/subprocess_result.png"><img alt="Result from background process" src="../_images/subprocess_result.png" style="width: 400px;" /></a>
+<p>Using Process Explorer, we can see the background process running as a child of the EXCEL process:</p>
+<a class="reference internal image-reference" href="../_images/subprocess_procexplorer_show_subprocess.png"><img alt="Background process is a child of Excel" src="../_images/subprocess_procexplorer_show_subprocess.png" style="width: 400px;" /></a>
+<div class="section" id="controlling-dll-loading">
+<h2>Controlling DLL loading<a class="headerlink" href="#controlling-dll-loading" title="Permalink to this headline">¶</a></h2>
+<p>Let’s imagine Excel has an add-in which also uses the SQLite database, however a different version to the Python environment. In this case we need to be sure that SQLite libraries are not being loaded by any Python code within the Excel process.</p>
+<p>Running the <a class="reference internal" href="../samples/sqlite.html#csvsqlite"><span class="std std-ref">Using SQLite to analyse data</span></a> example with the <a class="reference internal" href="../reference/api.html#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a> <em>UseBackgroundProcess</em> parameter set to FALSE (or left out) we can see the <cite>_sqlite.pyd</cite> DLL loaded in the Excel process:</p>
+<a class="reference internal image-reference" href="../_images/subprocess_sqlite_in_excel.png"><img alt="_sqlite3.pyd loaded in Excel" src="../_images/subprocess_sqlite_in_excel.png" style="width: 400px;" /></a>
+<p>We’d like to run the Python code in a background process and only load SQLite libraries in the background process. This will require a small change to the Python code.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read a csv file into SQLite and analyse</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+
+
+<span class="k">def</span> <span class="nf">calculate_revenue_by_region</span><span class="p">(</span><span class="n">filepath</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Calculates revenue by region.</span>
+
+<span class="sd">        Loads the csv file into SQLite and groups by region.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+<span class="hll">        <span class="kn">import</span> <span class="nn">sqlite3</span>
+</span>        <span class="o">...</span>
+</pre></div>
+</div>
+<p>We need to move the <cite>sqlite3</cite> import to be within the <cite>calculate_revenue_by_region()</cite> function. This ensures the library is not imported when xlSlim analyses the code when registered.</p>
+<p>Now running the <a class="reference internal" href="../samples/sqlite.html#csvsqlite"><span class="std std-ref">Using SQLite to analyse data</span></a> example with the <a class="reference internal" href="../reference/api.html#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a> <em>UseBackgroundProcess</em> parameter set to TRUE, we see the background process running as expected and more importantly we can see that <cite>_sqlite.pyd</cite> is not loaded into the Excel process.</p>
+<a class="reference internal image-reference" href="../_images/subprocess_sqlite_not_in_excel.png"><img alt="_sqlite3.pyd not loaded in Excel" src="../_images/subprocess_sqlite_not_in_excel.png" style="width: 400px;" /></a>
+<p><cite>_sqlite.pyd</cite> is loaded into the PySubProcess process:</p>
+<a class="reference internal image-reference" href="../_images/subprocess_sqlite_in_subprocess.png"><img alt="_sqlite3.pyd not loaded in subprocess" src="../_images/subprocess_sqlite_in_subprocess.png" style="width: 400px;" /></a>
+<p>With some careful editing of imports Python code can be run so certain libraries are only loaded in the background process.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../samples/read_json_from_web.html" class="btn btn-neutral float-right" title="Read JSON data from a URL" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="dataframes.html" class="btn btn-neutral float-left" title="pandas DataFrames" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2022, Russel Webber
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
