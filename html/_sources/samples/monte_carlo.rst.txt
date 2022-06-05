@@ -1,4 +1,4 @@
-.. _monte_carlo:
+
 
 Monte Carlo Option Pricing
 ==========================

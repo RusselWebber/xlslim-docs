@@ -80,7 +80,8 @@
               
             
             
-              <ul class="current">
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
 <li class="toctree-l1"><a class="reference internal" href="keyword_args.html">Optional arguments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="passing_simple_types.html">Passing simple data types</a></li>
@@ -98,6 +99,7 @@
 <li class="toctree-l1"><a class="reference internal" href="dataframes.html">pandas DataFrames</a></li>
 <li class="toctree-l1"><a class="reference internal" href="subprocess.html">Running Python in a background process</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Examples</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../samples/read_json_from_web.html">Read JSON data from a URL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../samples/read_csv.html">Read CSV data from a file</a></li>
@@ -106,6 +108,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../samples/pca.html">Principal Components Analysis of Index Prices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../samples/monte_carlo.html">Monte Carlo Option Pricing</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../reference/environments.html">Python Environments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/api.html">Excel Functions</a></li>
@@ -176,7 +179,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="pandas-series">
-<span id="series"></span><h1>pandas Series<a class="headerlink" href="#pandas-series" title="Permalink to this headline">¶</a></h1>
+<h1>pandas Series<a class="headerlink" href="#pandas-series" title="Permalink to this headline">¶</a></h1>
 <p>xlSlim was designed to support pandas Series efficiently while keeping the interaction with Excel as intuitive as possible.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -218,12 +221,12 @@
 <p class="last">pandas and numpy are not available in the Python installation bundled with xlSlim. The Python module must be registered with an existing Python installation that has numpy and pandas installed.</p>
 </div>
 <p>If we call the <cite>create_random_ds()</cite> function we see that the result is automatically cached and a cache handle is returned to Excel.</p>
-<a class="reference internal image-reference" href="../_images/Series_create_random_array.png"><img alt="Create Series in Python" src="../_images/Series_create_random_array.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/series_create_random_array.png"><img alt="Create Series in Python" src="../_images/series_create_random_array.png" style="width: 400px;" /></a>
 <p>The xlSlim function <a class="reference internal" href="../reference/api.html#ViewPyObject" title="ViewPyObject"><code class="xref py py-func docutils literal notranslate"><span class="pre">ViewPyObject()</span></code></a> can be used to view any Python object stored in the memory cache.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">ViewPyObject</span><span class="p">(</span><span class="n">A3</span><span class="p">)</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="../_images/Series_view_random_array.png"><img alt="View a cached PyObject in Excel" src="../_images/Series_view_random_array.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/series_view_random_array.png"><img alt="View a cached PyObject in Excel" src="../_images/series_view_random_array.png" style="width: 400px;" /></a>
 </div>
 <div class="section" id="pandas-series-from-an-excel-range">
 <h3>pandas Series from an Excel Range<a class="headerlink" href="#pandas-series-from-an-excel-range" title="Permalink to this headline">¶</a></h3>
@@ -236,19 +239,19 @@
 </div>
 <p>This function describes the pandas Series passed in, we’ll use it to show how xlSlim creates pandas Series directly from Excel if the Python function has a type hint for <cite>pd.Series</cite>.</p>
 <p>We create a table of strings and numbers in Excel and pass this to the <cite>describe_ds()</cite> function.</p>
-<a class="reference internal image-reference" href="../_images/Series_create_array_from_range.png"><img alt="Create Series array from Excel" src="../_images/Series_create_array_from_range.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/series_create_array_from_range.png"><img alt="Create Series array from Excel" src="../_images/series_create_array_from_range.png" style="width: 400px;" /></a>
 <p>The function returns a cached object handle to Excel.</p>
-<a class="reference internal image-reference" href="../_images/Series_create_array_from_range_result.png"><img alt="Create Series array from Excel" src="../_images/Series_create_array_from_range_result.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/series_create_array_from_range_result.png"><img alt="Create Series array from Excel" src="../_images/series_create_array_from_range_result.png" style="width: 400px;" /></a>
 <p>A few things have happened here. xlSlim created a pandas Series from the range A2:B4 <em>before</em> passing the data to the Python code. The Python code received a regular pandas Series as expected. The Python function <cite>describe_ds()</cite> then returned a new pandas Series. xlSlim automatically put this pandas Series into a memory cache and returned the cache handle to Excel.</p>
 <p>Using <a class="reference internal" href="../reference/api.html#ViewPyObject" title="ViewPyObject"><code class="xref py py-func docutils literal notranslate"><span class="pre">ViewPyObject()</span></code></a> we can see the Series has been created and passed around as expected.</p>
-<a class="reference internal image-reference" href="../_images/Series_create_array_from_range_view_result.png"><img alt="Create Series array from Excel view result" src="../_images/Series_create_array_from_range_view_result.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/series_create_array_from_range_view_result.png"><img alt="Create Series array from Excel view result" src="../_images/series_create_array_from_range_view_result.png" style="width: 400px;" /></a>
 </div>
 <div class="section" id="pandas-series-from-an-excel-range-of-numbers">
 <h3>pandas Series from an Excel Range of numbers<a class="headerlink" href="#pandas-series-from-an-excel-range-of-numbers" title="Permalink to this headline">¶</a></h3>
 <p>xlSlim is optimised to create pandas Series from Excel ranges of numbers. Ranges of numbers are converted to pandas Series very efficiently with only direct memory copies being used.</p>
 <p>xlSlim cannot determine if the Excel range passed in only contains numbers (Technically it could but this would be very slow). Therefore xlSlim creates a special version of every Python function that expects one or more pandas Series - these special functions have the same names with “_num_only” appended.</p>
 <p>Let’s create a range of numbers and try the <cite>describe_ds_num_only()</cite> function.</p>
-<a class="reference internal image-reference" href="../_images/Series_create_array_from_range_num_only_view_result.png"><img alt="Create Series from Excel numeric range" src="../_images/Series_create_array_from_range_num_only_view_result.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/series_create_array_from_range_num_only_view_result.png"><img alt="Create Series from Excel numeric range" src="../_images/series_create_array_from_range_num_only_view_result.png" style="width: 400px;" /></a>
 <p>The function <cite>describe_ds_num_only()</cite> behaves exactly the same as <cite>describe_ds()</cite> however it is <em>far</em> more efficient when passing in a range of numbers.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -261,16 +264,16 @@
 <p>As shown above, pandas Series can be created from Excel Ranges. xlSlim will create a pandas Series from an Excel Range before passing the pandas Series to the Python function.</p>
 <p>Another way to pass pandas Series is to use the cache object handles corresponding to pandas Series in xlSlim’s memory cache.</p>
 <p>Let’s create a Series using the <cite>create_random_ds()</cite> function we defined before.</p>
-<a class="reference internal image-reference" href="../_images/Series_pass_handle_create_Series.png"><img alt="Create a pandas Series handle" src="../_images/Series_pass_handle_create_Series.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/series_pass_handle_create_Series.png"><img alt="Create a pandas Series handle" src="../_images/series_pass_handle_create_Series.png" style="width: 400px;" /></a>
 <p>The <a class="reference internal" href="../reference/api.html#ViewPyObject" title="ViewPyObject"><code class="xref py py-func docutils literal notranslate"><span class="pre">ViewPyObject()</span></code></a> in A3 shows the Series.</p>
 <p>Remove the <a class="reference internal" href="../reference/api.html#ViewPyObject" title="ViewPyObject"><code class="xref py py-func docutils literal notranslate"><span class="pre">ViewPyObject()</span></code></a> function and replace it with the <cite>describe_ds_from_handle()</cite> function</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">describe_ds_from_handle</span><span class="p">(</span><span class="n">A2</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>This takes in the cache object handle from A2, gets the associated pandas Series from xlSlim’s memory cache, passes the pandas Series to the <cite>describe_ds()</cite> Python function, and finally stores the result in the memory cache passing a cache object handle back to Excel.</p>
-<a class="reference internal image-reference" href="../_images/Series_pass_array_handle.png"><img alt="Pass an object cache handle for a Series" src="../_images/Series_pass_array_handle.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/series_pass_array_handle.png"><img alt="Pass an object cache handle for a Series" src="../_images/series_pass_array_handle.png" style="width: 400px;" /></a>
 <p>The pandas Series describing the object referred to in A2 can be viewed with <a class="reference internal" href="../reference/api.html#ViewPyObject" title="ViewPyObject"><code class="xref py py-func docutils literal notranslate"><span class="pre">ViewPyObject()</span></code></a> as usual.</p>
-<a class="reference internal image-reference" href="../_images/Series_view_description.png"><img alt="View description of Series" src="../_images/Series_view_description.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/series_view_description.png"><img alt="View description of Series" src="../_images/series_view_description.png" style="width: 400px;" /></a>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Passing pandas Series using cache object handles is <em>much</em> more efficient than creating pandas Series from Excel Ranges.</p>
@@ -315,7 +318,7 @@
 </pre></div>
 </div>
 <p>Given this sheet, where cache object handles in B2 and D2 reference pandas Series created from <cite>create_random_ds()</cite> and <a class="reference internal" href="../reference/api.html#ViewPyObject" title="ViewPyObject"><code class="xref py py-func docutils literal notranslate"><span class="pre">ViewPyObject()</span></code></a> is used to display the Series at B3 and D3:</p>
-<a class="reference internal image-reference" href="../_images/Series_multiple_array_data.png"><img alt="Passing multiple Series" src="../_images/Series_multiple_array_data.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/series_multiple_array_data.png"><img alt="Passing multiple Series" src="../_images/series_multiple_array_data.png" style="width: 400px;" /></a>
 <p>For the first case, functions with separate arguments, any of the techniques discussed so far can be use. These are all valid</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">concat_two_ds</span><span class="p">(</span><span class="n">B3</span><span class="c1">#,D3#,,&quot;outer&quot;)</span>
 <span class="o">=</span><span class="n">concat_two_ds_num_only</span><span class="p">(</span><span class="n">B3</span><span class="c1">#,D3#,,&quot;outer&quot;)</span>

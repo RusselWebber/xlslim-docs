@@ -1,4 +1,4 @@
-.. _read_csv:
+
 
 Read CSV data from a file
 =========================

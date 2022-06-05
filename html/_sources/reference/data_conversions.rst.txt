@@ -1,9 +1,10 @@
+
 Data Conversions Between Excel and Python
 =========================================
 
 xlSlim always tries to determine the appropriate conversions when passing data between Excel and Python. Without type hints xlSlim will handle numbers, strings, bools and datetimes. Adding type hints allows xlSlim to handle Python dictionaries and instances of custom classes. Lists of simple data types are also better handled when type hints are provided.
 
-See :ref:`simpletypes`, :ref:`objects`, :ref:`dicts`, :ref:`arrays`, :ref:`numpy`, :ref:`series` and :ref:`dataframes` for worked examples.
+See :doc:`/user/passing_simple_types`, :doc:`/user/passing_objects`, :doc:`/user/passing_dicts`, :doc:`/user/passing_arrays`, :doc:`/user/numpy`, :doc:`/user/series` and :doc:`/user/dataframes` for worked examples.
 
 Function Inputs
 +++++++++++++++

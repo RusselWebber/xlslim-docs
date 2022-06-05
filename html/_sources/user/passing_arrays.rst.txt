@@ -1,7 +1,8 @@
-.. _arrays:
+
 
 Passing lists
 =============
+
 
 xlSlim supports passing lists to and from Excel. The data is read from Excel ranges.
 

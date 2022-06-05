@@ -1,4 +1,4 @@
-.. _simpletypes:
+
 
 Passing simple data types
 =========================

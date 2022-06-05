@@ -1,4 +1,4 @@
-.. _dicts:
+
 
 Passing Python dictionaries
 ===========================
@@ -10,7 +10,7 @@ xlSlim supports Python dictionaries. Python dictionaries returned by Python func
 
 This Python module defines functions that use dictionaries to store peoples' details such as name and age. The `create_person_dict()` function creates a new dictionary with a person's details. The `describe()` function accepts a dictionary and returns a description of the person. Finally, the `average_age()` function accepts three dictionaries and returns the average age of the people contained. As usual the code has *no changes* to support xlSlim.
 
-This example is very similar to the :ref:`objects` example. You can clearly see that although dictionaries are useful, Python classes allow for more natural functions and also allow xlSlim to handle lists of objects being passed to functions.
+This example is very similar to the :doc:`passing_objects` example. You can clearly see that although dictionaries are useful, Python classes allow for more natural functions and also allow xlSlim to handle lists of objects being passed to functions.
 
 .. code-block:: python
 

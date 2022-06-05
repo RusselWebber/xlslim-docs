@@ -1,4 +1,4 @@
-.. _yfinance_prices:
+
 
 Loading Stock Prices from Yahoo! Finance
 ========================================

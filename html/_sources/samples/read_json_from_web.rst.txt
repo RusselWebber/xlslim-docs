@@ -1,4 +1,4 @@
-.. _read_json_from_web:
+
 
 Read JSON data from a URL
 =========================

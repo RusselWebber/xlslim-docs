@@ -1,4 +1,4 @@
-.. _dataframes:
+
 
 pandas DataFrames
 =================

@@ -1,4 +1,4 @@
-.. _udfs:
+
 
 Calling VBA and other Excel add-in functions
 ============================================

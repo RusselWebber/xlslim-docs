@@ -1,5 +1,12 @@
 .. default-domain:: py
 
+.. image:: ./_static/docs_banner.png
+   :width: 200
+   :height: 100
+   :alt: xlSlim logo
+   
+-------------------------------------
+
 Welcome to xlSlim's documentation
 =================================
 
@@ -13,11 +20,11 @@ xlSlim - call Python code from Excel with **no code changes!**
 
 ...you don't even need Python installed. xlSlim has a bundled version of Python 3.10
 
-The User Guide
---------------
+-------------------------------------
 
 .. toctree::
    :maxdepth: 2
+   :caption: User Guide
 
    user/quickstart
    user/keyword_args
@@ -31,11 +38,11 @@ The User Guide
    user/dataframes
    user/subprocess   
 
-Examples
---------
+-------------------------------------
 
 .. toctree::
    :maxdepth: 2
+   :caption: Examples
 
    samples/read_json_from_web
    samples/read_csv
@@ -44,11 +51,11 @@ Examples
    samples/pca
    samples/monte_carlo
    
-Reference
----------
+-------------------------------------
 
 .. toctree::
    :maxdepth: 2
+   :caption: Reference
 
    reference/environments
    reference/api

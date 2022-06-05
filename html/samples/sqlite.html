@@ -80,7 +80,8 @@
               
             
             
-              <ul>
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../user/quickstart.html">Quickstart</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/keyword_args.html">Optional arguments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/passing_simple_types.html">Passing simple data types</a></li>
@@ -93,6 +94,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../user/dataframes.html">pandas DataFrames</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/subprocess.html">Running Python in a background process</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Examples</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="read_json_from_web.html">Read JSON data from a URL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="read_csv.html">Read CSV data from a file</a></li>
@@ -101,6 +103,7 @@
 <li class="toctree-l1"><a class="reference internal" href="pca.html">Principal Components Analysis of Index Prices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="monte_carlo.html">Monte Carlo Option Pricing</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../reference/environments.html">Python Environments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/api.html">Excel Functions</a></li>
@@ -171,10 +174,10 @@
            <div itemprop="articleBody">
             
   <div class="section" id="using-sqlite-to-analyse-data">
-<span id="csvsqlite"></span><h1>Using SQLite to analyse data<a class="headerlink" href="#using-sqlite-to-analyse-data" title="Permalink to this headline">¶</a></h1>
+<h1>Using SQLite to analyse data<a class="headerlink" href="#using-sqlite-to-analyse-data" title="Permalink to this headline">¶</a></h1>
 <p>The Python standard library includes <a class="reference external" href="https://docs.python.org/3/library/sqlite3.html">sqlite3</a>, a wrapper for the <a class="reference external" href="https://www.sqlite.org/index.html">SQLite</a> database.</p>
 <p>SQLite can be very useful if you want to manipulate data before displaying the results in Excel.</p>
-<p>We will use this Python code to read a csv file of sales data (the same file as in the <a class="reference internal" href="read_csv.html#read-csv"><span class="std std-ref">Read CSV data from a file</span></a> example) into an in-memory SQLite database. The sales data is then grouped by region.</p>
+<p>We will use this Python code to read a csv file of sales data (the same file as in the <a class="reference internal" href="read_csv.html"><span class="doc">Read CSV data from a file</span></a> example) into an in-memory SQLite database. The sales data is then grouped by region.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read a csv file into SQLite and analyse</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">csv</span>

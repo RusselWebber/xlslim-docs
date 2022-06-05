@@ -1,3 +1,4 @@
+
 Excel Functions
 ===============
 
@@ -19,9 +20,9 @@ To register a Python module for use within Excel you use the :func:`RegisterPyMo
    :param UseBackgroundProcess: Should xlSlim Python code run a seperate process?
    :type UseBackgroundProcess: bool or None
 
-See :ref:`environments` for details of the `ExecutablePath` parameter.
-See :ref:`arrays` for an example using the `ModulePrefix` parameter.
-See :ref:`subprocess` for an example using the `UseBackgroundProcess` parameter.
+See :doc:`environments` for details of the `ExecutablePath` parameter.
+See :doc:`/user/passing_arrays` for an example using the `ModulePrefix` parameter.
+See :doc:`/user/subprocess` for an example using the `UseBackgroundProcess` parameter.
 
 Viewing cached objects
 ----------------------

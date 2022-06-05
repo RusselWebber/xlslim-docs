@@ -1,4 +1,4 @@
-.. _series:
+
 
 pandas Series
 =============
@@ -48,7 +48,7 @@ Open Excel and enter this :func:`RegisterPyModule` formula (amending the locatio
 
 If we call the `create_random_ds()` function we see that the result is automatically cached and a cache handle is returned to Excel.
 
-.. image:: ../_static/Series_create_random_array.png
+.. image:: ../_static/series_create_random_array.png
   :width: 400
   :alt: Create Series in Python
 
@@ -56,7 +56,7 @@ The xlSlim function :func:`ViewPyObject` can be used to view any Python object s
 
 	=ViewPyObject(A3)
 
-.. image:: ../_static/Series_view_random_array.png
+.. image:: ../_static/series_view_random_array.png
   :width: 400
   :alt: View a cached PyObject in Excel
 
@@ -78,13 +78,13 @@ This function describes the pandas Series passed in, we'll use it to show how xl
 
 We create a table of strings and numbers in Excel and pass this to the `describe_ds()` function.
 
-.. image:: ../_static/Series_create_array_from_range.png
+.. image:: ../_static/series_create_array_from_range.png
   :width: 400
   :alt: Create Series array from Excel
 
 The function returns a cached object handle to Excel. 
 
-.. image:: ../_static/Series_create_array_from_range_result.png
+.. image:: ../_static/series_create_array_from_range_result.png
   :width: 400
   :alt: Create Series array from Excel
 
@@ -92,7 +92,7 @@ A few things have happened here. xlSlim created a pandas Series from the range A
 
 Using :func:`ViewPyObject` we can see the Series has been created and passed around as expected.
 
-.. image:: ../_static/Series_create_array_from_range_view_result.png
+.. image:: ../_static/series_create_array_from_range_view_result.png
   :width: 400
   :alt: Create Series array from Excel view result
 
@@ -105,7 +105,7 @@ xlSlim cannot determine if the Excel range passed in only contains numbers (Tech
 
 Let's create a range of numbers and try the `describe_ds_num_only()` function.
 
-.. image:: ../_static/Series_create_array_from_range_num_only_view_result.png
+.. image:: ../_static/series_create_array_from_range_num_only_view_result.png
   :width: 400
   :alt: Create Series from Excel numeric range
 
@@ -123,7 +123,7 @@ Another way to pass pandas Series is to use the cache object handles correspondi
 
 Let's create a Series using the `create_random_ds()` function we defined before.
 
-.. image:: ../_static/Series_pass_handle_create_Series.png
+.. image:: ../_static/series_pass_handle_create_Series.png
   :width: 400
   :alt: Create a pandas Series handle
 
@@ -135,13 +135,13 @@ Remove the :func:`ViewPyObject` function and replace it with the `describe_ds_fr
 	
 This takes in the cache object handle from A2, gets the associated pandas Series from xlSlim's memory cache, passes the pandas Series to the `describe_ds()` Python function, and finally stores the result in the memory cache passing a cache object handle back to Excel.
 
-.. image:: ../_static/Series_pass_array_handle.png
+.. image:: ../_static/series_pass_array_handle.png
   :width: 400
   :alt: Pass an object cache handle for a Series
 
 The pandas Series describing the object referred to in A2 can be viewed with :func:`ViewPyObject` as usual.
 
-.. image:: ../_static/Series_view_description.png
+.. image:: ../_static/series_view_description.png
   :width: 400
   :alt: View description of Series
 
@@ -187,7 +187,7 @@ Multiple pandas Series can be passed to Python functions in two ways:
 
 Given this sheet, where cache object handles in B2 and D2 reference pandas Series created from `create_random_ds()` and :func:`ViewPyObject` is used to display the Series at B3 and D3:
 
-.. image:: ../_static/Series_multiple_array_data.png
+.. image:: ../_static/series_multiple_array_data.png
   :width: 400
   :alt: Passing multiple Series
 

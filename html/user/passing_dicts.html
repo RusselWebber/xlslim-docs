@@ -80,7 +80,8 @@
               
             
             
-              <ul class="current">
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
 <li class="toctree-l1"><a class="reference internal" href="keyword_args.html">Optional arguments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="passing_simple_types.html">Passing simple data types</a></li>
@@ -98,6 +99,7 @@
 <li class="toctree-l1"><a class="reference internal" href="dataframes.html">pandas DataFrames</a></li>
 <li class="toctree-l1"><a class="reference internal" href="subprocess.html">Running Python in a background process</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Examples</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../samples/read_json_from_web.html">Read JSON data from a URL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../samples/read_csv.html">Read CSV data from a file</a></li>
@@ -106,6 +108,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../samples/pca.html">Principal Components Analysis of Index Prices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../samples/monte_carlo.html">Monte Carlo Option Pricing</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../reference/environments.html">Python Environments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/api.html">Excel Functions</a></li>
@@ -176,14 +179,14 @@
            <div itemprop="articleBody">
             
   <div class="section" id="passing-python-dictionaries">
-<span id="dicts"></span><h1>Passing Python dictionaries<a class="headerlink" href="#passing-python-dictionaries" title="Permalink to this headline">¶</a></h1>
+<h1>Passing Python dictionaries<a class="headerlink" href="#passing-python-dictionaries" title="Permalink to this headline">¶</a></h1>
 <p>xlSlim supports Python dictionaries. Python dictionaries returned by Python functions are automatically cached by xlSlim and a cache handle is returned to Excel. These cache handles can be supplied to any function that expects a dictionary. There is no ability to directly create a dictionary from data in Excel, dictionaries must always be created within Python functions.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Type hints are essential for xlSlim to determine how to handle Python dictionaries passed between your functions.</p>
 </div>
 <p>This Python module defines functions that use dictionaries to store peoples’ details such as name and age. The <cite>create_person_dict()</cite> function creates a new dictionary with a person’s details. The <cite>describe()</cite> function accepts a dictionary and returns a description of the person. Finally, the <cite>average_age()</cite> function accepts three dictionaries and returns the average age of the people contained. As usual the code has <em>no changes</em> to support xlSlim.</p>
-<p>This example is very similar to the <a class="reference internal" href="passing_objects.html#objects"><span class="std std-ref">Passing Python objects</span></a> example. You can clearly see that although dictionaries are useful, Python classes allow for more natural functions and also allow xlSlim to handle lists of objects being passed to functions.</p>
+<p>This example is very similar to the <a class="reference internal" href="passing_objects.html"><span class="doc">Passing Python objects</span></a> example. You can clearly see that although dictionaries are useful, Python classes allow for more natural functions and also allow xlSlim to handle lists of objects being passed to functions.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span>
 
 

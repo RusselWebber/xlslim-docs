@@ -1,4 +1,4 @@
-.. _globals:
+
 
 Magic Global Functions
 ======================
@@ -9,7 +9,7 @@ xlSlim has two magic global functions that are always available in Python code r
 
 This global function can be used to access VBA functions as well as functions defined in other Excel add-ins. 
 
-An example is this function that calls the `EUROCONVERT()` Excel add-in function. See :ref:`udfs` for a detailed example.
+An example is this function that calls the `EUROCONVERT()` Excel add-in function. See :doc:`/user/udfs` for a detailed example.
 
 .. code-block:: python
 

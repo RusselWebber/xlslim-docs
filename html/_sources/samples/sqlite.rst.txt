@@ -1,4 +1,4 @@
-.. _csvsqlite:
+
 
 Using SQLite to analyse data
 ============================
@@ -10,7 +10,7 @@ The Python standard library includes `sqlite3`_, a wrapper for the `SQLite`_ dat
 
 SQLite can be very useful if you want to manipulate data before displaying the results in Excel.
 
-We will use this Python code to read a csv file of sales data (the same file as in the :ref:`read_csv` example) into an in-memory SQLite database. The sales data is then grouped by region.
+We will use this Python code to read a csv file of sales data (the same file as in the :doc:`read_csv` example) into an in-memory SQLite database. The sales data is then grouped by region.
 
 .. code-block:: python
 

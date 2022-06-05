@@ -1,11 +1,11 @@
-.. _pca:
+
 
 Principal Components Analysis of Index Prices
 =============================================
 
 .. _sklearn: https://scikit-learn.org/stable/
 
-This example builds on :ref:`yfinance_prices`, using the Python `sklearn`_ package to perform PCA on the downloaded prices.
+This example builds on :doc:`yfinance`, using the Python `sklearn`_ package to perform PCA on the downloaded prices.
 
 We will use this Python code to perform the PCA.
 
