@@ -107,6 +107,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../samples/yfinance.html">Loading Stock Prices from Yahoo! Finance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../samples/pca.html">Principal Components Analysis of Index Prices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../samples/monte_carlo.html">Monte Carlo Option Pricing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/nlp.html">NLP with Excel and Python</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Reference</span></p>
 <ul>
@@ -264,7 +265,7 @@
 <p>As shown above, pandas Series can be created from Excel Ranges. xlSlim will create a pandas Series from an Excel Range before passing the pandas Series to the Python function.</p>
 <p>Another way to pass pandas Series is to use the cache object handles corresponding to pandas Series in xlSlim’s memory cache.</p>
 <p>Let’s create a Series using the <cite>create_random_ds()</cite> function we defined before.</p>
-<a class="reference internal image-reference" href="../_images/series_pass_handle_create_Series.png"><img alt="Create a pandas Series handle" src="../_images/series_pass_handle_create_Series.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/series_pass_handle_create_series.png"><img alt="Create a pandas Series handle" src="../_images/series_pass_handle_create_series.png" style="width: 400px;" /></a>
 <p>The <a class="reference internal" href="../reference/api.html#ViewPyObject" title="ViewPyObject"><code class="xref py py-func docutils literal notranslate"><span class="pre">ViewPyObject()</span></code></a> in A3 shows the Series.</p>
 <p>Remove the <a class="reference internal" href="../reference/api.html#ViewPyObject" title="ViewPyObject"><code class="xref py py-func docutils literal notranslate"><span class="pre">ViewPyObject()</span></code></a> function and replace it with the <cite>describe_ds_from_handle()</cite> function</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">describe_ds_from_handle</span><span class="p">(</span><span class="n">A2</span><span class="p">)</span>
