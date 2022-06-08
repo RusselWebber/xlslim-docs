@@ -3,9 +3,9 @@
 Magic Global Functions
 ======================
 
-xlSlim has two magic global functions that are always available in Python code running within xlSlim: :func:`XLSIM_UDFFUNC` and :func:`XLSLIM_INWINDOWFUNC`
+xlSlim has two magic global functions that are always available in Python code running within xlSlim: :func:`XLSLIM_UDFFUNC` and :func:`XLSLIM_INWINDOWFUNC`
 
-.. py:function:: XLSIM_UDFFUNC()
+.. py:function:: XLSLIM_UDFFUNC()
 
 This global function can be used to access VBA functions as well as functions defined in other Excel add-ins. 
 
@@ -15,7 +15,7 @@ An example is this function that calls the `EUROCONVERT()` Excel add-in function
 
 	def eur_conversion(amount: float, from_currency: str, to_currency: str) -> float:
 		"""Convert to EUR using the Excel addin function EUROCONVERT."""
-		return XLSIM_UDFFUNC("EUROCONVERT", amount, from_currency, to_currency)
+		return XLSLIM_UDFFUNC("EUROCONVERT", amount, from_currency, to_currency)
 
 .. py:function:: XLSLIM_INWINDOWFUNC()
 

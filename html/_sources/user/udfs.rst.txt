@@ -27,11 +27,11 @@ This Python module accesses the VBA function. Note the global variable `XLSLIM_U
 .. code-block:: python
 
 	# This global is used to store a function pointer set by xlSlim
-	XLSIM_UDFFUNC = None
+	XLSLIM_UDFFUNC = None
 
 	def udf_circle_area(radius: float) -> float:
 		"""Calculate the area of a circle using the VBA function AreaCircle"""
-		return XLSIM_UDFFUNC("AreaCircle", radius)
+		return XLSLIM_UDFFUNC("AreaCircle", radius)
 
 .. note::
 	All the Python code and Excel files shown are available from github in the `xlslim-code-samples`_ repo. I highly recommend downloading the samples from github. The Excel workbooks contain many tips and tricks.
@@ -77,17 +77,17 @@ Add the `eur_conversion()` function below to the Python module. The module shoul
 .. code-block:: python
 
 	# This global is used to store a function pointer set by xlSlim
-	XLSIM_UDFFUNC = None
+	XLSLIM_UDFFUNC = None
 
 
 	def udf_circle_area(radius: float) -> float:
 		"""Calculate the area of a circle using the VBA function AreaCircle"""
-		return XLSIM_UDFFUNC("AreaCircle", radius)
+		return XLSLIM_UDFFUNC("AreaCircle", radius)
 
 
 	def eur_conversion(amount: float, from_currency: str, to_currency: str) -> float:
 		"""Convert to EUR using the Excel addin function EUROCONVERT."""
-		return XLSIM_UDFFUNC("EUROCONVERT", amount, from_currency, to_currency)
+		return XLSLIM_UDFFUNC("EUROCONVERT", amount, from_currency, to_currency)
 
 .. note::
 	All the Python code and Excel files shown are available from github in the `xlslim-code-samples`_ repo. I highly recommend downloading the samples from github. The Excel workbooks contain many tips and tricks.

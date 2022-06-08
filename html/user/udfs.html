@@ -193,11 +193,11 @@
 <a class="reference internal image-reference" href="../_images/udfs_define_vba_function.png"><img alt="Define function in VBA" src="../_images/udfs_define_vba_function.png" style="width: 400px;" /></a>
 <p>This Python module accesses the VBA function. Note the global variable <cite>XLSLIM_UDF</cite> that is used to access VBA functions.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># This global is used to store a function pointer set by xlSlim</span>
-<span class="n">XLSIM_UDFFUNC</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">XLSLIM_UDFFUNC</span> <span class="o">=</span> <span class="kc">None</span>
 
 <span class="k">def</span> <span class="nf">udf_circle_area</span><span class="p">(</span><span class="n">radius</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Calculate the area of a circle using the VBA function AreaCircle&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">XLSIM_UDFFUNC</span><span class="p">(</span><span class="s2">&quot;AreaCircle&quot;</span><span class="p">,</span> <span class="n">radius</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">XLSLIM_UDFFUNC</span><span class="p">(</span><span class="s2">&quot;AreaCircle&quot;</span><span class="p">,</span> <span class="n">radius</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -222,17 +222,17 @@
 <a class="reference internal image-reference" href="../_images/udfs_call_euroconvert_function_in_excel.png"><img alt="Call EUROCONVERT_function from Excel" src="../_images/udfs_call_euroconvert_function_in_excel.png" style="width: 400px;" /></a>
 <p>Add the <cite>eur_conversion()</cite> function below to the Python module. The module should now contain:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># This global is used to store a function pointer set by xlSlim</span>
-<span class="n">XLSIM_UDFFUNC</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">XLSLIM_UDFFUNC</span> <span class="o">=</span> <span class="kc">None</span>
 
 
 <span class="k">def</span> <span class="nf">udf_circle_area</span><span class="p">(</span><span class="n">radius</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Calculate the area of a circle using the VBA function AreaCircle&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">XLSIM_UDFFUNC</span><span class="p">(</span><span class="s2">&quot;AreaCircle&quot;</span><span class="p">,</span> <span class="n">radius</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">XLSLIM_UDFFUNC</span><span class="p">(</span><span class="s2">&quot;AreaCircle&quot;</span><span class="p">,</span> <span class="n">radius</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">eur_conversion</span><span class="p">(</span><span class="n">amount</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">from_currency</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">to_currency</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Convert to EUR using the Excel addin function EUROCONVERT.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">XLSIM_UDFFUNC</span><span class="p">(</span><span class="s2">&quot;EUROCONVERT&quot;</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">from_currency</span><span class="p">,</span> <span class="n">to_currency</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">XLSLIM_UDFFUNC</span><span class="p">(</span><span class="s2">&quot;EUROCONVERT&quot;</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">from_currency</span><span class="p">,</span> <span class="n">to_currency</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition note">

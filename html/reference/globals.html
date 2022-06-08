@@ -175,17 +175,17 @@
             
   <div class="section" id="magic-global-functions">
 <h1>Magic Global Functions<a class="headerlink" href="#magic-global-functions" title="Permalink to this headline">¶</a></h1>
-<p>xlSlim has two magic global functions that are always available in Python code running within xlSlim: <a class="reference internal" href="#XLSIM_UDFFUNC" title="XLSIM_UDFFUNC"><code class="xref py py-func docutils literal notranslate"><span class="pre">XLSIM_UDFFUNC()</span></code></a> and <a class="reference internal" href="#XLSLIM_INWINDOWFUNC" title="XLSLIM_INWINDOWFUNC"><code class="xref py py-func docutils literal notranslate"><span class="pre">XLSLIM_INWINDOWFUNC()</span></code></a></p>
+<p>xlSlim has two magic global functions that are always available in Python code running within xlSlim: <a class="reference internal" href="#XLSLIM_UDFFUNC" title="XLSLIM_UDFFUNC"><code class="xref py py-func docutils literal notranslate"><span class="pre">XLSLIM_UDFFUNC()</span></code></a> and <a class="reference internal" href="#XLSLIM_INWINDOWFUNC" title="XLSLIM_INWINDOWFUNC"><code class="xref py py-func docutils literal notranslate"><span class="pre">XLSLIM_INWINDOWFUNC()</span></code></a></p>
 <dl class="function">
-<dt id="XLSIM_UDFFUNC">
-<code class="descname">XLSIM_UDFFUNC</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#XLSIM_UDFFUNC" title="Permalink to this definition">¶</a></dt>
+<dt id="XLSLIM_UDFFUNC">
+<code class="descname">XLSLIM_UDFFUNC</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#XLSLIM_UDFFUNC" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>This global function can be used to access VBA functions as well as functions defined in other Excel add-ins.</p>
 <p>An example is this function that calls the <cite>EUROCONVERT()</cite> Excel add-in function. See <a class="reference internal" href="../user/udfs.html"><span class="doc">Calling VBA and other Excel add-in functions</span></a> for a detailed example.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">eur_conversion</span><span class="p">(</span><span class="n">amount</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">from_currency</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">to_currency</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Convert to EUR using the Excel addin function EUROCONVERT.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">XLSIM_UDFFUNC</span><span class="p">(</span><span class="s2">&quot;EUROCONVERT&quot;</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">from_currency</span><span class="p">,</span> <span class="n">to_currency</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">XLSLIM_UDFFUNC</span><span class="p">(</span><span class="s2">&quot;EUROCONVERT&quot;</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">from_currency</span><span class="p">,</span> <span class="n">to_currency</span><span class="p">)</span>
 </pre></div>
 </div>
 <dl class="function">
