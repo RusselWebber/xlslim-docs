@@ -8,6 +8,9 @@ xlSlim was designed to support pandas Series efficiently while keeping the inter
 .. note::
 	Type hints are essential for xlSlim to recognise pandas Series passed between your functions.
 
+.. warning::
+	pandas functionality requires a premium licence. See :doc:`/reference/licensing`
+
 Creating pandas Series
 ----------------------
 

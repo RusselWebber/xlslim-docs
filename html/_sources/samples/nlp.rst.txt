@@ -6,6 +6,9 @@ NLP with Excel and Python
 How can Excel help in developing an NLP application? 
 By providing its flexible and simple interface to visualize each step, from pre-processing to the final model!
 
+.. warning::
+	The functionality shown requires a premium licence. See :doc:`/reference/licensing`
+
 Tokenizing Text and Creating a Word Counter
 '''''''''''''''''''''''''''''''''''''''''''''''''
 

@@ -10,6 +10,8 @@ The Python `yfinance`_ package can be used to download prices from `Yahoo! Finan
 
 xlSlim makes it easy to use the yfinance package to download prices into Excel.
 
+.. warning::
+	The pandas functionality shown requires a premium licence. See :doc:`/reference/licensing`
 
 
 We will use this Python code to download the prices.

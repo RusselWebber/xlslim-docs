@@ -99,3 +99,67 @@ The :func:`WorkbookLocation()` function can be used to get the current workbook'
 
    :return: The path (excluding filename) of the current workbook.
    :rtype: str
+   
+Get the log location
+--------------------
+
+The :func:`LogLocation()` function can be used to get the location of xlSlim's log file.
+
+.. py:function:: LogLocation()
+
+   Returns the location of xlSlim's log file. The log file is useful for troubleshooting.
+
+   :return: The path (including filename) of the log file
+   :rtype: str
+   
+Check the licensing status
+--------------------------
+
+The :func:`IsPremiumLicensed()` function can be used to check if xlSlim has a valid premium licence. See :doc:`/reference/licensing`.
+
+.. py:function:: IsPremiumLicensed()
+
+   Checks if xlSlim has a premium licence.
+
+   :return: True if a valid premium licence was found, else false.
+   :rtype: bool
+
+Check the licence expiry
+------------------------
+
+The :func:`LicenseExpiry()` function can be used to check the expiry date of any existing premium licence.
+
+.. py:function:: LicenseExpiry()
+
+   Gets the expiry of the premium licence.
+
+   :return: The expiry time of any premium licence found.
+   :rtype: datetime
+
+Activate a licence
+------------------
+
+.. _xlslim.com: https://www.xlslim.com/
+
+The :func:`ActivatePremiumLicense()` function can be used to request a trial licence or activate a premium licence. See :doc:`/user/licensing`
+
+.. py:function:: ActivatePremiumLicense(key)
+
+   Gets the expiry of the premium licence.
+
+   :param key: A premium licence key purchased from `xlslim.com`_.
+   :type key: str
+   :return: The activation result.
+   :rtype: str
+
+Deactivate a licence
+--------------------
+
+The :func:`DeactivatePremiumLicense()` function can be used to deactivate a premium licence so it can be used on another PC. See :doc:`/user/licensing`
+
+.. py:function:: DeactivatePremiumLicense()
+
+   Deactivates any current premium licence.
+
+   :return: The deactivation result.
+   :rtype: str

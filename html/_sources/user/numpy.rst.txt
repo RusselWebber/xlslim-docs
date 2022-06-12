@@ -8,6 +8,9 @@ xlSlim was designed to support numpy arrays efficiently while keeping the intera
 .. note::
 	Type hints are essential for xlSlim to recognise numpy arrays passed between your functions.
 
+.. warning::
+	numpy functionality requires a premium licence. See :doc:`/reference/licensing`
+
 Creating numpy arrays
 ---------------------
 

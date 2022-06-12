@@ -1,0 +1,63 @@
+
+Licensing
+=========
+
+.. _xlslim.com: https://www.xlslim.com/
+.. _licensespring: https://licensespring.com/
+
+
+xlSlim is available to download and use free of charge. The core functionality of xlSlim will always be free. However premium features require a premium licence. Premium licences can be purchased at `xlslim.com`_. 
+
+14 day trial licences are created automatically when xlSlim is first run on your PC. Thus you will have the opportunity to evaluate premium features.
+
+This table compares the features available in the free and premium versions:
+
+.. list-table:: Feature Comparison
+   :widths: 50 10 10
+   :header-rows: 1
+
+   * - Feature
+     - Free
+     - Premium
+   * - Register Excel functions from Python module functions
+     - Y
+     - Y	 
+   * - Recognise type hints
+     - Y
+     - Y	 
+   * - Recognise doc string
+     - Y
+     - Y	 	 
+   * - Automatic data type conversions
+     - Y
+     - Y	 	 
+   * - Support returning lists from functions
+     - Y
+     - Y	 	 	 
+   * - Access VBA and add-in functions in Python
+     - Y
+     - Y	 	 	 	 
+   * - Use external Python environments
+     - N
+     - Y
+   * - Support numpy arrays
+     - N
+     - Y
+   * - Support pandas series
+     - N
+     - Y
+   * - Support pandas dataframes
+     - N
+     - Y	 
+   * - Run Python in a background process
+     - N
+     - Y	 	 
+	 
+Technical Details
+-----------------
+
+Licensing is provided by `licensespring`_ who generously offer free licensing services to startups.
+
+If you are behind a firewall please whitelist `api.licensespring.com` on port 443
+
+Offline licence activation is also possible, see :doc:`/user/licensing` for details.

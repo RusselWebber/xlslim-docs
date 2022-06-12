@@ -8,6 +8,9 @@ A common problem with Windows is that generally only one version of a DLL can be
 
 xlSlim has the ability to run Python code in a background process. This background process is spawned as a sub-process of Excel. Commmunication with the sub-process is efficient. 
 
+.. warning::
+	Running Python in a background process requires a premium licence. See :doc:`/reference/licensing`
+
 We will use the :doc:`/samples/sqlite` example to show how the background process works. Please work through the example to get to the stage that the sales by region are shown in Excel.
 
 .. image:: ../_static/sqlite_result.png

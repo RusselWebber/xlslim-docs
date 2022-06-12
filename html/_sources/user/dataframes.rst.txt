@@ -8,6 +8,9 @@ xlSlim was designed to support pandas DataFrames efficiently while keeping the i
 .. note::
 	Type hints are essential for xlSlim to recognise pandas DataFrames passed between your functions.
 
+.. warning::
+	pandas functionality requires a premium licence. See :doc:`/reference/licensing`
+
 Creating pandas DataFrames
 --------------------------
 

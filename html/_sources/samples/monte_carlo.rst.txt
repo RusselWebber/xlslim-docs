@@ -8,6 +8,9 @@ Monte Carlo Option Pricing
 
 The Python `numpy`_ and `pandas`_ packages can be used to very elegantly perform Monte Carlo option pricing.
 
+.. warning::
+	The numpy and pandas functionality shown requires a premium licence. See :doc:`/reference/licensing`
+
 We will use this Python code to run the simulations.
 
 .. code-block:: python

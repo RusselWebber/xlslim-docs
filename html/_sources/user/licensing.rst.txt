@@ -1,0 +1,195 @@
+
+Licensing
+=========
+
+.. _xlslim.com: https://www.xlslim.com/
+.. _licensespring: https://licensespring.com/
+
+Many useful features are available in the free version of xlSlim, however the most powerful features are only available with a premium licence. See :doc:`/reference/licensing` for details of which features require a premium licence.
+
+Trial Licences
+--------------
+
+A 14 day trial licence is automatically created when xlSlim is first run. This gives you 14 days to evaluate premium features.
+
+The trial licence is requested when the first module is registered with :func:`RegisterPyModule`. The :func:`ActivatePremiumLicense` function may also be used to explicitly request a trial licence: ::
+
+	=ActivatePremiumLicense()
+	
+.. image:: ../_static/func_get_trial.png
+  :width: 400
+  :alt: Request a trial licence
+
+The xlSlim log file shows this taking place: ::
+
+	------------- Product info ------------- 
+	Product name:         xlSlim 
+	Is trial allowed:     True 
+	Trial period:         14 days 
+	Got trial license: GQCU-QHNU-MRSK-BPXL 
+	License activated successfully 
+	------------- License info ------------- 
+	Licensed to: trial_request  
+	Key = GQCU-QHNU-MRSK-BPXL 
+	Type = TimeLimited 
+	Status = Active 
+	IsTrial = True 
+	IsOfflineActivated = False 
+	Transfer count = 0 
+	Times activated = 1 
+	Max activations = 1 
+	Validity Period = 24/06/2022 01:00:00 
+	Validity Period UTC = 24/06/2022 00:00:00 
+	Days remaining till license expires = 12 
+	Last online check date = 12/06/2022 13:06:59 
+	Days passed since last online check = 0 
+
+.. note::
+	The :func:`LogLocation` function can be used to find the xlSlim log location.
+
+
+Activating a licence
+--------------------
+
+Premium licences can be purchased from `xlslim.com`_ 
+
+Once your purchase has been processed you will receive an email similar to this:
+
+.. image:: ../_static/premium_licence_key_email.png
+  :width: 400
+  :alt: Email with licence key
+
+.. note::
+	The **tracking number** is the licence key.
+
+The Excel function :func:`ActivatePremiumLicense` can be used to activate the licence using the key from the email.
+
+.. image:: ../_static/premium_licence_excel_activation.png
+  :width: 400
+  :alt: Activate with key in Excel
+
+The xlSlim log file shows the details: ::
+
+	------------- Product info ------------- 
+	Product name:         xlSlim 
+	Is trial allowed:     True 
+	Trial period:         14 days 
+	License activated successfully 
+	------------- License info ------------- 
+	Licensed to: xlslimdev@gmail.com  
+	Key = GPYF-V5MZ-RXEK-C3XL 
+	Type = TimeLimited 
+	Status = Active 
+	IsTrial = False 
+	IsOfflineActivated = False 
+	Transfer count = 0 
+	Times activated = 1 
+	Max activations = 3 
+	Validity Period = 25/05/2023 01:00:00 
+	Validity Period UTC = 25/05/2023 00:00:00 
+	Days remaining till license expires = 347 
+	Last online check date = 12/06/2022 13:37:05 
+	Days passed since last online check = 0 
+
+.. note::
+	One licence key can be used on up to 3 computers, so you could install on your laptop and desktop for example.
+
+Deactivating a licence
+----------------------
+
+The Excel function :func:`DectivatePremiumLicense` can be used to deactivate any existing premium licence. This will reduce the activation count for that licence so you can use it on another computer.
+
+.. image:: ../_static/premium_licence_excel_deactivation.png
+  :width: 400
+  :alt: Deactivate in Excel
+
+
+Offline and advanced activation
+-------------------------------
+
+The Excel functions :func:`ActivatePremiumLicense` and :func:`DectivatePremiumLicense` are usually all that you need. However, if you need better control over the licence or need to do an offline licence activation, then the **xlSlim License Manager** application can be very helpful.
+
+The xlSlim License Manager is installed with xlSlim and can be launched from the Start menu.
+
+.. image:: ../_static/launch_lic_mgr.png
+  :width: 400
+  :alt: Launch licence manager
+  
+The application shows full details of any existing licence.
+
+.. image:: ../_static/lic_mgr_details.png
+  :width: 400
+  :alt: Licence details
+  
+The licence can be checked using the "Check the license" button. The licence can be deactivated using the "Deactivate License" button.
+
+If no licence is found this initial window is displayed.
+
+.. image:: ../_static/lic_mgr_intro_screen.png
+  :width: 400
+  :alt: Licence manager intro screen
+  
+A trial licence can be requested by entering your email address and clicking the "Get trial license" button.
+
+A license key may also be activated by entering the key  and clicking the "Activate" button.
+
+Offline licence activation
+++++++++++++++++++++++++++
+
+The default xlSlim licence activation functionality requires internet access, specifically access to **api.licensespring.com** port 443. However often internet access is restricted by corporate firewalls or is not available on the computer where xlSlim is being installed.
+
+`licensespring`_ offers offline licence activation to handle these cases.
+
+Launch the xlSlim licence manager:
+
+.. image:: ../_static/launch_lic_mgr.png
+  :width: 400
+  :alt: Launch licence manager
+
+Enter the key received after your purchase:
+  
+.. image:: ../_static/lic_mgr_offline_enter_key.png
+  :width: 400
+  :alt: Enter key
+
+Create a request file by clicking on the "Create request file" button.
+
+.. image:: ../_static/lic_mgr_offline_save_request.png
+  :width: 400
+  :alt: Create offline request
+
+Copy the request file to a computer with internet access. Open https://saas.licensespring.com/offline/ and select the request file for upload:
+
+.. image:: ../_static/lic_mgr_offline_saas_choose_request.png
+  :width: 400
+  :alt: Select the request file
+
+Upload the request file and save the response file:
+
+.. image:: ../_static/lic_mgr_offline_saas_upload_request.png
+  :width: 400
+  :alt: Upload the request file
+
+Copy the response file back to the computer where xlSlim is installed. Select this file after clicking the "Activate offline" button:
+
+.. image:: ../_static/lic_mgr_offline_choose_response.png
+  :width: 400
+  :alt: Save response
+
+And the licence is activated:
+
+.. image:: ../_static/lic_mgr_offline_result.png
+  :width: 400
+  :alt: Activated licence
+
+
+
+
+
+
+  
+
+
+
+
+

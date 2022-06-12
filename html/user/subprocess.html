@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Read JSON data from a URL" href="../samples/read_json_from_web.html" />
+    <link rel="next" title="Licensing" href="licensing.html" />
     <link rel="prev" title="pandas DataFrames" href="dataframes.html" /> 
 </head>
 
@@ -96,6 +96,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#controlling-dll-loading">Controlling DLL loading</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="licensing.html">Licensing</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Examples</span></p>
 <ul>
@@ -113,6 +114,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../reference/api.html">Excel Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/data_conversions.html">Data Conversions Between Excel and Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/globals.html">Magic Global Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/licensing.html">Licensing</a></li>
 </ul>
 
             
@@ -181,6 +183,10 @@
 <h1>Running Python in a background process<a class="headerlink" href="#running-python-in-a-background-process" title="Permalink to this headline">¶</a></h1>
 <p>A common problem with Windows is that generally only one version of a DLL can be loaded into a process. This can be a problem if common DLLs are being loaded by both an Excel add-in and Python code. For example, you could have a valuation library that is available as both an Excel add-in and a Python library, in which case xlSlim would encounter problems if the Excel add-in and Python package used different versions of the valuation library’s DLLs. Another common problem is that Excel processes can use a lot of system resources, both memory and CPU.</p>
 <p>xlSlim has the ability to run Python code in a background process. This background process is spawned as a sub-process of Excel. Commmunication with the sub-process is efficient.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Running Python in a background process requires a premium licence. See <a class="reference internal" href="../reference/licensing.html"><span class="doc">Licensing</span></a></p>
+</div>
 <p>We will use the <a class="reference internal" href="../samples/sqlite.html"><span class="doc">Using SQLite to analyse data</span></a> example to show how the background process works. Please work through the example to get to the stage that the sales by region are shown in Excel.</p>
 <a class="reference internal image-reference" href="../_images/sqlite_result1.png"><img alt="SQLite data in Excel" src="../_images/sqlite_result1.png" style="width: 400px;" /></a>
 <p>We need to amend the call to <a class="reference internal" href="../reference/api.html#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a> so a background process is used. Edit the function in A1, passing TRUE for the <em>UseBackgroundProcess</em> parameter</p>
@@ -229,7 +235,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../samples/read_json_from_web.html" class="btn btn-neutral float-right" title="Read JSON data from a URL" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="licensing.html" class="btn btn-neutral float-right" title="Licensing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="dataframes.html" class="btn btn-neutral float-left" title="pandas DataFrames" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

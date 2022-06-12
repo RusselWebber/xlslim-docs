@@ -93,6 +93,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../user/series.html">pandas Series</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/dataframes.html">pandas DataFrames</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/subprocess.html">Running Python in a background process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/licensing.html">Licensing</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Examples</span></p>
 <ul>
@@ -115,10 +116,16 @@
 <li class="toctree-l2"><a class="reference internal" href="#clear-caches">Clear Caches</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#use-the-bundled-python">Use the bundled Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#get-the-current-workbook-location">Get the current workbook location</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#get-the-log-location">Get the log location</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#check-the-licensing-status">Check the licensing status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#check-the-licence-expiry">Check the licence expiry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#activate-a-licence">Activate a licence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#deactivate-a-licence">Deactivate a licence</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="data_conversions.html">Data Conversions Between Excel and Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="globals.html">Magic Global Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="licensing.html">Licensing</a></li>
 </ul>
 
             
@@ -315,6 +322,108 @@ See <a class="reference internal" href="../user/subprocess.html"><span class="do
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The path (excluding filename) of the current workbook.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="get-the-log-location">
+<h2>Get the log location<a class="headerlink" href="#get-the-log-location" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="#LogLocation" title="LogLocation"><code class="xref py py-func docutils literal notranslate"><span class="pre">LogLocation()</span></code></a> function can be used to get the location of xlSlim’s log file.</p>
+<dl class="function">
+<dt id="LogLocation">
+<code class="descname">LogLocation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#LogLocation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the location of xlSlim’s log file. The log file is useful for troubleshooting.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The path (including filename) of the log file</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="check-the-licensing-status">
+<h2>Check the licensing status<a class="headerlink" href="#check-the-licensing-status" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="#IsPremiumLicensed" title="IsPremiumLicensed"><code class="xref py py-func docutils literal notranslate"><span class="pre">IsPremiumLicensed()</span></code></a> function can be used to check if xlSlim has a valid premium licence. See <a class="reference internal" href="licensing.html"><span class="doc">Licensing</span></a>.</p>
+<dl class="function">
+<dt id="IsPremiumLicensed">
+<code class="descname">IsPremiumLicensed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#IsPremiumLicensed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if xlSlim has a premium licence.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if a valid premium licence was found, else false.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="check-the-licence-expiry">
+<h2>Check the licence expiry<a class="headerlink" href="#check-the-licence-expiry" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="#LicenseExpiry" title="LicenseExpiry"><code class="xref py py-func docutils literal notranslate"><span class="pre">LicenseExpiry()</span></code></a> function can be used to check the expiry date of any existing premium licence.</p>
+<dl class="function">
+<dt id="LicenseExpiry">
+<code class="descname">LicenseExpiry</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#LicenseExpiry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the expiry of the premium licence.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The expiry time of any premium licence found.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">datetime</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="activate-a-licence">
+<h2>Activate a licence<a class="headerlink" href="#activate-a-licence" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="#ActivatePremiumLicense" title="ActivatePremiumLicense"><code class="xref py py-func docutils literal notranslate"><span class="pre">ActivatePremiumLicense()</span></code></a> function can be used to request a trial licence or activate a premium licence. See <a class="reference internal" href="../user/licensing.html"><span class="doc">Licensing</span></a></p>
+<dl class="function">
+<dt id="ActivatePremiumLicense">
+<code class="descname">ActivatePremiumLicense</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#ActivatePremiumLicense" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the expiry of the premium licence.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>key</strong> (<em>str</em>) – A premium licence key purchased from <a class="reference external" href="https://www.xlslim.com/">xlslim.com</a>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The activation result.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="deactivate-a-licence">
+<h2>Deactivate a licence<a class="headerlink" href="#deactivate-a-licence" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="#DeactivatePremiumLicense" title="DeactivatePremiumLicense"><code class="xref py py-func docutils literal notranslate"><span class="pre">DeactivatePremiumLicense()</span></code></a> function can be used to deactivate a premium licence so it can be used on another PC. See <a class="reference internal" href="../user/licensing.html"><span class="doc">Licensing</span></a></p>
+<dl class="function">
+<dt id="DeactivatePremiumLicense">
+<code class="descname">DeactivatePremiumLicense</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#DeactivatePremiumLicense" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deactivates any current premium licence.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The deactivation result.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
 </tr>

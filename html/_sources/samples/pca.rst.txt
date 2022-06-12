@@ -7,6 +7,9 @@ Principal Components Analysis of Index Prices
 
 This example builds on :doc:`yfinance`, using the Python `sklearn`_ package to perform PCA on the downloaded prices.
 
+.. warning::
+	The numpy functionality shown requires a premium licence. See :doc:`/reference/licensing`
+
 We will use this Python code to perform the PCA.
 
 .. code-block:: python
