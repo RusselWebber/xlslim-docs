@@ -26,6 +26,7 @@ xlSlim - call Python code from Excel with **no code changes!**
    :maxdepth: 2
    :caption: User Guide
 
+   user/installation
    user/quickstart
    user/keyword_args
    user/passing_simple_types
@@ -38,6 +39,7 @@ xlSlim - call Python code from Excel with **no code changes!**
    user/dataframes
    user/subprocess   
    user/licensing      
+   
 
 -------------------------------------
 
@@ -64,5 +66,5 @@ xlSlim - call Python code from Excel with **no code changes!**
    reference/data_conversions
    reference/globals   
    reference/licensing   
-   
+   reference/software_requirements
 

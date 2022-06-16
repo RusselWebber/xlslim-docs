@@ -1,0 +1,78 @@
+
+Installation
+============
+
+.. _xlslim.com: https://www.xlslim.com/pages/downloads/latest
+
+Please make sure your computer meets the :doc:`/reference/software_requirements`.
+
+Download the installation package from `xlslim.com`_:
+
+.. image:: ../_static/installation_downloads_page.png
+  :width: 400
+  :alt: Downloads page
+
+Clicking on the "latest version" link will open the actual download page:
+
+.. image:: ../_static/installation_downloads_actual.png
+  :width: 400
+  :alt: Actual downloads page  
+
+Download the installation exe:
+
+.. image:: ../_static/installation_downloads_complete.png
+  :width: 400
+  :alt: Download complete
+  
+It is always a good idea to verify that any downloaded files have not been tampered with. Windows has the "certutil" utility that can compute the cryptograpic hash of a file. ::
+
+    certutil -hashfile .\xlSlim.exe SHA1
+
+If you run this you'll see the hash matches the details on the website:
+
+.. image:: ../_static/installation_downloads_verified.png
+  :width: 400
+  :alt: Download verification
+
+After verification, double-click on the downloaded xlSlim.exe and run through the installation:
+
+.. image:: ../_static/installation_downloads_open_exe.png
+  :width: 400
+  :alt: Open the downloaded exe
+
+The default installation location is "%APPDATA%\Microsoft\AddIns" this is one of the places Excel looks for add-ins.
+  
+.. image:: ../_static/installation_installer_first_page.png
+  :width: 400
+  :alt: First page of the installer
+
+.. image:: ../_static/installation_installer_second_page.png
+  :width: 400
+  :alt: Second page of the installer
+
+.. image:: ../_static/installation_installer_third_page.png
+  :width: 400
+  :alt: Third page of the installer
+  
+.. image:: ../_static/installation_installer_fourth_page.png
+  :width: 400
+  :alt: Fourth page of the installer
+
+Tick the "Launch xlSlim" box to launch Excel with the xlSlim add-in. A Start menu shortcut of "xlSlim" is also added.
+  
+.. image:: ../_static/installation_installer_fifth_page.png
+  :width: 400
+  :alt: Fifth page of the installer
+
+You may see a warning similar to this, please choose to "Enable all code published by this publisher." Please check that the "Show Signature Details" reports the code as signed by "Webber Software Solutions Ltd".
+
+.. image:: ../_static/first_use_unknown_publisher.png
+  :width: 400
+  :alt: Verify trial license
+
+In Excel you can use the functions :func:`IsPremiumLicensed` and :func:`LicenseExpiry` to verify a trial license has been obtained successfully. See :doc:`/user/licensing` for details.
+  
+.. image:: ../_static/installation_check_licence.png
+  :width: 400
+  :alt: Verify trial license
+

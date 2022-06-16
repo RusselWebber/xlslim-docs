@@ -1,0 +1,17 @@
+
+Software Requirements
+=====================
+
+v 1.0
+-----
+
+xlSlim requires:
+ * Microsoft Windows 8+
+ * Microsoft .Net Framework 4.8+
+ * Microsoft Excel 2010+
+
+For external Python environments, xlSlim supports:
+ * Python 3.7
+ * Python 3.8
+ * Python 3.9
+ * Python 3.10
