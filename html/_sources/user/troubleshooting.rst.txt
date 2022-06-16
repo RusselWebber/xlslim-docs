@@ -1,0 +1,36 @@
+
+Troubleshooting
+===============
+
+.. _logging: https://docs.python.org/3/library/logging.html
+.. _Nlog: https://nlog-project.org/
+.. _xlslim-support: https://groups.google.com/g/xlslim-support
+
+Logs
+----
+
+The log files will usually contain details of what has gone wrong.
+
+The function :func:`LogLocation` can be used to find the log location. 
+
+Two log files are present:
+ * addinlog.txt - this log contains xlSlim's internal logs, details of module registrations and so on.
+ * xlslim-python.log - this is a regular Python log file, if your code logs with the regular Python `logging`_ module then your log messages will be redirected here.
+
+The xlSlim internal log uses the `Nlog`_ project, the usual NLog.config configuration file can be used to amend the logging.
+
+The Python logging can be customised by editing the PyLogging-EXCEL.conf configuration file.
+
+Licensing
+---------
+
+For licensing issues, see :doc:`/user/licensing`, in particular note the standalone "xlSlim License Manager" application that can be used to view license details and perform offline activations.
+
+If you are behind a firewall please whitelist api.licensespring.com on port 443.
+
+General
+-------
+
+Python environment problems can be investigated with the :func:`PythonDetails` function.
+
+Over time, the Google group `xlslim-support`_ will become a repository of common issues and solutions.

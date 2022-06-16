@@ -39,6 +39,7 @@ xlSlim - call Python code from Excel with **no code changes!**
    user/dataframes
    user/subprocess   
    user/licensing      
+   user/troubleshooting
    
 
 -------------------------------------
