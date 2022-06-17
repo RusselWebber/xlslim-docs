@@ -33,4 +33,6 @@ General
 
 Python environment problems can be investigated with the :func:`PythonDetails` function.
 
+If your Excel workbook is not saved you may experience issues with object cache handle name collisions. This is due to how xlSlim constructs the cache handle using a combination of workbook name, tab name and cell adress. Unsaved workbooks share names such as Book1, Book2 and so on. Usually these problems can be solved by using the :func:`ClearCaches` to clear the caching and then saving the workbook you are working on.
+
 Over time, the Google group `xlslim-support`_ will become a repository of common issues and solutions.

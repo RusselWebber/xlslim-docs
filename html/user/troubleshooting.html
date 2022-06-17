@@ -209,6 +209,7 @@
 <div class="section" id="general">
 <h2>General<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h2>
 <p>Python environment problems can be investigated with the <a class="reference internal" href="../reference/api.html#PythonDetails" title="PythonDetails"><code class="xref py py-func docutils literal notranslate"><span class="pre">PythonDetails()</span></code></a> function.</p>
+<p>If your Excel workbook is not saved you may experience issues with object cache handle name collisions. This is due to how xlSlim constructs the cache handle using a combination of workbook name, tab name and cell adress. Unsaved workbooks share names such as Book1, Book2 and so on. Usually these problems can be solved by using the <a class="reference internal" href="../reference/api.html#ClearCaches" title="ClearCaches"><code class="xref py py-func docutils literal notranslate"><span class="pre">ClearCaches()</span></code></a> to clear the caching and then saving the workbook you are working on.</p>
 <p>Over time, the Google group <a class="reference external" href="https://groups.google.com/g/xlslim-support">xlslim-support</a> will become a repository of common issues and solutions.</p>
 </div>
 </div>
