@@ -218,7 +218,7 @@
 <td>float</td>
 </tr>
 <tr class="row-odd"><td>Range</td>
-<td>.Net array of objects, can usually be treated as a Python list.</td>
+<td>Wrapped .Net array of objects.</td>
 </tr>
 </tbody>
 </table>
@@ -297,7 +297,7 @@
 </td>
 </tr>
 <tr class="row-even"><td>Range of ints</td>
-<td>List of floats</td>
+<td>Wrapped .Net array of objects.</td>
 <td><ul class="first last simple">
 <li>List[int]</li>
 <li>Iterable[int]</li>
@@ -309,7 +309,7 @@
 </td>
 </tr>
 <tr class="row-odd"><td>Range of doubles</td>
-<td>List of floats</td>
+<td>Wrapped .Net array of doubles.</td>
 <td><ul class="first last simple">
 <li>List[float]</li>
 <li>Iterable[float]</li>
@@ -321,7 +321,7 @@
 </td>
 </tr>
 <tr class="row-even"><td>Range of strings</td>
-<td>List of strings</td>
+<td>Wrapped .Net array of objects.</td>
 <td><ul class="first last simple">
 <li>List[str]</li>
 <li>Iterable[str]</li>
@@ -333,7 +333,7 @@
 </td>
 </tr>
 <tr class="row-odd"><td>Range of datetimes</td>
-<td>List of floats</td>
+<td>Wrapped .Net array of objects.</td>
 <td><ul class="first last simple">
 <li>List[datetime.datetime]</li>
 <li>List[datetime.date]</li>
@@ -413,6 +413,10 @@
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The Python wrapped .Net arrays are not converted to native Python lists for performance reasons. The wrapped arrays behave exactly the same as native Python lists with one important difference - they are immutable. Additionally, type checking is only done when a function expects a list of floats, in other cases lists of objects are passed and the objects may be any Excel type.</p>
+</div>
 </div>
 <div class="section" id="function-outputs">
 <h2>Function Outputs<a class="headerlink" href="#function-outputs" title="Permalink to this headline">¶</a></h2>

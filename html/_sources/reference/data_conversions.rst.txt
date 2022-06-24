@@ -28,7 +28,7 @@ Python functions without type hints are handled well enough for many use cases.
    * - datetime
      - float
    * - Range
-     - .Net array of objects, can usually be treated as a Python list.
+     - Wrapped .Net array of objects.
 
 For more advanced use cases, Python type hints open up the full potential of xlSlim.
 
@@ -81,7 +81,7 @@ For more advanced use cases, Python type hints open up the full potential of xlS
 		- pd.Series
 		- pd.DataFrame
    * - Range of ints
-     - List of floats
+     - Wrapped .Net array of objects.
      - 
 		- List[int] 
 		- Iterable[int] 
@@ -90,7 +90,7 @@ For more advanced use cases, Python type hints open up the full potential of xlS
 		- Union[List[int], None] 
 		- Union[Iterable[int], None]
    * - Range of doubles
-     - List of floats
+     - Wrapped .Net array of doubles.
      - 
 		- List[float] 
 		- Iterable[float] 
@@ -99,7 +99,7 @@ For more advanced use cases, Python type hints open up the full potential of xlS
 		- Union[List[float], None] 
 		- Union[Iterable[float], None]
    * - Range of strings
-     - List of strings
+     - Wrapped .Net array of objects.
      - 
 		- List[str] 
 		- Iterable[str] 
@@ -108,7 +108,7 @@ For more advanced use cases, Python type hints open up the full potential of xlS
 		- Union[List[str], None] 
 		- Union[Iterable[str], None]
    * - Range of datetimes
-     - List of floats
+     - Wrapped .Net array of objects.
      - 
 		- List[datetime.datetime] 
 		- List[datetime.date] 		
@@ -156,6 +156,9 @@ For more advanced use cases, Python type hints open up the full potential of xlS
      - 				
         - List[pd.DataFrame]
         - Iterable[pd.DataFrame]
+
+.. note::
+	The Python wrapped .Net arrays are not converted to native Python lists for performance reasons. The wrapped arrays behave exactly the same as native Python lists with one important difference - they are immutable. Additionally, type checking is only done when a function expects a list of floats, in other cases lists of objects are passed and the objects may be any Excel type.
 	 
 Function Outputs
 ++++++++++++++++

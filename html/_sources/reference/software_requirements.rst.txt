@@ -15,3 +15,6 @@ For external Python environments, xlSlim supports:
  * Python 3.8
  * Python 3.9
  * Python 3.10
+
+.. note:: 
+    xlSlim is **64-bit only** at the moment. It will only work with 64-bit Excel and Python.
