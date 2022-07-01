@@ -98,6 +98,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Troubleshooting</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#logs">Logs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#licensing">Licensing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#function-name-collisions">Function Name Collisions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#general">General</a></li>
 </ul>
 </li>
@@ -205,6 +206,14 @@
 <h2>Licensing<a class="headerlink" href="#licensing" title="Permalink to this headline">¶</a></h2>
 <p>For licensing issues, see <a class="reference internal" href="licensing.html"><span class="doc">Licensing</span></a>, in particular note the standalone “xlSlim License Manager” application that can be used to view license details and perform offline activations.</p>
 <p>If you are behind a firewall please whitelist api.licensespring.com on port 443.</p>
+</div>
+<div class="section" id="function-name-collisions">
+<h2>Function Name Collisions<a class="headerlink" href="#function-name-collisions" title="Permalink to this headline">¶</a></h2>
+<p>If you find that the xlSlim built-in function names, as listed in <a class="reference internal" href="../reference/api.html"><span class="doc">Excel Functions</span></a>, clash with the names of other add-in functions then you can prefix the xlSlim function names. Edit the “PrefixBuiltInFunctions” entry in the “appSettings” section of the “xlSlim64.xll.config” file in your installation folder. The function <a class="reference internal" href="../reference/api.html#LogLocation" title="LogLocation"><code class="xref py py-func docutils literal notranslate"><span class="pre">LogLocation()</span></code></a> will show your installation location (unless you have redirected your logs).</p>
+<p>Adding <cite>x_</cite> in the config file:</p>
+<a class="reference internal image-reference" href="../_images/prefix_functions_in_config_file.png"><img alt="Prefix function names in config file" src="../_images/prefix_functions_in_config_file.png" style="width: 400px;" /></a>
+<p>Results in all the built-in functions being prefixed with <cite>x_</cite>:</p>
+<a class="reference internal image-reference" href="../_images/prefix_functions_in_excel.png"><img alt="Result of prefixed function names in Excel" src="../_images/prefix_functions_in_excel.png" style="width: 400px;" /></a>
 </div>
 <div class="section" id="general">
 <h2>General<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h2>

@@ -94,6 +94,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../user/series.html">pandas Series</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/dataframes.html">pandas DataFrames</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/subprocess.html">Running Python in a background process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/imports.html">Advanced Module Importing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/licensing.html">Licensing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting.html">Troubleshooting</a></li>
 </ul>
@@ -200,7 +201,7 @@
 <p>To register a Python module for use within Excel you use the <a class="reference internal" href="#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a> function:</p>
 <dl class="function">
 <dt id="RegisterPyModule">
-<code class="descname">RegisterPyModule</code><span class="sig-paren">(</span><em>PythonModulePath</em>, <em>ExecutablePath=None</em>, <em>ModulePrefix=None</em>, <em>UseBackgroundProcess=None</em><span class="sig-paren">)</span><a class="headerlink" href="#RegisterPyModule" title="Permalink to this definition">¶</a></dt>
+<code class="descname">RegisterPyModule</code><span class="sig-paren">(</span><em>PythonModulePath</em>, <em>ExecutablePath=None</em>, <em>ModulePrefix=None</em>, <em>UseBackgroundProcess=None</em>, <em>ExtraModuleSearchLocations=None</em>, <em>ExtraDllSearchLocations=None</em>, <em>FunctionNames=None</em><span class="sig-paren">)</span><a class="headerlink" href="#RegisterPyModule" title="Permalink to this definition">¶</a></dt>
 <dd><p>Registers a Python module for use in Excel.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -211,6 +212,9 @@
 <li><strong>ExecutablePath</strong> (<em>str</em><em> or </em><em>None</em>) – Optional location of the Python environment to use.</li>
 <li><strong>ModulePrefix</strong> (<em>str</em><em> or </em><em>None</em>) – Optional prefix to apply to the function names.</li>
 <li><strong>UseBackgroundProcess</strong> (<em>bool</em><em> or </em><em>None</em>) – Should xlSlim Python code run a seperate process?</li>
+<li><strong>ExtraModuleSearchLocations</strong> (<em>str</em><em> or </em><em>None</em>) – Extra locations to be added to the Python module search path (sys.path).</li>
+<li><strong>ExtraDllSearchLocations</strong> (<em>str</em><em> or </em><em>None</em>) – Extra locations to be added to the Windows DLL search path (PATH).</li>
+<li><strong>FunctionNames</strong> (<em>Excel range</em><em> or </em><em>None</em>) – An Excel range specifying which functions to import. By default all functions in a module are imported. A single column range can specify only the functions to import. A two column range can specify the Python functions in the first column and the Excel function names in the second column.</li>
 </ul>
 </td>
 </tr>
@@ -220,7 +224,8 @@
 
 <p>See <a class="reference internal" href="environments.html"><span class="doc">Python Environments</span></a> for details of the <cite>ExecutablePath</cite> parameter.
 See <a class="reference internal" href="../user/passing_arrays.html"><span class="doc">Passing lists</span></a> for an example using the <cite>ModulePrefix</cite> parameter.
-See <a class="reference internal" href="../user/subprocess.html"><span class="doc">Running Python in a background process</span></a> for an example using the <cite>UseBackgroundProcess</cite> parameter.</p>
+See <a class="reference internal" href="../user/subprocess.html"><span class="doc">Running Python in a background process</span></a> for an example using the <cite>UseBackgroundProcess</cite> parameter.
+See <a class="reference internal" href="../user/imports.html"><span class="doc">Advanced Module Importing</span></a> for an example showing the use of the <cite>ExtraModuleSearchLocations</cite> and <cite>FunctionNames</cite> parameters.</p>
 </div>
 <div class="section" id="viewing-cached-objects">
 <h2>Viewing cached objects<a class="headerlink" href="#viewing-cached-objects" title="Permalink to this headline">¶</a></h2>

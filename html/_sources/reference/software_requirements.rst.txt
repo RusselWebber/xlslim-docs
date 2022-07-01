@@ -2,8 +2,8 @@
 Software Requirements
 =====================
 
-v 1.0
------
+v 1.0+
+------
 
 xlSlim requires:
  * Microsoft Windows 8+

@@ -28,6 +28,23 @@ For licensing issues, see :doc:`/user/licensing`, in particular note the standal
 
 If you are behind a firewall please whitelist api.licensespring.com on port 443.
 
+Function Name Collisions
+------------------------
+
+If you find that the xlSlim built-in function names, as listed in :doc:`/reference/api`, clash with the names of other add-in functions then you can prefix the xlSlim function names. Edit the "PrefixBuiltInFunctions" entry in the "appSettings" section of the "xlSlim64.xll.config" file in your installation folder. The function :func:`LogLocation` will show your installation location (unless you have redirected your logs).
+
+Adding `x_` in the config file:
+
+.. image:: ../_static/prefix_functions_in_config_file.png
+  :width: 400
+  :alt: Prefix function names in config file
+
+Results in all the built-in functions being prefixed with `x_`:
+
+.. image:: ../_static/prefix_functions_in_excel.png
+  :width: 400
+  :alt: Result of prefixed function names in Excel
+
 General
 -------
 

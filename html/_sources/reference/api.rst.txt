@@ -7,7 +7,7 @@ Registering modules
 
 To register a Python module for use within Excel you use the :func:`RegisterPyModule` function:
 
-.. py:function:: RegisterPyModule(PythonModulePath, ExecutablePath=None, ModulePrefix=None, UseBackgroundProcess=None)
+.. py:function:: RegisterPyModule(PythonModulePath, ExecutablePath=None, ModulePrefix=None, UseBackgroundProcess=None, ExtraModuleSearchLocations=None, ExtraDllSearchLocations=None, FunctionNames=None)
 
    Registers a Python module for use in Excel.
 
@@ -19,10 +19,17 @@ To register a Python module for use within Excel you use the :func:`RegisterPyMo
    :type ModulePrefix: str or None
    :param UseBackgroundProcess: Should xlSlim Python code run a seperate process?
    :type UseBackgroundProcess: bool or None
+   :param ExtraModuleSearchLocations: Extra locations to be added to the Python module search path (sys.path).
+   :type ExtraModuleSearchLocations: str or None
+   :param ExtraDllSearchLocations: Extra locations to be added to the Windows DLL search path (PATH).
+   :type ExtraDllSearchLocations: str or None
+   :param FunctionNames: An Excel range specifying which functions to import. By default all functions in a module are imported. A single column range can specify only the functions to import. A two column range can specify the Python functions in the first column and the Excel function names in the second column.
+   :type FunctionNames: Excel range or None
 
 See :doc:`environments` for details of the `ExecutablePath` parameter.
 See :doc:`/user/passing_arrays` for an example using the `ModulePrefix` parameter.
 See :doc:`/user/subprocess` for an example using the `UseBackgroundProcess` parameter.
+See :doc:`/user/imports` for an example showing the use of the `ExtraModuleSearchLocations` and `FunctionNames` parameters.
 
 Viewing cached objects
 ----------------------
