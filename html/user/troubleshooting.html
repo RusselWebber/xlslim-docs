@@ -94,11 +94,14 @@
 <li class="toctree-l1"><a class="reference internal" href="series.html">pandas Series</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dataframes.html">pandas DataFrames</a></li>
 <li class="toctree-l1"><a class="reference internal" href="subprocess.html">Running Python in a background process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imports.html">Advanced Module Importing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="streaming.html">Streaming data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="licensing.html">Licensing</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Troubleshooting</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#logs">Logs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#licensing">Licensing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#function-name-collisions">Function Name Collisions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#functions-overwriting">Functions Overwriting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#general">General</a></li>
 </ul>
 </li>
@@ -112,6 +115,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../samples/pca.html">Principal Components Analysis of Index Prices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../samples/monte_carlo.html">Monte Carlo Option Pricing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../samples/nlp.html">NLP with Excel and Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/stream_kafka_doubles.html">Streaming from Kafka</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Reference</span></p>
 <ul>
@@ -214,6 +218,10 @@
 <a class="reference internal image-reference" href="../_images/prefix_functions_in_config_file.png"><img alt="Prefix function names in config file" src="../_images/prefix_functions_in_config_file.png" style="width: 400px;" /></a>
 <p>Results in all the built-in functions being prefixed with <cite>x_</cite>:</p>
 <a class="reference internal image-reference" href="../_images/prefix_functions_in_excel.png"><img alt="Result of prefixed function names in Excel" src="../_images/prefix_functions_in_excel.png" style="width: 400px;" /></a>
+</div>
+<div class="section" id="functions-overwriting">
+<h2>Functions Overwriting<a class="headerlink" href="#functions-overwriting" title="Permalink to this headline">¶</a></h2>
+<p>Function names are not case sensitive in Excel, so if you register a <cite>counter()</cite> function and later register a <cite>Counter()</cite> function the second function will replace the first in Excel.</p>
 </div>
 <div class="section" id="general">
 <h2>General<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h2>

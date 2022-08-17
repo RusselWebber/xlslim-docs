@@ -39,6 +39,7 @@ xlSlim - call Python code from Excel with **no code changes!**
    user/dataframes
    user/subprocess   
    user/imports
+   user/streaming
    user/licensing      
    user/troubleshooting
    
@@ -56,6 +57,7 @@ xlSlim - call Python code from Excel with **no code changes!**
    samples/pca
    samples/monte_carlo
    samples/nlp
+   samples/stream_kafka_doubles
    
 -------------------------------------
 

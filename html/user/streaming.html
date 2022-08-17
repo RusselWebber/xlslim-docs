@@ -1,0 +1,392 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Streaming data &mdash; xlSlim v1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Licensing" href="licensing.html" />
+    <link rel="prev" title="Advanced Module Importing" href="imports.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> xlSlim
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="keyword_args.html">Optional arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="passing_simple_types.html">Passing simple data types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="passing_arrays.html">Passing lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="passing_objects.html">Passing Python objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="passing_dicts.html">Passing Python dictionaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="udfs.html">Calling VBA and other Excel add-in functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">numpy Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="series.html">pandas Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataframes.html">pandas DataFrames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="subprocess.html">Running Python in a background process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imports.html">Advanced Module Importing</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Streaming data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#simple-generator-functions">Simple Generator Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#asynchronous-simple-generator-functions">Asynchronous Simple Generator Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#iterator-classes">Iterator classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#streaming-python-objects">Streaming Python objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#allowed-function-parameters">Allowed Function Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="licensing.html">Licensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../samples/read_json_from_web.html">Read JSON data from a URL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/read_csv.html">Read CSV data from a file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/sqlite.html">Using SQLite to analyse data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/yfinance.html">Loading Stock Prices from Yahoo! Finance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/pca.html">Principal Components Analysis of Index Prices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/monte_carlo.html">Monte Carlo Option Pricing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/nlp.html">NLP with Excel and Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/stream_kafka_doubles.html">Streaming from Kafka</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/environments.html">Python Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/api.html">Excel Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/data_conversions.html">Data Conversions Between Excel and Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/globals.html">Magic Global Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/licensing.html">Licensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/software_requirements.html">Software Requirements</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">xlSlim</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Streaming data</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/user/streaming.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="streaming-data">
+<h1>Streaming data<a class="headerlink" href="#streaming-data" title="Permalink to this headline">¶</a></h1>
+<p>xlSlim makes it easy to stream data into Excel. Technically this is done using a standard Excel interface called <a class="reference external" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.office.interop.excel.irtdserver">IRTDServer</a>, however xlSlim hides all the complexity from you. If you can write a Python generator function then you can stream data into Excel. A Python generator function is a special kind of function that returns a lazy iterator, see <a class="reference external" href="https://peps.python.org/pep-0255/">PEP 255</a> for their details.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">xlSlim uses standard Python generator functions and iterator classes to stream data into Excel. A significant benefit of this implementation is that code can be independently tested in Python IDEs, notebooks, etc. If your iterator works in Python it will work exactly the same way running within xlSlim.</p>
+</div>
+<div class="section" id="simple-generator-functions">
+<h2>Simple Generator Functions<a class="headerlink" href="#simple-generator-functions" title="Permalink to this headline">¶</a></h2>
+<p>This Python code defines a generator function <cite>counter()</cite> that yields sequential integers from 0 to the stop value at a specified rate of updates_per_second:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">def</span> <span class="nf">counter</span><span class="p">(</span><span class="n">stop</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">updates_per_second</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Generates a sequence of numbers up to stop at a rate of updates_per_second.&quot;&quot;&quot;</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">stop</span><span class="p">):</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">updates_per_second</span><span class="p">)</span>
+                <span class="k">yield</span> <span class="n">i</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">All the Python code and Excel files shown are available from github in the <a class="reference external" href="https://github.com/RusselWebber/xlslim-code-samples/archive/refs/heads/main.zip">xlslim-code-samples</a> repo. I highly recommend downloading the samples from github. The Excel workbooks contain many tips and tricks.</p>
+</div>
+<p>Save the Python code as a new file on your PC. I saved the file in my Documents folder.</p>
+<p>Open Excel and enter this <a class="reference internal" href="../reference/api.html#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a> formula (amending the location to match where you saved the file):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">RegisterPyModule</span><span class="p">(</span><span class="s2">&quot;c:\users</span><span class="se">\r</span><span class="s2">usse\documents\counter.py&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If we call the <cite>counter()</cite> function in cell A4 with a stop value of 10 and an updates_per_second value of 1 we see values from 1 to 9 updating every second in Excel.</p>
+<a class="reference internal image-reference" href="../_images/streaming_simple_counter.png"><img alt="Show stream of ints from simple counter" src="../_images/streaming_simple_counter.png" style="width: 400px;" /></a>
+<p>That is a very simple example of just how easy it is to stream data into Excel!</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Set Excel’s Calculation Options to Automatic to see the value ticking. The functionality works perfectly in Manual calculation mode too, the value shown updates every time you press F9. Note that the generator function runs in an independent background thread so runs regardless of Excel’s calculation mode.</p>
+</div>
+</div>
+<div class="section" id="asynchronous-simple-generator-functions">
+<h2>Asynchronous Simple Generator Functions<a class="headerlink" href="#asynchronous-simple-generator-functions" title="Permalink to this headline">¶</a></h2>
+<p>In recent years Python has introduced support for writing concurrent code using the <em>async/await</em> syntax. The <a class="reference external" href="https://docs.python.org/3/library/asyncio.html">asyncio</a> library provides the foundations.</p>
+<p>Asynchronous code is faster and more efficient, especially if blocking IO is involved. Almost any use case for streaming data into Excel will source the data from another system, message bus, or data provider, therefore please use async packages and code whenever possible.</p>
+<p>xlSlim fully supports async generator functions. This Python code defines an async generator function <cite>async_counter()</cite> that is the async version of the previous <cite>counter()</cite> function:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">asyncio</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">async_counter</span><span class="p">(</span><span class="n">stop</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">updates_per_second</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Asynchronously generates a sequence of numbers up to stop at a rate of updates_per_second.&quot;&quot;&quot;</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">stop</span><span class="p">):</span>
+                <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">updates_per_second</span><span class="p">)</span>
+                <span class="k">yield</span> <span class="n">i</span>
+</pre></div>
+</div>
+<p>After saving the code and registering the module, the <cite>async_counter()</cite> runs identically to the <cite>counter()</cite>, however it is faster and more efficient:</p>
+<a class="reference internal image-reference" href="../_images/streaming_simple_async_counter.png"><img alt="Show stream of ints from simple async counter" src="../_images/streaming_simple_async_counter.png" style="width: 400px;" /></a>
+</div>
+<div class="section" id="iterator-classes">
+<h2>Iterator classes<a class="headerlink" href="#iterator-classes" title="Permalink to this headline">¶</a></h2>
+<p>Generator functions are a convenient and easy way to create iterators. Sometimes you need more control over the finer details of how the iterator behaves, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#typeiter">iterator</a> and <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html?highlight=__aiter__#asynchronous-iterators">asynchronous iterator</a> classes provide more control.</p>
+<p>This code shows the same counters implemented as classes:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">asyncio</span>
+
+<span class="k">class</span> <span class="nc">CounterClass</span><span class="p">:</span>
+        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stop</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">updates_per_second</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="sd">&quot;&quot;&quot;Generates a sequence of numbers up to stop at a rate of updates_per_second.&quot;&quot;&quot;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_stop</span> <span class="o">=</span> <span class="n">stop</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_updates_per_second</span> <span class="o">=</span> <span class="n">updates_per_second</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_i</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                <span class="k">return</span> <span class="bp">self</span>
+
+        <span class="k">def</span> <span class="fm">__next__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_i</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stop</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="ne">StopIteration</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">_updates_per_second</span><span class="p">)</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_i</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_i</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">return</span> <span class="n">i</span>
+
+<span class="k">class</span> <span class="nc">AsyncCounterClass</span><span class="p">:</span>
+        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stop</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">updates_per_second</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="sd">&quot;&quot;&quot;Asynchronously generates a sequence of numbers up to stop at a rate of updates_per_second.&quot;&quot;&quot;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_stop</span> <span class="o">=</span> <span class="n">stop</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_updates_per_second</span> <span class="o">=</span> <span class="n">updates_per_second</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_i</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">def</span> <span class="fm">__aiter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                <span class="k">return</span> <span class="bp">self</span>
+
+        <span class="k">async</span> <span class="k">def</span> <span class="fm">__anext__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_i</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stop</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="ne">StopAsyncIteration</span>
+                <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">_updates_per_second</span><span class="p">)</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_i</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_i</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">return</span> <span class="n">i</span>
+</pre></div>
+</div>
+<p>xlSlim will register these classes as Excel functions with the class name as the Excel function name, so <cite>CounterClass()</cite> and <cite>AsyncCounterClass()</cite>. The type hints are taken from the <cite>__init__</cite> and <cite>__iter__/__aiter__</cite> methods. The doc string is taken from the <cite>__init__</cite> method.</p>
+</div>
+<div class="section" id="streaming-python-objects">
+<h2>Streaming Python objects<a class="headerlink" href="#streaming-python-objects" title="Permalink to this headline">¶</a></h2>
+<p>xlSlim allows Python objects to be streamed. To illustrate this we can can modify the counter examples to return 2x2 numpy arrays.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">numpy functionality requires a premium licence. See <a class="reference internal" href="../reference/licensing.html"><span class="doc">Licensing</span></a></p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">array_counter</span><span class="p">(</span><span class="n">stop</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">updates_per_second</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Generates a sequence of numpy arrays filled with numbers up to stop at a rate of updates_per_second.&quot;&quot;&quot;</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">stop</span><span class="p">):</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">updates_per_second</span><span class="p">)</span>
+                <span class="k">yield</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">i</span><span class="p">)</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">async_array_counter</span><span class="p">(</span><span class="n">stop</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">updates_per_second</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Asynchronously generates a sequence of numpy arrays up to stop at a rate of updates_per_second.&quot;&quot;&quot;</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">stop</span><span class="p">):</span>
+                <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">updates_per_second</span><span class="p">)</span>
+                <span class="k">yield</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Save the Python code as a new file on your PC. I saved the file in my Documents folder.</p>
+<p>Open Excel and enter this <a class="reference internal" href="../reference/api.html#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a> formula (amending the location to match where you saved the file):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">RegisterPyModule</span><span class="p">(</span><span class="s2">&quot;c:\users</span><span class="se">\r</span><span class="s2">usse\documents</span><span class="se">\a</span><span class="s2">rray_counter.py&quot;</span><span class="p">,</span><span class="s2">&quot;C:\Users</span><span class="se">\r</span><span class="s2">usse</span><span class="se">\a</span><span class="s2">naconda3\envs\py37&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">numpy is not available in the Python installation bundled with xlSlim. The Python module must be registered with an existing Python installation that has numpy installed.</p>
+</div>
+<p>If we call the <cite>array_counter()</cite> function in cell A4 with a stop value of 10 and an updates_per_second value of 1 we see a cache handle updating every second in Excel. As usual, the xlSlim function <a class="reference internal" href="../reference/api.html#ViewPyObject" title="ViewPyObject"><code class="xref py py-func docutils literal notranslate"><span class="pre">ViewPyObject()</span></code></a> can be used to view any Python object stored in the memory cache.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">array_counter</span><span class="p">(</span><span class="n">A3</span><span class="p">,</span><span class="n">A2</span><span class="p">)</span>
+<span class="o">=</span><span class="n">ViewPyObject</span><span class="p">(</span><span class="n">A4</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/streaming_array_counter.png"><img alt="Show stream of arrays from simple counter" src="../_images/streaming_array_counter.png" style="width: 400px;" /></a>
+</div>
+<div class="section" id="allowed-function-parameters">
+<h2>Allowed Function Parameters<a class="headerlink" href="#allowed-function-parameters" title="Permalink to this headline">¶</a></h2>
+<p>xlSlim restricts the type of parameters you can pass into streaming data functions. Only simple types (numbers, strings and booleans) are allowed. Ranges of simple types are also allowed. This restriction ensures the streaming data functions perform optimally.</p>
+<p>Any supported xlSlim output type can be used, except for lists. Streaming data functions can only return a single value. If you need to return a list of values consider using a numpy array or creating multiple streaming data functions.</p>
+<p>See <a class="reference internal" href="../samples/stream_kafka_doubles.html"><span class="doc">Streaming from Kafka</span></a> for an example streaming doubles from a Kafka topic. The GitHub repo <a class="reference external" href="https://github.com/RusselWebber/xlslim-code-samples/archive/refs/heads/main.zip">xlslim-code-samples</a> has further examples showing how to subscribe to IEX and Bloomberg data.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="licensing.html" class="btn btn-neutral float-right" title="Licensing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="imports.html" class="btn btn-neutral float-left" title="Advanced Module Importing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2022, Russel Webber
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

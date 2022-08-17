@@ -59,9 +59,6 @@ Once your purchase has been processed you will receive an email similar to this:
   :width: 400
   :alt: Email with licence key
 
-.. note::
-	The **tracking number** is the licence key.
-
 The Excel function :func:`ActivatePremiumLicense` can be used to activate the licence using the key from the email.
 
 .. image:: ../_static/premium_licence_excel_activation.png

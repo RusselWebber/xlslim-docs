@@ -1,0 +1,345 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Streaming from Kafka &mdash; xlSlim v1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Python Environments" href="../reference/environments.html" />
+    <link rel="prev" title="NLP with Excel and Python" href="nlp.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> xlSlim
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/keyword_args.html">Optional arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/passing_simple_types.html">Passing simple data types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/passing_arrays.html">Passing lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/passing_objects.html">Passing Python objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/passing_dicts.html">Passing Python dictionaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/udfs.html">Calling VBA and other Excel add-in functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/numpy.html">numpy Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/series.html">pandas Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/dataframes.html">pandas DataFrames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/subprocess.html">Running Python in a background process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/imports.html">Advanced Module Importing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/streaming.html">Streaming data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/licensing.html">Licensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="read_json_from_web.html">Read JSON data from a URL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="read_csv.html">Read CSV data from a file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sqlite.html">Using SQLite to analyse data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="yfinance.html">Loading Stock Prices from Yahoo! Finance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pca.html">Principal Components Analysis of Index Prices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="monte_carlo.html">Monte Carlo Option Pricing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nlp.html">NLP with Excel and Python</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Streaming from Kafka</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#preparing-the-data">Preparing the data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#streaming-the-data">Streaming the data</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/environments.html">Python Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/api.html">Excel Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/data_conversions.html">Data Conversions Between Excel and Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/globals.html">Magic Global Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/licensing.html">Licensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/software_requirements.html">Software Requirements</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">xlSlim</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Streaming from Kafka</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/samples/stream_kafka_doubles.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="streaming-from-kafka">
+<h1>Streaming from Kafka<a class="headerlink" href="#streaming-from-kafka" title="Permalink to this headline">¶</a></h1>
+<p>xlSlim can efficiently stream data from Kafka into Excel.</p>
+<div class="section" id="preparing-the-data">
+<h2>Preparing the data<a class="headerlink" href="#preparing-the-data" title="Permalink to this headline">¶</a></h2>
+<p>This example assumes you have a Kafka broker available. One alternative is to run Kafka locally using Docker, <a class="reference external" href="https://docs.confluent.io/platform/current/quickstart/ce-docker-quickstart.html">Confluent</a> package Kafka into Docker containers with good documentation.</p>
+<p>The example uses the Python package <a class="reference external" href="https://github.com/aio-libs/aiokafka">aiokafka</a> which can be installed using pip.</p>
+<p>Once a Kafka broker is available we need to publish a sequence of 1m doubles to a Kafka topic “doubles”. We will use this Python code to publish the data.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># A running Kafka broker can be setup simply using Docker, the Confluent platform includes a nice management console, see:</span>
+<span class="c1"># https://docs.confluent.io/platform/current/quickstart/ce-docker-quickstart.html</span>
+<span class="c1"># The aiokafka package can be installed using pip, see https://github.com/aio-libs/aiokafka</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">from</span> <span class="nn">aiokafka</span> <span class="kn">import</span> <span class="n">AIOKafkaProducer</span>
+
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">send</span><span class="p">():</span>
+        <span class="n">producer</span> <span class="o">=</span> <span class="n">AIOKafkaProducer</span><span class="p">(</span>
+                <span class="n">bootstrap_servers</span><span class="o">=</span><span class="s2">&quot;localhost:9092&quot;</span><span class="p">,</span> <span class="n">value_serializer</span><span class="o">=</span><span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="n">pickle</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
+        <span class="p">)</span>
+        <span class="c1"># Get cluster layout and initial topic/partition leadership information</span>
+        <span class="k">await</span> <span class="n">producer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+                <span class="c1"># Produce messages</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1_000_000</span><span class="p">):</span>
+                        <span class="k">await</span> <span class="n">producer</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;doubles&quot;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+        <span class="k">finally</span><span class="p">:</span>
+                <span class="c1"># Wait for all pending messages to be delivered or expire.</span>
+                <span class="k">await</span> <span class="n">producer</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+        <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">send</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">All the Python code and Excel files shown are available from github in the <a class="reference external" href="https://github.com/RusselWebber/xlslim-code-samples/archive/refs/heads/main.zip">xlslim-code-samples</a> repo.</p>
+</div>
+<p>Save the Python code as a new file on your PC. I saved the file in my Documents folder.</p>
+<p>Run the code directly in Python.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">kafka_double_producer</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/streaming_kafka_doubles_create_data.png"><img alt="Create Kafka topic loaded with doubles" src="../_images/streaming_kafka_doubles_create_data.png" style="width: 400px;" /></a>
+<p>In the Kafka dashboard I can see 1m messages are available (Confluent has a nice dashboard, your Kafka broker may not).</p>
+<a class="reference internal image-reference" href="../_images/streaming_kafka_doubles_topic_available.png"><img alt="Kafka data waiting" src="../_images/streaming_kafka_doubles_topic_available.png" style="width: 400px;" /></a>
+</div>
+<div class="section" id="streaming-the-data">
+<h2>Streaming the data<a class="headerlink" href="#streaming-the-data" title="Permalink to this headline">¶</a></h2>
+<p>Now that the data is available we can stream the sequence of doubles into Excel. As you will see, xlSlim makes this very easy.</p>
+<p>This Python code defines an asynchronous generator function that yields every message received from a Kafka topic:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Shows how a subscription to a Kafka topic can be setup</span>
+<span class="c1"># A running Kafka broker can be setup simply using Docker, the Confluent platform includes a nice management console, see:</span>
+<span class="c1"># https://docs.confluent.io/platform/current/quickstart/ce-docker-quickstart.html</span>
+<span class="c1"># The aiokafka package can be installed using pip, see https://github.com/aio-libs/aiokafka</span>
+<span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">from</span> <span class="nn">aiokafka</span> <span class="kn">import</span> <span class="n">AIOKafkaConsumer</span>
+
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">kafka_topic_subscription</span><span class="p">(</span><span class="n">topic</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">server</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Subscribe to data from a Kafka topic.&quot;&quot;&quot;</span>
+        <span class="n">consumer</span> <span class="o">=</span> <span class="n">AIOKafkaConsumer</span><span class="p">(</span>
+                <span class="n">topic</span><span class="p">,</span>
+                <span class="n">bootstrap_servers</span><span class="o">=</span><span class="n">server</span><span class="p">,</span>
+                <span class="c1"># Using pickle for this demo, more realistic options would be JSON, MessagePack, etc</span>
+                <span class="n">value_deserializer</span><span class="o">=</span><span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="n">pickle</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
+                <span class="c1"># For this demo we always replay all messages</span>
+                <span class="n">auto_offset_reset</span><span class="o">=</span><span class="s2">&quot;earliest&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">await</span> <span class="n">consumer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+                <span class="c1"># Consume messages</span>
+                <span class="k">async</span> <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">consumer</span><span class="p">:</span>
+                        <span class="k">yield</span> <span class="n">msg</span><span class="o">.</span><span class="n">value</span>
+        <span class="k">finally</span><span class="p">:</span>
+                <span class="c1"># Will leave consumer group; perform autocommit if enabled.</span>
+                <span class="k">await</span> <span class="n">consumer</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Save the Python code as a new file on your PC. I saved the file in my Documents folder.</p>
+<p>Open Excel and enter this <a class="reference internal" href="../reference/api.html#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a> formula (amending the location to match where you saved the file and the environment where you installed <a class="reference external" href="https://github.com/aio-libs/aiokafka">aiokafka</a>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">RegisterPyModule</span><span class="p">(</span><span class="s2">&quot;C:\Users</span><span class="se">\r</span><span class="s2">usse\Documents\kafka_double_consumer.py&quot;</span><span class="p">,</span><span class="s2">&quot;C:\Users</span><span class="se">\r</span><span class="s2">usse</span><span class="se">\a</span><span class="s2">naconda3\envs\py37&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You should see a message similar to this confirming the module registration:</p>
+<a class="reference internal image-reference" href="../_images/streaming_kafka_doubles_module_registered.png"><img alt="Register consumer function" src="../_images/streaming_kafka_doubles_module_registered.png" style="width: 400px;" /></a>
+<p>The <cite>kafka_topic_subscription()</cite> generator function is now available in Excel.</p>
+<p>Let’s call the function with the Kafka broker address and topic:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">kafka_topic_subscription</span><span class="p">(</span><span class="s2">&quot;doubles&quot;</span><span class="p">,</span><span class="s2">&quot;localhost:9092&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You will see Excel very rapidly receiving the 1m doubles.</p>
+<a class="reference internal image-reference" href="../_images/streaming_kafka_doubles_receiving_data.png"><img alt="Receiving Kafka data" src="../_images/streaming_kafka_doubles_receiving_data.png" style="width: 400px;" /></a>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Set Excel’s Calculation Options to Automatic to see the value ticking. The functionality works perfectly in Manual calculation mode too, the value shown updates every time you press F9. Note that the generator function runs in an independent background thread so runs regardless of Excel’s calculation mode.</p>
+</div>
+<p>The Kafka subscription continues to run once all 1m messages have been received. If you rerun</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">kafka_double_producer</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>you will see that new values are shown in Excel.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../reference/environments.html" class="btn btn-neutral float-right" title="Python Environments" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="nlp.html" class="btn btn-neutral float-left" title="NLP with Excel and Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2022, Russel Webber
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -94,6 +94,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../user/series.html">pandas Series</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/dataframes.html">pandas DataFrames</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/subprocess.html">Running Python in a background process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/imports.html">Advanced Module Importing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/streaming.html">Streaming data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/licensing.html">Licensing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting.html">Troubleshooting</a></li>
 </ul>
@@ -106,6 +108,7 @@
 <li class="toctree-l1"><a class="reference internal" href="pca.html">Principal Components Analysis of Index Prices</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Monte Carlo Option Pricing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nlp.html">NLP with Excel and Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stream_kafka_doubles.html">Streaming from Kafka</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Reference</span></p>
 <ul>
@@ -190,7 +193,8 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># xlslim examples of Monte Carlo Simulations</span>
 
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">random</span><span class="p">,</span> <span class="n">exp</span><span class="p">,</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">mean</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">exp</span><span class="p">,</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">mean</span>
+<span class="kn">from</span> <span class="nn">numpy.random</span> <span class="kn">import</span> <span class="n">default_rng</span>
 
 
 <span class="k">def</span> <span class="nf">monte_carlo_stock_price</span><span class="p">(</span>
@@ -206,28 +210,24 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">assert</span> <span class="n">mat</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Maturity should be positive&quot;</span>
 
-        <span class="n">random</span><span class="o">.</span><span class="n">seed</span> <span class="o">=</span> <span class="mi">11</span>
-        <span class="n">z</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
+        <span class="n">rng</span> <span class="o">=</span> <span class="n">default_rng</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+
+        <span class="n">z</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
         <span class="n">df_stock</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-                <span class="n">data</span><span class="o">=</span><span class="p">{</span>
-                        <span class="s2">&quot;sim_stock&quot;</span><span class="p">:</span> <span class="n">s0</span>
-                        <span class="o">*</span> <span class="n">exp</span><span class="p">((</span><span class="n">r</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">sigma</span><span class="p">)</span> <span class="o">*</span> <span class="n">mat</span> <span class="o">+</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span> <span class="o">*</span> <span class="n">z</span><span class="p">)</span>
-                <span class="p">}</span>
-        <span class="p">)</span>
+                <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;sim_stock&#39;</span><span class="p">:</span> <span class="n">s0</span><span class="o">*</span><span class="n">exp</span><span class="p">((</span><span class="n">r</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="n">sigma</span><span class="o">*</span><span class="n">sigma</span><span class="p">)</span><span class="o">*</span><span class="n">mat</span> <span class="o">+</span> <span class="n">sigma</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span><span class="o">*</span><span class="n">z</span><span class="p">)})</span>
 
         <span class="k">if</span> <span class="n">strike</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">:</span>
-                <span class="n">df_stock</span><span class="p">[</span><span class="s2">&quot;payout&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_stock</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
-                        <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span> <span class="o">*</span> <span class="n">mat</span><span class="p">)</span> <span class="o">*</span> <span class="nb">max</span><span class="p">((</span><span class="n">x</span><span class="o">.</span><span class="n">sim_stock</span> <span class="o">-</span> <span class="n">strike</span><span class="p">),</span> <span class="mf">0.0</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span>
-                <span class="p">)</span>
+                <span class="n">df_stock</span><span class="p">[</span><span class="s1">&#39;payout&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_stock</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+                        <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="o">*</span><span class="n">mat</span><span class="p">)</span><span class="o">*</span><span class="nb">max</span><span class="p">((</span><span class="n">x</span><span class="o">.</span><span class="n">sim_stock</span><span class="o">-</span><span class="n">strike</span><span class="p">),</span> <span class="mf">0.0</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">df_stock</span>
 
 
 <span class="k">def</span> <span class="nf">average_payout</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 
-        <span class="k">assert</span> <span class="s2">&quot;payout&quot;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="s2">&quot;Passed Dataframe should have payout column&quot;</span>
+        <span class="k">assert</span> <span class="s1">&#39;payout&#39;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="s2">&quot;Passed Dataframe should have payout column&quot;</span>
 
-        <span class="k">return</span> <span class="n">mean</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;payout&quot;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">mean</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;payout&#39;</span><span class="p">])</span>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>

@@ -45,6 +45,11 @@ Results in all the built-in functions being prefixed with `x_`:
   :width: 400
   :alt: Result of prefixed function names in Excel
 
+Functions Overwriting
+---------------------
+
+Function names are not case sensitive in Excel, so if you register a `counter()` function and later register a `Counter()` function the second function will replace the first in Excel.
+
 General
 -------
 
