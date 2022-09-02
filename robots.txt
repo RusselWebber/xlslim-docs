@@ -1,0 +1,7 @@
+User-agent: *
+
+Disallow: /
+
+Allow: /html
+
+Sitemap: https://russelwebber.github.io/xlslim-docs/sitemap.xml
