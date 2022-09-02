@@ -74,4 +74,34 @@ Clicking on the button edits cell B2 to properly reflect the state of the world!
   :width: 400
   :alt: The Python button sets a cell value too
 
-  
+Easier code editing
+-------------------
+
+While editing your code it will be easiest to run the code from a Python editor so you can rapidly see the results and amend as required.
+
+Edit your Python code to match the code below, the amended lines are highlighted:
+
+.. code-block:: python
+	:emphasize-lines: 1,6,7,8,9,10,11,12,13,14,18,19
+	
+	import win32com.client as win32
+
+	XLSLIM_COMAPPFUNC = None
+
+	def PythonRules():
+		if XLSLIM_COMAPPFUNC is not None:
+			# Running from Excel
+			excel_obj = XLSLIM_COMAPPFUNC()
+			app = excel_obj.Application
+		else:
+			# Running in an editor
+			app = win32.gencache.EnsureDispatch("Excel.Application")
+			app.Visible = 1
+			app.Workbooks.Add().Activate()
+
+		app.ActiveWorkbook.ActiveSheet.Cells(2, 2).Value = "Python Rules!"
+
+	if __name__ == "__main__":
+		PythonRules()
+
+This code will now open a new instance of Excel when run from an external editor. When run within Excel the code will behave as before and modify the active Excel instance. This code modification allows the Python code to be run and edited in a very similar manner to VBA code in the VBA editor.
