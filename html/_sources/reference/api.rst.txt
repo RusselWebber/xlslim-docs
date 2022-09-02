@@ -170,3 +170,15 @@ The :func:`DeactivatePremiumLicense()` function can be used to deactivate a prem
 
    :return: The deactivation result.
    :rtype: str
+
+Version
+-------
+
+To get the version of xlSlim used in Excel you can use the :func:`XlSlimVersion` function:
+
+.. py:function:: XlSlimVersion()
+
+   Returns the version of xlSlim in use.
+
+   :return: The xlSlim version in use.
+   :rtype: str

@@ -3,7 +3,7 @@
 Magic Global Functions
 ======================
 
-xlSlim has two magic global functions that are always available in Python code running within xlSlim: :func:`XLSLIM_UDFFUNC` and :func:`XLSLIM_INWINDOWFUNC`
+xlSlim has four magic global functions that are always available in Python code running within xlSlim: :func:`XLSLIM_UDFFUNC`, :func:`XLSLIM_INWINDOWFUNC`, :func:`XLSLIM_COMAPPFUNC` and :func:`XLSLIM_CALLERFUNC`.
 
 .. py:function:: XLSLIM_UDFFUNC()
 
@@ -43,3 +43,30 @@ Else the Python code returns "Slow result".
 .. image:: ../_static/global_function_not_in_func_wizard.png
   :width: 400
   :alt: Function not in Excel Function Wizard  
+  
+.. py:function:: XLSLIM_COMAPPFUNC()
+
+This global function can be used to access the calling Excel application via COM. This is usually used when automating Excel or replacing VBA code. 
+
+An example is this function that sets a cell value. See :doc:`/user/vba_replacement` for a detailed example.
+
+.. code-block:: python
+
+	XLSLIM_COMAPPFUNC = None
+
+	def PythonRules():
+		excel_obj = XLSLIM_COMAPPFUNC()
+		app = excel_obj.Application
+		app.ActiveWorkbook.ActiveSheet.Cells(2, 3).Value = "Python Rules!"
+		
+.. py:function:: XLSLIM_CALLERFUNC()
+
+This global function can be used to find the address of the cell calling Python.
+
+.. code-block:: python
+
+	XLSLIM_CALLERFUNC = None
+
+	def WhoCalledMe():
+		caller = XLSLIM_CALLERFUNC()
+		return f"I was called by ({caller.RowFirst},{caller.ColumnFirst}), ({caller.RowLast},{caller.ColumnLast})"

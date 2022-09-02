@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Quickstart &mdash; xlSlim v1.0 documentation</title>
+  <title>Replacing VBA with Python &mdash; xlSlim v1.0 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Optional arguments" href="keyword_args.html" />
-    <link rel="prev" title="Installation" href="installation.html" />
+    <link rel="next" title="Licensing" href="licensing.html" />
+    <link rel="prev" title="Streaming data" href="streaming.html" />
     
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EC5DSJ2TQ1"></script>
@@ -96,10 +96,7 @@
               <p class="caption"><span class="caption-text">User Guide</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Quickstart</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#hints-and-doc-strings">Hints and Doc strings</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
 <li class="toctree-l1"><a class="reference internal" href="keyword_args.html">Optional arguments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="passing_simple_types.html">Passing simple data types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="passing_arrays.html">Passing lists</a></li>
@@ -112,7 +109,7 @@
 <li class="toctree-l1"><a class="reference internal" href="subprocess.html">Running Python in a background process</a></li>
 <li class="toctree-l1"><a class="reference internal" href="imports.html">Advanced Module Importing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="streaming.html">Streaming data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vba_replacement.html">Replacing VBA with Python</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Replacing VBA with Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="licensing.html">Licensing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
 </ul>
@@ -180,13 +177,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Quickstart</li>
+      <li>Replacing VBA with Python</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/user/quickstart.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/user/vba_replacement.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -199,67 +196,52 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="quickstart">
-<h1>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h1>
-<p>Let’s start with this simple Python module that contains these functions to calculate the area of various shapes. As you can see, the code is very simple and there are <em>no changes</em> to support xlSlim.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Various functions to calculate areas</span>
-<span class="kn">import</span> <span class="nn">math</span>
-
-
-<span class="k">def</span> <span class="nf">area_circle</span><span class="p">(</span><span class="n">r</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">r</span> <span class="o">**</span> <span class="mi">2</span>
-
-
-<span class="k">def</span> <span class="nf">area_square</span><span class="p">(</span><span class="n">l</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">l</span> <span class="o">*</span> <span class="n">l</span>
-
-
-<span class="k">def</span> <span class="nf">area_rectangle</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">w</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">l</span> <span class="o">*</span> <span class="n">w</span>
+  <div class="section" id="replacing-vba-with-python">
+<h1>Replacing VBA with Python<a class="headerlink" href="#replacing-vba-with-python" title="Permalink to this headline">¶</a></h1>
+<p>xlSlim allows you to replace VBA code with Python code. The Python code has access to the same objects as VBA so it is usually straightforward to translate VBA code to Python.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This functionality requires a premium licence as a Python environment with the <a class="reference external" href="https://github.com/mhammond/pywin32">pywin32</a> extensions installed is required. Anaconda distributions include pywin32. See <a class="reference internal" href="../reference/licensing.html"><span class="doc">Licensing</span></a></p>
+</div>
+<p>Let’s start with this very simple VBA subroutine that updates one cell:</p>
+<div class="highlight-vbnet notranslate"><div class="highlight"><pre><span></span><span class="k">Public</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">VBARules</span><span class="p">()</span><span class="w"></span>
+<span class="w">        </span><span class="n">ActiveWorkbook</span><span class="p">.</span><span class="n">ActiveSheet</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">).</span><span class="n">Value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;VBA Rules!&quot;</span><span class="w"></span>
+<span class="k">End</span><span class="w"> </span><span class="k">Sub</span><span class="w"></span>
 </pre></div>
 </div>
+<p>Add the subroutine into a Module:</p>
+<a class="reference internal image-reference" href="../_images/vba_simple_function_to_set_cell_value.png"><img alt="VBA function to set cell value" src="../_images/vba_simple_function_to_set_cell_value.png" style="width: 400px;" /></a>
+<p>And then add a button calling the VBA macro.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">All the Python code and Excel files shown are available from github in the <a class="reference external" href="https://github.com/RusselWebber/xlslim-code-samples/archive/refs/heads/main.zip">xlslim-code-samples</a> repo. I highly recommend downloading the samples from github. The Excel workbooks contain many tips and tricks.</p>
+<p class="last">The Developer ribbon can be enabled by editing your Ribbon layout under File-&gt;Options-&gt;Customize Ribbon</p>
 </div>
+<a class="reference internal image-reference" href="../_images/vba_assign_macro_to_button.png"><img alt="Assign VBA function to button" src="../_images/vba_assign_macro_to_button.png" style="width: 400px;" /></a>
+<p>When the button is clicked the value of cell B2 is modified:</p>
+<a class="reference internal image-reference" href="../_images/vba_simple_function_to_set_cell_value_works.png"><img alt="The VBA code modifies the cell value" src="../_images/vba_simple_function_to_set_cell_value_works.png" style="width: 400px;" /></a>
+<p>Accomplishing the same in Python is straightforward. This Python code defines a function that sets the value of one cell:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">XLSLIM_COMAPPFUNC</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="k">def</span> <span class="nf">PythonRules</span><span class="p">():</span>
+        <span class="n">excel_obj</span> <span class="o">=</span> <span class="n">XLSLIM_COMAPPFUNC</span><span class="p">()</span>
+        <span class="n">app</span> <span class="o">=</span> <span class="n">excel_obj</span><span class="o">.</span><span class="n">Application</span>
+<span class="hll">        <span class="n">app</span><span class="o">.</span><span class="n">ActiveWorkbook</span><span class="o">.</span><span class="n">ActiveSheet</span><span class="o">.</span><span class="n">Cells</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">Value</span> <span class="o">=</span> <span class="s2">&quot;Python Rules!&quot;</span>
+</span></pre></div>
+</div>
+<p>Notice how the highlighted line is identical to the VBA code, other than the initial “app.”. The Python and VBA code access an identical Excel object model, so the code can be very similar. The <a class="reference internal" href="../reference/globals.html#XLSLIM_COMAPPFUNC" title="XLSLIM_COMAPPFUNC"><code class="xref py py-func docutils literal notranslate"><span class="pre">XLSLIM_COMAPPFUNC()</span></code></a> function is used to gain access to the Excel object model.</p>
 <p>Save the Python code as a new file on your PC. I saved the file in my Documents folder.</p>
-<p>Open Excel and enter this <a class="reference internal" href="../reference/api.html#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a> formula (amending the location to match where you saved the file):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">RegisterPyModule</span><span class="p">(</span><span class="s2">&quot;C:\Users</span><span class="se">\r</span><span class="s2">usse\Documents\quickstart.py&quot;</span><span class="p">)</span>
+<p>Register the Python code with this <a class="reference internal" href="../reference/api.html#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a> formula (amending the location to match where you saved the file):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">RegisterPyModule</span><span class="p">(</span><span class="s2">&quot;c:\users</span><span class="se">\r</span><span class="s2">usse\documents</span><span class="se">\v</span><span class="s2">bareplacement.py&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>That’s it! The functions are now available to use in Excel.</p>
-<a class="reference internal image-reference" href="../_images/quickstart_basic_area_circle.png"><img alt="Quick start showing area_circle function in Excel" src="../_images/quickstart_basic_area_circle.png" style="width: 400px;" /></a>
-<div class="section" id="hints-and-doc-strings">
-<h2>Hints and Doc strings<a class="headerlink" href="#hints-and-doc-strings" title="Permalink to this headline">¶</a></h2>
-<p>To make full use of xlSlim’s capabilities, use type hints and doc strings to provide more information about your functions.</p>
-<p>Replace the quickstart.py code with this:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Various functions to calculate areas</span>
-<span class="c1"># With doc strings and type hints</span>
-<span class="kn">import</span> <span class="nn">math</span>
-
-
-<span class="k">def</span> <span class="nf">area_circle</span><span class="p">(</span><span class="n">r</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Calculates the area of a circle as pi x r x r&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">r</span> <span class="o">**</span> <span class="mi">2</span>
-
-
-<span class="k">def</span> <span class="nf">area_square</span><span class="p">(</span><span class="n">l</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Calculates the area of a square as l x l&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">l</span> <span class="o">*</span> <span class="n">l</span>
-
-
-<span class="k">def</span> <span class="nf">area_rectangle</span><span class="p">(</span><span class="n">l</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">w</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Calculates the area of a rectangle as l x w&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">l</span> <span class="o">*</span> <span class="n">w</span>
-</pre></div>
+<p>Then add another button to call the Python function:</p>
+<a class="reference internal image-reference" href="../_images/vba_assign_python_to_button.png"><img alt="Assign Python function to button" src="../_images/vba_assign_python_to_button.png" style="width: 400px;" /></a>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The names of the Python macro functions do not appear in the list. However, if you type the name correctly the button will be linked to the Python code.</p>
 </div>
-<p>And re-register the module in Excel:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">RegisterPyModule</span><span class="p">(</span><span class="s2">&quot;C:\Users</span><span class="se">\r</span><span class="s2">usse\Documents\quickstart.py&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Now the function looks much better, with documentation and the correct types.</p>
-<a class="reference internal image-reference" href="../_images/quickstart_basic_area_circle_annotated.png"><img alt="Quick start showing area_circle function in Excel with docs and hints" src="../_images/quickstart_basic_area_circle_annotated.png" style="width: 400px;" /></a>
-</div>
+<p>Clicking on the button edits cell B2 to properly reflect the state of the world!</p>
+<a class="reference internal image-reference" href="../_images/vba_python_function_to_set_cell_value_works.png"><img alt="The Python button sets a cell value too" src="../_images/vba_python_function_to_set_cell_value_works.png" style="width: 400px;" /></a>
 </div>
 
 
@@ -270,10 +252,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="keyword_args.html" class="btn btn-neutral float-right" title="Optional arguments" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="licensing.html" class="btn btn-neutral float-right" title="Licensing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="streaming.html" class="btn btn-neutral float-left" title="Streaming data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

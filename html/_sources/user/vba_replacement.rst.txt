@@ -1,0 +1,77 @@
+
+
+Replacing VBA with Python
+=========================
+
+.. _pywin32: https://github.com/mhammond/pywin32
+
+xlSlim allows you to replace VBA code with Python code. The Python code has access to the same objects as VBA so it is usually straightforward to translate VBA code to Python.
+
+.. warning::
+	This functionality requires a premium licence as a Python environment with the `pywin32`_ extensions installed is required. Anaconda distributions include pywin32. See :doc:`/reference/licensing`
+
+Let's start with this very simple VBA subroutine that updates one cell:
+
+.. code-block:: vbnet
+
+	Public Sub VBARules()
+		ActiveWorkbook.ActiveSheet.Cells(2, 2).Value = "VBA Rules!"
+	End Sub
+
+Add the subroutine into a Module:
+
+.. image:: ../_static/vba_simple_function_to_set_cell_value.png
+  :width: 400
+  :alt: VBA function to set cell value
+
+And then add a button calling the VBA macro.
+
+.. note::
+	The Developer ribbon can be enabled by editing your Ribbon layout under File->Options->Customize Ribbon
+
+.. image:: ../_static/vba_assign_macro_to_button.png
+  :width: 400
+  :alt: Assign VBA function to button
+
+When the button is clicked the value of cell B2 is modified:
+
+.. image:: ../_static/vba_simple_function_to_set_cell_value_works.png
+  :width: 400
+  :alt: The VBA code modifies the cell value
+
+Accomplishing the same in Python is straightforward. This Python code defines a function that sets the value of one cell:
+
+.. code-block:: python
+	:emphasize-lines: 6
+	
+	XLSLIM_COMAPPFUNC = None
+
+	def PythonRules():
+		excel_obj = XLSLIM_COMAPPFUNC()
+		app = excel_obj.Application
+		app.ActiveWorkbook.ActiveSheet.Cells(2, 2).Value = "Python Rules!"
+
+Notice how the highlighted line is identical to the VBA code, other than the initial "app.". The Python and VBA code access an identical Excel object model, so the code can be very similar. The :func:`XLSLIM_COMAPPFUNC` function is used to gain access to the Excel object model.
+
+Save the Python code as a new file on your PC. I saved the file in my Documents folder.
+
+Register the Python code with this :func:`RegisterPyModule` formula (amending the location to match where you saved the file): ::
+
+	=RegisterPyModule("c:\users\russe\documents\vbareplacement.py")
+	
+Then add another button to call the Python function:
+
+.. image:: ../_static/vba_assign_python_to_button.png
+  :width: 400
+  :alt: Assign Python function to button
+
+.. note::
+	The names of the Python macro functions do not appear in the list. However, if you type the name correctly the button will be linked to the Python code.
+
+Clicking on the button edits cell B2 to properly reflect the state of the world!
+
+.. image:: ../_static/vba_python_function_to_set_cell_value_works.png  
+  :width: 400
+  :alt: The Python button sets a cell value too
+
+  

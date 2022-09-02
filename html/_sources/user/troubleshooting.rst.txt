@@ -50,6 +50,11 @@ Functions Overwriting
 
 Function names are not case sensitive in Excel, so if you register a `counter()` function and later register a `Counter()` function the second function will replace the first in Excel.
 
+VBA Replacement Code Crashing
+-----------------------------
+
+Be careful to never modify the cell currently being evaluated. Usually it is safest to use a button to run code that modifies workbooks and worksheets.
+
 General
 -------
 

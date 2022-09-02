@@ -109,6 +109,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../user/subprocess.html">Running Python in a background process</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/imports.html">Advanced Module Importing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/streaming.html">Streaming data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/vba_replacement.html">Replacing VBA with Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/licensing.html">Licensing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting.html">Troubleshooting</a></li>
 </ul>
@@ -197,7 +198,7 @@
             
   <div class="section" id="magic-global-functions">
 <h1>Magic Global Functions<a class="headerlink" href="#magic-global-functions" title="Permalink to this headline">¶</a></h1>
-<p>xlSlim has two magic global functions that are always available in Python code running within xlSlim: <a class="reference internal" href="#XLSLIM_UDFFUNC" title="XLSLIM_UDFFUNC"><code class="xref py py-func docutils literal notranslate"><span class="pre">XLSLIM_UDFFUNC()</span></code></a> and <a class="reference internal" href="#XLSLIM_INWINDOWFUNC" title="XLSLIM_INWINDOWFUNC"><code class="xref py py-func docutils literal notranslate"><span class="pre">XLSLIM_INWINDOWFUNC()</span></code></a></p>
+<p>xlSlim has four magic global functions that are always available in Python code running within xlSlim: <a class="reference internal" href="#XLSLIM_UDFFUNC" title="XLSLIM_UDFFUNC"><code class="xref py py-func docutils literal notranslate"><span class="pre">XLSLIM_UDFFUNC()</span></code></a>, <a class="reference internal" href="#XLSLIM_INWINDOWFUNC" title="XLSLIM_INWINDOWFUNC"><code class="xref py py-func docutils literal notranslate"><span class="pre">XLSLIM_INWINDOWFUNC()</span></code></a>, <a class="reference internal" href="#XLSLIM_COMAPPFUNC" title="XLSLIM_COMAPPFUNC"><code class="xref py py-func docutils literal notranslate"><span class="pre">XLSLIM_COMAPPFUNC()</span></code></a> and <a class="reference internal" href="#XLSLIM_CALLERFUNC" title="XLSLIM_CALLERFUNC"><code class="xref py py-func docutils literal notranslate"><span class="pre">XLSLIM_CALLERFUNC()</span></code></a>.</p>
 <dl class="function">
 <dt id="XLSLIM_UDFFUNC">
 <code class="descname">XLSLIM_UDFFUNC</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#XLSLIM_UDFFUNC" title="Permalink to this definition">¶</a></dt>
@@ -229,6 +230,34 @@
 <a class="reference internal image-reference" href="../_images/global_function_in_func_wizard.png"><img alt="Function in Excel Function Wizard" src="../_images/global_function_in_func_wizard.png" style="width: 400px;" /></a>
 <p>Else the Python code returns “Slow result”.</p>
 <a class="reference internal image-reference" href="../_images/global_function_not_in_func_wizard.png"><img alt="Function not in Excel Function Wizard" src="../_images/global_function_not_in_func_wizard.png" style="width: 400px;" /></a>
+<dl class="function">
+<dt id="XLSLIM_COMAPPFUNC">
+<code class="descname">XLSLIM_COMAPPFUNC</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#XLSLIM_COMAPPFUNC" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>This global function can be used to access the calling Excel application via COM. This is usually used when automating Excel or replacing VBA code.</p>
+<p>An example is this function that sets a cell value. See <a class="reference internal" href="../user/vba_replacement.html"><span class="doc">Replacing VBA with Python</span></a> for a detailed example.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">XLSLIM_COMAPPFUNC</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="k">def</span> <span class="nf">PythonRules</span><span class="p">():</span>
+        <span class="n">excel_obj</span> <span class="o">=</span> <span class="n">XLSLIM_COMAPPFUNC</span><span class="p">()</span>
+        <span class="n">app</span> <span class="o">=</span> <span class="n">excel_obj</span><span class="o">.</span><span class="n">Application</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">ActiveWorkbook</span><span class="o">.</span><span class="n">ActiveSheet</span><span class="o">.</span><span class="n">Cells</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">Value</span> <span class="o">=</span> <span class="s2">&quot;Python Rules!&quot;</span>
+</pre></div>
+</div>
+<dl class="function">
+<dt id="XLSLIM_CALLERFUNC">
+<code class="descname">XLSLIM_CALLERFUNC</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#XLSLIM_CALLERFUNC" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>This global function can be used to find the address of the cell calling Python.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">XLSLIM_CALLERFUNC</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="k">def</span> <span class="nf">WhoCalledMe</span><span class="p">():</span>
+        <span class="n">caller</span> <span class="o">=</span> <span class="n">XLSLIM_CALLERFUNC</span><span class="p">()</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;I was called by (</span><span class="si">{</span><span class="n">caller</span><span class="o">.</span><span class="n">RowFirst</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">caller</span><span class="o">.</span><span class="n">ColumnFirst</span><span class="si">}</span><span class="s2">), (</span><span class="si">{</span><span class="n">caller</span><span class="o">.</span><span class="n">RowLast</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">caller</span><span class="o">.</span><span class="n">ColumnLast</span><span class="si">}</span><span class="s2">)&quot;</span>
+</pre></div>
+</div>
 </div>
 
 
