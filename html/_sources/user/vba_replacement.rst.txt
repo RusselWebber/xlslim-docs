@@ -105,3 +105,77 @@ Edit your Python code to match the code below, the amended lines are highlighted
 		PythonRules()
 
 This code will now open a new instance of Excel when run from an external editor. When run within Excel the code will behave as before and modify the active Excel instance. This code modification allows the Python code to be run and edited in a very similar manner to VBA code in the VBA editor.
+
+Further details
+---------------
+
+This code shows how to perform common tasks.
+
+.. code-block:: python
+
+	import time
+	import pythoncom
+	import win32com.client as win32
+	from win32com.client import constants
+
+	XLSLIM_COMAPPFUNC = None
+
+	def manipulate_excel():
+		if XLSLIM_COMAPPFUNC is not None:
+			# Running from Excel
+			# Do be careful not to accidentally edit the calling cell
+			excel_obj = XLSLIM_COMAPPFUNC()
+			app = excel_obj.Application
+		else:
+			# Running in an editor
+			#
+			# This could be used instead to connect to a running Excel
+			# app = win32.GetActiveObject("Excel.Application")
+			# however the gencache versions gives a better editing experience
+			# as methods and properties are then known in the editor
+			app = win32.gencache.EnsureDispatch("Excel.Application")
+			app.Visible = 1
+			app.Workbooks.Add().Activate()
+
+		# Cells can be referenced in various ways
+		app.ActiveWorkbook.ActiveSheet.Cells(2, 1).Value = "Python Rules!"
+		# Names can be used too, commented out now as Book1 easily becomes Book2
+		# app.Workbooks("Book1").Sheets("Sheet1").Cells(2, 1).Value = "Python Rules!"
+		app.Workbooks(1).Sheets(1).Cells(2, 1).Value = "Python Rules!"
+
+		# Creating variables for books and sheets makes the code neater
+		xlBook = app.Workbooks(1)
+		xlSheet = app.Sheets(1)
+		xlSheet.Cells(2, 1).Value = "Python Rules!"
+
+		# Handling datetimes
+		now = time.mktime(time.localtime())
+		time_object = pythoncom.MakeTime(now)
+		xlSheet.Cells(3, 1).Value = time_object
+
+		# Setting a formula
+		xlSheet.Cells(4, 1).Formula = "=UPPER(A2)"
+
+		# Clear a cell
+		xlSheet.Cells(5, 1).Value = None
+
+		# Ranges can be set in various ways
+		range1 = xlSheet.Cells(4, 1)  # one-cell range
+		range2 = xlSheet.Range("B5:C10")  # excel notation
+		range3 = xlSheet.Range(xlSheet.Cells(3, 3), xlSheet.Cells(6, 4))
+		range3.Interior.ColorIndex = 7
+
+		# Set range data
+		range3.Value = (("z", 1), ("y", 2), ("x", 3), ("w", 4))
+
+		# Call a function - sort range - note the use of constants
+		range3.Sort(
+			Key1=xlSheet.Range("C3"),
+			Order1=constants.xlAscending,
+			Orientation=constants.xlSortColumns,
+		)
+
+		return "Done"
+
+	if __name__ == "__main__":
+		manipulate_excel()

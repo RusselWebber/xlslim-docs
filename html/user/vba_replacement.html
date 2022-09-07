@@ -111,6 +111,7 @@
 <li class="toctree-l1"><a class="reference internal" href="streaming.html">Streaming data</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Replacing VBA with Python</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#easier-code-editing">Easier code editing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#further-details">Further details</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="licensing.html">Licensing</a></li>
@@ -271,6 +272,78 @@
 </span></pre></div>
 </div>
 <p>This code will now open a new instance of Excel when run from an external editor. When run within Excel the code will behave as before and modify the active Excel instance. This code modification allows the Python code to be run and edited in a very similar manner to VBA code in the VBA editor.</p>
+</div>
+<div class="section" id="further-details">
+<h2>Further details<a class="headerlink" href="#further-details" title="Permalink to this headline">¶</a></h2>
+<p>This code shows how to perform common tasks.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">pythoncom</span>
+<span class="kn">import</span> <span class="nn">win32com.client</span> <span class="k">as</span> <span class="nn">win32</span>
+<span class="kn">from</span> <span class="nn">win32com.client</span> <span class="kn">import</span> <span class="n">constants</span>
+
+<span class="n">XLSLIM_COMAPPFUNC</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="k">def</span> <span class="nf">manipulate_excel</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">XLSLIM_COMAPPFUNC</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="c1"># Running from Excel</span>
+                <span class="c1"># Do be careful not to accidentally edit the calling cell</span>
+                <span class="n">excel_obj</span> <span class="o">=</span> <span class="n">XLSLIM_COMAPPFUNC</span><span class="p">()</span>
+                <span class="n">app</span> <span class="o">=</span> <span class="n">excel_obj</span><span class="o">.</span><span class="n">Application</span>
+        <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Running in an editor</span>
+                <span class="c1">#</span>
+                <span class="c1"># This could be used instead to connect to a running Excel</span>
+                <span class="c1"># app = win32.GetActiveObject(&quot;Excel.Application&quot;)</span>
+                <span class="c1"># however the gencache versions gives a better editing experience</span>
+                <span class="c1"># as methods and properties are then known in the editor</span>
+                <span class="n">app</span> <span class="o">=</span> <span class="n">win32</span><span class="o">.</span><span class="n">gencache</span><span class="o">.</span><span class="n">EnsureDispatch</span><span class="p">(</span><span class="s2">&quot;Excel.Application&quot;</span><span class="p">)</span>
+                <span class="n">app</span><span class="o">.</span><span class="n">Visible</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="n">app</span><span class="o">.</span><span class="n">Workbooks</span><span class="o">.</span><span class="n">Add</span><span class="p">()</span><span class="o">.</span><span class="n">Activate</span><span class="p">()</span>
+
+        <span class="c1"># Cells can be referenced in various ways</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">ActiveWorkbook</span><span class="o">.</span><span class="n">ActiveSheet</span><span class="o">.</span><span class="n">Cells</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">Value</span> <span class="o">=</span> <span class="s2">&quot;Python Rules!&quot;</span>
+        <span class="c1"># Names can be used too, commented out now as Book1 easily becomes Book2</span>
+        <span class="c1"># app.Workbooks(&quot;Book1&quot;).Sheets(&quot;Sheet1&quot;).Cells(2, 1).Value = &quot;Python Rules!&quot;</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">Workbooks</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">Sheets</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">Cells</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">Value</span> <span class="o">=</span> <span class="s2">&quot;Python Rules!&quot;</span>
+
+        <span class="c1"># Creating variables for books and sheets makes the code neater</span>
+        <span class="n">xlBook</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">Workbooks</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">xlSheet</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">Sheets</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">xlSheet</span><span class="o">.</span><span class="n">Cells</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">Value</span> <span class="o">=</span> <span class="s2">&quot;Python Rules!&quot;</span>
+
+        <span class="c1"># Handling datetimes</span>
+        <span class="n">now</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">mktime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">())</span>
+        <span class="n">time_object</span> <span class="o">=</span> <span class="n">pythoncom</span><span class="o">.</span><span class="n">MakeTime</span><span class="p">(</span><span class="n">now</span><span class="p">)</span>
+        <span class="n">xlSheet</span><span class="o">.</span><span class="n">Cells</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">Value</span> <span class="o">=</span> <span class="n">time_object</span>
+
+        <span class="c1"># Setting a formula</span>
+        <span class="n">xlSheet</span><span class="o">.</span><span class="n">Cells</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">Formula</span> <span class="o">=</span> <span class="s2">&quot;=UPPER(A2)&quot;</span>
+
+        <span class="c1"># Clear a cell</span>
+        <span class="n">xlSheet</span><span class="o">.</span><span class="n">Cells</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">Value</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># Ranges can be set in various ways</span>
+        <span class="n">range1</span> <span class="o">=</span> <span class="n">xlSheet</span><span class="o">.</span><span class="n">Cells</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># one-cell range</span>
+        <span class="n">range2</span> <span class="o">=</span> <span class="n">xlSheet</span><span class="o">.</span><span class="n">Range</span><span class="p">(</span><span class="s2">&quot;B5:C10&quot;</span><span class="p">)</span>  <span class="c1"># excel notation</span>
+        <span class="n">range3</span> <span class="o">=</span> <span class="n">xlSheet</span><span class="o">.</span><span class="n">Range</span><span class="p">(</span><span class="n">xlSheet</span><span class="o">.</span><span class="n">Cells</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">xlSheet</span><span class="o">.</span><span class="n">Cells</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+        <span class="n">range3</span><span class="o">.</span><span class="n">Interior</span><span class="o">.</span><span class="n">ColorIndex</span> <span class="o">=</span> <span class="mi">7</span>
+
+        <span class="c1"># Set range data</span>
+        <span class="n">range3</span><span class="o">.</span><span class="n">Value</span> <span class="o">=</span> <span class="p">((</span><span class="s2">&quot;z&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+        <span class="c1"># Call a function - sort range - note the use of constants</span>
+        <span class="n">range3</span><span class="o">.</span><span class="n">Sort</span><span class="p">(</span>
+                <span class="n">Key1</span><span class="o">=</span><span class="n">xlSheet</span><span class="o">.</span><span class="n">Range</span><span class="p">(</span><span class="s2">&quot;C3&quot;</span><span class="p">),</span>
+                <span class="n">Order1</span><span class="o">=</span><span class="n">constants</span><span class="o">.</span><span class="n">xlAscending</span><span class="p">,</span>
+                <span class="n">Orientation</span><span class="o">=</span><span class="n">constants</span><span class="o">.</span><span class="n">xlSortColumns</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="s2">&quot;Done&quot;</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+        <span class="n">manipulate_excel</span><span class="p">()</span>
+</pre></div>
+</div>
 </div>
 </div>
 
