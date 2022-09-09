@@ -1,4 +1,6 @@
-
+.. meta::
+    :description lang=en:
+        xlSlim makes it easy to use Python to fetch Yahoo Finance prices and return these to Excel.
 
 Loading Stock Prices from Yahoo! Finance
 ========================================

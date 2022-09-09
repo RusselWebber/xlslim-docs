@@ -1,4 +1,6 @@
-
+.. meta::
+    :description lang=en:
+        xlSlim makes it easy for Excel to call Monte Carlo option pricing models implemented in Python.
 
 Monte Carlo Option Pricing
 ==========================

@@ -1,4 +1,6 @@
-
+.. meta::
+    :description lang=en:
+        xlSlim makes it easy for Excel to access Python's sklearn library and perform PCA.
 
 Principal Components Analysis of Index Prices
 =============================================

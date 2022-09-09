@@ -1,4 +1,6 @@
-
+.. meta::
+    :description lang=en:
+        xlSlim makes it easy to run data analysis within SQLite before returning results to Excel.
 
 Using SQLite to analyse data
 ============================

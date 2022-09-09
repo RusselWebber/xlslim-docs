@@ -1,4 +1,6 @@
-
+.. meta::
+    :description lang=en:
+        xlSlim lets you use Excel's flexible and simple interface to visualize each step while developing a NLP model in Python.
 
 NLP with Excel and Python
 ==========================

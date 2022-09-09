@@ -1,4 +1,6 @@
-
+.. meta::
+    :description lang=en:
+        xlSlim makes it easy to fetch data from web sites using Python and return the results to Excel.
 
 Read JSON data from a URL
 =========================

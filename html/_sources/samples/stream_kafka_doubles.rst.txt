@@ -1,4 +1,6 @@
-
+.. meta::
+    :description lang=en:
+        xlSlim makes it simple to use Python to stream data from Kafa into Excel.
 
 Streaming from Kafka
 ====================

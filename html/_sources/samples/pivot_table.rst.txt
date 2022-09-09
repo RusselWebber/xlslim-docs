@@ -1,4 +1,6 @@
-
+.. meta::
+    :description lang=en:
+        xlSlim lets you replace VBA with Python code to load csv data and create pivot tables.
 
 Creating a Pivot Table using Python
 ===================================

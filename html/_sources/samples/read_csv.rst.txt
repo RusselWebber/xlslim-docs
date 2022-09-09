@@ -1,4 +1,6 @@
-
+.. meta::
+    :description lang=en:
+        xlSlim makes it easy to read and process a csv file in Python and return the results to Excel.
 
 Read CSV data from a file
 =========================
