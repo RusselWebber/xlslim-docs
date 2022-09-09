@@ -106,10 +106,10 @@ Edit your Python code to match the code below, the amended lines are highlighted
 
 This code will now open a new instance of Excel when run from an external editor. When run within Excel the code will behave as before and modify the active Excel instance. This code modification allows the Python code to be run and edited in a very similar manner to VBA code in the VBA editor.
 
-Further details
----------------
+Further examples
+----------------
 
-This code shows how to perform common tasks.
+This code shows how to perform common tasks. See :doc:`/samples/pivot_table` for an example how to replace VBA to create a pivot table.
 
 .. code-block:: python
 

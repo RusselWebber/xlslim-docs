@@ -48,7 +48,7 @@ Else the Python code returns "Slow result".
 
 This global function can be used to access the calling Excel application via COM. This is usually used when automating Excel or replacing VBA code. 
 
-An example is this function that sets a cell value. See :doc:`/user/vba_replacement` for a detailed example.
+An example is this function that sets a cell value. See :doc:`/user/vba_replacement` and :doc:`/samples/pivot_table` for detailed examples.
 
 .. code-block:: python
 
