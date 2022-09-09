@@ -6,7 +6,7 @@ Monte Carlo Option Pricing
 .. _numpy: https://numpy.org/
 .. _pandas: https://pandas.pydata.org/
 
-The Python `numpy`_ and `pandas`_ packages can be used to very elegantly perform Monte Carlo option pricing.
+The Python `numpy`_ and `pandas`_ packages can be used to very elegantly perform Monte Carlo option pricing. xlSlim allows us to easily call the Python option pricer from Excel.
 
 .. warning::
 	The numpy and pandas functionality shown requires a premium licence. See :doc:`/reference/licensing`

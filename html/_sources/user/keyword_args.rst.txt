@@ -48,8 +48,8 @@ The function is now available to use in Excel. Play around with the inputs and y
   :width: 400
   :alt: Simple keyword arg function in Excel
   
-Hints and Doc strings
----------------------
+Type Hints and Doc strings
+--------------------------
 
 To make full use of xlSlim's capabilities, use type hints and doc strings to provide more information about your functions.
 

@@ -17,6 +17,8 @@ xlSlim - call Python code from Excel with **no code changes!**
 * Lists supported
 * Keyword arguments supported
 * VBA functions and other Excel add-in functions are available in Python
+* Data can be easily streamed from Python to Excel
+* Python can be used as a VBA replacement
 
 ...you don't even need Python installed. xlSlim has a bundled version of Python 3.10
 
@@ -59,6 +61,7 @@ xlSlim - call Python code from Excel with **no code changes!**
    samples/monte_carlo
    samples/nlp
    samples/stream_kafka_doubles
+   samples/pivot_table
    
 -------------------------------------
 

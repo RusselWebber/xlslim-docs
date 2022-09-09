@@ -1,0 +1,429 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Creating a Pivot Table using Python &mdash; xlSlim v1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Python Environments" href="../reference/environments.html" />
+    <link rel="prev" title="Streaming from Kafka" href="stream_kafka_doubles.html" />
+    
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC5DSJ2TQ1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EC5DSJ2TQ1');
+</script>
+
+     
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> xlSlim
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/keyword_args.html">Optional arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/passing_simple_types.html">Passing simple data types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/passing_arrays.html">Passing lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/passing_objects.html">Passing Python objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/passing_dicts.html">Passing Python dictionaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/udfs.html">Calling VBA and other Excel add-in functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/numpy.html">numpy Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/series.html">pandas Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/dataframes.html">pandas DataFrames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/subprocess.html">Running Python in a background process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/imports.html">Advanced Module Importing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/streaming.html">Streaming data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/vba_replacement.html">Replacing VBA with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/licensing.html">Licensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="read_json_from_web.html">Read JSON data from a URL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="read_csv.html">Read CSV data from a file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sqlite.html">Using SQLite to analyse data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="yfinance.html">Loading Stock Prices from Yahoo! Finance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pca.html">Principal Components Analysis of Index Prices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="monte_carlo.html">Monte Carlo Option Pricing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nlp.html">NLP with Excel and Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stream_kafka_doubles.html">Streaming from Kafka</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Creating a Pivot Table using Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/environments.html">Python Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/api.html">Excel Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/data_conversions.html">Data Conversions Between Excel and Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/globals.html">Magic Global Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/licensing.html">Licensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/software_requirements.html">Software Requirements</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">xlSlim</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Creating a Pivot Table using Python</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/samples/pivot_table.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="creating-a-pivot-table-using-python">
+<h1>Creating a Pivot Table using Python<a class="headerlink" href="#creating-a-pivot-table-using-python" title="Permalink to this headline">¶</a></h1>
+<p>xlSlim allows many VBA tasks to be done using Python. A very common task is loading data and creating a pivot table. This example shows how xlSlim can be used to load csv data using PowerQuery and then create a pivot table.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This functionality requires a premium licence as a Python environment with the <a class="reference external" href="https://github.com/mhammond/pywin32">pywin32</a> extensions installed is required. Anaconda distributions include pywin32. See <a class="reference internal" href="../reference/licensing.html"><span class="doc">Licensing</span></a></p>
+</div>
+<p>The example uses this sample <a class="reference external" href="https://raw.githubusercontent.com/RusselWebber/xlslim-code-samples/045e806b02b8729d438fb6e0a3f8c452bbe913c5/data/10000SalesRecords.csv">data</a> Save the csv data as a new file on your PC. I saved the file in my Documents folder.</p>
+<p>We will use this Python code to read the csv data and create the pivot table. The code is quite long, however there are several useful techniques shown. The code is well worth studying:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a pivot table in Excel using Python win32 COM</span>
+<span class="c1"># Developed with Excel 365</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">pythoncom</span>
+<span class="kn">import</span> <span class="nn">win32com.client</span> <span class="k">as</span> <span class="nn">win32</span>
+<span class="kn">from</span> <span class="nn">win32com.client</span> <span class="kn">import</span> <span class="n">constants</span>
+
+<span class="n">XLSLIM_COMAPPFUNC</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">LOG</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">create_pivot_table</span><span class="p">(</span><span class="n">data_file</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a pivot table from the data in the supplied file.</span>
+
+<span class="sd">        Shows the basics of importing using PowerQuery and then creating</span>
+<span class="sd">        a pivot table using COM.</span>
+
+<span class="sd">        Could be further enhanced to make the fields configurable.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">data_file</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">data_file</span><span class="si">}</span><span class="s2"> does not exist&quot;</span><span class="p">)</span>
+
+        <span class="n">excel_launched</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">app</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="k">try</span><span class="p">:</span>
+
+                <span class="k">if</span> <span class="n">XLSLIM_COMAPPFUNC</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="c1"># Running from Excel</span>
+                        <span class="c1"># Do be careful not to accidentally edit the calling cell</span>
+                        <span class="n">excel_obj</span> <span class="o">=</span> <span class="n">XLSLIM_COMAPPFUNC</span><span class="p">()</span>
+                        <span class="n">app</span> <span class="o">=</span> <span class="n">excel_obj</span><span class="o">.</span><span class="n">Application</span>
+                        <span class="n">app</span><span class="o">.</span><span class="n">ScreenUpdating</span> <span class="o">=</span> <span class="kc">False</span>
+                        <span class="n">app</span><span class="o">.</span><span class="n">Workbooks</span><span class="o">.</span><span class="n">Add</span><span class="p">()</span><span class="o">.</span><span class="n">Activate</span><span class="p">()</span>
+                <span class="k">else</span><span class="p">:</span>
+                        <span class="c1"># Running in an editor so we make it visible and keep screen updating on</span>
+                        <span class="c1">#</span>
+                        <span class="c1"># Check for a running Excel</span>
+                        <span class="k">try</span><span class="p">:</span>
+                                <span class="n">app</span> <span class="o">=</span> <span class="n">win32</span><span class="o">.</span><span class="n">GetActiveObject</span><span class="p">(</span><span class="s2">&quot;Excel.Application&quot;</span><span class="p">)</span>
+                                <span class="n">app</span><span class="o">.</span><span class="n">Visible</span> <span class="o">=</span> <span class="mi">1</span>
+                        <span class="k">except</span><span class="p">:</span>
+                                <span class="c1"># However if developing the gencache versions gives a better editing experience</span>
+                                <span class="c1"># as methods and properties are then known in the editor</span>
+                                <span class="c1"># So you may need to go kill Excel instances in Task Manager</span>
+                                <span class="n">app</span> <span class="o">=</span> <span class="n">win32</span><span class="o">.</span><span class="n">gencache</span><span class="o">.</span><span class="n">EnsureDispatch</span><span class="p">(</span><span class="s2">&quot;Excel.Application&quot;</span><span class="p">)</span>
+                                <span class="n">excel_launched</span> <span class="o">=</span> <span class="kc">True</span>
+                                <span class="n">app</span><span class="o">.</span><span class="n">Visible</span> <span class="o">=</span> <span class="mi">1</span>
+                                <span class="n">app</span><span class="o">.</span><span class="n">Workbooks</span><span class="o">.</span><span class="n">Add</span><span class="p">()</span><span class="o">.</span><span class="n">Activate</span><span class="p">()</span>
+
+                <span class="c1"># Get the active workbook</span>
+                <span class="n">wb</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">ActiveWorkbook</span>
+
+                <span class="c1"># Import the csv data using PowerQuery, note the transformations of the date columns</span>
+                <span class="c1"># so the dates are imported using US date formats.</span>
+                <span class="n">data_sheet</span> <span class="o">=</span> <span class="n">wb</span><span class="o">.</span><span class="n">Sheets</span><span class="o">.</span><span class="n">Add</span><span class="p">()</span>
+                <span class="n">data_sheet</span><span class="o">.</span><span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;Data&quot;</span>
+
+                <span class="n">wb</span><span class="o">.</span><span class="n">Queries</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span>
+                        <span class="n">Name</span><span class="o">=</span><span class="s2">&quot;10000SalesRecords&quot;</span><span class="p">,</span>
+                        <span class="n">Formula</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        let</span>
+<span class="s2">                Source = Csv.Document(File.Contents(&quot;DATAFILE&quot;),[Delimiter=&quot;,&quot;, Columns=14, Encoding=1252, QuoteStyle=QuoteStyle.None]),</span>
+<span class="s2">                #&quot;Promoted Headers&quot; = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),</span>
+<span class="s2">                #&quot;Changed Type&quot; = Table.TransformColumnTypes(#&quot;Promoted Headers&quot;,{{&quot;Region&quot;, type text}, {&quot;Country&quot;, type text}, {&quot;Item Type&quot;, type text}, {&quot;Sales Channel&quot;, type text}, {&quot;Order Priority&quot;, type text}, {&quot;Order Date&quot;, type text}, {&quot;Order ID&quot;, Int64.Type}, {&quot;Ship Date&quot;, type text}, {&quot;Units Sold&quot;, Int64.Type}, {&quot;Unit Price&quot;, type number}, {&quot;Unit Cost&quot;, type number}, {&quot;Total Revenue&quot;, type number}, {&quot;Total Cost&quot;, type number}, {&quot;Total Profit&quot;, type number}}),</span>
+<span class="s2">                #&quot;Changed Type with Locale&quot; = Table.TransformColumnTypes(#&quot;Changed Type&quot;, {{&quot;Order Date&quot;, type date}}, &quot;en-US&quot;),</span>
+<span class="s2">                #&quot;Changed Type with Locale1&quot; = Table.TransformColumnTypes(#&quot;Changed Type with Locale&quot;, {{&quot;Ship Date&quot;, type date}}, &quot;en-US&quot;)</span>
+<span class="s2">        in</span>
+<span class="s2">                #&quot;Changed Type with Locale1&quot;</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+                                <span class="s2">&quot;DATAFILE&quot;</span><span class="p">,</span> <span class="n">data_file</span>
+                        <span class="p">),</span>
+                <span class="p">)</span>
+
+                <span class="n">list_object</span> <span class="o">=</span> <span class="n">data_sheet</span><span class="o">.</span><span class="n">ListObjects</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span>
+                        <span class="n">SourceType</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                        <span class="n">Source</span><span class="o">=</span><span class="s1">&#39;OLEDB;Provider=Microsoft.Mashup.OleDb.1;Data Source=$Workbook$;Location=10000SalesRecords;Extended Properties=&quot;&quot;&#39;</span><span class="p">,</span>
+                        <span class="n">Destination</span><span class="o">=</span><span class="n">data_sheet</span><span class="o">.</span><span class="n">Range</span><span class="p">(</span><span class="s2">&quot;$A$1&quot;</span><span class="p">),</span>
+                <span class="p">)</span>
+                <span class="n">query_table</span> <span class="o">=</span> <span class="n">list_object</span><span class="o">.</span><span class="n">QueryTable</span>
+                <span class="n">query_table</span><span class="o">.</span><span class="n">CommandType</span> <span class="o">=</span> <span class="n">constants</span><span class="o">.</span><span class="n">xlCmdSql</span>
+                <span class="n">query_table</span><span class="o">.</span><span class="n">CommandText</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM [10000SalesRecords]&quot;</span>
+                <span class="n">query_table</span><span class="o">.</span><span class="n">Refresh</span><span class="p">()</span>
+
+                <span class="c1"># Create the pivot cache</span>
+                <span class="n">pivot_sheet</span> <span class="o">=</span> <span class="n">wb</span><span class="o">.</span><span class="n">Sheets</span><span class="o">.</span><span class="n">Add</span><span class="p">()</span>
+                <span class="n">wb</span><span class="o">.</span><span class="n">ActiveSheet</span><span class="o">.</span><span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;PivotTable&quot;</span>
+
+                <span class="n">pivot_caches</span> <span class="o">=</span> <span class="n">wb</span><span class="o">.</span><span class="n">PivotCaches</span><span class="p">()</span>
+                <span class="n">pivot_cache</span> <span class="o">=</span> <span class="n">pivot_caches</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span>
+                        <span class="n">SourceType</span><span class="o">=</span><span class="n">constants</span><span class="o">.</span><span class="n">xlDatabase</span><span class="p">,</span>
+                        <span class="n">SourceData</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">data_sheet</span><span class="o">.</span><span class="n">Name</span><span class="si">}</span><span class="s2">!</span><span class="si">{</span><span class="n">list_object</span><span class="o">.</span><span class="n">Range</span><span class="o">.</span><span class="n">Address</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="p">)</span>
+
+                <span class="c1"># Create the pivot table</span>
+                <span class="n">pivot_tables</span> <span class="o">=</span> <span class="n">pivot_sheet</span><span class="o">.</span><span class="n">PivotTables</span><span class="p">()</span>
+                <span class="n">pivot_table</span> <span class="o">=</span> <span class="n">pivot_tables</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span>
+                        <span class="n">pivot_cache</span><span class="p">,</span> <span class="n">pivot_sheet</span><span class="o">.</span><span class="n">Cells</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="s2">&quot;SalesPivotTable&quot;</span>
+                <span class="p">)</span>
+
+                <span class="c1"># Add fields</span>
+                <span class="n">pivot_table</span><span class="o">.</span><span class="n">PivotFields</span><span class="p">(</span><span class="s2">&quot;Order Date&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Orientation</span> <span class="o">=</span> <span class="n">constants</span><span class="o">.</span><span class="n">xlColumnField</span>
+                <span class="n">pivot_table</span><span class="o">.</span><span class="n">PivotFields</span><span class="p">(</span><span class="s2">&quot;Order Date&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Position</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="n">pivot_table</span><span class="o">.</span><span class="n">PivotFields</span><span class="p">(</span><span class="s2">&quot;Order Date&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">AutoGroup</span><span class="p">()</span>
+                <span class="n">pivot_table</span><span class="o">.</span><span class="n">PivotFields</span><span class="p">(</span><span class="s2">&quot;Region&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Orientation</span> <span class="o">=</span> <span class="n">constants</span><span class="o">.</span><span class="n">xlRowField</span>
+                <span class="n">pivot_table</span><span class="o">.</span><span class="n">PivotFields</span><span class="p">(</span><span class="s2">&quot;Region&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Position</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="n">pivot_table</span><span class="o">.</span><span class="n">AddDataField</span><span class="p">(</span>
+                        <span class="n">pivot_table</span><span class="o">.</span><span class="n">PivotFields</span><span class="p">(</span><span class="s2">&quot;Total Profit&quot;</span><span class="p">),</span>
+                        <span class="s2">&quot;Sum of Total Profit&quot;</span><span class="p">,</span>
+                        <span class="n">constants</span><span class="o">.</span><span class="n">xlSum</span><span class="p">,</span>
+                <span class="p">)</span><span class="o">.</span><span class="n">NumberFormat</span> <span class="o">=</span> <span class="s2">&quot;#,##0&quot;</span>
+
+                <span class="c1"># Format the table</span>
+                <span class="n">pivot_table</span><span class="o">.</span><span class="n">ShowTableStyleRowStripes</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="n">pivot_table</span><span class="o">.</span><span class="n">TableStyle2</span> <span class="o">=</span> <span class="s2">&quot;PivotStyleMedium9&quot;</span>
+
+        <span class="k">except</span> <span class="n">pythoncom</span><span class="o">.</span><span class="n">com_error</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+                <span class="p">(</span><span class="n">hr</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">exc</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span> <span class="o">=</span> <span class="n">err</span><span class="o">.</span><span class="n">args</span>
+                <span class="n">LOG</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                        <span class="s2">&quot;The Excel COM call failed with code </span><span class="si">%d</span><span class="s2">: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">hr</span><span class="p">,</span> <span class="n">msg</span><span class="p">),</span> <span class="n">exc_info</span><span class="o">=</span><span class="kc">True</span>
+                <span class="p">)</span>
+                <span class="k">if</span> <span class="n">exc</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="n">LOG</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;There is no extended error information&quot;</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                        <span class="n">wcode</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">helpFile</span><span class="p">,</span> <span class="n">helpId</span><span class="p">,</span> <span class="n">scode</span> <span class="o">=</span> <span class="n">exc</span>
+                        <span class="n">LOG</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;The source of the error is: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">source</span><span class="p">)</span>
+                        <span class="n">LOG</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;The error message is: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+
+                <span class="c1"># Useful in development else you end up with many Excel instances</span>
+                <span class="k">if</span> <span class="n">excel_launched</span> <span class="ow">and</span> <span class="n">app</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="n">app</span><span class="o">.</span><span class="n">Quit</span><span class="p">()</span>
+
+                <span class="k">return</span> <span class="s2">&quot;An error ocurred calling the Excel COM object: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">app</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">app</span><span class="o">.</span><span class="n">ScreenUpdating</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="k">return</span> <span class="s2">&quot;Done&quot;</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">()</span>
+        <span class="n">data_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="sa">r</span><span class="s2">&quot;pivot_table_data.csv&quot;</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">create_pivot_table</span><span class="p">(</span><span class="n">data_file</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">All the Python code and Excel files shown are available from github in the <a class="reference external" href="https://github.com/RusselWebber/xlslim-code-samples/archive/refs/heads/main.zip">xlslim-code-samples</a> repo.</p>
+</div>
+<p>Save the Python code as a new file on your PC. I saved the file in my Documents folder.</p>
+<p>Open Excel and enter this <a class="reference internal" href="../reference/api.html#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a> formula (amending the location to match where you saved the file):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">RegisterPyModule</span><span class="p">(</span><span class="s2">&quot;c:\users</span><span class="se">\r</span><span class="s2">usse\documents\pivot_table.py&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You should see a message similar to this confirming the module registration:</p>
+<a class="reference internal image-reference" href="../_images/create_pivot_table_registration.png"><img alt="Register create pivot table function" src="../_images/create_pivot_table_registration.png" style="width: 400px;" /></a>
+<p>The <cite>create_pivot_table()</cite> function is now available in Excel and can be called by entering this formula (amending the location to match where you saved the data file):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">create_pivot_table</span><span class="p">(</span><span class="s2">&quot;c:\users</span><span class="se">\r</span><span class="s2">usse\documents\pivot_table_data.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The function runs and moments later the pivot table is created!</p>
+<a class="reference internal image-reference" href="../_images/create_pivot_table_table_created.png"><img alt="Pivot table created" src="../_images/create_pivot_table_table_created.png" style="width: 400px;" /></a>
+<p>Note how PowerQuery loaded the data into a new Data tab:</p>
+<a class="reference internal image-reference" href="../_images/create_pivot_table_table_data.png"><img alt="CSV data loaded using PowerQuery" src="../_images/create_pivot_table_table_data.png" style="width: 400px;" /></a>
+<p>The <cite>create_pivot_table()</cite> function may be called repeatedly, each call will result in a new workbook and a new pivot table. The Python code is also written so the code may be run from a Python editor and debugged.</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../reference/environments.html" class="btn btn-neutral float-right" title="Python Environments" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="stream_kafka_doubles.html" class="btn btn-neutral float-left" title="Streaming from Kafka" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2022, Russel Webber
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

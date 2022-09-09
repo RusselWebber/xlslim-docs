@@ -43,8 +43,8 @@ That's it! The functions are now available to use in Excel.
   :width: 400
   :alt: Quick start showing area_circle function in Excel
   
-Hints and Doc strings
----------------------
+Type Hints and Doc strings
+--------------------------
 
 To make full use of xlSlim's capabilities, use type hints and doc strings to provide more information about your functions.
 
