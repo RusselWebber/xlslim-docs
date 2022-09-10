@@ -1,4 +1,6 @@
-
+.. meta::
+    :description lang=en:
+		xlSlim was designed to support pandas Series efficiently while keeping the interaction with Excel as intuitive as possible.
 
 pandas Series
 =============

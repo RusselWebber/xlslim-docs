@@ -1,3 +1,6 @@
+.. meta::
+    :description lang=en:
+		xlSlim has a free and premium version. This page shows how to check your current license details and how to activate a premium license.
 
 Licensing
 =========

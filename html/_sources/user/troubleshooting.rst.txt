@@ -1,3 +1,6 @@
+.. meta::
+    :description lang=en:
+		xlSlim has extensive support for logging so issues can be investigated and solved. This page also describes other common issues.
 
 Troubleshooting
 ===============

@@ -1,4 +1,6 @@
-
+.. meta::
+    :description lang=en:
+		xlSlim tries to determine the correct data type to pass to the Python code. Type hints help xlSlim where there is uncertainty.
 
 Passing simple data types
 =========================

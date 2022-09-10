@@ -1,3 +1,6 @@
+.. meta::
+    :description lang=en:
+        xlSlim includes a bundled Python standard installation. xlSlim can also use conda and venv environments.
 
 Python Environments
 ===================

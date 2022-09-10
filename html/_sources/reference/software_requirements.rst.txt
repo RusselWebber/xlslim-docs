@@ -1,3 +1,6 @@
+.. meta::
+    :description lang=en:
+        xlSlim needs a modern version of Windows and Excel. Only 64-bit is supported.
 
 Software Requirements
 =====================

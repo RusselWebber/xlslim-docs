@@ -1,10 +1,12 @@
-
+.. meta::
+    :description lang=en:
+        xlSlim supports passing Python lists to and from Excel. The data is read from Excel ranges.
 
 Passing lists
 =============
 
 
-xlSlim supports passing lists to and from Excel. The data is read from Excel ranges.
+xlSlim supports passing Python lists to and from Excel. The data is read from Excel ranges.
 
 .. note::
 	xlSlim has a useful utility function :func:`CreateRange` that can be used to create range inputs from non-adjacent cells.

@@ -1,4 +1,6 @@
-
+.. meta::
+    :description lang=en:
+		xlSlim supports optional keyword arguments.
 
 Optional arguments
 ==================

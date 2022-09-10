@@ -1,3 +1,6 @@
+.. meta::
+    :description lang=en:
+        xlSlim includes many utility functions that make working with Excel easier.
 
 Excel Functions
 ===============

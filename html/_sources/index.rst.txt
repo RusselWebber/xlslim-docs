@@ -1,3 +1,7 @@
+.. meta::
+    :description lang=en:
+		xlSlim makes it simple to use Python code from Excel, usually with no code changes or additional packages required.
+
 .. default-domain:: py
 
 .. image:: ./_static/docs_banner.png

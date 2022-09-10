@@ -1,4 +1,6 @@
-
+.. meta::
+    :description lang=en:
+		xlSlim makes it easy to stream data into Excel. Any Python generator function can be used as a data source. The complexities of IRTDServer are completely hidden.
 
 Streaming data
 ==============

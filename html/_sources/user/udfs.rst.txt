@@ -1,4 +1,6 @@
-
+.. meta::
+    :description lang=en:
+		xlSlim makes it easy to use functions from VBA or other Excel add-ins in your Python code.
 
 Calling VBA and other Excel add-in functions
 ============================================

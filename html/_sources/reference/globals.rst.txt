@@ -1,3 +1,6 @@
+.. meta::
+    :description lang=en:
+        xlSlim uses several magic global functions to allow access to the Excel internals, including access to the COM object model.
 
 
 Magic Global Functions

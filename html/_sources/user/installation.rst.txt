@@ -1,3 +1,6 @@
+.. meta::
+    :description lang=en:
+		xlSlim is installed from a digitally-signed Windows installer. Installation is quick and easy.
 
 Installation
 ============

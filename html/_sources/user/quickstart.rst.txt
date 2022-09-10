@@ -1,4 +1,6 @@
-
+.. meta::
+    :description lang=en:
+		Getting started with xlSlim is very easy and in less than a minute you will be calling your first Python function from Excel.
 
 Quickstart
 ==========

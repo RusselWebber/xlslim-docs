@@ -1,4 +1,6 @@
-
+.. meta::
+    :description lang=en:
+		xlSlim supports importing modules that depend on packages not located in the site-packages folder. Typically these would be packages developed by you, your colleages or other teams within your organisation.
 
 Advanced Module Importing
 =========================

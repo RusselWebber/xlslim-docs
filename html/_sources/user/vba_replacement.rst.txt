@@ -1,3 +1,6 @@
+.. meta::
+    :description lang=en:
+		xlSlim allows you to replace VBA code with Python code. The Python code has access to the same objects as VBA so it is usually straightforward to translate VBA code to Python.
 
 
 Replacing VBA with Python
