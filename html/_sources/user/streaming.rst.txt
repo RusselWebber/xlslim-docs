@@ -1,11 +1,12 @@
 .. meta::
     :description lang=en:
-		xlSlim makes it easy to stream data into Excel. Any Python generator function can be used as a data source. The complexities of IRTDServer are completely hidden.
+		xlSlim makes it easy to stream data into Excel. Any Python generator function can be used as a data source. The IRTDServer interface complexities are hidden.
 
 Streaming data
 ==============
 
 .. _IRTDServer: https://docs.microsoft.com/en-us/dotnet/api/microsoft.office.interop.excel.irtdserver
+.. _ThrottleInterval: https://docs.microsoft.com/en-us/office/vba/api/excel.rtd.throttleinterval
 .. _PEP 255: https://peps.python.org/pep-0255/
 .. _xlslim-code-samples: https://github.com/RusselWebber/xlslim-code-samples/archive/refs/heads/main.zip
 .. _asyncio: https://docs.python.org/3/library/asyncio.html
@@ -22,7 +23,7 @@ xlSlim makes it easy to stream data into Excel. Technically this is done using a
 Simple Generator Functions
 --------------------------
 
-This Python code defines a generator function `counter()` that yields sequential integers from 0 to the stop value at a specified rate of updates_per_second:
+This Python code defines a generator function `counter()` that yields a sequence of integers from 0 to the stop value at a specified rate of updates_per_second:
 
 .. code-block:: python
 
@@ -49,11 +50,16 @@ If we call the `counter()` function in cell A4 with a stop value of 10 and an up
 .. image:: ../_static/streaming_simple_counter.png
   :width: 400
   :alt: Show stream of ints from simple counter
-  
-That is a very simple example of just how easy it is to stream data into Excel!
 
 .. note::
 	Set Excel's Calculation Options to Automatic to see the value ticking. The functionality works perfectly in Manual calculation mode too, the value shown updates every time you press F9. Note that the generator function runs in an independent background thread so runs regardless of Excel's calculation mode.
+  
+That is a very simple example of just how easy it is to stream data into Excel! Try different update rates to see how quickly xlSlim can feed data from Python into Excel. On a fast desktop you should be able to reach about 40 messages per second. You can generate data with a higher frequency, however Excel throttles the rate at which it accepts updates. Excel's update throttle is controlled by the `ThrottleInterval`_ setting. This can be set in the VBA immediate window: 
+
+.. code-block:: python
+
+	Application.RTD.ThrottleInterval = 0
+
 
 Asynchronous Simple Generator Functions
 ---------------------------------------
@@ -86,7 +92,7 @@ Iterator classes
 
 Generator functions are a convenient and easy way to create iterators. Sometimes you need more control over the finer details of how the iterator behaves, `iterator`_ and `asynchronous iterator`_ classes provide more control.
 
-This code shows the same counters implemented as classes:
+This code shows the same counters implemented as iterator classes:
 
 .. code-block:: python
 
@@ -134,7 +140,7 @@ xlSlim will register these classes as Excel functions with the class name as the
 Streaming Python objects
 ------------------------
 
-xlSlim allows Python objects to be streamed. To illustrate this we can can modify the counter examples to return 2x2 numpy arrays.
+xlSlim also allows Python objects to be streamed. You can stream numpy arrays, pandas dataframes or any other Python object. To illustrate this we can modify the previous counter examples to return 2x2 numpy arrays.
 
 .. warning::
 	numpy functionality requires a premium licence. See :doc:`/reference/licensing`
@@ -168,7 +174,7 @@ Open Excel and enter this :func:`RegisterPyModule` formula (amending the locatio
 .. note::
 	numpy is not available in the Python installation bundled with xlSlim. The Python module must be registered with an existing Python installation that has numpy installed.
 	
-If we call the `array_counter()` function in cell A4 with a stop value of 10 and an updates_per_second value of 1 we see a cache handle updating every second in Excel. As usual, the xlSlim function :func:`ViewPyObject` can be used to view any Python object stored in the memory cache. ::
+If we call the `array_counter()` function in cell A4 with a stop value of 10 and an updates_per_second value of 1 we see a cache handle updating every second in Excel. As usual the xlSlim function :func:`ViewPyObject` can be used to view any Python object stored in the memory cache. ::
 
 	=array_counter(A3,A2)
 	=ViewPyObject(A4)
@@ -180,8 +186,17 @@ If we call the `array_counter()` function in cell A4 with a stop value of 10 and
 Allowed Function Parameters
 ---------------------------
 
-xlSlim restricts the type of parameters you can pass into streaming data functions. Only simple types (numbers, strings and booleans) are allowed. Ranges of simple types are also allowed. This restriction ensures the streaming data functions perform optimally.
+xlSlim restricts the type of parameters you can pass into streaming data functions. Only simple types (numbers, strings and booleans) are allowed. Ranges of simple types are also allowed. This restriction ensures that the streaming data functions perform optimally.
 
 Any supported xlSlim output type can be used, except for lists. Streaming data functions can only return a single value. If you need to return a list of values consider using a numpy array or creating multiple streaming data functions.
 
-See :doc:`/samples/stream_kafka_doubles` for an example streaming doubles from a Kafka topic. The GitHub repo `xlslim-code-samples`_ has further examples showing how to subscribe to IEX and Bloomberg data.
+Examples
+--------
+
+See :doc:`/samples/stream_kafka_doubles` for an example streaming doubles from a Kafka topic. 
+
+The GitHub repo `xlslim-code-samples`_ has further examples. Noteworthy examples are:
+ * Subscribing to Bloomberg terminal data
+	- the example modifies the standard Bloomberg sample code so you can subscribe to Bloomberg data events and receive the updates in Excel.
+ * Subscribing to IEX data
+	- the example shows how to connect to the IEX API and receive IEX data in Excel.

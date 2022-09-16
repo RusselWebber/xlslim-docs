@@ -5,7 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <meta content="xlSlim makes it simple to use Python to stream data from Kafa into Excel." lang="en" name="description" />
+  <meta content="xlSlim makes it simple to use Python to stream all types of data from Kafa into Excel. The streaming is very efficient and performant. numpy arrays and pandas DataFrames can be streamed." lang="en" name="description" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
@@ -204,12 +204,12 @@
             
   <div class="section" id="streaming-from-kafka">
 <h1>Streaming from Kafka<a class="headerlink" href="#streaming-from-kafka" title="Permalink to this headline">¶</a></h1>
-<p>xlSlim can efficiently stream data from Kafka into Excel.</p>
+<p>xlSlim can very efficiently stream data from Kafka into Excel.</p>
 <div class="section" id="preparing-the-data">
 <h2>Preparing the data<a class="headerlink" href="#preparing-the-data" title="Permalink to this headline">¶</a></h2>
 <p>This example assumes you have a Kafka broker available. One alternative is to run Kafka locally using Docker, <a class="reference external" href="https://docs.confluent.io/platform/current/quickstart/ce-docker-quickstart.html">Confluent</a> package Kafka into Docker containers with good documentation.</p>
 <p>The example uses the Python package <a class="reference external" href="https://github.com/aio-libs/aiokafka">aiokafka</a> which can be installed using pip.</p>
-<p>Once a Kafka broker is available we need to publish a sequence of 1m doubles to a Kafka topic “doubles”. We will use this Python code to publish the data.</p>
+<p>Once a Kafka broker is available we need to publish a sequence of one million doubles to a Kafka topic “doubles”. We will use this Python code to publish the data.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># A running Kafka broker can be setup simply using Docker, the Confluent platform includes a nice management console, see:</span>
 <span class="c1"># https://docs.confluent.io/platform/current/quickstart/ce-docker-quickstart.html</span>
 <span class="c1"># The aiokafka package can be installed using pip, see https://github.com/aio-libs/aiokafka</span>
@@ -247,7 +247,7 @@
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../_images/streaming_kafka_doubles_create_data.png"><img alt="Create Kafka topic loaded with doubles" src="../_images/streaming_kafka_doubles_create_data.png" style="width: 400px;" /></a>
-<p>In the Kafka dashboard I can see 1m messages are available (Confluent has a nice dashboard, your Kafka broker may not).</p>
+<p>In the Kafka dashboard I can see one million messages are available (Confluent has a nice dashboard, your Kafka broker may not).</p>
 <a class="reference internal image-reference" href="../_images/streaming_kafka_doubles_topic_available.png"><img alt="Kafka data waiting" src="../_images/streaming_kafka_doubles_topic_available.png" style="width: 400px;" /></a>
 </div>
 <div class="section" id="streaming-the-data">
@@ -289,23 +289,23 @@
 </pre></div>
 </div>
 <p>You should see a message similar to this confirming the module registration:</p>
-<a class="reference internal image-reference" href="../_images/streaming_kafka_doubles_module_registered.png"><img alt="Register consumer function" src="../_images/streaming_kafka_doubles_module_registered.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/streaming_kafka_doubles_module_registered.png"><img alt="Register the Kafka consumer function" src="../_images/streaming_kafka_doubles_module_registered.png" style="width: 400px;" /></a>
 <p>The <cite>kafka_topic_subscription()</cite> generator function is now available in Excel.</p>
 <p>Let’s call the function with the Kafka broker address and topic:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">kafka_topic_subscription</span><span class="p">(</span><span class="s2">&quot;doubles&quot;</span><span class="p">,</span><span class="s2">&quot;localhost:9092&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>You will see Excel very rapidly receiving the 1m doubles.</p>
-<a class="reference internal image-reference" href="../_images/streaming_kafka_doubles_receiving_data.png"><img alt="Receiving Kafka data" src="../_images/streaming_kafka_doubles_receiving_data.png" style="width: 400px;" /></a>
+<p>You will see Excel very rapidly receiving the one million doubles.</p>
+<a class="reference internal image-reference" href="../_images/streaming_kafka_doubles_receiving_data.png"><img alt="Receiving Kafka data in Excel" src="../_images/streaming_kafka_doubles_receiving_data.png" style="width: 400px;" /></a>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Set Excel’s Calculation Options to Automatic to see the value ticking. The functionality works perfectly in Manual calculation mode too, the value shown updates every time you press F9. Note that the generator function runs in an independent background thread so runs regardless of Excel’s calculation mode.</p>
 </div>
-<p>The Kafka subscription continues to run once all 1m messages have been received. If you rerun</p>
+<p>The Kafka subscription continues to run once all the messages have been received. If you rerun</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">kafka_double_producer</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
-<p>you will see that new values are shown in Excel.</p>
+<p>you will see that new values are streamed to Excel as soon as they are published to Kafka.</p>
 </div>
 </div>
 

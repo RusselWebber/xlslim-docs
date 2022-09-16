@@ -5,7 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <meta content="xlSlim makes it easy to stream data into Excel. Any Python generator function can be used as a data source. The complexities of IRTDServer are completely hidden." lang="en" name="description" />
+  <meta content="xlSlim makes it easy to stream data into Excel. Any Python generator function can be used as a data source. The IRTDServer interface complexities are hidden." lang="en" name="description" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
@@ -115,6 +115,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#iterator-classes">Iterator classes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#streaming-python-objects">Streaming Python objects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#allowed-function-parameters">Allowed Function Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="vba_replacement.html">Replacing VBA with Python</a></li>
@@ -214,7 +215,7 @@
 </div>
 <div class="section" id="simple-generator-functions">
 <h2>Simple Generator Functions<a class="headerlink" href="#simple-generator-functions" title="Permalink to this headline">¶</a></h2>
-<p>This Python code defines a generator function <cite>counter()</cite> that yields sequential integers from 0 to the stop value at a specified rate of updates_per_second:</p>
+<p>This Python code defines a generator function <cite>counter()</cite> that yields a sequence of integers from 0 to the stop value at a specified rate of updates_per_second:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
 
 <span class="k">def</span> <span class="nf">counter</span><span class="p">(</span><span class="n">stop</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">updates_per_second</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
@@ -236,10 +237,13 @@
 </div>
 <p>If we call the <cite>counter()</cite> function in cell A4 with a stop value of 10 and an updates_per_second value of 1 we see values from 1 to 9 updating every second in Excel.</p>
 <a class="reference internal image-reference" href="../_images/streaming_simple_counter.png"><img alt="Show stream of ints from simple counter" src="../_images/streaming_simple_counter.png" style="width: 400px;" /></a>
-<p>That is a very simple example of just how easy it is to stream data into Excel!</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Set Excel’s Calculation Options to Automatic to see the value ticking. The functionality works perfectly in Manual calculation mode too, the value shown updates every time you press F9. Note that the generator function runs in an independent background thread so runs regardless of Excel’s calculation mode.</p>
+</div>
+<p>That is a very simple example of just how easy it is to stream data into Excel! Try different update rates to see how quickly xlSlim can feed data from Python into Excel. On a fast desktop you should be able to reach about 40 messages per second. You can generate data with a higher frequency, however Excel throttles the rate at which it accepts updates. Excel’s update throttle is controlled by the <a class="reference external" href="https://docs.microsoft.com/en-us/office/vba/api/excel.rtd.throttleinterval">ThrottleInterval</a> setting. This can be set in the VBA immediate window:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Application</span><span class="o">.</span><span class="n">RTD</span><span class="o">.</span><span class="n">ThrottleInterval</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
 </div>
 </div>
 <div class="section" id="asynchronous-simple-generator-functions">
@@ -263,7 +267,7 @@
 <div class="section" id="iterator-classes">
 <h2>Iterator classes<a class="headerlink" href="#iterator-classes" title="Permalink to this headline">¶</a></h2>
 <p>Generator functions are a convenient and easy way to create iterators. Sometimes you need more control over the finer details of how the iterator behaves, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#typeiter">iterator</a> and <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html?highlight=__aiter__#asynchronous-iterators">asynchronous iterator</a> classes provide more control.</p>
-<p>This code shows the same counters implemented as classes:</p>
+<p>This code shows the same counters implemented as iterator classes:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">asyncio</span>
 
@@ -308,7 +312,7 @@
 </div>
 <div class="section" id="streaming-python-objects">
 <h2>Streaming Python objects<a class="headerlink" href="#streaming-python-objects" title="Permalink to this headline">¶</a></h2>
-<p>xlSlim allows Python objects to be streamed. To illustrate this we can can modify the counter examples to return 2x2 numpy arrays.</p>
+<p>xlSlim also allows Python objects to be streamed. You can stream numpy arrays, pandas dataframes or any other Python object. To illustrate this we can modify the previous counter examples to return 2x2 numpy arrays.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">numpy functionality requires a premium licence. See <a class="reference internal" href="../reference/licensing.html"><span class="doc">Licensing</span></a></p>
@@ -341,7 +345,7 @@
 <p class="first admonition-title">Note</p>
 <p class="last">numpy is not available in the Python installation bundled with xlSlim. The Python module must be registered with an existing Python installation that has numpy installed.</p>
 </div>
-<p>If we call the <cite>array_counter()</cite> function in cell A4 with a stop value of 10 and an updates_per_second value of 1 we see a cache handle updating every second in Excel. As usual, the xlSlim function <a class="reference internal" href="../reference/api.html#ViewPyObject" title="ViewPyObject"><code class="xref py py-func docutils literal notranslate"><span class="pre">ViewPyObject()</span></code></a> can be used to view any Python object stored in the memory cache.</p>
+<p>If we call the <cite>array_counter()</cite> function in cell A4 with a stop value of 10 and an updates_per_second value of 1 we see a cache handle updating every second in Excel. As usual the xlSlim function <a class="reference internal" href="../reference/api.html#ViewPyObject" title="ViewPyObject"><code class="xref py py-func docutils literal notranslate"><span class="pre">ViewPyObject()</span></code></a> can be used to view any Python object stored in the memory cache.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">array_counter</span><span class="p">(</span><span class="n">A3</span><span class="p">,</span><span class="n">A2</span><span class="p">)</span>
 <span class="o">=</span><span class="n">ViewPyObject</span><span class="p">(</span><span class="n">A4</span><span class="p">)</span>
 </pre></div>
@@ -350,9 +354,34 @@
 </div>
 <div class="section" id="allowed-function-parameters">
 <h2>Allowed Function Parameters<a class="headerlink" href="#allowed-function-parameters" title="Permalink to this headline">¶</a></h2>
-<p>xlSlim restricts the type of parameters you can pass into streaming data functions. Only simple types (numbers, strings and booleans) are allowed. Ranges of simple types are also allowed. This restriction ensures the streaming data functions perform optimally.</p>
+<p>xlSlim restricts the type of parameters you can pass into streaming data functions. Only simple types (numbers, strings and booleans) are allowed. Ranges of simple types are also allowed. This restriction ensures that the streaming data functions perform optimally.</p>
 <p>Any supported xlSlim output type can be used, except for lists. Streaming data functions can only return a single value. If you need to return a list of values consider using a numpy array or creating multiple streaming data functions.</p>
-<p>See <a class="reference internal" href="../samples/stream_kafka_doubles.html"><span class="doc">Streaming from Kafka</span></a> for an example streaming doubles from a Kafka topic. The GitHub repo <a class="reference external" href="https://github.com/RusselWebber/xlslim-code-samples/archive/refs/heads/main.zip">xlslim-code-samples</a> has further examples showing how to subscribe to IEX and Bloomberg data.</p>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p>See <a class="reference internal" href="../samples/stream_kafka_doubles.html"><span class="doc">Streaming from Kafka</span></a> for an example streaming doubles from a Kafka topic.</p>
+<dl class="docutils">
+<dt>The GitHub repo <a class="reference external" href="https://github.com/RusselWebber/xlslim-code-samples/archive/refs/heads/main.zip">xlslim-code-samples</a> has further examples. Noteworthy examples are:</dt>
+<dd><ul class="first last simple">
+<li><dl class="first docutils">
+<dt>Subscribing to Bloomberg terminal data</dt>
+<dd><ul class="first last">
+<li>the example modifies the standard Bloomberg sample code so you can subscribe to Bloomberg data events and receive the updates in Excel.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Subscribing to IEX data</dt>
+<dd><ul class="first last">
+<li>the example shows how to connect to the IEX API and receive IEX data in Excel.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
 </div>
 </div>
 

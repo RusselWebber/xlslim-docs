@@ -1,6 +1,6 @@
 .. meta::
     :description lang=en:
-        xlSlim makes it simple to use Python to stream data from Kafa into Excel.
+        xlSlim makes it simple to use Python to stream all types of data from Kafa into Excel. The streaming is very efficient and performant. numpy arrays and pandas DataFrames can be streamed.
 
 Streaming from Kafka
 ====================
@@ -8,7 +8,7 @@ Streaming from Kafka
 .. _Confluent: https://docs.confluent.io/platform/current/quickstart/ce-docker-quickstart.html
 .. _aiokafka: https://github.com/aio-libs/aiokafka
 
-xlSlim can efficiently stream data from Kafka into Excel.
+xlSlim can very efficiently stream data from Kafka into Excel.
 
 Preparing the data
 ------------------
@@ -17,7 +17,7 @@ This example assumes you have a Kafka broker available. One alternative is to ru
 
 The example uses the Python package `aiokafka`_ which can be installed using pip.
 
-Once a Kafka broker is available we need to publish a sequence of 1m doubles to a Kafka topic "doubles". We will use this Python code to publish the data.
+Once a Kafka broker is available we need to publish a sequence of one million doubles to a Kafka topic "doubles". We will use this Python code to publish the data.
 
 .. code-block:: python
 
@@ -62,7 +62,7 @@ Run the code directly in Python.::
   :width: 400
   :alt: Create Kafka topic loaded with doubles
 
-In the Kafka dashboard I can see 1m messages are available (Confluent has a nice dashboard, your Kafka broker may not).
+In the Kafka dashboard I can see one million messages are available (Confluent has a nice dashboard, your Kafka broker may not).
 
 .. image:: ../_static/streaming_kafka_doubles_topic_available.png
   :width: 400
@@ -115,7 +115,7 @@ You should see a message similar to this confirming the module registration:
 
 .. image:: ../_static/streaming_kafka_doubles_module_registered.png
   :width: 400
-  :alt: Register consumer function
+  :alt: Register the Kafka consumer function
 
 The `kafka_topic_subscription()` generator function is now available in Excel. 
 
@@ -123,17 +123,17 @@ Let's call the function with the Kafka broker address and topic: ::
 
     =kafka_topic_subscription("doubles","localhost:9092")
 
-You will see Excel very rapidly receiving the 1m doubles.
+You will see Excel very rapidly receiving the one million doubles.
 
 .. image:: ../_static/streaming_kafka_doubles_receiving_data.png
   :width: 400
-  :alt: Receiving Kafka data
+  :alt: Receiving Kafka data in Excel
 
 .. note::
 	Set Excel's Calculation Options to Automatic to see the value ticking. The functionality works perfectly in Manual calculation mode too, the value shown updates every time you press F9. Note that the generator function runs in an independent background thread so runs regardless of Excel's calculation mode.
 
-The Kafka subscription continues to run once all 1m messages have been received. If you rerun ::
+The Kafka subscription continues to run once all the messages have been received. If you rerun ::
 
 	python kafka_double_producer.py
 	
-you will see that new values are shown in Excel.	
+you will see that new values are streamed to Excel as soon as they are published to Kafka.

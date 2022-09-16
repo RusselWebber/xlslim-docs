@@ -1,6 +1,6 @@
 .. meta::
     :description lang=en:
-		xlSlim supports optional keyword arguments.
+		xlSlim fully supports Python functions with optional keyword arguments. Default argument values are correctly handled and passed to the function when not supplied.
 
 Optional arguments
 ==================

@@ -1,6 +1,6 @@
 .. meta::
     :description lang=en:
-        xlSlim supports Python dictionaries. Python dictionaries returned by Python functions are automatically cached by xlSlim and a cache handle is returned to Excel. These cache handles can be supplied to any function that expects a dictionary.
+        Python dictionaries returned by Python functions are automatically cached by xlSlim and a cache handle is returned to Excel. These cache handles can be supplied to any function that expects a dictionary.
 
 Passing Python dictionaries
 ===========================

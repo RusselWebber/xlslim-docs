@@ -1,6 +1,6 @@
 .. meta::
     :description lang=en:
-		xlSlim fully supports Python objects. Python objects returned by Python functions are automatically cached by xlSlim and a cache handle is returned to Excel. These cache handles can be supplied to any function that expects an instance of the cached object.
+		Python objects returned by Python functions are automatically cached by xlSlim and a cache handle is returned to Excel. These cache handles can be supplied to any function that expects an instance of the cached object.
 
 Passing Python objects
 ======================
