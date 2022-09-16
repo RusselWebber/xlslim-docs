@@ -197,6 +197,6 @@ See :doc:`/samples/stream_kafka_doubles` for an example streaming doubles from a
 
 The GitHub repo `xlslim-code-samples`_ has further examples. Noteworthy examples are:
  * Subscribing to Bloomberg terminal data
-	- the example modifies the standard Bloomberg sample code so you can subscribe to Bloomberg data events and receive the updates in Excel.
+	- the example modifies the standard `Bloomberg`_ sample code so you can subscribe to Bloomberg data events and receive the updates in Excel.
  * Subscribing to IEX data
-	- the example shows how to connect to the IEX API and receive IEX data in Excel.
+	- the example shows how to connect to the `IEX`_ API and receive IEX data in Excel.
