@@ -1,6 +1,6 @@
 .. meta::
     :description lang=en:
-        xlSlim makes it simple to use Python to stream all types of data from Kafa into Excel. The streaming is very efficient and performant. numpy arrays and pandas DataFrames can be streamed.
+        xlSlim makes it simple, efficient and performant to use Python to stream all types of data, including numpy arrays and pandas DataFrames, from Kafa into Excel.
 
 Streaming from Kafka
 ====================
