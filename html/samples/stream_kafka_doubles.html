@@ -9,8 +9,6 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <link rel="canonical" href="https://russelwebber.github.io/xlslim-docs/html/samples/stream_kafka_doubles.html" />
-  
   <title>Streaming from Kafka &mdash; xlSlim v1.0 documentation</title>
   
 
@@ -213,6 +211,8 @@
 <p>The example uses the Python package <a class="reference external" href="https://github.com/aio-libs/aiokafka">aiokafka</a> which can be installed using pip.</p>
 <p>Once a Kafka broker is available we need to publish a sequence of one million doubles to a Kafka topic “doubles”. We will use this Python code to publish the data.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># A running Kafka broker can be setup simply using Docker, the Confluent platform includes a nice management console, see:</span>
+<span class="c1"># https://docs.confluent.io/platform/current/quickstart/ce-docker-quickstart.html</span>
+<span class="c1"># The aiokafka package can be installed using pip, see https://github.com/aio-libs/aiokafka</span>
 <span class="kn">import</span> <span class="nn">pickle</span>
 <span class="kn">import</span> <span class="nn">asyncio</span>
 <span class="kn">from</span> <span class="nn">aiokafka</span> <span class="kn">import</span> <span class="n">AIOKafkaProducer</span>
@@ -256,6 +256,8 @@
 <p>This Python code defines an asynchronous generator function that yields every message received from a Kafka topic:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Shows how a subscription to a Kafka topic can be setup</span>
 <span class="c1"># A running Kafka broker can be setup simply using Docker, the Confluent platform includes a nice management console, see:</span>
+<span class="c1"># https://docs.confluent.io/platform/current/quickstart/ce-docker-quickstart.html</span>
+<span class="c1"># The aiokafka package can be installed using pip, see https://github.com/aio-libs/aiokafka</span>
 <span class="kn">import</span> <span class="nn">asyncio</span>
 <span class="kn">import</span> <span class="nn">pickle</span>
 <span class="kn">from</span> <span class="nn">aiokafka</span> <span class="kn">import</span> <span class="n">AIOKafkaConsumer</span>
