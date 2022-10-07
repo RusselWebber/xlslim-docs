@@ -67,7 +67,7 @@ Often xlSlim functions will expect a list to be passed by using a contiguous Exc
    :rtype: Excel range
 
 .. note::
-	The inputs ranges 1 to *n* must be the same size for xlSlim to succesfully stitche them together.
+	The inputs ranges 1 to *n* must be the same size for xlSlim to succesfully stitch them together.
 
 Diagnostics
 -----------
