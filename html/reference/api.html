@@ -143,6 +143,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#activate-a-licence">Activate a licence</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#deactivate-a-licence">Deactivate a licence</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#version">Version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getattr">GetAttr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getitem">GetItem</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="data_conversions.html">Data Conversions Between Excel and Python</a></li>
@@ -296,6 +298,10 @@ See <a class="reference internal" href="../user/imports.html"><span class="doc">
 </table>
 </dd></dl>
 
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The inputs ranges 1 to <em>n</em> must be the same size for xlSlim to succesfully stitche them together.</p>
+</div>
 </div>
 <div class="section" id="diagnostics">
 <h2>Diagnostics<a class="headerlink" href="#diagnostics" title="Permalink to this headline">¶</a></h2>
@@ -473,6 +479,60 @@ See <a class="reference internal" href="../user/imports.html"><span class="doc">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The xlSlim version in use.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="getattr">
+<h2>GetAttr<a class="headerlink" href="#getattr" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="#GetAttr" title="GetAttr"><code class="xref py py-func docutils literal notranslate"><span class="pre">GetAttr()</span></code></a> function efficiently gets attributes from cached Python objects.</p>
+<dl class="function">
+<dt id="GetAttr">
+<code class="descname">GetAttr</code><span class="sig-paren">(</span><em>cacheKey</em>, <em>attribute</em>, <em>defaultValue</em><span class="sig-paren">)</span><a class="headerlink" href="#GetAttr" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cacheKey</strong> – An xlSlim cached object handle.</li>
+<li><strong>attribute</strong> – The name of the attribute to retrieve.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">An error message if the object was not found. If the attribute exists it is returned, else if a defaultValue was supplied this is returned, failing which an error message is returned.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">str or object</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="getitem">
+<h2>GetItem<a class="headerlink" href="#getitem" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="#GetItem" title="GetItem"><code class="xref py py-func docutils literal notranslate"><span class="pre">GetItem()</span></code></a> function efficiently gets items from cached Python dictionaries.</p>
+<dl class="function">
+<dt id="GetItem">
+<code class="descname">GetItem</code><span class="sig-paren">(</span><em>cacheKey</em>, <em>dictKey</em>, <em>defaultValue</em><span class="sig-paren">)</span><a class="headerlink" href="#GetItem" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cacheKey</strong> – An xlSlim cached dictionary handle.</li>
+<li><strong>dictKey</strong> – The key of the item to retrieve.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">An error message if the cached dictionary was not found. If an item is stored against the key then the item is returned, else if a defaultValue was supplied this is returned, failing which an error message is returned.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">str or object</p>
+</td>
 </tr>
 </tbody>
 </table>

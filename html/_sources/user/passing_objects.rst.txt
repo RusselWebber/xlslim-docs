@@ -83,6 +83,13 @@ Internally xlSlim fetches the Person object from the memory cache and passes the
   
 The function returns a string describing the person. xlSlim hid all the technical details around object caching and no Python code changes were needed.
 
+The Person object can also be created directly without using the `create_person()` function. Every class in a registered module has an Excel function named after the class. The function signature matches the class's `__init__()` method.
+
+.. image:: ../_static/passing_objects_create_person_from_class.png
+  :width: 400
+  :alt: Create a Person object by directly creating the class  
+
+
 Passing lists of Python objects
 -------------------------------
 

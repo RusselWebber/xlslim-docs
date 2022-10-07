@@ -205,14 +205,14 @@
             
   <div class="section" id="passing-python-dictionaries">
 <h1>Passing Python dictionaries<a class="headerlink" href="#passing-python-dictionaries" title="Permalink to this headline">¶</a></h1>
-<p>xlSlim supports Python dictionaries. Python dictionaries returned by Python functions are automatically cached by xlSlim and a cache handle is returned to Excel. These cache handles can be supplied to any function that expects a dictionary. There is no ability to directly create a dictionary from data in Excel, dictionaries must always be created within Python functions.</p>
+<p>xlSlim supports Python dictionaries. Python dictionaries returned by Python functions are automatically cached by xlSlim and a cache handle is returned to Excel. These cache handles can be supplied to any function that expects a dictionary. Python dictionaries can also be created from Excel ranges, the first column is used for the dictionary keys and the second for the values.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Type hints are essential for xlSlim to determine how to handle Python dictionaries passed between your functions.</p>
 </div>
-<p>This Python module defines functions that use dictionaries to store peoples’ details such as name and age. The <cite>create_person_dict()</cite> function creates a new dictionary with a person’s details. The <cite>describe()</cite> function accepts a dictionary and returns a description of the person. Finally, the <cite>average_age()</cite> function accepts three dictionaries and returns the average age of the people contained. As usual the code has <em>no changes</em> to support xlSlim.</p>
-<p>This example is very similar to the <a class="reference internal" href="passing_objects.html"><span class="doc">Passing Python objects</span></a> example. You can clearly see that although dictionaries are useful, Python classes allow for more natural functions and also allow xlSlim to handle lists of objects being passed to functions.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span>
+<p>This Python module defines functions that use dictionaries to store peoples’ details such as name and age. The <cite>create_person_dict()</cite> function creates a new dictionary with a person’s details. The <cite>describe()</cite> function accepts a dictionary and returns a description of the person. Finally, the <cite>average_age()</cite> function accepts a list of dictionaries and returns the average age of the people contained. As usual the code has <em>no changes</em> to support xlSlim.</p>
+<p>This example is very similar to the <a class="reference internal" href="passing_objects.html"><span class="doc">Passing Python objects</span></a> example.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span>
 
 
 <span class="k">def</span> <span class="nf">create_person_dict</span><span class="p">(</span><span class="n">first_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">last_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
@@ -222,16 +222,14 @@
 
 <span class="k">def</span> <span class="nf">describe</span><span class="p">(</span><span class="n">p</span><span class="p">:</span> <span class="n">Dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Returns a string describing the person in the dictionary.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;first_name&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;last_name&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;age&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2"> years old.&quot;</span>
-
-
-<span class="k">def</span> <span class="nf">average_age</span><span class="p">(</span><span class="n">first_person</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">second_person</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">third_person</span><span class="p">:</span> <span class="n">Dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Returns the average age of three people.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">(</span>
-                <span class="n">first_person</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-                <span class="o">+</span> <span class="n">second_person</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-                <span class="o">+</span> <span class="n">third_person</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="p">)</span> <span class="o">/</span> <span class="mf">3.0</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;first_name&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;last_name&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;age&#39;</span><span class="p">)</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> years old.&quot;</span>
+        <span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">average_age</span><span class="p">(</span><span class="n">people</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Returns the average age of the people.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">((</span><span class="n">p</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;age&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">people</span><span class="p">))</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">people</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -249,24 +247,24 @@
 <a class="reference internal image-reference" href="../_images/passing_dicts_create_person.png"><img alt="A cache handle in Excel" src="../_images/passing_dicts_create_person.png" style="width: 400px;" /></a>
 <p>What is going on?</p>
 <p>xlSlim put the dictionary created by <cite>create_person_dict()</cite> into a memory cache and returned a handle to the cached item. FYI, the number after the &#64; increments every time the object is updated. If you repeatedly call the Excel function (use F2 on the cell or Ctrl-Alt-F9 to recalc the workbook) you will see the number increasing. This allows you to create dependencies between cells using standard Excel dependency trees.</p>
-<p>The cache handle can be used as an input to any function that expects a dictionary. Let’s call the <cite>describe()</cite> function.</p>
+<p>The cache handle can be used as an input to any function that expects a dictionary. Let’s call the <cite>describe_from_handle()</cite> function. We use the <cite>_from_handle</cite> version of the function as we are fetching the dictionary from the memory cache using a cache handle. Later in this document we will pass a dictionary directly from Excel.</p>
 <a class="reference internal image-reference" href="../_images/passing_dicts_describe_person.png"><img alt="Call function expecting dictionary in Excel" src="../_images/passing_dicts_describe_person.png" style="width: 400px;" /></a>
-<p>Internally xlSlim fetches the dictionary from the memory cache and passes the dictionary to the Python <cite>describe()</cite> function.</p>
+<p>Internally xlSlim fetches the dictionary from the memory cache and passes the dictionary to the Python <cite>describe_from_handle()</cite> function.</p>
 <a class="reference internal image-reference" href="../_images/passing_dicts_describe_person_result.png"><img alt="Result of call to function expecting dictionary in Excel" src="../_images/passing_dicts_describe_person_result.png" style="width: 400px;" /></a>
 <p>The function returns a string describing the person. xlSlim hid all the technical details around dictionary caching and no Python code changes were needed.</p>
+<p>xlSlim can also create a dictionary from an Excel range. The first column is the range is used for the dictionary keys and the second column is used for the values.</p>
+<a class="reference internal image-reference" href="../_images/passing_dicts_describe_person_from_range.png"><img alt="Call function expecting a dictionary passing an Excel range" src="../_images/passing_dicts_describe_person_from_range.png" style="width: 400px;" /></a>
+<p>Bob is still 25 as expected.</p>
+<a class="reference internal image-reference" href="../_images/passing_dicts_describe_person_from_range_result.png"><img alt="Result of call to function expecting a dictionary passing an Excel range" src="../_images/passing_dicts_describe_person_from_range_result.png" style="width: 400px;" /></a>
 <div class="section" id="passing-multiple-dictionaries">
 <h2>Passing multiple dictionaries<a class="headerlink" href="#passing-multiple-dictionaries" title="Permalink to this headline">¶</a></h2>
 <p>Our Python module contains this <cite>average_age()</cite> function that expects three dictionaries with peoples’ details.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">average_age</span><span class="p">(</span><span class="n">first_person</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">second_person</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">third_person</span><span class="p">:</span> <span class="n">Dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Returns the average age of three people.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="p">(</span>
-                <span class="n">first_person</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-                <span class="o">+</span> <span class="n">second_person</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-                <span class="o">+</span> <span class="n">third_person</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="p">)</span> <span class="o">/</span> <span class="mf">3.0</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">average_age</span><span class="p">(</span><span class="n">people</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Returns the average age of the people.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">((</span><span class="n">p</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;age&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">people</span><span class="p">))</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">people</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>xlSlim creates an Excel function that takes in three Python objects.</p>
+<p>xlSlim creates an Excel function that takes in a list of dictionaries.</p>
 <p>Let’s create more people and calculate their average age.</p>
 <a class="reference internal image-reference" href="../_images/passing_dicts_average_age.png"><img alt="Function expecting three PyObjects in Excel" src="../_images/passing_dicts_average_age.png" style="width: 400px;" /></a>
 <p>The average age is 30 as expected.</p>

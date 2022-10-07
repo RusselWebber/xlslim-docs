@@ -5,18 +5,18 @@
 Passing Python dictionaries
 ===========================
 
-xlSlim supports Python dictionaries. Python dictionaries returned by Python functions are automatically cached by xlSlim and a cache handle is returned to Excel. These cache handles can be supplied to any function that expects a dictionary. There is no ability to directly create a dictionary from data in Excel, dictionaries must always be created within Python functions.
+xlSlim supports Python dictionaries. Python dictionaries returned by Python functions are automatically cached by xlSlim and a cache handle is returned to Excel. These cache handles can be supplied to any function that expects a dictionary. Python dictionaries can also be created from Excel ranges, the first column is used for the dictionary keys and the second for the values.
 
 .. note::
 	Type hints are essential for xlSlim to determine how to handle Python dictionaries passed between your functions.
 
-This Python module defines functions that use dictionaries to store peoples' details such as name and age. The `create_person_dict()` function creates a new dictionary with a person's details. The `describe()` function accepts a dictionary and returns a description of the person. Finally, the `average_age()` function accepts three dictionaries and returns the average age of the people contained. As usual the code has *no changes* to support xlSlim.
+This Python module defines functions that use dictionaries to store peoples' details such as name and age. The `create_person_dict()` function creates a new dictionary with a person's details. The `describe()` function accepts a dictionary and returns a description of the person. Finally, the `average_age()` function accepts a list of dictionaries and returns the average age of the people contained. As usual the code has *no changes* to support xlSlim.
 
-This example is very similar to the :doc:`passing_objects` example. You can clearly see that although dictionaries are useful, Python classes allow for more natural functions and also allow xlSlim to handle lists of objects being passed to functions.
+This example is very similar to the :doc:`passing_objects` example.
 
 .. code-block:: python
 
-	from typing import Dict
+	from typing import Dict, List
 
 
 	def create_person_dict(first_name: str, last_name: str, age: int) -> Dict:
@@ -26,16 +26,14 @@ This example is very similar to the :doc:`passing_objects` example. You can clea
 
 	def describe(p: Dict) -> str:
 		"""Returns a string describing the person in the dictionary."""
-		return f"{p.get('first_name')} {p.get('last_name')} is {p.get('age')} years old."
-
-
-	def average_age(first_person: Dict, second_person: Dict, third_person: Dict) -> float:
-		"""Returns the average age of three people."""
 		return (
-			first_person.get("age", 0)
-			+ second_person.get("age", 0)
-			+ third_person.get("age", 0)
-		) / 3.0
+			f"{p.get('first_name')} {p.get('last_name')} is {p.get('age'):.0f} years old."
+		)
+
+
+	def average_age(people: List[Dict]) -> float:
+		"""Returns the average age of the people."""
+		return sum((p.get("age") for p in people)) / len(people)
 
 
 
@@ -69,19 +67,32 @@ What is going on?
 
 xlSlim put the dictionary created by `create_person_dict()` into a memory cache and returned a handle to the cached item. FYI, the number after the @ increments every time the object is updated. If you repeatedly call the Excel function (use F2 on the cell or Ctrl-Alt-F9 to recalc the workbook) you will see the number increasing. This allows you to create dependencies between cells using standard Excel dependency trees.
 
-The cache handle can be used as an input to any function that expects a dictionary. Let's call the `describe()` function.
+The cache handle can be used as an input to any function that expects a dictionary. Let's call the `describe_from_handle()` function. We use the `_from_handle` version of the function as we are fetching the dictionary from the memory cache using a cache handle. Later in this document we will pass a dictionary directly from Excel.
 
 .. image:: ../_static/passing_dicts_describe_person.png
   :width: 400
   :alt: Call function expecting dictionary in Excel
 
-Internally xlSlim fetches the dictionary from the memory cache and passes the dictionary to the Python `describe()` function.
+Internally xlSlim fetches the dictionary from the memory cache and passes the dictionary to the Python `describe_from_handle()` function.
 
 .. image:: ../_static/passing_dicts_describe_person_result.png
   :width: 400
   :alt: Result of call to function expecting dictionary in Excel
 
 The function returns a string describing the person. xlSlim hid all the technical details around dictionary caching and no Python code changes were needed.
+
+xlSlim can also create a dictionary from an Excel range. The first column is the range is used for the dictionary keys and the second column is used for the values.
+
+.. image:: ../_static/passing_dicts_describe_person_from_range.png
+  :width: 400
+  :alt: Call function expecting a dictionary passing an Excel range
+
+Bob is still 25 as expected.
+
+.. image:: ../_static/passing_dicts_describe_person_from_range_result.png
+  :width: 400
+  :alt: Result of call to function expecting a dictionary passing an Excel range
+
 
 Passing multiple dictionaries
 -----------------------------
@@ -90,16 +101,12 @@ Our Python module contains this `average_age()` function that expects three dict
 
 .. code-block:: python
 
-	def average_age(first_person: Dict, second_person: Dict, third_person: Dict) -> float:
-		"""Returns the average age of three people."""
-		return (
-			first_person.get("age", 0)
-			+ second_person.get("age", 0)
-			+ third_person.get("age", 0)
-		) / 3.0
+	def average_age(people: List[Dict]) -> float:
+		"""Returns the average age of the people."""
+		return sum((p.get("age") for p in people)) / len(people)
 
 
-xlSlim creates an Excel function that takes in three Python objects.
+xlSlim creates an Excel function that takes in a list of dictionaries.
 
 Let's create more people and calculate their average age.
 

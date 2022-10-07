@@ -66,6 +66,8 @@ Often xlSlim functions will expect a list to be passed by using a contiguous Exc
    :return: A new Excel range object.
    :rtype: Excel range
 
+.. note::
+	The inputs ranges 1 to *n* must be the same size for xlSlim to succesfully stitche them together.
 
 Diagnostics
 -----------
@@ -185,3 +187,31 @@ To get the version of xlSlim used in Excel you can use the :func:`XlSlimVersion`
 
    :return: The xlSlim version in use.
    :rtype: str
+
+GetAttr
+-------
+
+The :func:`GetAttr()` function efficiently gets attributes from cached Python objects.
+
+.. py:function:: GetAttr(cacheKey, attribute, defaultValue)
+
+   :param cacheKey: An xlSlim cached object handle.
+   :type key: str
+   :param attribute: The name of the attribute to retrieve.
+   :type key: str   
+   :return: An error message if the object was not found. If the attribute exists it is returned, else if a defaultValue was supplied this is returned, failing which an error message is returned.
+   :rtype: str or object
+
+GetItem
+-------
+
+The :func:`GetItem()` function efficiently gets items from cached Python dictionaries.
+
+.. py:function:: GetItem(cacheKey, dictKey, defaultValue)
+
+   :param cacheKey: An xlSlim cached dictionary handle.
+   :type key: str
+   :param dictKey: The key of the item to retrieve.
+   :type key: str   
+   :return: An error message if the cached dictionary was not found. If an item is stored against the key then the item is returned, else if a defaultValue was supplied this is returned, failing which an error message is returned.
+   :rtype: str or object

@@ -256,6 +256,8 @@
 <p>Internally xlSlim fetches the Person object from the memory cache and passes the object to the Python <cite>describe()</cite> function.</p>
 <a class="reference internal image-reference" href="../_images/passing_objects_describe_person_result.png"><img alt="Result of call to function expecting Person in Excel" src="../_images/passing_objects_describe_person_result.png" style="width: 400px;" /></a>
 <p>The function returns a string describing the person. xlSlim hid all the technical details around object caching and no Python code changes were needed.</p>
+<p>The Person object can also be created directly without using the <cite>create_person()</cite> function. Every class in a registered module has an Excel function named after the class. The function signature matches the class’s <cite>__init__()</cite> method.</p>
+<a class="reference internal image-reference" href="../_images/passing_objects_create_person_from_class.png"><img alt="Create a Person object by directly creating the class" src="../_images/passing_objects_create_person_from_class.png" style="width: 400px;" /></a>
 <div class="section" id="passing-lists-of-python-objects">
 <h2>Passing lists of Python objects<a class="headerlink" href="#passing-lists-of-python-objects" title="Permalink to this headline">¶</a></h2>
 <p>Our Python module contains this <cite>average_age()</cite> function that expects a list of <cite>Person</cite> objects</p>
