@@ -1,0 +1,306 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta content="xlSlim allows for very elegant modelling of US Equity Index Option books." lang="en" name="description" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>US Equity Index Option Pricing &mdash; xlSlim v1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Python Environments" href="../reference/environments.html" />
+    <link rel="prev" title="Creating a Pivot Table using Python" href="pivot_table.html" />
+    
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC5DSJ2TQ1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EC5DSJ2TQ1');
+</script>
+
+     
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> xlSlim
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/keyword_args.html">Optional arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/passing_simple_types.html">Passing simple data types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/passing_arrays.html">Passing lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/passing_objects.html">Passing Python objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/passing_dicts.html">Passing Python dictionaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/udfs.html">Calling VBA and other Excel add-in functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/numpy.html">numpy Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/series.html">pandas Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/dataframes.html">pandas DataFrames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/subprocess.html">Running Python in a background process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/imports.html">Advanced Module Importing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/streaming.html">Streaming data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/vba_replacement.html">Replacing VBA with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/licensing.html">Licensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="read_json_from_web.html">Read JSON data from a URL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="read_csv.html">Read CSV data from a file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sqlite.html">Using SQLite to analyse data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="yfinance.html">Loading Stock Prices from Yahoo! Finance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pca.html">Principal Components Analysis of Index Prices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="monte_carlo.html">Monte Carlo Option Pricing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nlp.html">NLP with Excel and Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stream_kafka_doubles.html">Streaming from Kafka</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pivot_table.html">Creating a Pivot Table using Python</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">US Equity Index Option Pricing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#option-pricing-and-scenarios">Option Pricing and Scenarios</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#python-code">Python Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#spreadsheet-implementation">Spreadsheet Implementation</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/environments.html">Python Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/api.html">Excel Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/data_conversions.html">Data Conversions Between Excel and Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/globals.html">Magic Global Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/licensing.html">Licensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/software_requirements.html">Software Requirements</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">xlSlim</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>US Equity Index Option Pricing</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/samples/equity_index_options.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="us-equity-index-option-pricing">
+<h1>US Equity Index Option Pricing<a class="headerlink" href="#us-equity-index-option-pricing" title="Permalink to this headline">¶</a></h1>
+<p>An example spreadsheet “finance\bs_optionpricing.xlsm” in the github <a class="reference external" href="https://github.com/RusselWebber/xlslim-code-samples/archive/refs/heads/main.zip">xlslim-code-samples</a> repo shows how xlSlim can be used to neatly model a book containing US equity index options.</p>
+<p>The spreadsheet shows how option positions are often modelled in practice, with the ability to view the impact of various spot and volatility moves on the book’s risk metrics. The calculations in the spreadsheet are accurate. The only area which has been greatly simplified is volatility - the spreadsheet uses a simple volatility curve with no interpolation between expiries and no ability to store different volatility levels by strike. In practice volatility levels are usually sourced from strike/expiry volatility surfaces that implement advanced interpolation and extrapolation techniques.</p>
+<p>We’ll first look at the spreadsheet itself and the functionality it contains, then we’ll go over how the calculations were implemented in Python and how xlSlim ties it all together.</p>
+<div class="section" id="option-pricing-and-scenarios">
+<h2>Option Pricing and Scenarios<a class="headerlink" href="#option-pricing-and-scenarios" title="Permalink to this headline">¶</a></h2>
+<p>The first part of the sheet registers the Python module “bs_optionpricing.py”. Select cell B3 and press F2 followed by Enter to register the Python module and create new Excel functions.</p>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_func_registration.png"><img alt="Register the bs_optionpricing.py module" src="../_images/index_option_pricing_func_registration.png" style="width: 400px;" /></a>
+<p>If you wished to have the module automatically register when the sheet is opened you could add this VBA code to the spreadsheet:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Private</span> <span class="n">Sub</span> <span class="n">Workbook_Open</span><span class="p">()</span>
+        <span class="n">Sheets</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">Range</span><span class="p">(</span><span class="s2">&quot;B3&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Dirty</span>
+        <span class="n">Sheets</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">Range</span><span class="p">(</span><span class="s2">&quot;B3&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Calculate</span>
+<span class="n">End</span> <span class="n">Sub</span>
+</pre></div>
+</div>
+<p>The next section is where the base state market data is entered. We will look at options on the S&amp;P 500 and the Russell 2000 indices. The values below are realistic for conditions in October 2022. The volatility inputs are greatly simplified, as discussed previously.</p>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_initial_market_data.png"><img alt="Initial spot and vol data" src="../_images/index_option_pricing_initial_market_data.png" style="width: 400px;" /></a>
+<p>We also enter the current risk free rate and option multipliers. Note the ability to map from the type of option to the model used in the <strong>Models</strong> section. Although not used here (we are always using Black Scholes) in practice this is where you would map to different valuation models for American options. US equity stocks are typically American.</p>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_initial_market_data_part2.png"><img alt="Initial spot and vol data" src="../_images/index_option_pricing_initial_market_data_part2.png" style="width: 400px;" /></a>
+<p>In the <strong>Data Tweaks</strong> section we can modify the spot and volatility levels. Spot levels are adjusted by multiplying the spot index level by a percentage and volatility levels are adjusted by adding fixed volatility units to all volatility levels. This is very similar to what is done in practice, although you would usually be able to do more sophisticated adjustments that are not constant across all expiries and strikes.</p>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_initial_market_data_tweaks.png"><img alt="Spot and vol tweaks" src="../_images/index_option_pricing_initial_market_data_tweaks.png" style="width: 400px;" /></a>
+<p>Finally, in the <strong>Option Portfolio</strong> section we enter the option positions we would like to model. We will enter an SPX Long Condor with Put options as discussed in this Investopedia article <a class="reference external" href="https://www.investopedia.com/terms/c/condorspread.asp">Condor Spread</a>. We are long an SPX 3650 Dec22 Put, short an SPX 3700 Dec22 Put, short an SPX 3750 Dec22 Put and long an SPX 3800 Dec22 Put.</p>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_condor_position.png"><img alt="Enter the combination of options for a condor" src="../_images/index_option_pricing_condor_position.png" style="width: 400px;" /></a>
+<p>Our position risks are shown, note the toggle in cell H20 that controls if details are shown per position. Showing details does take a little longer.</p>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_position_risks.png"><img alt="Option position risks" src="../_images/index_option_pricing_position_risks.png" style="width: 400px;" /></a>
+<p>Further down in the spreadsheet we reach the <strong>Portfolio Stress Testing</strong> section. The toggle in cell B35 enables or disables the calculations.</p>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_position_pv_stress_test.png"><img alt="Option position pv under various spot and volatility moves" src="../_images/index_option_pricing_position_pv_stress_test.png" style="width: 400px;" /></a>
+<p>The toggle in cell B36 is used to select which risk metric to display.</p>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_position_risk_metric_toggle.png"><img alt="The risk metric displayed can be selected" src="../_images/index_option_pricing_position_risk_metric_toggle.png" style="width: 400px;" /></a>
+<p>Further down the sheet we have plots showing the effect of spot and volatility tweaks on the selected risk metric. We can see that the Condor strategy has low deltas for small spot moves.</p>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_position_delta_plots.png"><img alt="Delta plots for the Condor strategy" src="../_images/index_option_pricing_position_delta_plots.png" style="width: 400px;" /></a>
+<p>If we adjust the asof date in cell B5 to be the option expiry date of 16 Dec 2022,</p>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_set_asof_to_expiry.png"><img alt="Set asof to the expiry date" src="../_images/index_option_pricing_set_asof_to_expiry.png" style="width: 400px;" /></a>
+<p>and select to view pv in the drop down at cell B36</p>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_select_pv_as_risk_metric.png"><img alt="Select pv as the risk metric" src="../_images/index_option_pricing_select_pv_as_risk_metric.png" style="width: 400px;" /></a>
+<p>We can then see the traditional hockey stick plots for the strategy, this is a useful way to check you have correctly specified your positions.</p>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_condor_position_hockey_stick_plots.png"><img alt="Hockey stick plots for the positions" src="../_images/index_option_pricing_condor_position_hockey_stick_plots.png" style="width: 400px;" /></a>
+<p>This spreadsheet presents a simplied - but still detailed enough to be realistic - view of how Equity Index option positions are analyzed in practice by portfolio managers. The spreadsheet does not account for option premiums so does not show PL, additionally the sheet does not allow for the simulation of various hedging techniques. Nevertheless I hope the spreadsheet is useful as it does present a more real world view of how options are modelled as compared to the more common presentations which simply show basic Black Scholes pricing and greeks.</p>
+</div>
+<div class="section" id="python-code">
+<h2>Python Code<a class="headerlink" href="#python-code" title="Permalink to this headline">¶</a></h2>
+<p>I will soon update this section and go through the code in “finance\bs_optionpricing.py”</p>
+</div>
+<div class="section" id="spreadsheet-implementation">
+<h2>Spreadsheet Implementation<a class="headerlink" href="#spreadsheet-implementation" title="Permalink to this headline">¶</a></h2>
+<p>I will soon update this section and go through how I used xlSlim to create the spreadsheet.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../reference/environments.html" class="btn btn-neutral float-right" title="Python Environments" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="pivot_table.html" class="btn btn-neutral float-left" title="Creating a Pivot Table using Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2022, Russel Webber
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -196,9 +196,9 @@ The :func:`GetAttr()` function efficiently gets attributes from cached Python ob
 .. py:function:: GetAttr(cacheKey, attribute, defaultValue)
 
    :param cacheKey: An xlSlim cached object handle.
-   :type key: str
+   :type cacheKey: str
    :param attribute: The name of the attribute to retrieve.
-   :type key: str   
+   :type attribute: str   
    :return: An error message if the object was not found. If the attribute exists it is returned, else if a defaultValue was supplied this is returned, failing which an error message is returned.
    :rtype: str or object
 
@@ -210,8 +210,8 @@ The :func:`GetItem()` function efficiently gets items from cached Python diction
 .. py:function:: GetItem(cacheKey, dictKey, defaultValue)
 
    :param cacheKey: An xlSlim cached dictionary handle.
-   :type key: str
+   :type cacheKey: str
    :param dictKey: The key of the item to retrieve.
-   :type key: str   
+   :type dictKey: str   
    :return: An error message if the cached dictionary was not found. If an item is stored against the key then the item is returned, else if a defaultValue was supplied this is returned, failing which an error message is returned.
    :rtype: str or object

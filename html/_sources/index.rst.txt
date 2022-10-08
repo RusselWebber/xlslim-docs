@@ -66,6 +66,7 @@ xlSlim - call Python code from Excel with **no code changes!**
    samples/nlp
    samples/stream_kafka_doubles
    samples/pivot_table
+   samples/equity_index_options
    
 -------------------------------------
 
@@ -79,4 +80,3 @@ xlSlim - call Python code from Excel with **no code changes!**
    reference/globals   
    reference/licensing   
    reference/software_requirements
-

@@ -1,0 +1,117 @@
+.. meta::
+    :description lang=en:
+        xlSlim allows for very elegant modelling of US Equity Index Option books.
+
+US Equity Index Option Pricing
+==============================
+
+.. _xlslim-code-samples: https://github.com/RusselWebber/xlslim-code-samples/archive/refs/heads/main.zip
+.. _Condor Spread: https://www.investopedia.com/terms/c/condorspread.asp
+
+An example spreadsheet "finance\\bs_optionpricing.xlsm" in the github `xlslim-code-samples`_ repo shows how xlSlim can be used to neatly model a book containing US equity index options.
+
+The spreadsheet shows how option positions are often modelled in practice, with the ability to view the impact of various spot and volatility moves on the book's risk metrics. The calculations in the spreadsheet are accurate. The only area which has been greatly simplified is volatility - the spreadsheet uses a simple volatility curve with no interpolation between expiries and no ability to store different volatility levels by strike. In practice volatility levels are usually sourced from strike/expiry volatility surfaces that implement advanced interpolation and extrapolation techniques.
+
+We'll first look at the spreadsheet itself and the functionality it contains, then we'll go over how the calculations were implemented in Python and how xlSlim ties it all together.
+
+Option Pricing and Scenarios
+----------------------------
+
+The first part of the sheet registers the Python module "bs_optionpricing.py". Select cell B3 and press F2 followed by Enter to register the Python module and create new Excel functions.
+
+.. image:: ../_static/index_option_pricing_func_registration.png
+  :width: 400
+  :alt: Register the bs_optionpricing.py module
+
+If you wished to have the module automatically register when the sheet is opened you could add this VBA code to the spreadsheet:
+
+.. code-block:: python
+
+	Private Sub Workbook_Open()
+		Sheets(1).Range("B3").Dirty
+		Sheets(1).Range("B3").Calculate
+	End Sub
+
+The next section is where the base state market data is entered. We will look at options on the S&P 500 and the Russell 2000 indices. The values below are realistic for conditions in October 2022. The volatility inputs are greatly simplified, as discussed previously.
+
+.. image:: ../_static/index_option_pricing_initial_market_data.png
+  :width: 400
+  :alt: Initial spot and vol data
+
+We also enter the current risk free rate and option multipliers. Note the ability to map from the type of option to the model used in the **Models** section. Although not used here (we are always using Black Scholes) in practice this is where you would map to different valuation models for American options. US equity stocks are typically American.
+
+.. image:: ../_static/index_option_pricing_initial_market_data_part2.png
+  :width: 400
+  :alt: Initial spot and vol data
+
+In the **Data Tweaks** section we can modify the spot and volatility levels. Spot levels are adjusted by multiplying the spot index level by a percentage and volatility levels are adjusted by adding fixed volatility units to all volatility levels. This is very similar to what is done in practice, although you would usually be able to do more sophisticated adjustments that are not constant across all expiries and strikes.
+
+.. image:: ../_static/index_option_pricing_initial_market_data_tweaks.png
+  :width: 400
+  :alt: Spot and vol tweaks
+  
+Finally, in the **Option Portfolio** section we enter the option positions we would like to model. We will enter an SPX Long Condor with Put options as discussed in this Investopedia article `Condor Spread`_. We are long an SPX 3650 Dec22 Put, short an SPX 3700 Dec22 Put, short an SPX 3750 Dec22 Put and long an SPX 3800 Dec22 Put.
+
+.. image:: ../_static/index_option_pricing_condor_position.png
+  :width: 400
+  :alt: Enter the combination of options for a condor
+
+Our position risks are shown, note the toggle in cell H20 that controls if details are shown per position. Showing details does take a little longer.
+
+.. image:: ../_static/index_option_pricing_position_risks.png
+  :width: 400
+  :alt: Option position risks
+
+Further down in the spreadsheet we reach the **Portfolio Stress Testing** section. The toggle in cell B35 enables or disables the calculations. 
+
+.. image:: ../_static/index_option_pricing_position_pv_stress_test.png
+  :width: 400
+  :alt: Option position pv under various spot and volatility moves
+
+The toggle in cell B36 is used to select which risk metric to display.
+
+.. image:: ../_static/index_option_pricing_position_risk_metric_toggle.png
+  :width: 400
+  :alt: The risk metric displayed can be selected
+
+Further down the sheet we have plots showing the effect of spot and volatility tweaks on the selected risk metric. We can see that the Condor strategy has low deltas for small spot moves.
+
+.. image:: ../_static/index_option_pricing_position_delta_plots.png
+  :width: 400
+  :alt: Delta plots for the Condor strategy
+  
+If we adjust the asof date in cell B5 to be the option expiry date of 16 Dec 2022,
+
+.. image:: ../_static/index_option_pricing_set_asof_to_expiry.png
+  :width: 400
+  :alt: Set asof to the expiry date
+
+and select to view pv in the drop down at cell B36 
+
+.. image:: ../_static/index_option_pricing_select_pv_as_risk_metric.png
+  :width: 400
+  :alt: Select pv as the risk metric
+
+We can then see the traditional hockey stick plots for the strategy, this is a useful way to check you have correctly specified your positions.
+
+.. image:: ../_static/index_option_pricing_condor_position_hockey_stick_plots.png
+  :width: 400
+  :alt: Hockey stick plots for the positions
+
+This spreadsheet presents a simplied - but still detailed enough to be realistic - view of how Equity Index option positions are analyzed in practice by portfolio managers. The spreadsheet does not account for option premiums so does not show PL, additionally the sheet does not allow for the simulation of various hedging techniques. Nevertheless I hope the spreadsheet is useful as it does present a more real world view of how options are modelled as compared to the more common presentations which simply show basic Black Scholes pricing and greeks.
+
+
+
+
+
+Python Code
+-----------
+
+I will soon update this section and go through the code in "finance\\bs_optionpricing.py"
+
+Spreadsheet Implementation
+--------------------------
+
+I will soon update this section and go through how I used xlSlim to create the spreadsheet.
+
+
