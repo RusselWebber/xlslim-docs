@@ -98,7 +98,7 @@ We can then see the traditional hockey stick plots for the strategy, this is a u
   :width: 400
   :alt: Hockey stick plots for the positions
 
-This spreadsheet presents a simplied - but still detailed enough to be realistic - view of how Equity Index option positions are analyzed in practice by portfolio managers. The spreadsheet does not account for option premiums so does not show PL, additionally the sheet does not allow for the simulation of various hedging techniques. Nevertheless I hope the spreadsheet is useful as it does present a more real world view of how options are modelled as compared to the more common presentations which simply show basic Black Scholes pricing and greeks.
+This spreadsheet presents a simplified - but still detailed enough to be realistic - view of how Equity Index option positions are analyzed in practice by portfolio managers. The spreadsheet does not account for option premiums so does not show PL, additionally the sheet does not allow for the simulation of various hedging techniques. Nevertheless I hope the spreadsheet is useful as it does present a more real world view of how options are modelled as compared to the more common presentations which simply show basic Black Scholes pricing and greeks.
 
 
 
