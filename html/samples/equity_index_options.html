@@ -246,7 +246,278 @@
 </div>
 <div class="section" id="python-code">
 <h2>Python Code<a class="headerlink" href="#python-code" title="Permalink to this headline">¶</a></h2>
-<p>I will soon update this section and go through the code in “finance\bs_optionpricing.py”</p>
+<p>Let’s go through the code in “finance\bs_optionpricing.py”. The full file is avaliable in the github <a class="reference external" href="https://github.com/RusselWebber/xlslim-code-samples/archive/refs/heads/main.zip">xlslim-code-samples</a> repo.</p>
+<p>We start by importing the required functions from various modules in the Python standard library.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># An example of how option portfolios are risk managed</span>
+<span class="c1"># Requires Python 3.8+ due to the use of NormalDist</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">nan</span><span class="p">,</span> <span class="n">log</span><span class="p">,</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">exp</span>
+<span class="kn">from</span> <span class="nn">statistics</span> <span class="kn">import</span> <span class="n">NormalDist</span>
+<span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Callable</span>
+</pre></div>
+</div>
+<p>Next we create two module level constants for logging and the normal distribution.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">LOG</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="c1"># Using the recent NormalDist added in Py3.8</span>
+<span class="n">ND</span> <span class="o">=</span> <span class="n">NormalDist</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We define an OptionResults class to store pv and greeks for each option. Note how a <a class="reference external" href="https://docs.python.org/3/library/dataclasses.html">dataclass</a> is used to concisely specify the relevant properties. If you have not used dataclasses before I encourage you to read about them, they are very useful and integrate well with xlSlim.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="nb">repr</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">OptionResults</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;An option price and analytical greeks.&quot;&quot;&quot;</span>
+
+        <span class="n">pv</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">nan</span>
+        <span class="n">delta</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">nan</span>
+        <span class="n">gamma</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">nan</span>
+        <span class="n">vega</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">nan</span>
+        <span class="n">theta</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">nan</span>
+</pre></div>
+</div>
+<p>We define an <a class="reference external" href="https://docs.python.org/3/library/enum.html">enum</a> to determine if an option is a call or put:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">OptionType</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Option type enum - CALL or PUT&quot;&quot;&quot;</span>
+
+        <span class="n">CALL</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">PUT</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>And another <a class="reference external" href="https://docs.python.org/3/library/dataclasses.html">dataclass</a>  to capture each option’s properties:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="nb">repr</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">VanillaEuropeanOption</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;A vanilla European option&quot;&quot;&quot;</span>
+
+        <span class="n">strike</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">nan</span>
+        <span class="n">expiry</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span>
+        <span class="n">underlying</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">option_type</span><span class="p">:</span> <span class="n">OptionType</span> <span class="o">=</span> <span class="n">OptionType</span><span class="o">.</span><span class="n">CALL</span>
+        <span class="n">currency</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>
+</pre></div>
+</div>
+<p>The OptionPortfolio class gathers together option positions into a portfolio (often also called a book).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">OptionPortfolio</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;A portfolio of options&quot;&quot;&quot;</span>
+
+        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">options</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">VanillaEuropeanOption</span><span class="p">],</span> <span class="n">notionals</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]):</span>
+
+                <span class="c1"># Exclude zero notionals</span>
+                <span class="n">notionals</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">notionals</span> <span class="k">if</span> <span class="n">n</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">]</span>
+
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">options</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">notionals</span><span class="p">):</span>
+                        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                                <span class="sa">f</span><span class="s2">&quot;The number of options </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">options</span><span class="p">)</span><span class="si">}</span><span class="s2"> must equal the number of notionals </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">notionals</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+                        <span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_options</span> <span class="o">=</span> <span class="n">options</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_notionals</span> <span class="o">=</span> <span class="n">notionals</span>
+
+        <span class="nd">@property</span>
+        <span class="k">def</span> <span class="nf">options</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span>
+
+        <span class="nd">@property</span>
+        <span class="k">def</span> <span class="nf">notionals</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_notionals</span>
+</pre></div>
+</div>
+<p>We define a very simplified VolatilityCurve class to store the volatility levels per expiry. In practice volatility surfaces are used. Volatility surfaces typically store volatility levels in strike and expiry dimensions, with support for sophisticated interpolation and extrapolation in each dimension. Most of the code presented in this document is close to what is used in practice, the simplified VolatilityCurve class is the single biggest simplification I have made to keep the code length manageable.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">VolatilityCurve</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;A very simplistic volatility curve.</span>
+
+<span class="sd">        In practice volatilities are stored on a surface with strike and expiry dimensions.</span>
+<span class="sd">        Volatility surfaces also usually support interpolation and extrapolation in the strike and expiry dimensions.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expiries</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">datetime</span><span class="p">],</span> <span class="n">volatilties</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]):</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">expiries</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">volatilties</span><span class="p">):</span>
+                        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The lengths of the expiries and volatilities must match.&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_vol_curve</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">expiries</span><span class="p">,</span> <span class="n">volatilties</span><span class="p">))</span>
+
+        <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="n">vol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vol_curve</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">vol</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Failed to find a vol level for </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">&quot;</span>
+                        <span class="n">LOG</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+                        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">vol</span>
+</pre></div>
+</div>
+<p>The OptionPortfolioCalculator class pulls the classes defined so far together. An OptionPortfolio and all the required market data classes are supplied when creating an OptionPortfolioCalculator object and all the calculations are run.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">OptionPortfolioCalculator</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Calculate pv and risk for a portfolio of options.&quot;&quot;&quot;</span>
+
+        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+                <span class="bp">self</span><span class="p">,</span>
+                <span class="n">models</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callable</span><span class="p">],</span>
+                <span class="n">option_portfolio</span><span class="p">:</span> <span class="n">OptionPortfolio</span><span class="p">,</span>
+                <span class="n">asof</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span>
+                <span class="n">spot_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+                <span class="n">vol_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">VolatilityCurve</span><span class="p">],</span>
+                <span class="n">cost_of_carry_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+                <span class="n">risk_free_rate_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+        <span class="p">):</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">_asof</span> <span class="o">=</span> <span class="n">asof</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_models</span> <span class="o">=</span> <span class="n">models</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_option_portfolio</span> <span class="o">=</span> <span class="n">option_portfolio</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_spot_dict</span> <span class="o">=</span> <span class="n">spot_dict</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_vol_dict</span> <span class="o">=</span> <span class="n">vol_dict</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_cost_of_carry_dict</span> <span class="o">=</span> <span class="n">cost_of_carry_dict</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_risk_free_rate_dict</span> <span class="o">=</span> <span class="n">risk_free_rate_dict</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_option_results</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_pv</span> <span class="o">=</span> <span class="n">nan</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_delta</span> <span class="o">=</span> <span class="n">nan</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_gamma</span> <span class="o">=</span> <span class="n">nan</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_vega</span> <span class="o">=</span> <span class="n">nan</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_theta</span> <span class="o">=</span> <span class="n">nan</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">_calculate</span><span class="p">()</span>
+
+        <span class="k">def</span> <span class="nf">_calculate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                <span class="n">asof</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_asof</span>
+
+                <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">o</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_option_portfolio</span><span class="o">.</span><span class="n">notionals</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_option_portfolio</span><span class="o">.</span><span class="n">options</span>
+                <span class="p">):</span>
+
+                        <span class="c1"># Loop through the options</span>
+                        <span class="k">try</span><span class="p">:</span>
+                                <span class="c1"># Fetch the inputs</span>
+                                <span class="n">model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_models</span><span class="p">[</span><span class="n">o</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">]</span>
+                                <span class="n">spot</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_spot_dict</span><span class="p">[</span><span class="n">o</span><span class="o">.</span><span class="n">underlying</span><span class="p">]</span>
+                                <span class="n">cost_of_carry</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cost_of_carry_dict</span><span class="p">[</span><span class="n">o</span><span class="o">.</span><span class="n">underlying</span><span class="p">]</span>
+                                <span class="n">vol_curve</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vol_dict</span><span class="p">[</span><span class="n">o</span><span class="o">.</span><span class="n">underlying</span><span class="p">]</span>
+                                <span class="n">risk_free_rate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_risk_free_rate_dict</span><span class="p">[</span><span class="n">o</span><span class="o">.</span><span class="n">currency</span><span class="p">]</span>
+
+                                <span class="c1"># And call the valuation model for each option</span>
+
+                                <span class="bp">self</span><span class="o">.</span><span class="n">_option_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                                        <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">model</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">spot</span><span class="p">,</span> <span class="n">asof</span><span class="p">,</span> <span class="n">risk_free_rate</span><span class="p">,</span> <span class="n">cost_of_carry</span><span class="p">,</span> <span class="n">vol_curve</span><span class="p">))</span>
+                                <span class="p">)</span>
+                        <span class="k">except</span><span class="p">:</span>
+                                <span class="n">LOG</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to calculate </span><span class="si">{</span><span class="n">o</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+                <span class="c1"># The portfolio risks are the sum of the individual options * their notionals</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_pv</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">n</span> <span class="o">*</span> <span class="n">o</span><span class="o">.</span><span class="n">pv</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">o</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_option_results</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_delta</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">n</span> <span class="o">*</span> <span class="n">o</span><span class="o">.</span><span class="n">delta</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">o</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_option_results</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_gamma</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">n</span> <span class="o">*</span> <span class="n">o</span><span class="o">.</span><span class="n">gamma</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">o</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_option_results</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_vega</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">n</span> <span class="o">*</span> <span class="n">o</span><span class="o">.</span><span class="n">vega</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">o</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_option_results</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_theta</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">n</span> <span class="o">*</span> <span class="n">o</span><span class="o">.</span><span class="n">theta</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">o</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_option_results</span><span class="p">))</span>
+
+        <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;OptionPortfolioCalculator(pv=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">pv</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, delta=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">delta</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, gamma=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">gamma</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, vega=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">vega</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, theta=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">)&quot;</span>
+
+        <span class="nd">@property</span>
+        <span class="k">def</span> <span class="nf">pv</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pv</span>
+
+        <span class="nd">@property</span>
+        <span class="k">def</span> <span class="nf">delta</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_delta</span>
+
+        <span class="nd">@property</span>
+        <span class="k">def</span> <span class="nf">gamma</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gamma</span>
+
+        <span class="nd">@property</span>
+        <span class="k">def</span> <span class="nf">vega</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vega</span>
+
+        <span class="nd">@property</span>
+        <span class="k">def</span> <span class="nf">theta</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_theta</span>
+</pre></div>
+</div>
+<p>Finally the bsm_option_calculator(..) function is where the Black-Scholes-Merton calculations are run. Note how in the highlighted lines we define terms and then reuse them to calculate pv and the various greeks as efficiently as possible. This is how these calculations are typically run in practice, reusing calculation terms and calculating all greeks at once is much more efficient than having a function defined for each option greek.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bsm_option_calculator</span><span class="p">(</span>
+        <span class="n">opt</span><span class="p">:</span> <span class="n">VanillaEuropeanOption</span><span class="p">,</span>
+        <span class="n">spot</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+        <span class="n">asof</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span>
+        <span class="n">risk_free_rate</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+        <span class="n">cost_of_carry</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+        <span class="n">volatility_curve</span><span class="p">:</span> <span class="n">VolatilityCurve</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">OptionResults</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;The Black-Scholes-Merton calculation.&quot;&quot;&quot;</span>
+
+        <span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="n">opt</span><span class="o">.</span><span class="n">expiry</span> <span class="o">-</span> <span class="n">asof</span><span class="p">)</span><span class="o">.</span><span class="n">days</span> <span class="o">/</span> <span class="mi">365</span>
+        <span class="n">return_instrinsic</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="k">if</span> <span class="n">t</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="c1"># A simple test for expiry, in practice you would value up until expiry time.</span>
+                <span class="c1"># After expiry the intrinsic value is returned</span>
+                <span class="n">return_instrinsic</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="n">volatility</span> <span class="o">=</span> <span class="n">volatility_curve</span><span class="p">[</span><span class="n">opt</span><span class="o">.</span><span class="n">expiry</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">volatility</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="c1"># Return the intrinsic value if the vol level goes to 0 or below</span>
+                <span class="n">return_instrinsic</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">return_instrinsic</span><span class="p">:</span>
+
+                <span class="c1"># Note how calculations are reused and the pv and greeks are calculated</span>
+                <span class="c1"># at once for maximum efficiency</span>
+<span class="hll">                <span class="n">sqrt_t</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</span><span class="hll">                <span class="n">vol_sqrt_t</span> <span class="o">=</span> <span class="n">volatility</span> <span class="o">*</span> <span class="n">sqrt_t</span>
+</span><span class="hll">                <span class="n">d1</span> <span class="o">=</span> <span class="p">(</span>
+</span><span class="hll">                        <span class="n">log</span><span class="p">(</span><span class="n">spot</span> <span class="o">/</span> <span class="n">opt</span><span class="o">.</span><span class="n">strike</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">cost_of_carry</span> <span class="o">+</span> <span class="n">volatility</span><span class="o">**</span><span class="mf">2.0</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">t</span>
+</span><span class="hll">                <span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">vol_sqrt_t</span><span class="p">)</span>
+</span><span class="hll">                <span class="n">cdf_d1</span> <span class="o">=</span> <span class="n">ND</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">d1</span><span class="p">)</span>
+</span><span class="hll">                <span class="n">cdf_neg_d1</span> <span class="o">=</span> <span class="n">ND</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="o">-</span><span class="n">d1</span><span class="p">)</span>
+</span><span class="hll">                <span class="n">pdf_d1</span> <span class="o">=</span> <span class="n">ND</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">d1</span><span class="p">)</span>
+</span><span class="hll">                <span class="n">d2</span> <span class="o">=</span> <span class="n">d1</span> <span class="o">-</span> <span class="n">vol_sqrt_t</span>
+</span><span class="hll">                <span class="n">cdf_d2</span> <span class="o">=</span> <span class="n">ND</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">d2</span><span class="p">)</span>
+</span><span class="hll">                <span class="n">cdf_neg_d2</span> <span class="o">=</span> <span class="n">ND</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="o">-</span><span class="n">d2</span><span class="p">)</span>
+</span><span class="hll">
+</span><span class="hll">                <span class="n">df</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">risk_free_rate</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+</span><span class="hll">                <span class="n">net_r</span> <span class="o">=</span> <span class="n">cost_of_carry</span> <span class="o">-</span> <span class="n">risk_free_rate</span>
+</span><span class="hll">                <span class="n">carry</span> <span class="o">=</span> <span class="n">exp</span><span class="p">((</span><span class="n">net_r</span><span class="p">)</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+</span><span class="hll">                <span class="n">carry_pdf_d1</span> <span class="o">=</span> <span class="n">carry</span> <span class="o">*</span> <span class="n">pdf_d1</span>
+</span><span class="hll">                <span class="n">spot_carry_pdf_d1</span> <span class="o">=</span> <span class="n">spot</span> <span class="o">*</span> <span class="n">carry_pdf_d1</span>
+</span><span class="hll">                <span class="n">disc_strike</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">strike</span> <span class="o">*</span> <span class="n">df</span>
+</span>
+                <span class="k">if</span> <span class="n">opt</span><span class="o">.</span><span class="n">option_type</span> <span class="o">==</span> <span class="n">OptionType</span><span class="o">.</span><span class="n">CALL</span><span class="p">:</span>
+                        <span class="n">delta</span> <span class="o">=</span> <span class="n">carry</span> <span class="o">*</span> <span class="n">cdf_d1</span>
+                        <span class="n">value</span> <span class="o">=</span> <span class="n">spot</span> <span class="o">*</span> <span class="n">delta</span> <span class="o">-</span> <span class="n">disc_strike</span> <span class="o">*</span> <span class="n">cdf_d2</span>
+                        <span class="n">theta</span> <span class="o">=</span> <span class="p">(</span>
+                                <span class="o">-</span><span class="n">spot_carry_pdf_d1</span> <span class="o">*</span> <span class="n">volatility</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">sqrt_t</span><span class="p">)</span>
+                                <span class="o">-</span> <span class="p">(</span><span class="n">net_r</span><span class="p">)</span> <span class="o">*</span> <span class="n">spot</span> <span class="o">*</span> <span class="n">delta</span>
+                                <span class="o">-</span> <span class="n">risk_free_rate</span> <span class="o">*</span> <span class="n">disc_strike</span> <span class="o">*</span> <span class="n">cdf_d2</span>
+                        <span class="p">)</span>
+                <span class="k">elif</span> <span class="n">opt</span><span class="o">.</span><span class="n">option_type</span> <span class="o">==</span> <span class="n">OptionType</span><span class="o">.</span><span class="n">PUT</span><span class="p">:</span>
+                        <span class="n">delta</span> <span class="o">=</span> <span class="o">-</span><span class="n">carry</span> <span class="o">*</span> <span class="n">cdf_neg_d1</span>
+                        <span class="n">value</span> <span class="o">=</span> <span class="n">disc_strike</span> <span class="o">*</span> <span class="n">cdf_neg_d2</span> <span class="o">-</span> <span class="n">spot</span> <span class="o">*</span> <span class="o">-</span><span class="n">delta</span>
+                        <span class="n">theta</span> <span class="o">=</span> <span class="p">(</span>
+                                <span class="o">-</span><span class="n">spot_carry_pdf_d1</span> <span class="o">*</span> <span class="n">volatility</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">sqrt_t</span><span class="p">)</span>
+                                <span class="o">+</span> <span class="p">(</span><span class="n">net_r</span><span class="p">)</span> <span class="o">*</span> <span class="n">spot</span> <span class="o">*</span> <span class="o">-</span><span class="n">delta</span>
+                                <span class="o">+</span> <span class="n">risk_free_rate</span> <span class="o">*</span> <span class="n">disc_strike</span> <span class="o">*</span> <span class="n">cdf_neg_d2</span>
+                        <span class="p">)</span>
+                <span class="n">gamma</span> <span class="o">=</span> <span class="n">carry_pdf_d1</span> <span class="o">/</span> <span class="p">(</span><span class="n">spot</span> <span class="o">*</span> <span class="n">vol_sqrt_t</span><span class="p">)</span> <span class="o">*</span> <span class="n">spot</span><span class="o">**</span><span class="mf">2.0</span> <span class="o">/</span> <span class="mf">100.0</span>
+                <span class="n">vega</span> <span class="o">=</span> <span class="n">spot_carry_pdf_d1</span> <span class="o">*</span> <span class="n">sqrt_t</span> <span class="o">/</span> <span class="mf">100.0</span>
+                <span class="n">theta</span> <span class="o">=</span> <span class="n">theta</span> <span class="o">/</span> <span class="mf">365.0</span>  <span class="c1"># One day theta)</span>
+                <span class="n">delta</span> <span class="o">=</span> <span class="n">delta</span> <span class="o">*</span> <span class="n">spot</span>
+                <span class="k">return</span> <span class="n">OptionResults</span><span class="p">(</span><span class="n">pv</span><span class="o">=</span><span class="n">value</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="n">delta</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="n">gamma</span><span class="p">,</span> <span class="n">vega</span><span class="o">=</span><span class="n">vega</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="n">theta</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">OptionResults</span><span class="p">(</span>
+                        <span class="n">pv</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">spot</span> <span class="o">-</span> <span class="n">opt</span><span class="o">.</span><span class="n">strike</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">opt</span><span class="o">.</span><span class="n">option_type</span> <span class="ow">is</span> <span class="n">OptionType</span><span class="o">.</span><span class="n">CALL</span>
+                        <span class="k">else</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">opt</span><span class="o">.</span><span class="n">strike</span> <span class="o">-</span> <span class="n">spot</span><span class="p">),</span>
+                        <span class="n">delta</span><span class="o">=</span><span class="n">spot</span> <span class="k">if</span> <span class="n">opt</span><span class="o">.</span><span class="n">option_type</span> <span class="ow">is</span> <span class="n">OptionType</span><span class="o">.</span><span class="n">CALL</span> <span class="k">else</span> <span class="o">-</span><span class="n">spot</span><span class="p">,</span>
+                        <span class="n">gamma</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                        <span class="n">vega</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                        <span class="n">theta</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                <span class="p">)</span>
+</pre></div>
+</div>
+<p>This last little function is used to get a function pointer to the bsm_option_calculator(..) function.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_bsm_option_calculator</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Get a function pointer to the Black-Scholes-Merton calculator.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">bsm_option_calculator</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="spreadsheet-implementation">
 <h2>Spreadsheet Implementation<a class="headerlink" href="#spreadsheet-implementation" title="Permalink to this headline">¶</a></h2>
