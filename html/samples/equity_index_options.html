@@ -495,6 +495,9 @@
                                 <span class="o">+</span> <span class="p">(</span><span class="n">net_r</span><span class="p">)</span> <span class="o">*</span> <span class="n">spot</span> <span class="o">*</span> <span class="o">-</span><span class="n">delta</span>
                                 <span class="o">+</span> <span class="n">risk_free_rate</span> <span class="o">*</span> <span class="n">disc_strike</span> <span class="o">*</span> <span class="n">cdf_neg_d2</span>
                         <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown option type </span><span class="si">{</span><span class="n">opt</span><span class="o">.</span><span class="n">option_type</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
                 <span class="n">gamma</span> <span class="o">=</span> <span class="n">carry_pdf_d1</span> <span class="o">/</span> <span class="p">(</span><span class="n">spot</span> <span class="o">*</span> <span class="n">vol_sqrt_t</span><span class="p">)</span> <span class="o">*</span> <span class="n">spot</span><span class="o">**</span><span class="mf">2.0</span> <span class="o">/</span> <span class="mf">100.0</span>
                 <span class="n">vega</span> <span class="o">=</span> <span class="n">spot_carry_pdf_d1</span> <span class="o">*</span> <span class="n">sqrt_t</span> <span class="o">/</span> <span class="mf">100.0</span>
                 <span class="n">theta</span> <span class="o">=</span> <span class="n">theta</span> <span class="o">/</span> <span class="mf">365.0</span>  <span class="c1"># One day theta)</span>
@@ -521,7 +524,112 @@
 </div>
 <div class="section" id="spreadsheet-implementation">
 <h2>Spreadsheet Implementation<a class="headerlink" href="#spreadsheet-implementation" title="Permalink to this headline">¶</a></h2>
-<p>I will soon update this section and go through how I used xlSlim to create the spreadsheet.</p>
+<p>Several innovative features of xlSlim and Excel itself were used to create this spreadsheet.</p>
+<div class="section" id="object-caching">
+<h3>Object Caching<a class="headerlink" href="#object-caching" title="Permalink to this headline">¶</a></h3>
+<p>xlSlim automatically caches Python objects returned by functions, this is described in <a class="reference internal" href="../user/passing_objects.html"><span class="doc">Passing Python objects</span></a>. A good example of this is cell K9 where a function pointer is returned by the get_bsm_option_calculator() function and automatically cached by xlSlim.</p>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_cache_function_pointer.png"><img alt="Caching a function pointer" src="../_images/index_option_pricing_cache_function_pointer.png" style="width: 400px;" /></a>
+<p>This cached object is later passed as an input to the OptionPortfolioCalculator() call in cell B33:</p>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_use_cached_function_pointer.png"><img alt="Using the cached function pointer" src="../_images/index_option_pricing_use_cached_function_pointer.png" style="width: 400px;" /></a>
+</div>
+<div class="section" id="class-instantiation">
+<h3>Class Instantiation<a class="headerlink" href="#class-instantiation" title="Permalink to this headline">¶</a></h3>
+<p>When xlSlim registers a module an Excel function is created for each class defined within the module. The function signature is taken from the class’s __init__ method. This functionality works particularly well with <a class="reference external" href="https://docs.python.org/3/library/dataclasses.html">dataclasses</a> . Each option is represented by a dataclass that neatly encapsulates the key economic properties:</p>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_create_option_objects.png"><img alt="Create option objects" src="../_images/index_option_pricing_create_option_objects.png" style="width: 400px;" /></a>
+<p>Another good example is the creation of volatility curves in cells F17 and F18.</p>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_create_volatility_curve.png"><img alt="Create volatility curves" src="../_images/index_option_pricing_create_volatility_curve.png" style="width: 400px;" /></a>
+</div>
+<div class="section" id="getattr-1">
+<h3>GetAttr<a class="headerlink" href="#getattr-1" title="Permalink to this headline">¶</a></h3>
+<p>Once you have cached objects in a spreadsheet you will often need to access attributes of the cached object, for example the strike of an option or the pv of a portfolio. The utility function <a class="reference internal" href="../reference/api.html#GetAttr" title="GetAttr"><code class="xref py py-func docutils literal notranslate"><span class="pre">GetAttr()</span></code></a> is functionally identical to Python’s <a class="reference external" href="https://docs.python.org/3/library/functions.html#getattr">getattr</a>.</p>
+<p>Here we fetch the calculated delta from a cached OptionResults object:</p>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_using_getattr.png"><img alt="Using GetAttr" src="../_images/index_option_pricing_using_getattr.png" style="width: 400px;" /></a>
+</div>
+<div class="section" id="passing-dictionaries">
+<h3>Passing dictionaries<a class="headerlink" href="#passing-dictionaries" title="Permalink to this headline">¶</a></h3>
+<p>The OptionPortfolioCalculator class is passed several market data dictionaries on instantiation. xlSlim supports cached Python dictionaries as described in <a class="reference internal" href="../user/passing_dicts.html"><span class="doc">Passing Python dictionaries</span></a>. However in many cases it is simpler to create the required dictionaries directly from Excel ranges.</p>
+<p>We have spot levels per index:</p>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_spot_data.png"><img alt="Spot data" src="../_images/index_option_pricing_spot_data.png" style="width: 400px;" /></a>
+<p>And the OptionPortfolioCalculator() class’s __init__ method expects a spot_dict:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">OptionPortfolioCalculator</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Calculate pv and risk for a portfolio of options.&quot;&quot;&quot;</span>
+
+        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+                <span class="bp">self</span><span class="p">,</span>
+                <span class="n">models</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callable</span><span class="p">],</span>
+                <span class="n">option_portfolio</span><span class="p">:</span> <span class="n">OptionPortfolio</span><span class="p">,</span>
+                <span class="n">asof</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span>
+<span class="hll">                <span class="n">spot_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+</span>                <span class="n">vol_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">VolatilityCurve</span><span class="p">],</span>
+                <span class="n">cost_of_carry_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+                <span class="n">risk_free_rate_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+        <span class="p">):</span>
+</pre></div>
+</div>
+<p>xlSlim is able to create the input dictionary directly from the Excel range:</p>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_create_spot_data_dict.png"><img alt="Create spot data dictionary from an Excel range" src="../_images/index_option_pricing_create_spot_data_dict.png" style="width: 400px;" /></a>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <a class="reference internal" href="../reference/api.html#CreateRange" title="CreateRange"><code class="xref py py-func docutils literal notranslate"><span class="pre">CreateRange()</span></code></a> is used to create the vol_dict input from non-adjacent ranges.</p>
+</div>
+</div>
+<div class="section" id="enums">
+<h3>Enums<a class="headerlink" href="#enums" title="Permalink to this headline">¶</a></h3>
+<p>We are using a Python <a class="reference external" href="https://docs.python.org/3/library/enum.html">enum</a> to specify whether an option is a call or put:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">OptionType</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Option type enum - CALL or PUT&quot;&quot;&quot;</span>
+
+        <span class="n">CALL</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">PUT</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>xlSlim creates a dictionary of all enums defined in every registered module. This dictionary maps enum names, “CALL” or “PUT” in this case, to the Python enum objects.</p>
+<p>When xlSlim creates Excel functions that expect enums, such as the function to create new VanillaEuropeanOptions, xlSlim lets you pass the enum name as an input:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="nb">repr</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">VanillaEuropeanOption</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;A vanilla European option&quot;&quot;&quot;</span>
+
+        <span class="n">strike</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">nan</span>
+        <span class="n">expiry</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span>
+        <span class="n">underlying</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="hll">        <span class="n">option_type</span><span class="p">:</span> <span class="n">OptionType</span> <span class="o">=</span> <span class="n">OptionType</span><span class="o">.</span><span class="n">CALL</span>
+</span>        <span class="n">currency</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>
+</pre></div>
+</div>
+<p>Here we pass in the string “PUT” and xlSlim internally replaces “PUT” with the enum OptionType.PUT before creating the Python object:</p>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_pass_enum_by_name.png"><img alt="Pass an enum input by name" src="../_images/index_option_pricing_pass_enum_by_name.png" style="width: 400px;" /></a>
+</div>
+<div class="section" id="viewing-objects">
+<h3>Viewing Objects<a class="headerlink" href="#viewing-objects" title="Permalink to this headline">¶</a></h3>
+<p>While developing the spreadsheet I made extensive use of the <a class="reference internal" href="../reference/api.html#ViewPyObject" title="ViewPyObject"><code class="xref py py-func docutils literal notranslate"><span class="pre">ViewPyObject()</span></code></a> function to verify objects.</p>
+<p>The function can be used on all kinds of cached objects.</p>
+<p>View a cached volatility curve:</p>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_view_vol_curve.png"><img alt="View cached volatility curve" src="../_images/index_option_pricing_view_vol_curve.png" style="width: 400px;" /></a>
+<p>View a cached option:</p>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_view_option.png"><img alt="View cached option" src="../_images/index_option_pricing_view_option.png" style="width: 400px;" /></a>
+<p>View a cached portfolio calculator:</p>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_view_portfolio_calcs.png"><img alt="View cached portfolio calculator" src="../_images/index_option_pricing_view_portfolio_calcs.png" style="width: 400px;" /></a>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <a class="reference internal" href="../reference/api.html#ViewPyObject" title="ViewPyObject"><code class="xref py py-func docutils literal notranslate"><span class="pre">ViewPyObject()</span></code></a> is intended as a development tool to verify objects are created and behaving as expected. Please don’t build dependencies on the output.</p>
+</div>
+</div>
+<div class="section" id="datatables">
+<h3>DataTables<a class="headerlink" href="#datatables" title="Permalink to this headline">¶</a></h3>
+<p>The scenario calculations were created using Excel’s <a class="reference external" href="https://support.microsoft.com/en-us/office/calculate-multiple-results-by-using-a-data-table-e95e2487-6ca6-4413-ad12-77542a5ea50b">data table</a> functionality.</p>
+<p>I started by defining cell B38 to display the selected risk metric:</p>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_scenario_base_cell.png"><img alt="Scenario base cell" src="../_images/index_option_pricing_scenario_base_cell.png" style="width: 400px;" /></a>
+<p>Then I defined the list of spot and volatility tweaks:</p>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_scenario_empty_grid.png"><img alt="Scenario grid with spot and volatility moves" src="../_images/index_option_pricing_scenario_empty_grid.png" style="width: 400px;" /></a>
+<p>Next I selected the grid as shown.</p>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_scenario_select_grid.png"><img alt="Scenario input selected" src="../_images/index_option_pricing_scenario_select_grid.png" style="width: 400px;" /></a>
+<p>Then I clicked on the Data Table menu item within the Data&gt;What-If Analysis menu:</p>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_scenario_data_table_menu_item.png"><img alt="Data Table menu item" src="../_images/index_option_pricing_scenario_data_table_menu_item.png" style="width: 400px;" /></a>
+<p>I chose the volatility tweak input in D13 as the row input and the spot tweak input in B13 as the column input.</p>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_scenario_specify_row_and_col_inputs.png"><img alt="Data Table row and column inputs" src="../_images/index_option_pricing_scenario_specify_row_and_col_inputs.png" style="width: 400px;" /></a>
+<p>This then generated the populated the data table:</p>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_scenario_populated_grid.png"><img alt="Populated data table" src="../_images/index_option_pricing_scenario_populated_grid.png" style="width: 400px;" /></a>
+</div>
 </div>
 </div>
 
