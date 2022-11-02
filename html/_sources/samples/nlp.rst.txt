@@ -49,7 +49,7 @@ If you have not yet done so, install the nltk library, import it, and then downl
 
 	import re
 	from collections import Counter
-
+	from typing import Optional
 	import pandas as pd
 	import nltk
 	from nltk.tokenize import word_tokenize
@@ -166,7 +166,7 @@ The default stars can be set to 5. The method returns a dictionary, which is con
 
 .. code-block:: python
 
-	def get_word_freq(df:pd.DataFrame, stars_filter:int=5) -> dict:
+	def get_word_freq(df: pd.DataFrame, stars_filter: Optional[int] = 5) -> dict:
     
 		# Filter the dataframe on the stars ensuring we have passed a good value
 		if stars_filter in Counter(df['stars_num']).keys():

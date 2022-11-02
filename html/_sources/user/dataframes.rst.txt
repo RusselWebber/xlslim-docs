@@ -30,9 +30,13 @@ This Python code defines a function `create_random_df()` that returns a DataFram
 
 	import pandas as pd
 	import numpy as np
-
+    from typing import List, Optional
+	
 	def create_random_df(
-		minimum: int = 0, maximum: int = 100, rows: int = 1, columns: int = 1,
+	    minimum: Optional[int] = 0,
+        maximum: Optional[int] = 100,
+        rows: Optional[int] = 1,
+        columns: Optional[int] = 1,
 	) -> pd.DataFrame:
 		"""Create a DataFrame of random integers."""
 		return pd.DataFrame(
@@ -171,20 +175,20 @@ Multiple pandas DataFrames can be passed to Python functions in two ways:
 	XLSLIM_INWINDOWFUNC = None
 
 	def concat_two_df(
-		df_a: pd.DataFrame,
-		df_b: pd.DataFrame,
-		axis: int = 0,
-		join: str = "outer",
-		ignore_index: bool = False,
+        ds_a: pd.DataFrame,
+        ds_b: pd.DataFrame,
+        axis: Optional[int] = 0,
+        join: Optional[str] = "outer",
+        ignore_index: Optional[bool] = False,
 	) -> pd.DataFrame:
 		"""Concatenate the two supplied DataFrames."""
 		return concat_df([df_a, df_b], axis, join, ignore_index)
 
 	def concat_df(
-		dframes: List[pd.DataFrame],
-		axis: int = 0,
-		join: str = "outer",
-		ignore_index: bool = False,
+        series: List[pd.DataFrame],
+        axis: Optional[int] = 0,
+        join: Optional[str] = "outer",
+        ignore_index: Optional[bool] = False,
 	) -> pd.DataFrame:
 		"""Concatenate the supplied DataFrames."""
 		# Note how this global function can be used to skip

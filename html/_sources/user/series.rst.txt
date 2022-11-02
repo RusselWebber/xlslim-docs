@@ -30,8 +30,9 @@ This Python code defines a function `create_random_ds()` that returns a Series o
 
 	import pandas as pd
 	import numpy as np
+    from typing import List, Optional
 
-	def create_random_ds(rows: int = 1) -> pd.Series:
+	def create_random_ds(rows: Optional[int] = 1) -> pd.Series:
 		"""Create a Series of random integers"""
 		return pd.Series(np.random.randint(0, rows, size=(rows,)), list(range(rows)))
 
@@ -168,19 +169,19 @@ Multiple pandas Series can be passed to Python functions in two ways:
 	def concat_two_ds(
 		ds_a: pd.Series,
 		ds_b: pd.Series,
-		axis: int = 0,
-		join: str = "outer",
-		ignore_index: bool = False,
+		axis: Optional[int] = 0,
+		join: Optional[str] = "outer",
+		ignore_index: Optional[bool] = False,
 	) -> pd.Series:
 		"""Concatenate the two supplied Series."""
 		return concat_df([ds_a, ds_b], axis, join, ignore_index)
 
 
 	def concat_ds(
-		Series: List[pd.Series],
-		axis: int = 0,
-		join: str = "outer",
-		ignore_index: bool = False,
+		series: List[pd.Series],
+		axis: Optional[int] = 0,
+		join: Optional[str] = "outer",
+		ignore_index: Optional[bool] = False,
 	) -> pd.Series:
 		"""Concatenate the supplied Series."""
 		# Note how this global function can be used to skip
@@ -198,8 +199,8 @@ Given this sheet, where cache object handles in B2 and D2 reference pandas Serie
 
 For the first case, functions with separate arguments, any of the techniques discussed so far can be use. These are all valid ::
 
-    =concat_two_ds(B3#,D3#,,"outer")
-    =concat_two_ds_num_only(B3#,D3#,,"outer")
+    =concat_two_ds(B3,D3,,"outer")
+    =concat_two_ds_num_only(B3,D3,,"outer")
     =concat_two_ds_from_handle(B2,D2,,"outer")
 
 However for the second case, functions expecting a list, only a list of cache object handles can be supplied. ::
