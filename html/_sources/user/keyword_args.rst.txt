@@ -65,8 +65,8 @@ Replace the kwargs.py code with this:
 	def hours_between_with_hints(
 		start: Optional[datetime] = None,
 		end: Optional[datetime] = None,
-        default_period: Optional[float] = 24.0,
-        return_minutes: Optional[bool] = False,
+		default_period: Optional[float] = 24.0,
+		return_minutes: Optional[bool] = False,
 	) -> float:
 		"""A simple function to show the hours between two datetimes.
 		
