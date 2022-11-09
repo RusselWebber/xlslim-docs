@@ -25,7 +25,7 @@ You can always revert to using the bundled Python by running :func:`ClearSavedPy
 External Python environments
 ----------------------------
 
-For more advanced Python functionality you can use external Python environments. xlSlim supports Python 3.7, 3.8, 3.9 and 3.10. xlSlim supports default Python installations as well as virtual environments created with `venv`_ or `conda`_.
+For more advanced Python functionality you can use external Python environments. xlSlim supports Python 3.7, 3.8, 3.9, 3.10 and 3.11. xlSlim supports default Python installations as well as virtual environments created with `venv`_ or `conda`_.
 
 External Python environments are set when :func:`RegisterPyModule` is called. The `ExecutablePath` parameter is used to set the location of the Python executable.
 
