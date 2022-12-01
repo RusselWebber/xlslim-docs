@@ -111,6 +111,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../user/imports.html">Advanced Module Importing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/streaming.html">Streaming data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/vba_replacement.html">Replacing VBA with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/vba_events.html">Replacing VBA Event Handling with Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/licensing.html">Licensing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting.html">Troubleshooting</a></li>
 </ul>
@@ -136,6 +137,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#creating-ranges">Creating ranges</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#diagnostics">Diagnostics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#clear-caches">Clear Caches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#clear-cached-item">Clear Cached Item</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#use-the-bundled-python">Use the bundled Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#get-the-current-workbook-location">Get the current workbook location</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#get-the-log-location">Get the log location</a></li>
@@ -146,6 +148,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#version">Version</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#getattr">GetAttr</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#getitem">GetItem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#link-a-python-function-to-key-combinations">Link a Python Function to Key Combinations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#schedule-a-python-function">Schedule a Python Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#add-a-python-event-handler-to-process-excel-events">Add a Python Event Handler to process Excel events</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="data_conversions.html">Data Conversions Between Excel and Python</a></li>
@@ -331,6 +336,28 @@ See <a class="reference internal" href="../user/imports.html"><span class="doc">
 <dt id="ClearCaches">
 <code class="descname">ClearCaches</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ClearCaches" title="Permalink to this definition">¶</a></dt>
 <dd><p>Removes all cached objects from xlSlim’s internal memory caches.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="clear-cached-item">
+<h2>Clear Cached Item<a class="headerlink" href="#clear-cached-item" title="Permalink to this headline">¶</a></h2>
+<p>To remove a specific item from object caches you can use the <a class="reference internal" href="#ClearCacheItem" title="ClearCacheItem"><code class="xref py py-func docutils literal notranslate"><span class="pre">ClearCacheItem()</span></code></a> function:</p>
+<dl class="function">
+<dt id="ClearCacheItem">
+<code class="descname">ClearCacheItem</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#ClearCacheItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes a specific cached object from xlSlim’s internal memory caches.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>key</strong> (<em>str</em>) – An xlSlim cached object handle.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An error message if the object was not found else a message confirming the object removal.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -533,6 +560,84 @@ See <a class="reference internal" href="../user/imports.html"><span class="doc">
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">str or object</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="link-a-python-function-to-key-combinations">
+<h2>Link a Python Function to Key Combinations<a class="headerlink" href="#link-a-python-function-to-key-combinations" title="Permalink to this headline">¶</a></h2>
+<p>Excel can be set to run a Python function when specific key combinations are pressed. Refer to the Microsoft <a class="reference external" href="https://learn.microsoft.com/en-us/office/vba/api/excel.application.onkey">OnKey</a> documentation for full details of how to specify the key combinations.</p>
+<dl class="function">
+<dt id="LinkPyFunctionToKeys">
+<code class="descname">LinkPyFunctionToKeys</code><span class="sig-paren">(</span><em>keyCombination</em>, <em>functionName</em><span class="sig-paren">)</span><a class="headerlink" href="#LinkPyFunctionToKeys" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>keyCombination</strong> (<em>str</em>) – The combination of keys, for example ^+P is Ctrl+Shift+P.</li>
+<li><strong>functionName</strong> (<em>str</em>) – The name of the function to run. The function cannot take any arguments. If the function name is omitted the key combination reverts to normal behaviour. The function must have already been registered with <a class="reference internal" href="#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A confirmation that the combination of keys have been set or cleared.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">str</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="schedule-a-python-function">
+<h2>Schedule a Python Function<a class="headerlink" href="#schedule-a-python-function" title="Permalink to this headline">¶</a></h2>
+<p>Excel can run a Python function at a specified future time. Refer to the Microsoft <a class="reference external" href="https://learn.microsoft.com/en-us/office/vba/api/excel.application.ontime">OnTime</a> documentation for the conditions under which the scheduled execution will run.</p>
+<dl class="function">
+<dt id="SchedulePyFunction">
+<code class="descname">SchedulePyFunction</code><span class="sig-paren">(</span><em>earliestTime</em>, <em>functionName</em>, <em>latestTime</em>, <em>schedule</em><span class="sig-paren">)</span><a class="headerlink" href="#SchedulePyFunction" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>earliestTime</strong> (<em>datetime</em>) – When to run the function.</li>
+<li><strong>functionName</strong> (<em>str</em>) – The name of the function to run. The function cannot take any arguments. The function must have already been registered with <a class="reference internal" href="#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a>.</li>
+<li><strong>latestTime</strong> (<em>datetime</em>) – Optionally set latest time at which the function can be run.</li>
+<li><strong>cancelSchedule</strong> (<em>bool</em>) – Optionally set to TRUE to cancel a scheduled run.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A confirmation that the function has been scheduled or cleared.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">str</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="add-a-python-event-handler-to-process-excel-events">
+<h2>Add a Python Event Handler to process Excel events<a class="headerlink" href="#add-a-python-event-handler-to-process-excel-events" title="Permalink to this headline">¶</a></h2>
+<p>Excel raises events when various actions occur, such as activating a worksheet or changing a cell. xlSlim allows you to run Python code in response to these events. The internals are identical to Excel’s VBA event handling. Microsoft’s <a class="reference external" href="https://learn.microsoft.com/en-us/office/vba/api/overview/excel/object-model">VBA object and event model</a> documentation is a valuable resource when researching available events.</p>
+<dl class="function">
+<dt id="AddPyEventHandler">
+<code class="descname">AddPyEventHandler</code><span class="sig-paren">(</span><em>evtHandlerClass</em>, <em>wbName</em>, <em>sheetName</em><span class="sig-paren">)</span><a class="headerlink" href="#AddPyEventHandler" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>evtHandlerClass</strong> (<em>str</em>) – The xlSlim cache key of an event handler object. Note that the object itself is not used, only the class data.</li>
+<li><strong>wbName</strong> (<em>str</em>) – Optionally apply the event handler to this workbook. By default the event handler is applied at the application level.</li>
+<li><strong>sheetName</strong> (<em>str</em>) – Optionally apply the event handler to this sheet. By default the event handler is applied at the application level.</li>
+</ul>
 </td>
 </tr>
 </tbody>

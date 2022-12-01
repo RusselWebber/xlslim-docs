@@ -89,7 +89,21 @@ To remove all cached objects you can use the :func:`ClearCaches` function:
 .. py:function:: ClearCaches()
 
    Removes all cached objects from xlSlim's internal memory caches.
-   
+
+Clear Cached Item
+-----------------
+
+To remove a specific item from object caches you can use the :func:`ClearCacheItem` function:
+
+.. py:function:: ClearCacheItem(key)
+
+   Removes a specific cached object from xlSlim's internal memory caches.
+
+   :param key: An xlSlim cached object handle.
+   :type key: str
+   :return: An error message if the object was not found else a message confirming the object removal.
+   :rtype: str
+
 Use the bundled Python
 ----------------------
 
@@ -215,3 +229,59 @@ The :func:`GetItem()` function efficiently gets items from cached Python diction
    :type dictKey: str   
    :return: An error message if the cached dictionary was not found. If an item is stored against the key then the item is returned, else if a defaultValue was supplied this is returned, failing which an error message is returned.
    :rtype: str or object
+   
+Link a Python Function to Key Combinations
+------------------------------------------
+
+.. _OnKey: https://learn.microsoft.com/en-us/office/vba/api/excel.application.onkey
+
+
+Excel can be set to run a Python function when specific key combinations are pressed. Refer to the Microsoft `OnKey`_ documentation for full details of how to specify the key combinations.
+
+.. py:function:: LinkPyFunctionToKeys(keyCombination, functionName)
+
+   :param keyCombination: The combination of keys, for example ^+P is Ctrl+Shift+P.
+   :type keyCombination: str
+   :param functionName: The name of the function to run. The function cannot take any arguments. If the function name is omitted the key combination reverts to normal behaviour. The function must have already been registered with :func:`RegisterPyModule`.
+   :type functionName: str   
+   :return: A confirmation that the combination of keys have been set or cleared.
+   :rtype: str
+
+Schedule a Python Function
+--------------------------
+
+.. _OnTime: https://learn.microsoft.com/en-us/office/vba/api/excel.application.ontime
+
+
+Excel can run a Python function at a specified future time. Refer to the Microsoft `OnTime`_ documentation for the conditions under which the scheduled execution will run.
+
+.. py:function:: SchedulePyFunction(earliestTime, functionName, latestTime, schedule)
+
+   :param earliestTime: When to run the function.
+   :type earliestTime: datetime
+   :param functionName: The name of the function to run. The function cannot take any arguments. The function must have already been registered with :func:`RegisterPyModule`.
+   :type functionName: str   
+   :param latestTime: Optionally set latest time at which the function can be run.
+   :type latestTime: datetime
+   :param cancelSchedule: Optionally set to TRUE to cancel a scheduled run.
+   :type cancelSchedule: bool
+   :type functionName: str
+   :return: A confirmation that the function has been scheduled or cleared.
+   :rtype: str
+
+Add a Python Event Handler to process Excel events
+--------------------------------------------------
+
+.. _VBA object and event model: https://learn.microsoft.com/en-us/office/vba/api/overview/excel/object-model
+
+Excel raises events when various actions occur, such as activating a worksheet or changing a cell. xlSlim allows you to run Python code in response to these events. The internals are identical to Excel's VBA event handling. Microsoft's `VBA object and event model`_ documentation is a valuable resource when researching available events.
+
+.. py:function:: AddPyEventHandler(evtHandlerClass, wbName, sheetName)
+
+   :param evtHandlerClass: The xlSlim cache key of an event handler object. Note that the object itself is not used, only the class data.
+   :type evtHandlerClass: str
+   :param wbName: Optionally apply the event handler to this workbook. By default the event handler is applied at the application level.
+   :type wbName: str
+   :param sheetName: Optionally apply the event handler to this sheet. By default the event handler is applied at the application level.
+   :type sheetName: str
+
