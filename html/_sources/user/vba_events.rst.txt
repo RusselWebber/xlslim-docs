@@ -10,14 +10,17 @@ Replacing VBA Event Handling with Python
 
 xlSlim allows you to replace VBA event handling code with Python code. The Python code has access to the same events and objects as VBA so it is usually straightforward to translate VBA code to Python. The Python code is often more concise and readable.
 
-.. warning::
-	This functionality requires a premium licence as a Python environment with the `pywin32`_ extensions installed is required. Anaconda distributions include pywin32. See :doc:`/reference/licensing`
-
-We will start by building a very simple task management tool using VBA. We will list one task per cell. When a cell is double clicked the task will be marked as completed by striking a line through the text. Double clicking again will mark the task as uncompleted.
+We will start by building a very simple task management tool using VBA. Then we will build the same tool using Python and xlSlim. The tool simply lists one task per cell. When a cell is double clicked the task will be marked as completed by striking a line through the text. Double clicking again will mark the task as uncompleted.
 
 .. image:: ../_static/vba_events_simple_task_tool.png
   :width: 400
   :alt: VBA task management tool.
+
+.. warning::
+	This functionality requires a premium licence as a Python environment with the `pywin32`_ extensions installed is required. Anaconda distributions include pywin32. See :doc:`/reference/licensing`
+
+A Task Management Tool using VBA
+--------------------------------
 
 We start by adding a new Class Module MyAppEvents to the workbook, this is done in the VBA Editor (Alt-F11):
 
@@ -63,6 +66,9 @@ Save and reopen the Excel workbook. Now double clicking on a cell will strike a 
 .. image:: ../_static/vba_events_simple_task_tool.png
   :width: 400
   :alt: VBA task management tool.
+
+A Task Management Tool using Python
+-----------------------------------
 
 Accomplishing the same using xlSlim and Python is straightforward. This Python code defines an event handler that handles the SheetBeforeDoubleClick event:
 

@@ -112,6 +112,8 @@
 <li class="toctree-l1"><a class="reference internal" href="streaming.html">Streaming data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vba_replacement.html">Replacing VBA with Python</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Replacing VBA Event Handling with Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#a-task-management-tool-using-vba">A Task Management Tool using VBA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#a-task-management-tool-using-python">A Task Management Tool using Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#workbook-and-worksheet-events">Workbook and Worksheet Events</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#link-python-functions-to-key-combinations">Link Python Functions to Key Combinations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#schedule-python-functions">Schedule Python functions</a></li>
@@ -208,12 +210,14 @@
   <div class="section" id="replacing-vba-event-handling-with-python">
 <h1>Replacing VBA Event Handling with Python<a class="headerlink" href="#replacing-vba-event-handling-with-python" title="Permalink to this headline">¶</a></h1>
 <p>xlSlim allows you to replace VBA event handling code with Python code. The Python code has access to the same events and objects as VBA so it is usually straightforward to translate VBA code to Python. The Python code is often more concise and readable.</p>
+<p>We will start by building a very simple task management tool using VBA. Then we will build the same tool using Python and xlSlim. The tool simply lists one task per cell. When a cell is double clicked the task will be marked as completed by striking a line through the text. Double clicking again will mark the task as uncompleted.</p>
+<a class="reference internal image-reference" href="../_images/vba_events_simple_task_tool.png"><img alt="VBA task management tool." src="../_images/vba_events_simple_task_tool.png" style="width: 400px;" /></a>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">This functionality requires a premium licence as a Python environment with the <a class="reference external" href="https://github.com/mhammond/pywin32">pywin32</a> extensions installed is required. Anaconda distributions include pywin32. See <a class="reference internal" href="../reference/licensing.html"><span class="doc">Licensing</span></a></p>
 </div>
-<p>We will start by building a very simple task management tool using VBA. We will list one task per cell. When a cell is double clicked the task will be marked as completed by striking a line through the text. Double clicking again will mark the task as uncompleted.</p>
-<a class="reference internal image-reference" href="../_images/vba_events_simple_task_tool.png"><img alt="VBA task management tool." src="../_images/vba_events_simple_task_tool.png" style="width: 400px;" /></a>
+<div class="section" id="a-task-management-tool-using-vba">
+<h2>A Task Management Tool using VBA<a class="headerlink" href="#a-task-management-tool-using-vba" title="Permalink to this headline">¶</a></h2>
 <p>We start by adding a new Class Module MyAppEvents to the workbook, this is done in the VBA Editor (Alt-F11):</p>
 <a class="reference internal image-reference" href="../_images/vba_events_class_module.png"><img alt="VBA Class module." src="../_images/vba_events_class_module.png" style="width: 400px;" /></a>
 <p>The Class Module must contain this code that creates a myApp Application object and creates a SheetBeforeDoubleClick event handler for myApp:</p>
@@ -244,6 +248,9 @@
 </div>
 <p>Save and reopen the Excel workbook. Now double clicking on a cell will strike a line through the text and the little task management tool is complete.</p>
 <a class="reference internal image-reference" href="../_images/vba_events_simple_task_tool.png"><img alt="VBA task management tool." src="../_images/vba_events_simple_task_tool.png" style="width: 400px;" /></a>
+</div>
+<div class="section" id="a-task-management-tool-using-python">
+<h2>A Task Management Tool using Python<a class="headerlink" href="#a-task-management-tool-using-python" title="Permalink to this headline">¶</a></h2>
 <p>Accomplishing the same using xlSlim and Python is straightforward. This Python code defines an event handler that handles the SheetBeforeDoubleClick event:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyEventHandler</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;A very simple task manager.&quot;&quot;&quot;</span>
@@ -276,6 +283,7 @@
 <a class="reference internal image-reference" href="../_images/vba_events_register_py_module.png"><img alt="Registered Python module and added event handler." src="../_images/vba_events_register_py_module.png" style="width: 400px;" /></a>
 <p>Add a few tasks and double click on some of the tasks. We have the same task management functionality working with Python and xlSlim!</p>
 <a class="reference internal image-reference" href="../_images/vba_events_py_task_tool.png"><img alt="Task management working with xlSlim and Python." src="../_images/vba_events_py_task_tool.png" style="width: 400px;" /></a>
+</div>
 <div class="section" id="workbook-and-worksheet-events">
 <h2>Workbook and Worksheet Events<a class="headerlink" href="#workbook-and-worksheet-events" title="Permalink to this headline">¶</a></h2>
 <p>The simple task management example above handled events at the Application level. Excel also exposes Workbook and Worksheet events. The Microsoft <a class="reference external" href="https://learn.microsoft.com/en-us/office/vba/api/overview/excel/object-model">VBA object and event model</a> documentation lists all available events. The <a class="reference external" href="https://learn.microsoft.com/en-us/office/vba/api/excel.application(object)">Application</a>, <a class="reference external" href="https://learn.microsoft.com/en-us/office/vba/api/excel.workbook">Workbook</a> and <a class="reference external" href="https://learn.microsoft.com/en-us/office/vba/api/excel.worksheet">Worksheet</a> sections each contain an Events group that show the available events:</p>
