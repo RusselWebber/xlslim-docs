@@ -109,6 +109,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../user/dataframes.html">pandas DataFrames</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/subprocess.html">Running Python in a background process</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/imports.html">Advanced Module Importing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/http_imports.html">Remote Module Importing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/streaming.html">Streaming data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/vba_replacement.html">Replacing VBA with Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/vba_events.html">Replacing VBA Event Handling with Python</a></li>
@@ -235,13 +236,14 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>PythonModulePath</strong> (<em>str</em>) – The full path to the Python module to load.</li>
+<li><strong>PythonModulePath</strong> (<em>str</em>) – The full path to the Python module to load. This path may also refer to a remote location, see the link below for details.</li>
 <li><strong>ExecutablePath</strong> (<em>str</em><em> or </em><em>None</em>) – Optional location of the Python environment to use.</li>
 <li><strong>ModulePrefix</strong> (<em>str</em><em> or </em><em>None</em>) – Optional prefix to apply to the function names.</li>
 <li><strong>UseBackgroundProcess</strong> (<em>bool</em><em> or </em><em>None</em>) – Should xlSlim Python code run a seperate process?</li>
 <li><strong>ExtraModuleSearchLocations</strong> (<em>str</em><em> or </em><em>None</em>) – Extra locations to be added to the Python module search path (sys.path).</li>
 <li><strong>ExtraDllSearchLocations</strong> (<em>str</em><em> or </em><em>None</em>) – Extra locations to be added to the Windows DLL search path (PATH).</li>
 <li><strong>FunctionNames</strong> (<em>Excel range</em><em> or </em><em>None</em>) – An Excel range specifying which functions to import. By default all functions in a module are imported. A single column range can specify only the functions to import. A two column range can specify the Python functions in the first column and the Excel function names in the second column.</li>
+<li><strong>HttpImportProfile</strong> (<em>str</em><em> or </em><em>None</em>) – Either the full path of an .ini file to use for remote import profiles, or a string with the profile in ini file format.</li>
 </ul>
 </td>
 </tr>
@@ -249,7 +251,8 @@
 </table>
 </dd></dl>
 
-<p>See <a class="reference internal" href="environments.html"><span class="doc">Python Environments</span></a> for details of the <cite>ExecutablePath</cite> parameter.
+<p>See <a class="reference internal" href="../user/http_imports.html"><span class="doc">Remote Module Importing</span></a> for details of importing from Github, Bitbucket, Gists and other remote http locations.
+See <a class="reference internal" href="environments.html"><span class="doc">Python Environments</span></a> for details of the <cite>ExecutablePath</cite> parameter.
 See <a class="reference internal" href="../user/passing_arrays.html"><span class="doc">Passing lists</span></a> for an example using the <cite>ModulePrefix</cite> parameter.
 See <a class="reference internal" href="../user/subprocess.html"><span class="doc">Running Python in a background process</span></a> for an example using the <cite>UseBackgroundProcess</cite> parameter.
 See <a class="reference internal" href="../user/imports.html"><span class="doc">Advanced Module Importing</span></a> for an example showing the use of the <cite>ExtraModuleSearchLocations</cite> and <cite>FunctionNames</cite> parameters.</p>
@@ -667,7 +670,7 @@ See <a class="reference internal" href="../user/imports.html"><span class="doc">
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Russel Webber
+        &copy; Copyright 2022-2023, Russel Webber
 
     </p>
   </div>

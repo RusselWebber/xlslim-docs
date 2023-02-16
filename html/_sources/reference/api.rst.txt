@@ -14,7 +14,7 @@ To register a Python module for use within Excel you use the :func:`RegisterPyMo
 
    Registers a Python module for use in Excel.
 
-   :param PythonModulePath: The full path to the Python module to load.
+   :param PythonModulePath: The full path to the Python module to load. This path may also refer to a remote location, see the link below for details.
    :type PythonModulePath: str
    :param ExecutablePath: Optional location of the Python environment to use.
    :type ExecutablePath: str or None
@@ -28,7 +28,10 @@ To register a Python module for use within Excel you use the :func:`RegisterPyMo
    :type ExtraDllSearchLocations: str or None
    :param FunctionNames: An Excel range specifying which functions to import. By default all functions in a module are imported. A single column range can specify only the functions to import. A two column range can specify the Python functions in the first column and the Excel function names in the second column.
    :type FunctionNames: Excel range or None
+   :param HttpImportProfile: Either the full path of an .ini file to use for remote import profiles, or a string with the profile in ini file format.
+   :type HttpImportProfile: str or None
 
+See :doc:`/user/http_imports` for details of importing from Github, Bitbucket, Gists and other remote http locations.
 See :doc:`environments` for details of the `ExecutablePath` parameter.
 See :doc:`/user/passing_arrays` for an example using the `ModulePrefix` parameter.
 See :doc:`/user/subprocess` for an example using the `UseBackgroundProcess` parameter.
