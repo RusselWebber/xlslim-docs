@@ -1,0 +1,78 @@
+.. meta::
+    :description lang=en:
+		xlSlim can register Python functions from text in the workbook.
+
+Dynamic Module Importing
+=========================
+
+xlSlim can create Excel functions directly from Python code in the workbook.
+
+If you would like to use this little function in Excel:
+
+.. code-block:: python
+	
+	def is_palindrome(s): return s[::-1].lower()==s.lower()
+
+Paste the code into an Excel cell:
+
+.. image:: ../_static/dynamic_imports_past_simple_function.png
+  :width: 400
+  :alt: Paste simple function text into Excel
+
+Register a new Excel function with this :func:`CreatePyModule` formula: ::
+
+	=CreatePyModule(A1)
+
+.. image:: ../_static/dynamic_imports_register_simple_function.png
+  :width: 400
+  :alt: Register simple function from text
+
+And the new `is_palindrome()` function is available to use in Excel:
+
+.. image:: ../_static/dynamic_imports_call_simple_function.png
+  :width: 400
+  :alt: Call the new simple function
+
+It is that easy to create Excel functions from Python code snippets!
+
+Perhaps we would like to use this function in Excel:
+
+.. code-block:: python
+
+	from datetime import datetime
+
+	def seconds_between(d1:datetime,d2:datetime)->float:
+		"""Return the number of seconds between d1 and d2. """
+		return (d2-d1).total_seconds()
+
+As before, we paste the text into an Excel cell:
+
+.. image:: ../_static/dynamic_imports_paste_longer_function.png
+  :width: 400
+  :alt: Paste longer function text into Excel
+
+.. note::
+	Alt-Enter can be used in Excel to create a new line in a cell.
+
+And register a new Excel function with this :func:`CreatePyModule` formula: ::
+
+	=CreatePyModule(A1)
+
+.. image:: ../_static/dynamic_imports_register_longer_function.png
+  :width: 400
+  :alt: Register longer function from text
+
+And the new `seconds_between()` function is available to use in Excel:
+
+.. image:: ../_static/dynamic_imports_call_longer_function.png
+  :width: 400
+  :alt: Call longer function in Excel
+
+Notice how the type hints and doc strings have been processed and used in the Excel function.
+
+.. note::
+	All the Python code and Excel files shown are available from github in the `xlslim-code-samples`_ repo. I highly recommend downloading the samples from github. The Excel workbooks contain many tips and tricks.
+
+
+.. _xlslim-code-samples: https://github.com/RusselWebber/xlslim-code-samples/archive/refs/heads/main.zip
+

@@ -5,11 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <meta content="xlSlim is installed from a digitally-signed Windows installer. Installation is quick and easy." lang="en" name="description" />
+  <meta content="xlSlim can register Python functions from text in the workbook." lang="en" name="description" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Installation &mdash; xlSlim v1.0 documentation</title>
+  <title>Dynamic Module Importing &mdash; xlSlim v1.0 documentation</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Quickstart" href="quickstart.html" />
-    <link rel="prev" title="Welcome to xlSlim’s documentation" href="../index.html" />
+    <link rel="next" title="Remote Module Importing" href="http_imports.html" />
+    <link rel="prev" title="Advanced Module Importing" href="imports.html" />
     
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EC5DSJ2TQ1"></script>
@@ -96,7 +96,7 @@
             
               <p class="caption"><span class="caption-text">User Guide</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
 <li class="toctree-l1"><a class="reference internal" href="keyword_args.html">Optional arguments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="passing_simple_types.html">Passing simple data types</a></li>
@@ -109,7 +109,7 @@
 <li class="toctree-l1"><a class="reference internal" href="dataframes.html">pandas DataFrames</a></li>
 <li class="toctree-l1"><a class="reference internal" href="subprocess.html">Running Python in a background process</a></li>
 <li class="toctree-l1"><a class="reference internal" href="imports.html">Advanced Module Importing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dynamic_imports.html">Dynamic Module Importing</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Dynamic Module Importing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="http_imports.html">Remote Module Importing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="streaming.html">Streaming data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vba_replacement.html">Replacing VBA with Python</a></li>
@@ -183,13 +183,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Installation</li>
+      <li>Dynamic Module Importing</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/user/installation.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/user/dynamic_imports.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -202,34 +202,49 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="installation">
-<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
-<p>Please make sure your computer meets the <a class="reference internal" href="../reference/software_requirements.html"><span class="doc">Software Requirements</span></a>.</p>
-<p>Download the installation package from <a class="reference external" href="https://www.xlslim.com/pages/downloads/latest">xlslim.com</a>:</p>
-<a class="reference internal image-reference" href="../_images/installation_downloads_page.png"><img alt="Downloads page" src="../_images/installation_downloads_page.png" style="width: 400px;" /></a>
-<p>Clicking on the “latest version” link will open the actual download page:</p>
-<a class="reference internal image-reference" href="../_images/installation_downloads_actual.png"><img alt="Actual downloads page" src="../_images/installation_downloads_actual.png" style="width: 400px;" /></a>
-<p>Download the installation exe:</p>
-<a class="reference internal image-reference" href="../_images/installation_downloads_complete.png"><img alt="Download complete" src="../_images/installation_downloads_complete.png" style="width: 400px;" /></a>
-<p>It is always a good idea to verify that any downloaded files have not been tampered with. Windows has the “certutil” utility that can compute the cryptograpic hash of a file.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">certutil</span> <span class="o">-</span><span class="n">hashfile</span> <span class="o">.</span>\<span class="n">xlSlim</span><span class="o">.</span><span class="n">exe</span> <span class="n">SHA1</span>
+  <div class="section" id="dynamic-module-importing">
+<h1>Dynamic Module Importing<a class="headerlink" href="#dynamic-module-importing" title="Permalink to this headline">¶</a></h1>
+<p>xlSlim can create Excel functions directly from Python code in the workbook.</p>
+<p>If you would like to use this little function in Excel:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_palindrome</span><span class="p">(</span><span class="n">s</span><span class="p">):</span> <span class="k">return</span> <span class="n">s</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="n">s</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>If you run this you’ll see the hash matches the details on the website:</p>
-<a class="reference internal image-reference" href="../_images/installation_downloads_verified.png"><img alt="Download verification" src="../_images/installation_downloads_verified.png" style="width: 400px;" /></a>
-<p>After verification, double-click on the downloaded xlSlim.exe and run through the installation:</p>
-<a class="reference internal image-reference" href="../_images/installation_downloads_open_exe.png"><img alt="Open the downloaded exe" src="../_images/installation_downloads_open_exe.png" style="width: 400px;" /></a>
-<p>The default installation location is “%APPDATA%MicrosoftAddIns” this is one of the places Excel looks for add-ins.</p>
-<a class="reference internal image-reference" href="../_images/installation_installer_first_page.png"><img alt="First page of the installer" src="../_images/installation_installer_first_page.png" style="width: 400px;" /></a>
-<a class="reference internal image-reference" href="../_images/installation_installer_second_page.png"><img alt="Second page of the installer" src="../_images/installation_installer_second_page.png" style="width: 400px;" /></a>
-<a class="reference internal image-reference" href="../_images/installation_installer_third_page.png"><img alt="Third page of the installer" src="../_images/installation_installer_third_page.png" style="width: 400px;" /></a>
-<a class="reference internal image-reference" href="../_images/installation_installer_fourth_page.png"><img alt="Fourth page of the installer" src="../_images/installation_installer_fourth_page.png" style="width: 400px;" /></a>
-<p>Tick the “Launch xlSlim” box to launch Excel with the xlSlim add-in. A Start menu shortcut of “xlSlim” is also added.</p>
-<a class="reference internal image-reference" href="../_images/installation_installer_fifth_page.png"><img alt="Fifth page of the installer" src="../_images/installation_installer_fifth_page.png" style="width: 400px;" /></a>
-<p>You may see a warning similar to this, please choose to “Enable all code published by this publisher.” Please check that the “Show Signature Details” reports the code as signed by “Webber Software Solutions Ltd”.</p>
-<a class="reference internal image-reference" href="../_images/first_use_unknown_publisher.png"><img alt="Verify trial license" src="../_images/first_use_unknown_publisher.png" style="width: 400px;" /></a>
-<p>In Excel you can use the functions <a class="reference internal" href="../reference/api.html#IsPremiumLicensed" title="IsPremiumLicensed"><code class="xref py py-func docutils literal notranslate"><span class="pre">IsPremiumLicensed()</span></code></a> and <a class="reference internal" href="../reference/api.html#LicenseExpiry" title="LicenseExpiry"><code class="xref py py-func docutils literal notranslate"><span class="pre">LicenseExpiry()</span></code></a> to verify a trial license has been obtained successfully. See <a class="reference internal" href="licensing.html"><span class="doc">Licensing</span></a> for details.</p>
-<a class="reference internal image-reference" href="../_images/installation_check_licence.png"><img alt="Verify trial license" src="../_images/installation_check_licence.png" style="width: 400px;" /></a>
+<p>Paste the code into an Excel cell:</p>
+<a class="reference internal image-reference" href="../_images/dynamic_imports_past_simple_function.png"><img alt="Paste simple function text into Excel" src="../_images/dynamic_imports_past_simple_function.png" style="width: 400px;" /></a>
+<p>Register a new Excel function with this <a class="reference internal" href="../reference/api.html#CreatePyModule" title="CreatePyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">CreatePyModule()</span></code></a> formula:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">CreatePyModule</span><span class="p">(</span><span class="n">A1</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/dynamic_imports_register_simple_function.png"><img alt="Register simple function from text" src="../_images/dynamic_imports_register_simple_function.png" style="width: 400px;" /></a>
+<p>And the new <cite>is_palindrome()</cite> function is available to use in Excel:</p>
+<a class="reference internal image-reference" href="../_images/dynamic_imports_call_simple_function.png"><img alt="Call the new simple function" src="../_images/dynamic_imports_call_simple_function.png" style="width: 400px;" /></a>
+<p>It is that easy to create Excel functions from Python code snippets!</p>
+<p>Perhaps we would like to use this function in Excel:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="k">def</span> <span class="nf">seconds_between</span><span class="p">(</span><span class="n">d1</span><span class="p">:</span><span class="n">datetime</span><span class="p">,</span><span class="n">d2</span><span class="p">:</span><span class="n">datetime</span><span class="p">)</span><span class="o">-&gt;</span><span class="nb">float</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Return the number of seconds between d1 and d2. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">d2</span><span class="o">-</span><span class="n">d1</span><span class="p">)</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>As before, we paste the text into an Excel cell:</p>
+<a class="reference internal image-reference" href="../_images/dynamic_imports_paste_longer_function.png"><img alt="Paste longer function text into Excel" src="../_images/dynamic_imports_paste_longer_function.png" style="width: 400px;" /></a>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Alt-Enter can be used in Excel to create a new line in a cell.</p>
+</div>
+<p>And register a new Excel function with this <a class="reference internal" href="../reference/api.html#CreatePyModule" title="CreatePyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">CreatePyModule()</span></code></a> formula:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">CreatePyModule</span><span class="p">(</span><span class="n">A1</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/dynamic_imports_register_longer_function.png"><img alt="Register longer function from text" src="../_images/dynamic_imports_register_longer_function.png" style="width: 400px;" /></a>
+<p>And the new <cite>seconds_between()</cite> function is available to use in Excel:</p>
+<a class="reference internal image-reference" href="../_images/dynamic_imports_call_longer_function.png"><img alt="Call longer function in Excel" src="../_images/dynamic_imports_call_longer_function.png" style="width: 400px;" /></a>
+<p>Notice how the type hints and doc strings have been processed and used in the Excel function.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">All the Python code and Excel files shown are available from github in the <a class="reference external" href="https://github.com/RusselWebber/xlslim-code-samples/archive/refs/heads/main.zip">xlslim-code-samples</a> repo. I highly recommend downloading the samples from github. The Excel workbooks contain many tips and tricks.</p>
+</div>
 </div>
 
 
@@ -240,10 +255,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="quickstart.html" class="btn btn-neutral float-right" title="Quickstart" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="http_imports.html" class="btn btn-neutral float-right" title="Remote Module Importing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to xlSlim’s documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="imports.html" class="btn btn-neutral float-left" title="Advanced Module Importing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -109,6 +109,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../user/dataframes.html">pandas DataFrames</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/subprocess.html">Running Python in a background process</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/imports.html">Advanced Module Importing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/dynamic_imports.html">Dynamic Module Importing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/http_imports.html">Remote Module Importing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/streaming.html">Streaming data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/vba_replacement.html">Replacing VBA with Python</a></li>
@@ -134,6 +135,7 @@
 <li class="toctree-l1"><a class="reference internal" href="environments.html">Python Environments</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Excel Functions</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#registering-modules">Registering modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-modules">Creating modules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#viewing-cached-objects">Viewing cached objects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#creating-ranges">Creating ranges</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#diagnostics">Diagnostics</a></li>
@@ -253,6 +255,37 @@
 
 <p>See <a class="reference internal" href="../user/http_imports.html"><span class="doc">Remote Module Importing</span></a> for details of importing from Github, Bitbucket, Gists and other remote http locations.
 See <a class="reference internal" href="environments.html"><span class="doc">Python Environments</span></a> for details of the <cite>ExecutablePath</cite> parameter.
+See <a class="reference internal" href="../user/passing_arrays.html"><span class="doc">Passing lists</span></a> for an example using the <cite>ModulePrefix</cite> parameter.
+See <a class="reference internal" href="../user/subprocess.html"><span class="doc">Running Python in a background process</span></a> for an example using the <cite>UseBackgroundProcess</cite> parameter.
+See <a class="reference internal" href="../user/imports.html"><span class="doc">Advanced Module Importing</span></a> for an example showing the use of the <cite>ExtraModuleSearchLocations</cite> and <cite>FunctionNames</cite> parameters.</p>
+</div>
+<div class="section" id="creating-modules">
+<h2>Creating modules<a class="headerlink" href="#creating-modules" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="#CreatePyModule" title="CreatePyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">CreatePyModule()</span></code></a> function can be used to create a Python module from text within Excel:</p>
+<dl class="function">
+<dt id="CreatePyModule">
+<code class="descname">CreatePyModule</code><span class="sig-paren">(</span><em>PythonCode</em>, <em>ExecutablePath=None</em>, <em>ModulePrefix=None</em>, <em>ExtraModuleSearchLocations=None</em>, <em>ExtraDllSearchLocations=None</em>, <em>FunctionNames=None</em><span class="sig-paren">)</span><a class="headerlink" href="#CreatePyModule" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a Python module from text and register the module for use in Excel.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>PythonCode</strong> (<em>str</em>) – Text to parse and from which to create a Python module.</li>
+<li><strong>ExecutablePath</strong> (<em>str</em><em> or </em><em>None</em>) – Optional location of the Python environment to use.</li>
+<li><strong>ModulePrefix</strong> (<em>str</em><em> or </em><em>None</em>) – Optional prefix to apply to the function names.</li>
+<li><strong>ExtraModuleSearchLocations</strong> (<em>str</em><em> or </em><em>None</em>) – Extra locations to be added to the Python module search path (sys.path).</li>
+<li><strong>ExtraDllSearchLocations</strong> (<em>str</em><em> or </em><em>None</em>) – Extra locations to be added to the Windows DLL search path (PATH).</li>
+<li><strong>FunctionNames</strong> (<em>Excel range</em><em> or </em><em>None</em>) – An Excel range specifying which functions to import. By default all functions in a module are imported. A single column range can specify only the functions to import. A two column range can specify the Python functions in the first column and the Excel function names in the second column.</li>
+<li><strong>HttpImportProfile</strong> (<em>str</em><em> or </em><em>None</em>) – Either the full path of an .ini file to use for remote import profiles, or a string with the profile in ini file format.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<p>See <a class="reference internal" href="environments.html"><span class="doc">Python Environments</span></a> for details of the <cite>ExecutablePath</cite> parameter.
 See <a class="reference internal" href="../user/passing_arrays.html"><span class="doc">Passing lists</span></a> for an example using the <cite>ModulePrefix</cite> parameter.
 See <a class="reference internal" href="../user/subprocess.html"><span class="doc">Running Python in a background process</span></a> for an example using the <cite>UseBackgroundProcess</cite> parameter.
 See <a class="reference internal" href="../user/imports.html"><span class="doc">Advanced Module Importing</span></a> for an example showing the use of the <cite>ExtraModuleSearchLocations</cite> and <cite>FunctionNames</cite> parameters.</p>

@@ -37,6 +37,35 @@ See :doc:`/user/passing_arrays` for an example using the `ModulePrefix` paramete
 See :doc:`/user/subprocess` for an example using the `UseBackgroundProcess` parameter.
 See :doc:`/user/imports` for an example showing the use of the `ExtraModuleSearchLocations` and `FunctionNames` parameters.
 
+Creating modules
+----------------
+
+The :func:`CreatePyModule` function can be used to create a Python module from text within Excel:
+
+.. py:function:: CreatePyModule(PythonCode, ExecutablePath=None, ModulePrefix=None, ExtraModuleSearchLocations=None, ExtraDllSearchLocations=None, FunctionNames=None)
+
+   Creates a Python module from text and register the module for use in Excel.
+
+   :param PythonCode: Text to parse and from which to create a Python module.
+   :type PythonCode: str
+   :param ExecutablePath: Optional location of the Python environment to use.
+   :type ExecutablePath: str or None
+   :param ModulePrefix: Optional prefix to apply to the function names.
+   :type ModulePrefix: str or None
+   :param ExtraModuleSearchLocations: Extra locations to be added to the Python module search path (sys.path).
+   :type ExtraModuleSearchLocations: str or None
+   :param ExtraDllSearchLocations: Extra locations to be added to the Windows DLL search path (PATH).
+   :type ExtraDllSearchLocations: str or None
+   :param FunctionNames: An Excel range specifying which functions to import. By default all functions in a module are imported. A single column range can specify only the functions to import. A two column range can specify the Python functions in the first column and the Excel function names in the second column.
+   :type FunctionNames: Excel range or None
+   :param HttpImportProfile: Either the full path of an .ini file to use for remote import profiles, or a string with the profile in ini file format.
+   :type HttpImportProfile: str or None
+
+See :doc:`environments` for details of the `ExecutablePath` parameter.
+See :doc:`/user/passing_arrays` for an example using the `ModulePrefix` parameter.
+See :doc:`/user/subprocess` for an example using the `UseBackgroundProcess` parameter.
+See :doc:`/user/imports` for an example showing the use of the `ExtraModuleSearchLocations` and `FunctionNames` parameters.
+
 Viewing cached objects
 ----------------------
 
