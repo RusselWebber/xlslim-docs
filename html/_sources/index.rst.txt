@@ -50,6 +50,7 @@ xlSlim - call Python code from Excel with **no code changes!**
    user/streaming
    user/vba_replacement
    user/vba_events
+   user/menus
    user/licensing      
    user/troubleshooting
    

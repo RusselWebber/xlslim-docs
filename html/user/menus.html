@@ -1,0 +1,343 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta content="xlSlim supports easy setup of ribbon and context menus without any XML." lang="en" name="description" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Adding Context and Ribbon Menus &mdash; xlSlim v1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Licensing" href="licensing.html" />
+    <link rel="prev" title="Replacing VBA Event Handling with Python" href="vba_events.html" />
+    
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC5DSJ2TQ1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EC5DSJ2TQ1');
+</script>
+
+     
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> xlSlim
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="keyword_args.html">Optional arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="passing_simple_types.html">Passing simple data types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="passing_arrays.html">Passing lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="passing_objects.html">Passing Python objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="passing_dicts.html">Passing Python dictionaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="udfs.html">Calling VBA and other Excel add-in functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">numpy Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="series.html">pandas Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataframes.html">pandas DataFrames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="subprocess.html">Running Python in a background process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imports.html">Advanced Module Importing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dynamic_imports.html">Dynamic Module Importing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http_imports.html">Remote Module Importing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="streaming.html">Streaming data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vba_replacement.html">Replacing VBA with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vba_events.html">Replacing VBA Event Handling with Python</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Adding Context and Ribbon Menus</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#context-menus">Context Menus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ribbon-menus">Ribbon Menus</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="licensing.html">Licensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../samples/read_json_from_web.html">Read JSON data from a URL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/read_csv.html">Read CSV data from a file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/sqlite.html">Using SQLite to analyse data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/yfinance.html">Loading Stock Prices from Yahoo! Finance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/pca.html">Principal Components Analysis of Index Prices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/monte_carlo.html">Monte Carlo Option Pricing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/nlp.html">NLP with Excel and Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/stream_kafka_doubles.html">Streaming from Kafka</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/pivot_table.html">Creating a Pivot Table using Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/equity_index_options.html">US Equity Index Option Pricing</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/environments.html">Python Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/api.html">Excel Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/data_conversions.html">Data Conversions Between Excel and Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/globals.html">Magic Global Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/licensing.html">Licensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/software_requirements.html">Software Requirements</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">xlSlim</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Adding Context and Ribbon Menus</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/user/menus.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="adding-context-and-ribbon-menus">
+<h1>Adding Context and Ribbon Menus<a class="headerlink" href="#adding-context-and-ribbon-menus" title="Permalink to this headline">¶</a></h1>
+<p>xlSlim allows you to easily create right-click context menus and ribbon bar menus. The functionality has been designed to be as simple as possible, no knowledge of Custom UI <a class="reference external" href="https://learn.microsoft.com/en-us/openspecs/office_standards/ms-customui/31f152d6-2a5d-4b50-a867-9dbc6d01aa43">XML</a> is required!</p>
+<p>We will show how to add a plotting menu to simplify adding line and column plots of selected data.</p>
+<p>We will add this right-click context menu:</p>
+<a class="reference internal image-reference" href="../_images/menu_show_plot_context_menu.png"><img alt="Example context menu." src="../_images/menu_show_plot_context_menu.png" style="width: 400px;" /></a>
+<p>And this ribbon bar menu:</p>
+<a class="reference internal image-reference" href="../_images/menu_show_plot_ribbon_menu.png"><img alt="Example ribbon menu." src="../_images/menu_show_plot_ribbon_menu.png" style="width: 400px;" /></a>
+<p>Clicking on the menu items will generate plots of the selected data:</p>
+<a class="reference internal image-reference" href="../_images/menu_show_line_plot.png"><img alt="Example line plot." src="../_images/menu_show_line_plot.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/menu_show_column_plot.png"><img alt="Example column plot." src="../_images/menu_show_column_plot.png" style="width: 400px;" /></a>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>This example requires a premium licence as a Python environment with the <a class="reference external" href="https://github.com/mhammond/pywin32">pywin32</a> extensions installed is required. Anaconda distributions include pywin32. See <a class="reference internal" href="../reference/licensing.html"><span class="doc">Licensing</span></a></p>
+<p class="last">However the menu functionality itself does not require a premium license, so Python functions executing within the bundled Python environment do not need premium license.</p>
+</div>
+<p>We will use these two Python functions to create the plots from the selected data:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pythoncom</span>
+<span class="kn">import</span> <span class="nn">win32com.client</span> <span class="k">as</span> <span class="nn">win32</span>
+
+<span class="n">XLSLIM_COMAPPFUNC</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="k">def</span> <span class="nf">AddLinePlot</span><span class="p">():</span>
+    <span class="n">excel_obj</span> <span class="o">=</span> <span class="n">XLSLIM_COMAPPFUNC</span><span class="p">()</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">excel_obj</span><span class="o">.</span><span class="n">Application</span>
+    <span class="n">selection</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">Selection</span>
+    <span class="n">active_sheet</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">ActiveSheet</span>
+    <span class="c1"># xlLine = 4</span>
+    <span class="n">chart</span> <span class="o">=</span> <span class="n">active_sheet</span><span class="o">.</span><span class="n">Shapes</span><span class="o">.</span><span class="n">AddChart2</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="n">chart</span><span class="o">.</span><span class="n">Chart</span><span class="o">.</span><span class="n">SetSourceData</span><span class="p">(</span><span class="n">Source</span><span class="o">=</span><span class="n">selection</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">AddClusteredColumnPlot</span><span class="p">():</span>
+    <span class="n">excel_obj</span> <span class="o">=</span> <span class="n">XLSLIM_COMAPPFUNC</span><span class="p">()</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">excel_obj</span><span class="o">.</span><span class="n">Application</span>
+    <span class="n">selection</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">Selection</span>
+    <span class="n">active_sheet</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">ActiveSheet</span>
+    <span class="c1"># xlColumnClustered = 51</span>
+    <span class="n">chart</span> <span class="o">=</span> <span class="n">active_sheet</span><span class="o">.</span><span class="n">Shapes</span><span class="o">.</span><span class="n">AddChart2</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">51</span><span class="p">)</span>
+    <span class="n">chart</span><span class="o">.</span><span class="n">Chart</span><span class="o">.</span><span class="n">SetSourceData</span><span class="p">(</span><span class="n">Source</span><span class="o">=</span><span class="n">selection</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We start by opening a new Excel workbook and pasting the Python code into cell A1:</p>
+<a class="reference internal image-reference" href="../_images/menu_copy_code.png"><img alt="Copy code to cell." src="../_images/menu_copy_code.png" style="width: 400px;" /></a>
+<p>Then we use <a class="reference internal" href="../reference/api.html#CreatePyModule" title="CreatePyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">CreatePyModule()</span></code></a> to create a dynamic Python module and register the two functions:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">CreatePyModule</span><span class="p">(</span><span class="n">A1</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/menu_create_module.png"><img alt="Create dynamic module." src="../_images/menu_create_module.png" style="width: 400px;" /></a>
+<div class="section" id="context-menus">
+<h2>Context Menus<a class="headerlink" href="#context-menus" title="Permalink to this headline">¶</a></h2>
+<p>We use the <a class="reference internal" href="../reference/api.html#UpdateContextMenu" title="UpdateContextMenu"><code class="xref py py-func docutils literal notranslate"><span class="pre">UpdateContextMenu()</span></code></a> to add the functions <cite>AddLinePlot()</cite> and <cite>AddClusteredColumnPlot()</cite> to the right-click context menu.</p>
+<p>We start by adding just <cite>AddLinePlot()</cite> to a menu called Plotting with one menu item Line.</p>
+<a class="reference internal image-reference" href="../_images/menu_first_context_menu.png"><img alt="Add first context menu item." src="../_images/menu_first_context_menu.png" style="width: 400px;" /></a>
+<p>The menu is updated as expected:</p>
+<a class="reference internal image-reference" href="../_images/menu_first_context_menu_available.png"><img alt="Added first context menu item." src="../_images/menu_first_context_menu_available.png" style="width: 400px;" /></a>
+<p>Selecting data and clicking on the PlottingLine menu item generates plots as expected:</p>
+<a class="reference internal image-reference" href="../_images/menu_show_line_plot.png"><img alt="Example line plot." src="../_images/menu_show_line_plot.png" style="width: 400px;" /></a>
+<p>Adding further menu items is done by extending the range passed into <a class="reference internal" href="../reference/api.html#UpdateContextMenu" title="UpdateContextMenu"><code class="xref py py-func docutils literal notranslate"><span class="pre">UpdateContextMenu()</span></code></a>:</p>
+<a class="reference internal image-reference" href="../_images/menu_second_context_menu.png"><img alt="Add second context menu item." src="../_images/menu_second_context_menu.png" style="width: 400px;" /></a>
+<p>At this stage our context menu looks like this:</p>
+<a class="reference internal image-reference" href="../_images/menu_second_context_menu_available.png"><img alt="Added second context menu item." src="../_images/menu_second_context_menu_available.png" style="width: 400px;" /></a>
+<p>We’d like to add some images to make the menu look more professional. The image for the top level menu is an optional third argument to <a class="reference internal" href="../reference/api.html#UpdateContextMenu" title="UpdateContextMenu"><code class="xref py py-func docutils literal notranslate"><span class="pre">UpdateContextMenu()</span></code></a> and the images for the menu items are an optional third column in the range passed as the second argument.</p>
+<p>The available images are restricted to those built into Excel. Fortunately there are many builtin images to choose from. Available images can be browsed at <a class="reference external" href="https://bert-toolkit.com/imagemso-list.html">images</a>. These look like good images for the menu items:</p>
+<a class="reference internal image-reference" href="../_images/menu_item_icons.png"><img alt="Nice plot images" src="../_images/menu_item_icons.png" style="width: 400px;" /></a>
+<p>And this looks like a good candidate for the top menu:</p>
+<a class="reference internal image-reference" href="../_images/menu_top_level_icon.png"><img alt="Nice plot selection image" src="../_images/menu_top_level_icon.png" style="width: 400px;" /></a>
+<p>We can amend the <a class="reference internal" href="../reference/api.html#UpdateContextMenu" title="UpdateContextMenu"><code class="xref py py-func docutils literal notranslate"><span class="pre">UpdateContextMenu()</span></code></a> call to include these image names:</p>
+<a class="reference internal image-reference" href="../_images/menu_context_add_icons.png"><img alt="Add images to context menu" src="../_images/menu_context_add_icons.png" style="width: 400px;" /></a>
+<p>Now the menu has nice images:</p>
+<a class="reference internal image-reference" href="../_images/menu_context_with_icons.png"><img alt="Added images to context menu" src="../_images/menu_context_with_icons.png" style="width: 400px;" /></a>
+</div>
+<div class="section" id="ribbon-menus">
+<h2>Ribbon Menus<a class="headerlink" href="#ribbon-menus" title="Permalink to this headline">¶</a></h2>
+<p>Ribbon menus work exactly the same as context menus. The inputs to <a class="reference internal" href="../reference/api.html#UpdateRibbonMenu" title="UpdateRibbonMenu"><code class="xref py py-func docutils literal notranslate"><span class="pre">UpdateRibbonMenu()</span></code></a> are identical to <a class="reference internal" href="../reference/api.html#UpdateContextMenu" title="UpdateContextMenu"><code class="xref py py-func docutils literal notranslate"><span class="pre">UpdateContextMenu()</span></code></a>.</p>
+<a class="reference internal image-reference" href="../_images/menu_ribbon_add_icons.png"><img alt="Add images to ribbon menu" src="../_images/menu_ribbon_add_icons.png" style="width: 400px;" /></a>
+<p>The same menu is now available on the Excel ribbon:</p>
+<a class="reference internal image-reference" href="../_images/menu_ribbon_with_icons.png"><img alt="Added images to ribbon menu" src="../_images/menu_ribbon_with_icons.png" style="width: 400px;" /></a>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">All the Python code and Excel files shown are available from github in the <a class="reference external" href="https://github.com/RusselWebber/xlslim-code-samples/archive/refs/heads/main.zip">xlslim-code-samples</a> repo. I highly recommend downloading the samples from github. The Excel workbooks contain many tips and tricks.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="licensing.html" class="btn btn-neutral float-right" title="Licensing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="vba_events.html" class="btn btn-neutral float-left" title="Replacing VBA Event Handling with Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2022-2023, Russel Webber
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

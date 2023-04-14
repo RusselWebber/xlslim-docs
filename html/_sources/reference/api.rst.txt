@@ -63,7 +63,6 @@ The :func:`CreatePyModule` function can be used to create a Python module from t
 
 See :doc:`environments` for details of the `ExecutablePath` parameter.
 See :doc:`/user/passing_arrays` for an example using the `ModulePrefix` parameter.
-See :doc:`/user/subprocess` for an example using the `UseBackgroundProcess` parameter.
 See :doc:`/user/imports` for an example showing the use of the `ExtraModuleSearchLocations` and `FunctionNames` parameters.
 
 Viewing cached objects
@@ -139,7 +138,7 @@ To remove a specific item from object caches you can use the :func:`ClearCacheIt
 Use the bundled Python
 ----------------------
 
-xlSlim has a bundled version of Python 3.10. This bundled Python is used by default. However you can specify another Python environment when registering modules with :func:`RegisterPyModule`. The :func:`ClearSavedPythonEnv()` function will revert back to using the bundled Python.
+xlSlim has a bundled version of Python 3.10. This bundled Python is used by default. However you can specify another Python environment when registering modules with :func:`RegisterPyModule` or :func:`CreatePyModule`. The :func:`ClearSavedPythonEnv()` function will revert back to using the bundled Python.
 
 .. py:function:: ClearSavedPythonEnv()
 
@@ -274,7 +273,7 @@ Excel can be set to run a Python function when specific key combinations are pre
 
    :param keyCombination: The combination of keys, for example ^+P is Ctrl+Shift+P.
    :type keyCombination: str
-   :param functionName: The name of the function to run. The function cannot take any arguments. If the function name is omitted the key combination reverts to normal behaviour. The function must have already been registered with :func:`RegisterPyModule`.
+   :param functionName: The name of the function to run. The function cannot take any arguments. If the function name is omitted the key combination reverts to normal behaviour. The function must have already been registered with :func:`RegisterPyModule` or :func:`CreatePyModule`.
    :type functionName: str   
    :return: A confirmation that the combination of keys have been set or cleared.
    :rtype: str
@@ -291,7 +290,7 @@ Excel can run a Python function at a specified future time. Refer to the Microso
 
    :param earliestTime: When to run the function.
    :type earliestTime: datetime
-   :param functionName: The name of the function to run. The function cannot take any arguments. The function must have already been registered with :func:`RegisterPyModule`.
+   :param functionName: The name of the function to run. The function cannot take any arguments. The function must have already been registered with :func:`RegisterPyModule` or :func:`CreatePyModule`.
    :type functionName: str   
    :param latestTime: Optionally set latest time at which the function can be run.
    :type latestTime: datetime
@@ -317,3 +316,50 @@ Excel raises events when various actions occur, such as activating a worksheet o
    :param sheetName: Optionally apply the event handler to this sheet. By default the event handler is applied at the application level.
    :type sheetName: str
 
+Update the Right-Click Context Menu
+-----------------------------------
+
+.. _page: https://bert-toolkit.com/imagemso-list.html
+
+
+The :func:`UpdateContextMenu` function can be used add items to the right-click context menu and link these items to functions.
+
+.. py:function:: UpdateContextMenu(Name, MenuItems, Image=None)
+
+   Updates the Excel right-click context menu.
+
+   :param Name: The top level name for the menu.
+   :type Name: str
+   :param MenuItems: An Excel range specifying the menu items. The first column must be the menu labels and the second column must be the function names. An optional third column can contain the images for the menu items. The functions cannot take any arguments. The functions must be registered with :func:`RegisterPyModule` or :func:`CreatePyModule`.
+   :type MenuItems: Excel range
+   :param Image: Optional image to use with the Name.
+   :type Image: str or None
+
+See :doc:`/user/menus` for an example using the `UpdateContextMenu` function.
+
+.. note::
+	The images are limited to specific images built into Excel. The available images can be found by searching for "imagemso gallery", at the time of writing this `page`_ has a good list of the available images.
+
+Update the Ribbon Menu
+-----------------------------------
+
+.. _page: https://bert-toolkit.com/imagemso-list.html
+
+
+The :func:`UpdateRibbonMenu` function can be used add items to the ribbon menu and link these items to functions.
+
+.. py:function:: UpdateRibbonMenu(Name, MenuItems, Image=None)
+
+   Updates the Excel ribbon menu.
+
+   :param Name: The top level name for the menu.
+   :type Name: str
+   :param MenuItems: An Excel range specifying the menu items. The first column must be the menu labels and the second column must be the function names. An optional third column can contain the images for the menu items. The functions cannot take any arguments. The functions must be registered with :func:`RegisterPyModule` or :func:`CreatePyModule`.
+   :type MenuItems: Excel range
+   :param Image: Optional image to use with the Name.
+   :type Image: str or None
+
+See :doc:`/user/menus` for an example using the `UpdateRibbonMenu` function.
+
+.. note::
+	The images are limited to specific images built into Excel. The available images can be found by searching for "imagemso gallery", at the time of writing this `page`_ has a good list of the available images.

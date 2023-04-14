@@ -1,0 +1,165 @@
+.. meta::
+    :description lang=en:
+		xlSlim supports easy setup of ribbon and context menus without any XML.
+
+
+Adding Context and Ribbon Menus
+===============================
+
+.. _pywin32: https://github.com/mhammond/pywin32
+.. _XML: https://learn.microsoft.com/en-us/openspecs/office_standards/ms-customui/31f152d6-2a5d-4b50-a867-9dbc6d01aa43
+.. _images: https://bert-toolkit.com/imagemso-list.html
+
+xlSlim allows you to easily create right-click context menus and ribbon bar menus. The functionality has been designed to be as simple as possible, no knowledge of Custom UI `XML`_ is required! 
+
+We will show how to add a plotting menu to simplify adding line and column plots of selected data.
+
+We will add this right-click context menu:
+
+.. image:: ../_static/menu_show_plot_context_menu.png
+  :width: 400
+  :alt: Example context menu.
+  
+And this ribbon bar menu:
+
+.. image:: ../_static/menu_show_plot_ribbon_menu.png
+  :width: 400
+  :alt: Example ribbon menu.
+
+Clicking on the menu items will generate plots of the selected data:
+
+.. image:: ../_static/menu_show_line_plot.png
+  :width: 400
+  :alt: Example line plot.
+
+.. image:: ../_static/menu_show_column_plot.png
+  :width: 400
+  :alt: Example column plot.
+
+.. warning::
+	This example requires a premium licence as a Python environment with the `pywin32`_ extensions installed is required. Anaconda distributions include pywin32. See :doc:`/reference/licensing`
+	
+	However the menu functionality itself does not require a premium license, so Python functions executing within the bundled Python environment do not need premium license.
+
+We will use these two Python functions to create the plots from the selected data:
+
+.. code-block:: python
+
+    import pythoncom
+    import win32com.client as win32
+
+    XLSLIM_COMAPPFUNC = None
+
+    def AddLinePlot():
+        excel_obj = XLSLIM_COMAPPFUNC()
+        app = excel_obj.Application
+        selection = app.Selection
+        active_sheet = app.ActiveSheet    
+        # xlLine = 4
+        chart = active_sheet.Shapes.AddChart2(-1, 4)
+        chart.Chart.SetSourceData(Source=selection)
+
+    def AddClusteredColumnPlot():
+        excel_obj = XLSLIM_COMAPPFUNC()
+        app = excel_obj.Application
+        selection = app.Selection
+        active_sheet = app.ActiveSheet    
+        # xlColumnClustered = 51
+        chart = active_sheet.Shapes.AddChart2(-1, 51)
+        chart.Chart.SetSourceData(Source=selection)                      
+
+We start by opening a new Excel workbook and pasting the Python code into cell A1:
+
+.. image:: ../_static/menu_copy_code.png
+  :width: 400
+  :alt: Copy code to cell.
+
+Then we use :func:`CreatePyModule` to create a dynamic Python module and register the two functions: ::
+
+	=CreatePyModule(A1)
+	
+.. image:: ../_static/menu_create_module.png
+  :width: 400
+  :alt: Create dynamic module.
+
+Context Menus
+-------------
+
+We use the :func:`UpdateContextMenu` to add the functions `AddLinePlot()` and `AddClusteredColumnPlot()` to the right-click context menu. 
+
+We start by adding just `AddLinePlot()` to a menu called Plotting with one menu item Line.
+
+.. image:: ../_static/menu_first_context_menu.png
+  :width: 400
+  :alt: Add first context menu item.
+
+The menu is updated as expected:
+
+.. image:: ../_static/menu_first_context_menu_available.png
+  :width: 400
+  :alt: Added first context menu item.
+
+Selecting data and clicking on the Plotting\Line menu item generates plots as expected:
+
+.. image:: ../_static/menu_show_line_plot.png
+  :width: 400
+  :alt: Example line plot.
+
+Adding further menu items is done by extending the range passed into :func:`UpdateContextMenu`:
+
+.. image:: ../_static/menu_second_context_menu.png
+  :width: 400
+  :alt: Add second context menu item.
+
+At this stage our context menu looks like this:
+
+.. image:: ../_static/menu_second_context_menu_available.png
+  :width: 400
+  :alt: Added second context menu item.
+
+We'd like to add some images to make the menu look more professional. The image for the top level menu is an optional third argument to :func:`UpdateContextMenu` and the images for the menu items are an optional third column in the range passed as the second argument.
+
+The available images are restricted to those built into Excel. Fortunately there are many builtin images to choose from. Available images can be browsed at `images`_. These look like good images for the menu items:
+
+.. image:: ../_static/menu_item_icons.png
+  :width: 400
+  :alt: Nice plot images
+
+And this looks like a good candidate for the top menu:
+
+.. image:: ../_static/menu_top_level_icon.png
+  :width: 400
+  :alt: Nice plot selection image
+
+We can amend the :func:`UpdateContextMenu` call to include these image names:
+
+.. image:: ../_static/menu_context_add_icons.png
+  :width: 400
+  :alt: Add images to context menu
+  
+Now the menu has nice images:
+
+.. image:: ../_static/menu_context_with_icons.png
+  :width: 400
+  :alt: Added images to context menu
+  
+Ribbon Menus
+------------
+
+Ribbon menus work exactly the same as context menus. The inputs to :func:`UpdateRibbonMenu` are identical to :func:`UpdateContextMenu`.
+
+.. image:: ../_static/menu_ribbon_add_icons.png
+  :width: 400
+  :alt: Add images to ribbon menu
+
+The same menu is now available on the Excel ribbon:
+
+.. image:: ../_static/menu_ribbon_with_icons.png
+  :width: 400
+  :alt: Added images to ribbon menu
+
+.. note::
+	All the Python code and Excel files shown are available from github in the `xlslim-code-samples`_ repo. I highly recommend downloading the samples from github. The Excel workbooks contain many tips and tricks.
+
+
+.. _xlslim-code-samples: https://github.com/RusselWebber/xlslim-code-samples/archive/refs/heads/main.zip

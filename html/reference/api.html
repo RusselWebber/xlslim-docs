@@ -114,6 +114,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../user/streaming.html">Streaming data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/vba_replacement.html">Replacing VBA with Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/vba_events.html">Replacing VBA Event Handling with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/menus.html">Adding Context and Ribbon Menus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/licensing.html">Licensing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting.html">Troubleshooting</a></li>
 </ul>
@@ -154,6 +155,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#link-a-python-function-to-key-combinations">Link a Python Function to Key Combinations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#schedule-a-python-function">Schedule a Python Function</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#add-a-python-event-handler-to-process-excel-events">Add a Python Event Handler to process Excel events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#update-the-right-click-context-menu">Update the Right-Click Context Menu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#update-the-ribbon-menu">Update the Ribbon Menu</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="data_conversions.html">Data Conversions Between Excel and Python</a></li>
@@ -287,7 +290,6 @@ See <a class="reference internal" href="../user/imports.html"><span class="doc">
 
 <p>See <a class="reference internal" href="environments.html"><span class="doc">Python Environments</span></a> for details of the <cite>ExecutablePath</cite> parameter.
 See <a class="reference internal" href="../user/passing_arrays.html"><span class="doc">Passing lists</span></a> for an example using the <cite>ModulePrefix</cite> parameter.
-See <a class="reference internal" href="../user/subprocess.html"><span class="doc">Running Python in a background process</span></a> for an example using the <cite>UseBackgroundProcess</cite> parameter.
 See <a class="reference internal" href="../user/imports.html"><span class="doc">Advanced Module Importing</span></a> for an example showing the use of the <cite>ExtraModuleSearchLocations</cite> and <cite>FunctionNames</cite> parameters.</p>
 </div>
 <div class="section" id="viewing-cached-objects">
@@ -399,7 +401,7 @@ See <a class="reference internal" href="../user/imports.html"><span class="doc">
 </div>
 <div class="section" id="use-the-bundled-python">
 <h2>Use the bundled Python<a class="headerlink" href="#use-the-bundled-python" title="Permalink to this headline">¶</a></h2>
-<p>xlSlim has a bundled version of Python 3.10. This bundled Python is used by default. However you can specify another Python environment when registering modules with <a class="reference internal" href="#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a>. The <a class="reference internal" href="#ClearSavedPythonEnv" title="ClearSavedPythonEnv"><code class="xref py py-func docutils literal notranslate"><span class="pre">ClearSavedPythonEnv()</span></code></a> function will revert back to using the bundled Python.</p>
+<p>xlSlim has a bundled version of Python 3.10. This bundled Python is used by default. However you can specify another Python environment when registering modules with <a class="reference internal" href="#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a> or <a class="reference internal" href="#CreatePyModule" title="CreatePyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">CreatePyModule()</span></code></a>. The <a class="reference internal" href="#ClearSavedPythonEnv" title="ClearSavedPythonEnv"><code class="xref py py-func docutils literal notranslate"><span class="pre">ClearSavedPythonEnv()</span></code></a> function will revert back to using the bundled Python.</p>
 <dl class="function">
 <dt id="ClearSavedPythonEnv">
 <code class="descname">ClearSavedPythonEnv</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ClearSavedPythonEnv" title="Permalink to this definition">¶</a></dt>
@@ -615,7 +617,7 @@ See <a class="reference internal" href="../user/imports.html"><span class="doc">
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>keyCombination</strong> (<em>str</em>) – The combination of keys, for example ^+P is Ctrl+Shift+P.</li>
-<li><strong>functionName</strong> (<em>str</em>) – The name of the function to run. The function cannot take any arguments. If the function name is omitted the key combination reverts to normal behaviour. The function must have already been registered with <a class="reference internal" href="#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a>.</li>
+<li><strong>functionName</strong> (<em>str</em>) – The name of the function to run. The function cannot take any arguments. If the function name is omitted the key combination reverts to normal behaviour. The function must have already been registered with <a class="reference internal" href="#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a> or <a class="reference internal" href="#CreatePyModule" title="CreatePyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">CreatePyModule()</span></code></a>.</li>
 </ul>
 </td>
 </tr>
@@ -642,7 +644,7 @@ See <a class="reference internal" href="../user/imports.html"><span class="doc">
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>earliestTime</strong> (<em>datetime</em>) – When to run the function.</li>
-<li><strong>functionName</strong> (<em>str</em>) – The name of the function to run. The function cannot take any arguments. The function must have already been registered with <a class="reference internal" href="#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a>.</li>
+<li><strong>functionName</strong> (<em>str</em>) – The name of the function to run. The function cannot take any arguments. The function must have already been registered with <a class="reference internal" href="#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a> or <a class="reference internal" href="#CreatePyModule" title="CreatePyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">CreatePyModule()</span></code></a>.</li>
 <li><strong>latestTime</strong> (<em>datetime</em>) – Optionally set latest time at which the function can be run.</li>
 <li><strong>cancelSchedule</strong> (<em>bool</em>) – Optionally set to TRUE to cancel a scheduled run.</li>
 </ul>
@@ -680,6 +682,62 @@ See <a class="reference internal" href="../user/imports.html"><span class="doc">
 </table>
 </dd></dl>
 
+</div>
+<div class="section" id="update-the-right-click-context-menu">
+<h2>Update the Right-Click Context Menu<a class="headerlink" href="#update-the-right-click-context-menu" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="#UpdateContextMenu" title="UpdateContextMenu"><code class="xref py py-func docutils literal notranslate"><span class="pre">UpdateContextMenu()</span></code></a> function can be used add items to the right-click context menu and link these items to functions.</p>
+<dl class="function">
+<dt id="UpdateContextMenu">
+<code class="descname">UpdateContextMenu</code><span class="sig-paren">(</span><em>Name</em>, <em>MenuItems</em>, <em>Image=None</em><span class="sig-paren">)</span><a class="headerlink" href="#UpdateContextMenu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the Excel right-click context menu.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>Name</strong> (<em>str</em>) – The top level name for the menu.</li>
+<li><strong>MenuItems</strong> (<em>Excel range</em>) – An Excel range specifying the menu items. The first column must be the menu labels and the second column must be the function names. An optional third column can contain the images for the menu items. The functions cannot take any arguments. The functions must be registered with <a class="reference internal" href="#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a> or <a class="reference internal" href="#CreatePyModule" title="CreatePyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">CreatePyModule()</span></code></a>.</li>
+<li><strong>Image</strong> (<em>str</em><em> or </em><em>None</em>) – Optional image to use with the Name.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<p>See <a class="reference internal" href="../user/menus.html"><span class="doc">Adding Context and Ribbon Menus</span></a> for an example using the <cite>UpdateContextMenu</cite> function.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The images are limited to specific images built into Excel. The available images can be found by searching for “imagemso gallery”, at the time of writing this <a class="reference external" href="https://bert-toolkit.com/imagemso-list.html">page</a> has a good list of the available images.</p>
+</div>
+</div>
+<div class="section" id="update-the-ribbon-menu">
+<h2>Update the Ribbon Menu<a class="headerlink" href="#update-the-ribbon-menu" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="#UpdateRibbonMenu" title="UpdateRibbonMenu"><code class="xref py py-func docutils literal notranslate"><span class="pre">UpdateRibbonMenu()</span></code></a> function can be used add items to the ribbon menu and link these items to functions.</p>
+<dl class="function">
+<dt id="UpdateRibbonMenu">
+<code class="descname">UpdateRibbonMenu</code><span class="sig-paren">(</span><em>Name</em>, <em>MenuItems</em>, <em>Image=None</em><span class="sig-paren">)</span><a class="headerlink" href="#UpdateRibbonMenu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the Excel ribbon menu.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>Name</strong> (<em>str</em>) – The top level name for the menu.</li>
+<li><strong>MenuItems</strong> (<em>Excel range</em>) – An Excel range specifying the menu items. The first column must be the menu labels and the second column must be the function names. An optional third column can contain the images for the menu items. The functions cannot take any arguments. The functions must be registered with <a class="reference internal" href="#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a> or <a class="reference internal" href="#CreatePyModule" title="CreatePyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">CreatePyModule()</span></code></a>.</li>
+<li><strong>Image</strong> (<em>str</em><em> or </em><em>None</em>) – Optional image to use with the Name.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<p>See <a class="reference internal" href="../user/menus.html"><span class="doc">Adding Context and Ribbon Menus</span></a> for an example using the <cite>UpdateRibbonMenu</cite> function.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The images are limited to specific images built into Excel. The available images can be found by searching for “imagemso gallery”, at the time of writing this <a class="reference external" href="https://bert-toolkit.com/imagemso-list.html">page</a> has a good list of the available images.</p>
+</div>
 </div>
 </div>
 
