@@ -1,0 +1,126 @@
+.. meta::
+    :description lang=en:
+		xlSlim's interactive mode turns Excel into a Jupyter notebook with code stored and run within Excel.
+
+Interactive Mode
+================
+
+xlSlim's interactive mode allows Excel to mimic Jupyter notebook behaviour with code stored and run within Excel. This is particularly useful for adhoc data analysis and rapid code development. 
+
+Interactive mode is activated by calling the :func:`ActivateInteractiveMode` function:
+
+	=ActivateInteractiveMode()
+
+.. image:: ../_static/interactive_activate.png
+  :width: 400
+  :alt: Activate interactive mode
+
+Python code can now be run directly in Excel. Any cell beginning with "#py" is treated as Python code.
+
+.. code-block:: python
+
+	#py
+	import math
+	
+	def area_circle(r:float)->float:
+		"""Calculates the area of a circle."""
+		return math.pi * r ** 2
+		
+	radius = 15.0
+	print(f"Area {area_circle(radius)}")
+
+Double-clicking on a cell opens the built-in Python code editor:
+
+.. image:: ../_static/interactive_show_editor.gif
+  :width: 400
+  :alt: Show Python editor
+
+Any functions or classes defined are automatically registered as Excel functions, for example:
+
+	=area_circle(15)
+
+Classes and functions can be defined in one cell and used in another. The Person class and describe_person() function can be defined:
+
+.. code-block:: python
+
+	#py
+	from dataclasses import dataclass
+
+	@dataclass(frozen=True, repr=True)
+	class Person:
+		name: str
+		age: int
+
+	def describe_person(p:Person)->str:
+		return f"{p.name} is {p.age} years old."
+		
+.. image:: ../_static/interactive_define_person_class_and_function.png
+  :width: 400
+  :alt: Define person class and function
+
+And then used in other cells:
+
+.. code-block:: python
+
+	#py
+	p = Person("Ed Sheeran",32)
+	print(p)
+	print(describe_person(p))
+
+.. image:: ../_static/interactive_use_person_class_and_function.png
+  :width: 400
+  :alt: Define person class and function
+
+.. _xlslim-code-samples: https://github.com/RusselWebber/xlslim-code-samples/archive/refs/heads/main.zip
+
+.. note::
+	All the Python code and Excel files shown are available from github in the `xlslim-code-samples`_ repo. I highly recommend downloading the samples from github. The Excel workbooks contain many tips and tricks.
+
+Keyboard Shortcuts
+------------------
+
+Interactive mode has keyboard shortcuts that are similar to the Jupyter notebook shortcuts.
+
+.. list-table:: Keyboard Shortcuts
+   :widths: 15 50
+   :header-rows: 1
+
+   * - Keys
+     - Action
+   * - Ctrl + Enter
+     - Run the current cell
+   * - Shift + Enter
+     - Run the current cell, move down one cell
+   * - Ctrl + R
+     - Run all interactive cells
+   * - Alt + Enter
+     - Useful to insert a new line if editing text within cells
+
+Accessing the Excel application
+-------------------------------
+
+A special `app()` function is available in interactive mode. This function gives access to the Excel application.
+
+.. code-block:: python
+
+	#py
+	# Create a link to the cell B1
+	c = app().ActiveSheet.Range("B1")
+
+.. image:: ../_static/interactive_get_link_to_cell.png
+  :width: 400
+  :alt: Get link to Excel cell
+
+Variables defined in one cell are available to use in other cells. We can now manipulate the cell B1:
+
+.. code-block:: python
+
+	#py
+	c.Value = "Hello from xlSlim!"
+	c.Font.Bold = True
+
+.. image:: ../_static/interactive_manipulate_cells.gif
+  :width: 400
+  :alt: Manipulate Excel cells
+
+Please take a look at the *interactive_mode.xlsx* file available from github in the `xlslim-code-samples`_ repo. The file contains many further examples showing how to create pandas dataframes from Excel, define async functions and much more.

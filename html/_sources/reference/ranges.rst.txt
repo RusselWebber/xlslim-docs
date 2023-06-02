@@ -1,0 +1,13 @@
+.. meta::
+    :description lang=en:
+        xlSlim uses a range XLSLIM_RUN_AT_START to define which cells should be run when a workbook is opened.
+
+
+Special Named Ranges
+====================
+
+xlSlim uses a named range `XLSLIM_RUN_AT_START` to define which cells should be run when a workbook is opened.
+
+Each cell in the named range is recalculated in the order the cells appear in the named range.
+
+Both regular and interactive cells are supported. Note that to recalculate interactive cells the :func:`ActivateInteractiveMode` function call will need to be in the `XLSLIM_RUN_AT_START` named range and appear before any interactive cells.

@@ -363,3 +363,31 @@ See :doc:`/user/menus` for an example using the `UpdateRibbonMenu` function.
 
 .. note::
 	The images are limited to specific images built into Excel. The available images can be found by searching for "imagemso gallery", at the time of writing this `page`_ has a good list of the available images.
+	
+Activating Interactive Mode
+---------------------------
+
+The :func:`ActivateInteractiveMode` function enables interactive Python mode. In interactive mode any cells beginning with "#py" are treated as Python code and run within Excel. Cells can be executed with Ctrl+Enter and Shift+Enter, just like Jupyter notebooks. All Python cells can be run with Ctrl+R. Double clicking on cells opens a Python code editor.
+
+.. py:function:: ActivateInteractiveMode(ExecutablePath=None, ExtraModuleSearchLocations=None, ExtraDllSearchLocations=None)
+
+   Activates Interactive Python mode.
+
+   :param ExecutablePath: Optional location of the Python environment to use.
+   :type ExecutablePath: str or None
+   :param ExtraModuleSearchLocations: Extra locations to be added to the Python module search path (sys.path).
+   :type ExtraModuleSearchLocations: str or None
+   :param ExtraDllSearchLocations: Extra locations to be added to the Windows DLL search path (PATH).
+   :type ExtraDllSearchLocations: str or None
+
+See :doc:`environments` for details of the `ExecutablePath` parameter.
+
+Deactivating Interactive Mode
+-----------------------------
+
+The :func:`DeactivateInteractiveMode` function disables interactive Python mode. Keyboard shortcuts are reset to their defaults.
+
+.. py:function:: DeactivateInteractiveMode()
+
+   Deactivates Interactive Python mode.
+

@@ -17,6 +17,9 @@
 		<loc>https://russelwebber.github.io/xlslim-docs/html/reference/globals.html</loc>
 	</url>
 	<url>
+		<loc>https://russelwebber.github.io/xlslim-docs/html/reference/ranges.html</loc>
+	</url>	
+	<url>
 		<loc>https://russelwebber.github.io/xlslim-docs/html/reference/licensing.html</loc>
 	</url>
 	<url>
@@ -64,6 +67,9 @@
 	<url>
 		<loc>https://russelwebber.github.io/xlslim-docs/html/user/dynamic_imports.html</loc>
 	</url>	
+	<url>
+		<loc>https://russelwebber.github.io/xlslim-docs/html/user/interactive.html</loc>
+	</url>		
 	<url>
 		<loc>https://russelwebber.github.io/xlslim-docs/html/user/menus.html</loc>
 	</url>		

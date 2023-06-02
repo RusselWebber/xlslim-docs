@@ -1,0 +1,361 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta content="xlSlim's interactive mode turns Excel into a Jupyter notebook with code stored and run within Excel." lang="en" name="description" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Interactive Mode &mdash; xlSlim v1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Optional arguments" href="keyword_args.html" />
+    <link rel="prev" title="Quickstart" href="quickstart.html" />
+    
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC5DSJ2TQ1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EC5DSJ2TQ1');
+</script>
+
+     
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> xlSlim
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Interactive Mode</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#keyboard-shortcuts">Keyboard Shortcuts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#accessing-the-excel-application">Accessing the Excel application</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="keyword_args.html">Optional arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="passing_simple_types.html">Passing simple data types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="passing_arrays.html">Passing lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="passing_objects.html">Passing Python objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="passing_dicts.html">Passing Python dictionaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="udfs.html">Calling VBA and other Excel add-in functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">numpy Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="series.html">pandas Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataframes.html">pandas DataFrames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="subprocess.html">Running Python in a background process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imports.html">Advanced Module Importing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dynamic_imports.html">Dynamic Module Importing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http_imports.html">Remote Module Importing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="streaming.html">Streaming data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vba_replacement.html">Replacing VBA with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vba_events.html">Replacing VBA Event Handling with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="menus.html">Adding Context and Ribbon Menus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="licensing.html">Licensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../samples/read_json_from_web.html">Read JSON data from a URL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/read_csv.html">Read CSV data from a file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/sqlite.html">Using SQLite to analyse data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/yfinance.html">Loading Stock Prices from Yahoo! Finance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/pca.html">Principal Components Analysis of Index Prices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/monte_carlo.html">Monte Carlo Option Pricing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/nlp.html">NLP with Excel and Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/stream_kafka_doubles.html">Streaming from Kafka</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/pivot_table.html">Creating a Pivot Table using Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/equity_index_options.html">US Equity Index Option Pricing</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/environments.html">Python Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/api.html">Excel Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/data_conversions.html">Data Conversions Between Excel and Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/globals.html">Magic Global Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/ranges.html">Special Named Ranges</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/licensing.html">Licensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/software_requirements.html">Software Requirements</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">xlSlim</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Interactive Mode</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/user/interactive.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="interactive-mode">
+<h1>Interactive Mode<a class="headerlink" href="#interactive-mode" title="Permalink to this headline">¶</a></h1>
+<p>xlSlim’s interactive mode allows Excel to mimic Jupyter notebook behaviour with code stored and run within Excel. This is particularly useful for adhoc data analysis and rapid code development.</p>
+<p>Interactive mode is activated by calling the <a class="reference internal" href="../reference/api.html#ActivateInteractiveMode" title="ActivateInteractiveMode"><code class="xref py py-func docutils literal notranslate"><span class="pre">ActivateInteractiveMode()</span></code></a> function:</p>
+<blockquote>
+<div>=ActivateInteractiveMode()</div></blockquote>
+<a class="reference internal image-reference" href="../_images/interactive_activate.png"><img alt="Activate interactive mode" src="../_images/interactive_activate.png" style="width: 400px;" /></a>
+<p>Python code can now be run directly in Excel. Any cell beginning with “#py” is treated as Python code.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#py</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="k">def</span> <span class="nf">area_circle</span><span class="p">(</span><span class="n">r</span><span class="p">:</span><span class="nb">float</span><span class="p">)</span><span class="o">-&gt;</span><span class="nb">float</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Calculates the area of a circle.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">r</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="n">radius</span> <span class="o">=</span> <span class="mf">15.0</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Area </span><span class="si">{</span><span class="n">area_circle</span><span class="p">(</span><span class="n">radius</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Double-clicking on a cell opens the built-in Python code editor:</p>
+<a class="reference internal image-reference" href="../_images/interactive_show_editor.gif"><img alt="Show Python editor" src="../_images/interactive_show_editor.gif" style="width: 400px;" /></a>
+<p>Any functions or classes defined are automatically registered as Excel functions, for example:</p>
+<blockquote>
+<div>=area_circle(15)</div></blockquote>
+<p>Classes and functions can be defined in one cell and used in another. The Person class and describe_person() function can be defined:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#py</span>
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+
+<span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="nb">repr</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
+        <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+        <span class="n">age</span><span class="p">:</span> <span class="nb">int</span>
+
+<span class="k">def</span> <span class="nf">describe_person</span><span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-&gt;</span><span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">age</span><span class="si">}</span><span class="s2"> years old.&quot;</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/interactive_define_person_class_and_function.png"><img alt="Define person class and function" src="../_images/interactive_define_person_class_and_function.png" style="width: 400px;" /></a>
+<p>And then used in other cells:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#py</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="s2">&quot;Ed Sheeran&quot;</span><span class="p">,</span><span class="mi">32</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">describe_person</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/interactive_use_person_class_and_function.png"><img alt="Define person class and function" src="../_images/interactive_use_person_class_and_function.png" style="width: 400px;" /></a>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">All the Python code and Excel files shown are available from github in the <a class="reference external" href="https://github.com/RusselWebber/xlslim-code-samples/archive/refs/heads/main.zip">xlslim-code-samples</a> repo. I highly recommend downloading the samples from github. The Excel workbooks contain many tips and tricks.</p>
+</div>
+<div class="section" id="keyboard-shortcuts">
+<h2>Keyboard Shortcuts<a class="headerlink" href="#keyboard-shortcuts" title="Permalink to this headline">¶</a></h2>
+<p>Interactive mode has keyboard shortcuts that are similar to the Jupyter notebook shortcuts.</p>
+<table border="1" class="docutils" id="table-1">
+<caption><span class="caption-text">Keyboard Shortcuts</span><a class="headerlink" href="#table-1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Keys</th>
+<th class="head">Action</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Ctrl + Enter</td>
+<td>Run the current cell</td>
+</tr>
+<tr class="row-odd"><td>Shift + Enter</td>
+<td>Run the current cell, move down one cell</td>
+</tr>
+<tr class="row-even"><td>Ctrl + R</td>
+<td>Run all interactive cells</td>
+</tr>
+<tr class="row-odd"><td>Alt + Enter</td>
+<td>Useful to insert a new line if editing text within cells</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="accessing-the-excel-application">
+<h2>Accessing the Excel application<a class="headerlink" href="#accessing-the-excel-application" title="Permalink to this headline">¶</a></h2>
+<p>A special <cite>app()</cite> function is available in interactive mode. This function gives access to the Excel application.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#py</span>
+<span class="c1"># Create a link to the cell B1</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">app</span><span class="p">()</span><span class="o">.</span><span class="n">ActiveSheet</span><span class="o">.</span><span class="n">Range</span><span class="p">(</span><span class="s2">&quot;B1&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/interactive_get_link_to_cell.png"><img alt="Get link to Excel cell" src="../_images/interactive_get_link_to_cell.png" style="width: 400px;" /></a>
+<p>Variables defined in one cell are available to use in other cells. We can now manipulate the cell B1:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#py</span>
+<span class="n">c</span><span class="o">.</span><span class="n">Value</span> <span class="o">=</span> <span class="s2">&quot;Hello from xlSlim!&quot;</span>
+<span class="n">c</span><span class="o">.</span><span class="n">Font</span><span class="o">.</span><span class="n">Bold</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/interactive_manipulate_cells.gif"><img alt="Manipulate Excel cells" src="../_images/interactive_manipulate_cells.gif" style="width: 400px;" /></a>
+<p>Please take a look at the <em>interactive_mode.xlsx</em> file available from github in the <a class="reference external" href="https://github.com/RusselWebber/xlslim-code-samples/archive/refs/heads/main.zip">xlslim-code-samples</a> repo. The file contains many further examples showing how to create pandas dataframes from Excel, define async functions and much more.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="keyword_args.html" class="btn btn-neutral float-right" title="Optional arguments" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="quickstart.html" class="btn btn-neutral float-left" title="Quickstart" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2022-2023, Russel Webber
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -98,6 +98,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../user/installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/interactive.html">Interactive Mode</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/keyword_args.html">Optional arguments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/passing_simple_types.html">Passing simple data types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/passing_arrays.html">Passing lists</a></li>
@@ -157,10 +158,13 @@
 <li class="toctree-l2"><a class="reference internal" href="#add-a-python-event-handler-to-process-excel-events">Add a Python Event Handler to process Excel events</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#update-the-right-click-context-menu">Update the Right-Click Context Menu</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#update-the-ribbon-menu">Update the Ribbon Menu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#activating-interactive-mode">Activating Interactive Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#deactivating-interactive-mode">Deactivating Interactive Mode</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="data_conversions.html">Data Conversions Between Excel and Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="globals.html">Magic Global Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ranges.html">Special Named Ranges</a></li>
 <li class="toctree-l1"><a class="reference internal" href="licensing.html">Licensing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="software_requirements.html">Software Requirements</a></li>
 </ul>
@@ -738,6 +742,40 @@ See <a class="reference internal" href="../user/imports.html"><span class="doc">
 <p class="first admonition-title">Note</p>
 <p class="last">The images are limited to specific images built into Excel. The available images can be found by searching for “imagemso gallery”, at the time of writing this <a class="reference external" href="https://bert-toolkit.com/imagemso-list.html">page</a> has a good list of the available images.</p>
 </div>
+</div>
+<div class="section" id="activating-interactive-mode">
+<h2>Activating Interactive Mode<a class="headerlink" href="#activating-interactive-mode" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="#ActivateInteractiveMode" title="ActivateInteractiveMode"><code class="xref py py-func docutils literal notranslate"><span class="pre">ActivateInteractiveMode()</span></code></a> function enables interactive Python mode. In interactive mode any cells beginning with “#py” are treated as Python code and run within Excel. Cells can be executed with Ctrl+Enter and Shift+Enter, just like Jupyter notebooks. All Python cells can be run with Ctrl+R. Double clicking on cells opens a Python code editor.</p>
+<dl class="function">
+<dt id="ActivateInteractiveMode">
+<code class="descname">ActivateInteractiveMode</code><span class="sig-paren">(</span><em>ExecutablePath=None</em>, <em>ExtraModuleSearchLocations=None</em>, <em>ExtraDllSearchLocations=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ActivateInteractiveMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Activates Interactive Python mode.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ExecutablePath</strong> (<em>str</em><em> or </em><em>None</em>) – Optional location of the Python environment to use.</li>
+<li><strong>ExtraModuleSearchLocations</strong> (<em>str</em><em> or </em><em>None</em>) – Extra locations to be added to the Python module search path (sys.path).</li>
+<li><strong>ExtraDllSearchLocations</strong> (<em>str</em><em> or </em><em>None</em>) – Extra locations to be added to the Windows DLL search path (PATH).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<p>See <a class="reference internal" href="environments.html"><span class="doc">Python Environments</span></a> for details of the <cite>ExecutablePath</cite> parameter.</p>
+</div>
+<div class="section" id="deactivating-interactive-mode">
+<h2>Deactivating Interactive Mode<a class="headerlink" href="#deactivating-interactive-mode" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="#DeactivateInteractiveMode" title="DeactivateInteractiveMode"><code class="xref py py-func docutils literal notranslate"><span class="pre">DeactivateInteractiveMode()</span></code></a> function disables interactive Python mode. Keyboard shortcuts are reset to their defaults.</p>
+<dl class="function">
+<dt id="DeactivateInteractiveMode">
+<code class="descname">DeactivateInteractiveMode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#DeactivateInteractiveMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deactivates Interactive Python mode.</p>
+</dd></dl>
+
 </div>
 </div>
 

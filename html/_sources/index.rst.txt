@@ -16,6 +16,7 @@ Welcome to xlSlim's documentation
 
 xlSlim - call Python code from Excel with **no code changes!**
 
+* A unique interactive mode that mimics Jupyter notebook behavious
 * Data types converted automatically
 * Python objects cached automatically
 * Lists supported
@@ -34,6 +35,7 @@ xlSlim - call Python code from Excel with **no code changes!**
 
    user/installation
    user/quickstart
+   user/interactive
    user/keyword_args
    user/passing_simple_types
    user/passing_arrays
@@ -82,5 +84,6 @@ xlSlim - call Python code from Excel with **no code changes!**
    reference/api
    reference/data_conversions
    reference/globals   
+   reference/ranges
    reference/licensing   
    reference/software_requirements

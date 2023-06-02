@@ -5,11 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <meta content="xlSlim includes a bundled Python standard installation. xlSlim can also use conda and venv environments." lang="en" name="description" />
+  <meta content="xlSlim uses a range XLSLIM_RUN_AT_START to define which cells should be run when a workbook is opened." lang="en" name="description" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Python Environments &mdash; xlSlim v1.0 documentation</title>
+  <title>Special Named Ranges &mdash; xlSlim v1.0 documentation</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Excel Functions" href="api.html" />
-    <link rel="prev" title="US Equity Index Option Pricing" href="../samples/equity_index_options.html" />
+    <link rel="next" title="Licensing" href="licensing.html" />
+    <link rel="prev" title="Magic Global Functions" href="globals.html" />
     
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EC5DSJ2TQ1"></script>
@@ -134,15 +134,11 @@
 </ul>
 <p class="caption"><span class="caption-text">Reference</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Python Environments</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#bundled-python">Bundled Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#external-python-environments">External Python environments</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="environments.html">Python Environments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">Excel Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="data_conversions.html">Data Conversions Between Excel and Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="globals.html">Magic Global Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ranges.html">Special Named Ranges</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Special Named Ranges</a></li>
 <li class="toctree-l1"><a class="reference internal" href="licensing.html">Licensing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="software_requirements.html">Software Requirements</a></li>
 </ul>
@@ -190,13 +186,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Python Environments</li>
+      <li>Special Named Ranges</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/reference/environments.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/reference/ranges.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -209,33 +205,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="python-environments">
-<h1>Python Environments<a class="headerlink" href="#python-environments" title="Permalink to this headline">¶</a></h1>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The Python environment can only be set on the first call to <a class="reference internal" href="api.html#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a>. Excel needs to be restarted to change the environment after modules have been registered.</p>
-</div>
-<div class="section" id="bundled-python">
-<h2>Bundled Python<a class="headerlink" href="#bundled-python" title="Permalink to this headline">¶</a></h2>
-<p>xlSlim is bundled with Python 3.10 This bundled version is installed when xlSlim starts. Usually this is installed at %HOMEPATH%AppDataLocal The bundled installation contain the Python standard library only, this excludes common packages such as <a class="reference external" href="https://docs.python-requests.org/en/latest/">requests</a>, <a class="reference external" href="https://numpy.org/">numpy</a> and <a class="reference external" href="https://pandas.pydata.org/">pandas</a>.</p>
-<p>You can always revert to using the bundled Python by running <a class="reference internal" href="api.html#ClearSavedPythonEnv" title="ClearSavedPythonEnv"><code class="xref py py-func docutils literal notranslate"><span class="pre">ClearSavedPythonEnv()</span></code></a></p>
-</div>
-<div class="section" id="external-python-environments">
-<h2>External Python environments<a class="headerlink" href="#external-python-environments" title="Permalink to this headline">¶</a></h2>
-<p>For more advanced Python functionality you can use external Python environments. xlSlim supports Python 3.7, 3.8, 3.9, 3.10 and 3.11. xlSlim supports default Python installations as well as virtual environments created with <a class="reference external" href="https://docs.python.org/3/tutorial/venv.html#tut-venv">venv</a> or <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">conda</a>.</p>
-<p>External Python environments are set when <a class="reference internal" href="api.html#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a> is called. The <cite>ExecutablePath</cite> parameter is used to set the location of the Python executable.</p>
-<p>As an example, this registers the <cite>numpy.py</cite> module from <a class="reference internal" href="../user/numpy.html"><span class="doc">numpy Arrays</span></a> for use with the <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">conda</a> Python 3.9 environment at “c:\users\russe\anaconda3\envs\py39”</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">RegisterPyModule</span><span class="p">(</span><span class="s2">&quot;c:\users</span><span class="se">\r</span><span class="s2">usse\documents</span><span class="se">\n</span><span class="s2">umpy.py&quot;</span><span class="p">,</span><span class="s2">&quot;c:\users</span><span class="se">\r</span><span class="s2">usse</span><span class="se">\a</span><span class="s2">naconda3\envs\py39&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<a class="reference internal image-reference" href="../_images/pyenvs_conda_numpy_register.png"><img alt="Register xlSlim with conda Py39" src="../_images/pyenvs_conda_numpy_register.png" style="width: 400px;" /></a>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The last <cite>ExecutablePath</cite> value used is stored so you don’t need to include <cite>ExecutablePath</cite> after the first call to <a class="reference internal" href="api.html#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a>.</p>
-</div>
-<p>Full details of the Python environment being used can be viewed with <a class="reference internal" href="api.html#PythonDetails" title="PythonDetails"><code class="xref py py-func docutils literal notranslate"><span class="pre">PythonDetails()</span></code></a>, this shows that xlSlim is using the <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">conda</a> Python 3.9 environment as expected.</p>
-<a class="reference internal image-reference" href="../_images/pyenvs_conda_python_details.png"><img alt="Show Python details for conda Py39 env" src="../_images/pyenvs_conda_python_details.png" style="width: 400px;" /></a>
-</div>
+  <div class="section" id="special-named-ranges">
+<h1>Special Named Ranges<a class="headerlink" href="#special-named-ranges" title="Permalink to this headline">¶</a></h1>
+<p>xlSlim uses a named range <cite>XLSLIM_RUN_AT_START</cite> to define which cells should be run when a workbook is opened.</p>
+<p>Each cell in the named range is recalculated in the order the cells appear in the named range.</p>
+<p>Both regular and interactive cells are supported. Note that to recalculate interactive cells the <a class="reference internal" href="api.html#ActivateInteractiveMode" title="ActivateInteractiveMode"><code class="xref py py-func docutils literal notranslate"><span class="pre">ActivateInteractiveMode()</span></code></a> function call will need to be in the <cite>XLSLIM_RUN_AT_START</cite> named range and appear before any interactive cells.</p>
 </div>
 
 
@@ -246,10 +220,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="api.html" class="btn btn-neutral float-right" title="Excel Functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="licensing.html" class="btn btn-neutral float-right" title="Licensing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../samples/equity_index_options.html" class="btn btn-neutral float-left" title="US Equity Index Option Pricing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="globals.html" class="btn btn-neutral float-left" title="Magic Global Functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
