@@ -25,7 +25,7 @@ xlSlim - call Python code from Excel with **no code changes!**
 * Data can be easily streamed from Python to Excel
 * Python can be used as a VBA replacement
 
-...you don't even need Python installed. xlSlim has a bundled version of Python 3.10
+...you don't even need Python installed. xlSlim has a bundled version of Python 3.11
 
 -------------------------------------
 

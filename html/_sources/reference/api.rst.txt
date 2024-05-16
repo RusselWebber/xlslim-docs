@@ -138,7 +138,7 @@ To remove a specific item from object caches you can use the :func:`ClearCacheIt
 Use the bundled Python
 ----------------------
 
-xlSlim has a bundled version of Python 3.10. This bundled Python is used by default. However you can specify another Python environment when registering modules with :func:`RegisterPyModule` or :func:`CreatePyModule`. The :func:`ClearSavedPythonEnv()` function will revert back to using the bundled Python.
+xlSlim has a bundled version of Python 3.11. This bundled Python is used by default. However you can specify another Python environment when registering modules with :func:`RegisterPyModule` or :func:`CreatePyModule`. The :func:`ClearSavedPythonEnv()` function will revert back to using the bundled Python.
 
 .. py:function:: ClearSavedPythonEnv()
 

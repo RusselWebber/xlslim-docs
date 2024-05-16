@@ -18,14 +18,14 @@ Bundled Python
 .. _conda: https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html
 
 
-xlSlim is bundled with Python 3.10 This bundled version is installed when xlSlim starts. Usually this is installed at %HOMEPATH%\AppData\Local The bundled installation contain the Python standard library only, this excludes common packages such as `requests`_, `numpy`_ and `pandas`_.
+xlSlim is bundled with Python 3.11 This bundled version is installed when xlSlim starts. Usually this is installed at %HOMEPATH%\AppData\Local The bundled installation contain the Python standard library only, this excludes common packages such as `requests`_, `numpy`_ and `pandas`_.
 
 You can always revert to using the bundled Python by running :func:`ClearSavedPythonEnv`
 
 External Python environments
 ----------------------------
 
-For more advanced Python functionality you can use external Python environments. xlSlim supports Python 3.7, 3.8, 3.9, 3.10 and 3.11. xlSlim supports default Python installations as well as virtual environments created with `venv`_ or `conda`_.
+For more advanced Python functionality you can use external Python environments. xlSlim supports Python 3.7, 3.8, 3.9, 3.10, 3.11 and 3.12. xlSlim supports default Python installations as well as virtual environments created with `venv`_ or `conda`_.
 
 External Python environments are set when :func:`RegisterPyModule` is called. The `ExecutablePath` parameter is used to set the location of the Python executable.
 
