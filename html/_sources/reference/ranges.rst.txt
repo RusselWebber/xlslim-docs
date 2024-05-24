@@ -10,4 +10,5 @@ xlSlim uses a named range `XLSLIM_RUN_AT_START` to define which cells should be 
 
 Each cell in the named range is recalculated in the order the cells appear in the named range.
 
-Both regular and interactive cells are supported. Note that to recalculate interactive cells the :func:`ActivateInteractiveMode` function call will need to be in the `XLSLIM_RUN_AT_START` named range and appear before any interactive cells.
+.. note::
+	Interactive cells are not supported and cannot be automatically run.

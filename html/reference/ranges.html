@@ -209,7 +209,10 @@
 <h1>Special Named Ranges<a class="headerlink" href="#special-named-ranges" title="Permalink to this headline">¶</a></h1>
 <p>xlSlim uses a named range <cite>XLSLIM_RUN_AT_START</cite> to define which cells should be run when a workbook is opened.</p>
 <p>Each cell in the named range is recalculated in the order the cells appear in the named range.</p>
-<p>Both regular and interactive cells are supported. Note that to recalculate interactive cells the <a class="reference internal" href="api.html#ActivateInteractiveMode" title="ActivateInteractiveMode"><code class="xref py py-func docutils literal notranslate"><span class="pre">ActivateInteractiveMode()</span></code></a> function call will need to be in the <cite>XLSLIM_RUN_AT_START</cite> named range and appear before any interactive cells.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Interactive cells are not supported and cannot be automatically run.</p>
+</div>
 </div>
 
 
