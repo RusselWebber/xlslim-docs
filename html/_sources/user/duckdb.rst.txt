@@ -1,0 +1,75 @@
+.. meta::
+    :description lang=en:
+		xlSlim supports running DuckDB queries within Excel.
+
+
+DuckDB
+======
+
+.. _DuckDB: https://duckdb.org/
+.. _SQL: https://duckdb.org/docs/sql/introduction.html
+.. _https: https://duckdb.org/docs/extensions/httpfs/overview
+.. _json: https://duckdb.org/docs/extensions/json
+.. _Parquet: https://duckdb.org/docs/data/parquet/overview
+.. _CSV: https://duckdb.org/docs/data/csv/overview
+.. _JSONPath: https://en.wikipedia.org/wiki/JSONPath
+
+`DuckDB`_ is a powerful analytical database that allows you to easily import and analyse large datasets. DuckDB fully supports `SQL`_ with many improvements to make SQL friendlier.
+
+xlSlim includes a complete in-process DuckDB which allows DuckDB SQL statements to be run within either an in-memory or on-disk database. DuckDB can read data from many common file formats, such as `JSON`_, `Parquet`_ and `CSV`_. Additionally DuckDB has functionality to directly query data located on `https`_ and in AWS S3.
+
+.. warning::
+	DuckDB requires a premium licence. See :doc:`/reference/licensing`
+
+Reading JSON files
+------------------
+
+Reading data from JSON files can be difficult, particularly if the data is nested. 
+
+This JSON file contains details of Nobel prize laureates:
+
+.. image:: ../_static/duckdb_sample_json.png
+  :width: 400
+  :alt: DuckDB Nobel Laureates as JSON file.
+
+The data is presented as a list of dictionaries with the *prizes* field being a further list of dictionaries.
+
+DuckDB allows the laureates names and birth countries to be extracted with a simple SQL SELECT. Notice how DuckDB allows the JSON file to be treated just like a regular database table:
+
+.. code-block:: sql
+
+	SELECT firstname, surname, bornCountry FROM 'laureate.json' LIMIT 5
+
+Passing the SQL into the :func:`DuckDbQuery` function gives the following result:
+
+.. image:: ../_static/duckdb_json_top5.png
+  :width: 400
+  :alt: First 5 names and birth countries in the JSON file.
+
+We can now easily find the countries with the most Nobel prize winners:
+
+.. code-block:: sql
+
+	SELECT bornCountry AS Country, COUNT(*) AS Number FROM 'laureate.json' GROUP BY bornCountry ORDER BY COUNT(*) DESC LIMIT 5
+
+.. image:: ../_static/duckdb_json_top_countries.png
+  :width: 400
+  :alt: Countries with the most prize winners in the JSON file.
+
+DuckDB supports the use of `JSONPath`_ to extract values from nested JSON fields. This allows us to extract the category and motivation of the first prize awarded to each person.
+
+.. code-block:: sql
+
+	SELECT firstname, surname, prizes->>'$[0].category' AS Category, prizes->>'$[0].motivation'AS Motivation FROM 'laureate.json' LIMIT 5
+
+.. image:: ../_static/duckdb_json_category_and_motivation.png
+  :width: 400
+  :alt: Prize category and motivation in the JSON file.
+
+
+
+.. note::
+	All the Excel files shown are available from github in the `xlslim-code-samples`_ repo. I highly recommend downloading the samples from github. The Excel workbooks contain many tips and tricks.
+
+
+.. _xlslim-code-samples: https://github.com/RusselWebber/xlslim-code-samples/archive/refs/heads/main.zip

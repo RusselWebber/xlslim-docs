@@ -391,3 +391,23 @@ The :func:`DeactivateInteractiveMode` function disables interactive Python mode.
 
    Deactivates Interactive Python mode.
 
+Running DuckDB SQL
+------------------
+
+.. _`DuckDB SQL`: https://duckdb.org/docs/sql/introduction
+
+
+The :func:`DuckDbQuery` function allows SQL statements to be executed within DuckDB.
+
+.. py:function:: DuckDbQuery(SQL, DbFile=None)
+
+   Executes the supplied SQL statements.
+
+   :param SQL: The SQL statements to execute.
+   :type SQL: str
+   :param DbFile: If not supplied then the statements run in a temporary in-memory database. Else the function creates or opens  a DuckDB database at the supplied location and runs the statements within this database.
+   :type DbFile: str or None
+   :return: An error message if the SQL failed or an array of objects suitable for display in Excel.
+   :rtype: str or list[object]
+
+See `DuckDB SQL`_ for details of DuckDB SQL statements.

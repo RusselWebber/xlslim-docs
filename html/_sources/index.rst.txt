@@ -27,6 +27,8 @@ xlSlim - call Python code from Excel with **no code changes!**
 
 ...you don't even need Python installed. xlSlim has a bundled version of Python 3.11
 
+Additionally, xlSlim brings the power of DuckDB to Excel.
+
 -------------------------------------
 
 .. toctree::
@@ -55,6 +57,7 @@ xlSlim - call Python code from Excel with **no code changes!**
    user/menus
    user/licensing      
    user/troubleshooting
+   user/duckdb
    
 
 -------------------------------------

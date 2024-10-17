@@ -55,6 +55,9 @@ This table compares the features available in the free and premium versions:
    * - Run Python in a background process
      - N
      - Y	 	 
+   * - Execute DuckDB SQL statements
+     - N
+     - Y	 	 
 	 
 Technical Details
 -----------------

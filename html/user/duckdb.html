@@ -1,0 +1,298 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta content="xlSlim supports running DuckDB queries within Excel." lang="en" name="description" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>DuckDB &mdash; xlSlim v1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Read JSON data from a URL" href="../samples/read_json_from_web.html" />
+    <link rel="prev" title="Troubleshooting" href="troubleshooting.html" />
+    
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC5DSJ2TQ1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EC5DSJ2TQ1');
+</script>
+
+     
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> xlSlim
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interactive.html">Interactive Mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="keyword_args.html">Optional arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="passing_simple_types.html">Passing simple data types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="passing_arrays.html">Passing lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="passing_objects.html">Passing Python objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="passing_dicts.html">Passing Python dictionaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="udfs.html">Calling VBA and other Excel add-in functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">numpy Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="series.html">pandas Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataframes.html">pandas DataFrames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="subprocess.html">Running Python in a background process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imports.html">Advanced Module Importing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dynamic_imports.html">Dynamic Module Importing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http_imports.html">Remote Module Importing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="streaming.html">Streaming data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vba_replacement.html">Replacing VBA with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vba_events.html">Replacing VBA Event Handling with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="menus.html">Adding Context and Ribbon Menus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="licensing.html">Licensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">DuckDB</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#reading-json-files">Reading JSON files</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../samples/read_json_from_web.html">Read JSON data from a URL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/read_csv.html">Read CSV data from a file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/sqlite.html">Using SQLite to analyse data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/yfinance.html">Loading Stock Prices from Yahoo! Finance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/pca.html">Principal Components Analysis of Index Prices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/monte_carlo.html">Monte Carlo Option Pricing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/nlp.html">NLP with Excel and Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/stream_kafka_doubles.html">Streaming from Kafka</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/pivot_table.html">Creating a Pivot Table using Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/equity_index_options.html">US Equity Index Option Pricing</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/environments.html">Python Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/api.html">Excel Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/data_conversions.html">Data Conversions Between Excel and Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/globals.html">Magic Global Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/ranges.html">Special Named Ranges</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/licensing.html">Licensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/software_requirements.html">Software Requirements</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">xlSlim</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>DuckDB</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/user/duckdb.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="duckdb">
+<h1>DuckDB<a class="headerlink" href="#duckdb" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://duckdb.org/">DuckDB</a> is a powerful analytical database that allows you to easily import and analyse large datasets. DuckDB fully supports <a class="reference external" href="https://duckdb.org/docs/sql/introduction.html">SQL</a> with many improvements to make SQL friendlier.</p>
+<p>xlSlim includes a complete in-process DuckDB which allows DuckDB SQL statements to be run within either an in-memory or on-disk database. DuckDB can read data from many common file formats, such as <a class="reference external" href="https://duckdb.org/docs/extensions/json">JSON</a>, <a class="reference external" href="https://duckdb.org/docs/data/parquet/overview">Parquet</a> and <a class="reference external" href="https://duckdb.org/docs/data/csv/overview">CSV</a>. Additionally DuckDB has functionality to directly query data located on <a class="reference external" href="https://duckdb.org/docs/extensions/httpfs/overview">https</a> and in AWS S3.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">DuckDB requires a premium licence. See <a class="reference internal" href="../reference/licensing.html"><span class="doc">Licensing</span></a></p>
+</div>
+<div class="section" id="reading-json-files">
+<h2>Reading JSON files<a class="headerlink" href="#reading-json-files" title="Permalink to this headline">¶</a></h2>
+<p>Reading data from JSON files can be difficult, particularly if the data is nested.</p>
+<p>This JSON file contains details of Nobel prize laureates:</p>
+<a class="reference internal image-reference" href="../_images/duckdb_sample_json.png"><img alt="DuckDB Nobel Laureates as JSON file." src="../_images/duckdb_sample_json.png" style="width: 400px;" /></a>
+<p>The data is presented as a list of dictionaries with the <em>prizes</em> field being a further list of dictionaries.</p>
+<p>DuckDB allows the laureates names and birth countries to be extracted with a simple SQL SELECT. Notice how DuckDB allows the JSON file to be treated just like a regular database table:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">firstname</span><span class="p">,</span><span class="w"> </span><span class="n">surname</span><span class="p">,</span><span class="w"> </span><span class="n">bornCountry</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="s1">&#39;laureate.json&#39;</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">5</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Passing the SQL into the <a class="reference internal" href="../reference/api.html#DuckDbQuery" title="DuckDbQuery"><code class="xref py py-func docutils literal notranslate"><span class="pre">DuckDbQuery()</span></code></a> function gives the following result:</p>
+<a class="reference internal image-reference" href="../_images/duckdb_json_top5.png"><img alt="First 5 names and birth countries in the JSON file." src="../_images/duckdb_json_top5.png" style="width: 400px;" /></a>
+<p>We can now easily find the countries with the most Nobel prize winners:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">bornCountry</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">Country</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="nb">Number</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="s1">&#39;laureate.json&#39;</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">bornCountry</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">DESC</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">5</span><span class="w"></span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/duckdb_json_top_countries.png"><img alt="Countries with the most prize winners in the JSON file." src="../_images/duckdb_json_top_countries.png" style="width: 400px;" /></a>
+<p>DuckDB supports the use of <a class="reference external" href="https://en.wikipedia.org/wiki/JSONPath">JSONPath</a> to extract values from nested JSON fields. This allows us to extract the category and motivation of the first prize awarded to each person.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">firstname</span><span class="p">,</span><span class="w"> </span><span class="n">surname</span><span class="p">,</span><span class="w"> </span><span class="n">prizes</span><span class="o">-&gt;&gt;</span><span class="s1">&#39;$[0].category&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">Category</span><span class="p">,</span><span class="w"> </span><span class="n">prizes</span><span class="o">-&gt;&gt;</span><span class="s1">&#39;$[0].motivation&#39;</span><span class="k">AS</span><span class="w"> </span><span class="n">Motivation</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="s1">&#39;laureate.json&#39;</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">5</span><span class="w"></span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/duckdb_json_category_and_motivation.png"><img alt="Prize category and motivation in the JSON file." src="../_images/duckdb_json_category_and_motivation.png" style="width: 400px;" /></a>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">All the Excel files shown are available from github in the <a class="reference external" href="https://github.com/RusselWebber/xlslim-code-samples/archive/refs/heads/main.zip">xlslim-code-samples</a> repo. I highly recommend downloading the samples from github. The Excel workbooks contain many tips and tricks.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../samples/read_json_from_web.html" class="btn btn-neutral float-right" title="Read JSON data from a URL" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="troubleshooting.html" class="btn btn-neutral float-left" title="Troubleshooting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2022-2023, Russel Webber
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

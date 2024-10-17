@@ -118,6 +118,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../user/menus.html">Adding Context and Ribbon Menus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/licensing.html">Licensing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/duckdb.html">DuckDB</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Examples</span></p>
 <ul>
@@ -160,6 +161,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#update-the-ribbon-menu">Update the Ribbon Menu</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#activating-interactive-mode">Activating Interactive Mode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#deactivating-interactive-mode">Deactivating Interactive Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-duckdb-sql">Running DuckDB SQL</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="data_conversions.html">Data Conversions Between Excel and Python</a></li>
@@ -776,6 +778,35 @@ See <a class="reference internal" href="../user/imports.html"><span class="doc">
 <dd><p>Deactivates Interactive Python mode.</p>
 </dd></dl>
 
+</div>
+<div class="section" id="running-duckdb-sql">
+<h2>Running DuckDB SQL<a class="headerlink" href="#running-duckdb-sql" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="#DuckDbQuery" title="DuckDbQuery"><code class="xref py py-func docutils literal notranslate"><span class="pre">DuckDbQuery()</span></code></a> function allows SQL statements to be executed within DuckDB.</p>
+<dl class="function">
+<dt id="DuckDbQuery">
+<code class="descname">DuckDbQuery</code><span class="sig-paren">(</span><em>SQL</em>, <em>DbFile=None</em><span class="sig-paren">)</span><a class="headerlink" href="#DuckDbQuery" title="Permalink to this definition">¶</a></dt>
+<dd><p>Executes the supplied SQL statements.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>SQL</strong> (<em>str</em>) – The SQL statements to execute.</li>
+<li><strong>DbFile</strong> (<em>str</em><em> or </em><em>None</em>) – If not supplied then the statements run in a temporary in-memory database. Else the function creates or opens  a DuckDB database at the supplied location and runs the statements within this database.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">An error message if the SQL failed or an array of objects suitable for display in Excel.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">str or list[object]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<p>See <a class="reference external" href="https://duckdb.org/docs/sql/introduction">DuckDB SQL</a> for details of DuckDB SQL statements.</p>
 </div>
 </div>
 
