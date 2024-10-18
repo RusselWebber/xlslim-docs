@@ -119,7 +119,10 @@
 <li class="toctree-l1"><a class="reference internal" href="licensing.html">Licensing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">DuckDB</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#reading-json-files">Reading JSON files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#querying-json-files">Querying JSON files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#querying-csv-files">Querying CSV files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#querying-parquet-files">Querying Parquet files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#querying-from-remote-locations">Querying from remote locations</a></li>
 </ul>
 </li>
 </ul>
@@ -217,8 +220,8 @@
 <p class="first admonition-title">Warning</p>
 <p class="last">DuckDB requires a premium licence. See <a class="reference internal" href="../reference/licensing.html"><span class="doc">Licensing</span></a></p>
 </div>
-<div class="section" id="reading-json-files">
-<h2>Reading JSON files<a class="headerlink" href="#reading-json-files" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="querying-json-files">
+<h2>Querying JSON files<a class="headerlink" href="#querying-json-files" title="Permalink to this headline">¶</a></h2>
 <p>Reading data from JSON files can be difficult, particularly if the data is nested.</p>
 <p>This JSON file contains details of Nobel prize laureates:</p>
 <a class="reference internal image-reference" href="../_images/duckdb_sample_json.png"><img alt="DuckDB Nobel Laureates as JSON file." src="../_images/duckdb_sample_json.png" style="width: 400px;" /></a>
@@ -239,9 +242,96 @@
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../_images/duckdb_json_category_and_motivation.png"><img alt="Prize category and motivation in the JSON file." src="../_images/duckdb_json_category_and_motivation.png" style="width: 400px;" /></a>
+</div>
+<div class="section" id="querying-csv-files">
+<h2>Querying CSV files<a class="headerlink" href="#querying-csv-files" title="Permalink to this headline">¶</a></h2>
+<p>Data is often stored in CSV files. Surprisingly, CSV is not a standardised data format and many variations exist. DuckDB is able to handle most <a class="reference external" href="https://duckdb.org/docs/data/csv/overview">CSV</a> files automatically, detecting the column delimiters, data types, and so on.</p>
+<p>This CSV file contains 10,000 sales records:</p>
+<a class="reference internal image-reference" href="../_images/duckdb_sample_csv.png"><img alt="DuckDB sample sales records in a CSV file." src="../_images/duckdb_sample_csv.png" style="width: 400px;" /></a>
+<p>DuckDB allows the region, item type and total revenue for each sale to be extracted with a simple SQL SELECT. Notice how, just like the JSON example above, DuckDB allows the CSV file to be treated as regular database table:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">Region</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;Item Type&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;Total Revenue&quot;</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="s1">&#39;10000SalesRecords.csv&#39;</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">5</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Passing the SQL into the <a class="reference internal" href="../reference/api.html#DuckDbQuery" title="DuckDbQuery"><code class="xref py py-func docutils literal notranslate"><span class="pre">DuckDbQuery()</span></code></a> function gives the following result:</p>
+<a class="reference internal image-reference" href="../_images/duckdb_csv_top5.png"><img alt="First 5 sales records in the CSV file." src="../_images/duckdb_csv_top5.png" style="width: 400px;" /></a>
+<p>DuckDB has a user-friendly <a class="reference external" href="https://duckdb.org/docs/sql/statements/pivot">PIVOT</a> statement that allows us to view the revenues in Asia and Europe broken down by item type:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">PIVOT</span><span class="w"> </span><span class="s1">&#39;10000SalesRecords.csv&#39;</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">Region</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;Europe&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;Asia&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">USING</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="ss">&quot;Total Revenue&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="ss">&quot;Item Type&quot;</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="ss">&quot;Item Type&quot;</span><span class="w"></span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/duckdb_csv_sales_pivot.png"><img alt="Pivot sales in the JSON file." src="../_images/duckdb_csv_sales_pivot.png" style="width: 400px;" /></a>
+<p>Data from multiple sources can be combined in a single SQL query. We can combine the JSON and CSV data to show the total sales in the countries with the most Nobel laureates:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">WITH</span><span class="w"> </span><span class="n">CountrySales</span><span class="w"> </span><span class="k">AS</span><span class="w"></span>
+<span class="p">(</span><span class="k">SELECT</span><span class="w"></span>
+<span class="w">        </span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">Country</span><span class="o">=</span><span class="s1">&#39;United States of America&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;USA&#39;</span><span class="w"> </span><span class="k">ELSE</span><span class="w"> </span><span class="n">Country</span><span class="w"> </span><span class="k">END</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">Country</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="k">Sum</span><span class="p">(</span><span class="ss">&quot;Total Revenue&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">Sales</span><span class="w"></span>
+<span class="k">FROM</span><span class="w"> </span><span class="s1">&#39;10000SalesRecords.csv&#39;</span><span class="w"></span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">Country</span><span class="p">)</span><span class="w"></span>
+<span class="k">SELECT</span><span class="w"></span>
+<span class="w">        </span><span class="n">cs</span><span class="p">.</span><span class="n">Country</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="k">SUM</span><span class="p">(</span><span class="n">cs</span><span class="p">.</span><span class="n">Sales</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">Sales</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="ss">&quot;Nobel Laureates&quot;</span><span class="w"></span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">CountrySales</span><span class="w"> </span><span class="n">cs</span><span class="w"></span>
+<span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="s1">&#39;laureate.json&#39;</span><span class="w"> </span><span class="n">l</span><span class="w"></span>
+<span class="k">ON</span><span class="w"> </span><span class="n">cs</span><span class="p">.</span><span class="n">Country</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">l</span><span class="p">.</span><span class="n">bornCountry</span><span class="w"></span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">cs</span><span class="p">.</span><span class="n">Country</span><span class="w"></span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="ss">&quot;Nobel Laureates&quot;</span><span class="w"> </span><span class="k">DESC</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">5</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This SQL uses a common table expression (<a class="reference external" href="https://duckdb.org/docs/sql/query_syntax/with">CTE</a>) to create a CountrySales result set that is joined to the JSON data. Note the use of a <a class="reference external" href="https://duckdb.org/docs/sql/expressions/case">CASE</a> expression ensure the country names match in both source data sets.</p>
+<a class="reference internal image-reference" href="../_images/duckdb_csv_sales_joined_to_json.png"><img alt="CSV sales joined with JSON data." src="../_images/duckdb_csv_sales_joined_to_json.png" style="width: 400px;" /></a>
+</div>
+<div class="section" id="querying-parquet-files">
+<h2>Querying Parquet files<a class="headerlink" href="#querying-parquet-files" title="Permalink to this headline">¶</a></h2>
+<p>Apache Parquet is an open source, column-oriented data file format designed for efficient data storage and retrieval. It provides efficient data compression and encoding schemes with enhanced performance to handle complex data in bulk.</p>
+<p>DuckDB has extensive support for <a class="reference external" href="https://duckdb.org/2021/06/25/querying-parquet.html">efficient</a> querying of Parquet files. DuckDB allows very large Parquet datasets to be queried (even data sets that do not fit into memory), multiple files can be queried in parallel.</p>
+<p>The Parquet file, <em>titanic.parquet</em>, contains details of Titanic survivors.</p>
+<p>DuckDB allows the survival status, cabin class, sex and age of the passengers countries to be extracted with a simple SQL SELECT:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">Survived</span><span class="p">,</span><span class="w"> </span><span class="n">Pclass</span><span class="p">,</span><span class="w"> </span><span class="n">Sex</span><span class="p">,</span><span class="w"> </span><span class="n">Age</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="s1">&#39;titanic.parquet&#39;</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">5</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Passing the SQL into the <a class="reference internal" href="../reference/api.html#DuckDbQuery" title="DuckDbQuery"><code class="xref py py-func docutils literal notranslate"><span class="pre">DuckDbQuery()</span></code></a> function gives the following result:</p>
+<a class="reference internal image-reference" href="../_images/duckdb_parquet_top_survivors.png"><img alt="First rows in the Parquet file." src="../_images/duckdb_parquet_top_survivors.png" style="width: 400px;" /></a>
+<p>We can now contrast the ages across cabin classes for survivors versus non-survivors:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">WITH</span><span class="w"> </span><span class="n">Survivors</span><span class="w"> </span><span class="k">AS</span><span class="w"></span>
+<span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">Pclass</span><span class="p">,</span><span class="w"> </span><span class="n">Age</span><span class="p">,</span><span class="w"> </span><span class="n">Sex</span><span class="w"></span>
+<span class="k">FROM</span><span class="w"> </span><span class="s1">&#39;D:\github\xlslim-code-samples\duckdb\..\data\titanic.parquet&#39;</span><span class="w"></span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">Survived</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+<span class="n">PIVOT</span><span class="w"> </span><span class="n">Survivors</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">Pclass</span><span class="w"> </span><span class="k">USING</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">Age</span><span class="p">)</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">Sex</span><span class="w"></span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/duckdb_parquet_survivors.png"><img alt="Titanic survivors." src="../_images/duckdb_parquet_survivors.png" style="width: 400px;" /></a>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">WITH</span><span class="w"> </span><span class="n">Survivors</span><span class="w"> </span><span class="k">AS</span><span class="w"></span>
+<span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">Pclass</span><span class="p">,</span><span class="w"> </span><span class="n">Age</span><span class="p">,</span><span class="w"> </span><span class="n">Sex</span><span class="w"></span>
+<span class="k">FROM</span><span class="w"> </span><span class="s1">&#39;D:\github\xlslim-code-samples\duckdb\..\data\titanic.parquet&#39;</span><span class="w"></span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">Survived</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+<span class="n">PIVOT</span><span class="w"> </span><span class="n">Survivors</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">Pclass</span><span class="w"> </span><span class="k">USING</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">Age</span><span class="p">)</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">Sex</span><span class="w"></span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/duckdb_parquet_nonsurvivors.png"><img alt="Titanic survivors." src="../_images/duckdb_parquet_nonsurvivors.png" style="width: 400px;" /></a>
+<p>Generally, younger passengers were more likely to survive, with the curious exception of first class female passengers.</p>
+</div>
+<div class="section" id="querying-from-remote-locations">
+<h2>Querying from remote locations<a class="headerlink" href="#querying-from-remote-locations" title="Permalink to this headline">¶</a></h2>
+<p>DuckDB has functionality to directly query data located on <a class="reference external" href="https://duckdb.org/docs/extensions/httpfs/overview">https</a> and in AWS S3.</p>
+<p>As an example, the <em>holdings.parquet</em> file can be queried from <a class="reference external" href="https://duckdb.org">https://duckdb.org</a>:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="s1">&#39;https://duckdb.org/data/holdings.parquet&#39;</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/duckdb_parquet_remote.png"><img alt="Remote Parquet query." src="../_images/duckdb_parquet_remote.png" style="width: 400px;" /></a>
+<p>Similarly we can attach to the DuckDB stations database in S3 and query the number of stations in each country:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">ATTACH</span><span class="w"> </span><span class="s1">&#39;s3://duckdb-blobs/databases/stations.duckdb&#39;</span><span class="w"></span>
+<span class="k">AS</span><span class="w"> </span><span class="n">stations_db</span><span class="p">;</span><span class="w"></span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">country</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w">  </span><span class="k">AS</span><span class="w"> </span><span class="ss">&quot;Number of stations&quot;</span><span class="w"></span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">stations_db</span><span class="p">.</span><span class="n">stations</span><span class="w"></span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">country</span><span class="w"></span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">country</span><span class="w"></span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/duckdb_duckdb_remote.png"><img alt="Remote DuckDB query." src="../_images/duckdb_duckdb_remote.png" style="width: 400px;" /></a>
+<p>Hopefully this guide gives a sense of the power of DuckDB! Please read the DuckDB <a class="reference external" href="https://duckdb.org/docs/sql/introduction.html">SQL</a> documentation for more information about DuckDB’s capabilities, including how to attach to SQLite, Postgress or indeed any ODBC databases.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">All the Excel files shown are available from github in the <a class="reference external" href="https://github.com/RusselWebber/xlslim-code-samples/archive/refs/heads/main.zip">xlslim-code-samples</a> repo. I highly recommend downloading the samples from github. The Excel workbooks contain many tips and tricks.</p>
+<p class="last">All the Excel and data files shown are available from github in the <a class="reference external" href="https://github.com/RusselWebber/xlslim-code-samples/archive/refs/heads/main.zip">xlslim-code-samples</a> repo. I highly recommend downloading the samples from github. The Excel workbooks contain many tips and tricks.</p>
 </div>
 </div>
 </div>
