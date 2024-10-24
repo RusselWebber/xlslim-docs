@@ -9,21 +9,33 @@ DuckDB
 .. _DuckDB: https://duckdb.org/
 .. _SQL: https://duckdb.org/docs/sql/introduction.html
 .. _https: https://duckdb.org/docs/extensions/httpfs/overview
-.. _json: https://duckdb.org/docs/extensions/json
-.. _Parquet: https://duckdb.org/docs/data/parquet/overview
-.. _CSV: https://duckdb.org/docs/data/csv/overview
+.. _`JSON capabilities`: https://duckdb.org/docs/extensions/json
+.. _`Parquet capabilities`: https://duckdb.org/docs/data/parquet/overview
+.. _`CSV capabilities`: https://duckdb.org/docs/data/csv/overview
 .. _JSONPath: https://en.wikipedia.org/wiki/JSONPath
 .. _PIVOT: https://duckdb.org/docs/sql/statements/pivot
 .. _CTE: https://duckdb.org/docs/sql/query_syntax/with
 .. _CASE: https://duckdb.org/docs/sql/expressions/case
 .. _efficient: https://duckdb.org/2021/06/25/querying-parquet.html
+.. _S3: https://duckdb.org/docs/extensions/httpfs/s3api
 
 `DuckDB`_ is a powerful analytical database that allows you to easily import and analyse large datasets. DuckDB fully supports `SQL`_ with many improvements to make SQL friendlier.
 
-xlSlim includes a complete in-process DuckDB which allows DuckDB SQL statements to be run within either an in-memory or on-disk database. DuckDB can read data from many common file formats, such as `JSON`_, `Parquet`_ and `CSV`_. Additionally DuckDB has functionality to directly query data located on `https`_ and in AWS S3.
+xlSlim includes a complete in-process DuckDB which allows DuckDB SQL statements to be run within either an in-memory or on-disk database. DuckDB can read data from many common file formats, see the sections below for  :ref:`JSON`, :ref:`Parquet` and :ref:`CSV`. Additionally, DuckDB has functionality for :ref:`Remote`.
+
+DuckDB functionality is accessed within Excel by calling xlSlim's :func:`DuckDbQuery` function.
+
+.. tip::
+	When copying text such as SQL commands into Excel cells, add a ' at the start so that Excel treats the input as a string.
+
+.. image:: ../_static/duckdb_copy_text_to_excel.gif
+  :width: 400
+  :alt: Copy text into Excel using '.
 
 .. warning::
 	DuckDB requires a premium licence. See :doc:`/reference/licensing`
+
+.. _JSON:
 
 Querying JSON files
 -------------------
@@ -70,6 +82,10 @@ DuckDB supports the use of `JSONPath`_ to extract values from nested JSON fields
   :width: 400
   :alt: Prize category and motivation in the JSON file.
 
+Full details of DuckDB's `JSON capabilities`_ are available in their documentation.
+
+.. _CSV:
+
 Querying CSV files
 ------------------
 
@@ -81,7 +97,7 @@ This CSV file contains 10,000 sales records:
   :width: 400
   :alt: DuckDB sample sales records in a CSV file.
 
-DuckDB allows the region, item type and total revenue for each sale to be extracted with a simple SQL SELECT. Notice how, just like the JSON example above, DuckDB allows the CSV file to be treated as regular database table:
+DuckDB allows the region, item type and total revenue for each sale to be extracted with a simple SQL SELECT. Notice how, just like the JSON example above, DuckDB allows the CSV file to be treated as a regular database table:
 
 .. code-block:: sql
 
@@ -128,6 +144,10 @@ This SQL uses a common table expression (`CTE`_) to create a CountrySales result
 .. image:: ../_static/duckdb_csv_sales_joined_to_json.png
   :width: 400
   :alt: CSV sales joined with JSON data.
+
+Full details of DuckDB's `CSV capabilities`_ are available in their documentation.
+
+.. _Parquet:
 
 Querying Parquet files
 ----------------------
@@ -178,6 +198,10 @@ We can now contrast the ages across cabin classes for survivors versus non-survi
 
 Generally, younger passengers were more likely to survive, with the curious exception of first class female passengers.
 
+Full details of DuckDB's `Parquet capabilities`_ are available in their documentation.
+
+.. _Remote:
+
 Querying from remote locations
 ------------------------------
 
@@ -207,6 +231,9 @@ Similarly we can attach to the DuckDB stations database in S3 and query the numb
 .. image:: ../_static/duckdb_duckdb_remote.png
   :width: 400
   :alt: Remote DuckDB query.
+
+.. tip::
+	Access to AWS S3 data usually requires credentials. See the DuckDB `S3`_ API documentation for details about how to use secrets to provide credentials to S3.
 
 Hopefully this guide gives a sense of the power of DuckDB! Please read the DuckDB `SQL`_ documentation for more information about DuckDB's capabilities, including how to attach to SQLite, Postgress or indeed any ODBC databases.
 

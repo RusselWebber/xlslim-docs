@@ -215,13 +215,19 @@
   <div class="section" id="duckdb">
 <h1>DuckDB<a class="headerlink" href="#duckdb" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://duckdb.org/">DuckDB</a> is a powerful analytical database that allows you to easily import and analyse large datasets. DuckDB fully supports <a class="reference external" href="https://duckdb.org/docs/sql/introduction.html">SQL</a> with many improvements to make SQL friendlier.</p>
-<p>xlSlim includes a complete in-process DuckDB which allows DuckDB SQL statements to be run within either an in-memory or on-disk database. DuckDB can read data from many common file formats, such as <a class="reference external" href="https://duckdb.org/docs/extensions/json">JSON</a>, <a class="reference external" href="https://duckdb.org/docs/data/parquet/overview">Parquet</a> and <a class="reference external" href="https://duckdb.org/docs/data/csv/overview">CSV</a>. Additionally DuckDB has functionality to directly query data located on <a class="reference external" href="https://duckdb.org/docs/extensions/httpfs/overview">https</a> and in AWS S3.</p>
+<p>xlSlim includes a complete in-process DuckDB which allows DuckDB SQL statements to be run within either an in-memory or on-disk database. DuckDB can read data from many common file formats, see the sections below for  <a class="reference internal" href="#json"><span class="std std-ref">Querying JSON files</span></a>, <a class="reference internal" href="#parquet"><span class="std std-ref">Querying Parquet files</span></a> and <a class="reference internal" href="#csv"><span class="std std-ref">Querying CSV files</span></a>. Additionally, DuckDB has functionality for <a class="reference internal" href="#remote"><span class="std std-ref">Querying from remote locations</span></a>.</p>
+<p>DuckDB functionality is accessed within Excel by calling xlSlim’s <a class="reference internal" href="../reference/api.html#DuckDbQuery" title="DuckDbQuery"><code class="xref py py-func docutils literal notranslate"><span class="pre">DuckDbQuery()</span></code></a> function.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">When copying text such as SQL commands into Excel cells, add a ‘ at the start so that Excel treats the input as a string.</p>
+</div>
+<a class="reference internal image-reference" href="../_images/duckdb_copy_text_to_excel.gif"><img alt="Copy text into Excel using '." src="../_images/duckdb_copy_text_to_excel.gif" style="width: 400px;" /></a>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">DuckDB requires a premium licence. See <a class="reference internal" href="../reference/licensing.html"><span class="doc">Licensing</span></a></p>
 </div>
 <div class="section" id="querying-json-files">
-<h2>Querying JSON files<a class="headerlink" href="#querying-json-files" title="Permalink to this headline">¶</a></h2>
+<span id="json"></span><h2>Querying JSON files<a class="headerlink" href="#querying-json-files" title="Permalink to this headline">¶</a></h2>
 <p>Reading data from JSON files can be difficult, particularly if the data is nested.</p>
 <p>This JSON file contains details of Nobel prize laureates:</p>
 <a class="reference internal image-reference" href="../_images/duckdb_sample_json.png"><img alt="DuckDB Nobel Laureates as JSON file." src="../_images/duckdb_sample_json.png" style="width: 400px;" /></a>
@@ -242,13 +248,14 @@
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../_images/duckdb_json_category_and_motivation.png"><img alt="Prize category and motivation in the JSON file." src="../_images/duckdb_json_category_and_motivation.png" style="width: 400px;" /></a>
+<p>Full details of DuckDB’s <a class="reference external" href="https://duckdb.org/docs/extensions/json">JSON capabilities</a> are available in their documentation.</p>
 </div>
 <div class="section" id="querying-csv-files">
-<h2>Querying CSV files<a class="headerlink" href="#querying-csv-files" title="Permalink to this headline">¶</a></h2>
-<p>Data is often stored in CSV files. Surprisingly, CSV is not a standardised data format and many variations exist. DuckDB is able to handle most <a class="reference external" href="https://duckdb.org/docs/data/csv/overview">CSV</a> files automatically, detecting the column delimiters, data types, and so on.</p>
+<span id="csv"></span><h2>Querying CSV files<a class="headerlink" href="#querying-csv-files" title="Permalink to this headline">¶</a></h2>
+<p>Data is often stored in CSV files. Surprisingly, CSV is not a standardised data format and many variations exist. DuckDB is able to handle most <a class="reference internal" href="#csv">CSV</a> files automatically, detecting the column delimiters, data types, and so on.</p>
 <p>This CSV file contains 10,000 sales records:</p>
 <a class="reference internal image-reference" href="../_images/duckdb_sample_csv.png"><img alt="DuckDB sample sales records in a CSV file." src="../_images/duckdb_sample_csv.png" style="width: 400px;" /></a>
-<p>DuckDB allows the region, item type and total revenue for each sale to be extracted with a simple SQL SELECT. Notice how, just like the JSON example above, DuckDB allows the CSV file to be treated as regular database table:</p>
+<p>DuckDB allows the region, item type and total revenue for each sale to be extracted with a simple SQL SELECT. Notice how, just like the JSON example above, DuckDB allows the CSV file to be treated as a regular database table:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">Region</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;Item Type&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;Total Revenue&quot;</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="s1">&#39;10000SalesRecords.csv&#39;</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">5</span><span class="w"></span>
 </pre></div>
 </div>
@@ -279,9 +286,10 @@
 </div>
 <p>This SQL uses a common table expression (<a class="reference external" href="https://duckdb.org/docs/sql/query_syntax/with">CTE</a>) to create a CountrySales result set that is joined to the JSON data. Note the use of a <a class="reference external" href="https://duckdb.org/docs/sql/expressions/case">CASE</a> expression ensure the country names match in both source data sets.</p>
 <a class="reference internal image-reference" href="../_images/duckdb_csv_sales_joined_to_json.png"><img alt="CSV sales joined with JSON data." src="../_images/duckdb_csv_sales_joined_to_json.png" style="width: 400px;" /></a>
+<p>Full details of DuckDB’s <a class="reference external" href="https://duckdb.org/docs/data/csv/overview">CSV capabilities</a> are available in their documentation.</p>
 </div>
 <div class="section" id="querying-parquet-files">
-<h2>Querying Parquet files<a class="headerlink" href="#querying-parquet-files" title="Permalink to this headline">¶</a></h2>
+<span id="parquet"></span><h2>Querying Parquet files<a class="headerlink" href="#querying-parquet-files" title="Permalink to this headline">¶</a></h2>
 <p>Apache Parquet is an open source, column-oriented data file format designed for efficient data storage and retrieval. It provides efficient data compression and encoding schemes with enhanced performance to handle complex data in bulk.</p>
 <p>DuckDB has extensive support for <a class="reference external" href="https://duckdb.org/2021/06/25/querying-parquet.html">efficient</a> querying of Parquet files. DuckDB allows very large Parquet datasets to be queried (even data sets that do not fit into memory), multiple files can be queried in parallel.</p>
 <p>The Parquet file, <em>titanic.parquet</em>, contains details of Titanic survivors.</p>
@@ -309,9 +317,10 @@
 </div>
 <a class="reference internal image-reference" href="../_images/duckdb_parquet_nonsurvivors.png"><img alt="Titanic survivors." src="../_images/duckdb_parquet_nonsurvivors.png" style="width: 400px;" /></a>
 <p>Generally, younger passengers were more likely to survive, with the curious exception of first class female passengers.</p>
+<p>Full details of DuckDB’s <a class="reference external" href="https://duckdb.org/docs/data/parquet/overview">Parquet capabilities</a> are available in their documentation.</p>
 </div>
 <div class="section" id="querying-from-remote-locations">
-<h2>Querying from remote locations<a class="headerlink" href="#querying-from-remote-locations" title="Permalink to this headline">¶</a></h2>
+<span id="remote"></span><h2>Querying from remote locations<a class="headerlink" href="#querying-from-remote-locations" title="Permalink to this headline">¶</a></h2>
 <p>DuckDB has functionality to directly query data located on <a class="reference external" href="https://duckdb.org/docs/extensions/httpfs/overview">https</a> and in AWS S3.</p>
 <p>As an example, the <em>holdings.parquet</em> file can be queried from <a class="reference external" href="https://duckdb.org">https://duckdb.org</a>:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="s1">&#39;https://duckdb.org/data/holdings.parquet&#39;</span><span class="p">;</span><span class="w"></span>
@@ -328,6 +337,10 @@
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../_images/duckdb_duckdb_remote.png"><img alt="Remote DuckDB query." src="../_images/duckdb_duckdb_remote.png" style="width: 400px;" /></a>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Access to AWS S3 data usually requires credentials. See the DuckDB <a class="reference external" href="https://duckdb.org/docs/extensions/httpfs/s3api">S3</a> API documentation for details about how to use secrets to provide credentials to S3.</p>
+</div>
 <p>Hopefully this guide gives a sense of the power of DuckDB! Please read the DuckDB <a class="reference external" href="https://duckdb.org/docs/sql/introduction.html">SQL</a> documentation for more information about DuckDB’s capabilities, including how to attach to SQLite, Postgress or indeed any ODBC databases.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -356,7 +369,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022-2023, Russel Webber
+        &copy; Copyright 2022-2024, Russel Webber
 
     </p>
   </div>
