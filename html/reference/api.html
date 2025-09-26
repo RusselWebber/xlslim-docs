@@ -1,39 +1,24 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8">
-  <meta content="xlSlim includes many utility functions that make working with Excel easier." lang="en" name="description" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="xlSlim includes many utility functions that make working with Excel easier." lang="en" name="description" xml:lang="en" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Excel Functions &mdash; xlSlim v1.0 documentation</title>
-  
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
   
-  
-  
-  
-
-  
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="canonical" href="https://russelwebber.github.io/xlslim-docs/html/reference/api.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=e160b93e"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Data Conversions Between Excel and Python" href="data_conversions.html" />
@@ -53,48 +38,26 @@
 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
 
           
-            <a href="../index.html" class="icon icon-home"> xlSlim
           
-
-          
+          <a href="../index.html" class="icon icon-home">
+            xlSlim
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">User Guide</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../user/installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/quickstart.html">Quickstart</a></li>
@@ -120,7 +83,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting.html">Troubleshooting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/duckdb.html">DuckDB</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Examples</span></p>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../samples/read_json_from_web.html">Read JSON data from a URL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../samples/read_csv.html">Read CSV data from a file</a></li>
@@ -133,7 +96,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../samples/pivot_table.html">Creating a Pivot Table using Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../samples/equity_index_options.html">US Equity Index Option Pricing</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Reference</span></p>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="environments.html">Python Environments</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Excel Functions</a><ul>
@@ -171,95 +134,53 @@
 <li class="toctree-l1"><a class="reference internal" href="software_requirements.html">Software Requirements</a></li>
 </ul>
 
-            
-          
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">xlSlim</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html">Docs</a> &raquo;</li>
-        
-      <li>Excel Functions</li>
-    
-    
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Excel Functions</li>
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="../_sources/reference/api.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="excel-functions">
-<h1>Excel Functions<a class="headerlink" href="#excel-functions" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="registering-modules">
-<h2>Registering modules<a class="headerlink" href="#registering-modules" title="Permalink to this headline">¶</a></h2>
+             
+  <section id="excel-functions">
+<h1>Excel Functions<a class="headerlink" href="#excel-functions" title="Link to this heading"></a></h1>
+<section id="registering-modules">
+<h2>Registering modules<a class="headerlink" href="#registering-modules" title="Link to this heading"></a></h2>
 <p>To register a Python module for use within Excel you use the <a class="reference internal" href="#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a> function:</p>
-<dl class="function">
-<dt id="RegisterPyModule">
-<code class="descname">RegisterPyModule</code><span class="sig-paren">(</span><em>PythonModulePath</em>, <em>ExecutablePath=None</em>, <em>ModulePrefix=None</em>, <em>UseBackgroundProcess=None</em>, <em>ExtraModuleSearchLocations=None</em>, <em>ExtraDllSearchLocations=None</em>, <em>FunctionNames=None</em><span class="sig-paren">)</span><a class="headerlink" href="#RegisterPyModule" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="RegisterPyModule">
+<span class="sig-name descname"><span class="pre">RegisterPyModule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">PythonModulePath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ExecutablePath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ModulePrefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">UseBackgroundProcess</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ExtraModuleSearchLocations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ExtraDllSearchLocations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FunctionNames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#RegisterPyModule" title="Link to this definition"></a></dt>
 <dd><p>Registers a Python module for use in Excel.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>PythonModulePath</strong> (<em>str</em>) – The full path to the Python module to load. This path may also refer to a remote location, see the link below for details.</li>
-<li><strong>ExecutablePath</strong> (<em>str</em><em> or </em><em>None</em>) – Optional location of the Python environment to use.</li>
-<li><strong>ModulePrefix</strong> (<em>str</em><em> or </em><em>None</em>) – Optional prefix to apply to the function names.</li>
-<li><strong>UseBackgroundProcess</strong> (<em>bool</em><em> or </em><em>None</em>) – Should xlSlim Python code run a seperate process?</li>
-<li><strong>ExtraModuleSearchLocations</strong> (<em>str</em><em> or </em><em>None</em>) – Extra locations to be added to the Python module search path (sys.path).</li>
-<li><strong>ExtraDllSearchLocations</strong> (<em>str</em><em> or </em><em>None</em>) – Extra locations to be added to the Windows DLL search path (PATH).</li>
-<li><strong>FunctionNames</strong> (<em>Excel range</em><em> or </em><em>None</em>) – An Excel range specifying which functions to import. By default all functions in a module are imported. A single column range can specify only the functions to import. A two column range can specify the Python functions in the first column and the Excel function names in the second column.</li>
-<li><strong>HttpImportProfile</strong> (<em>str</em><em> or </em><em>None</em>) – Either the full path of an .ini file to use for remote import profiles, or a string with the profile in ini file format.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>PythonModulePath</strong> (<em>str</em>) – The full path to the Python module to load. This path may also refer to a remote location, see the link below for details.</p></li>
+<li><p><strong>ExecutablePath</strong> (<em>str</em><em> or </em><em>None</em>) – Optional location of the Python environment to use.</p></li>
+<li><p><strong>ModulePrefix</strong> (<em>str</em><em> or </em><em>None</em>) – Optional prefix to apply to the function names.</p></li>
+<li><p><strong>UseBackgroundProcess</strong> (<em>bool</em><em> or </em><em>None</em>) – Should xlSlim Python code run a seperate process?</p></li>
+<li><p><strong>ExtraModuleSearchLocations</strong> (<em>str</em><em> or </em><em>None</em>) – Extra locations to be added to the Python module search path (sys.path).</p></li>
+<li><p><strong>ExtraDllSearchLocations</strong> (<em>str</em><em> or </em><em>None</em>) – Extra locations to be added to the Windows DLL search path (PATH).</p></li>
+<li><p><strong>FunctionNames</strong> (<em>Excel range</em><em> or </em><em>None</em>) – An Excel range specifying which functions to import. By default all functions in a module are imported. A single column range can specify only the functions to import. A two column range can specify the Python functions in the first column and the Excel function names in the second column.</p></li>
+<li><p><strong>HttpImportProfile</strong> (<em>str</em><em> or </em><em>None</em>) – Either the full path of an .ini file to use for remote import profiles, or a string with the profile in ini file format.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <p>See <a class="reference internal" href="../user/http_imports.html"><span class="doc">Remote Module Importing</span></a> for details of importing from Github, Bitbucket, Gists and other remote http locations.
@@ -267,596 +188,522 @@ See <a class="reference internal" href="environments.html"><span class="doc">Pyt
 See <a class="reference internal" href="../user/passing_arrays.html"><span class="doc">Passing lists</span></a> for an example using the <cite>ModulePrefix</cite> parameter.
 See <a class="reference internal" href="../user/subprocess.html"><span class="doc">Running Python in a background process</span></a> for an example using the <cite>UseBackgroundProcess</cite> parameter.
 See <a class="reference internal" href="../user/imports.html"><span class="doc">Advanced Module Importing</span></a> for an example showing the use of the <cite>ExtraModuleSearchLocations</cite> and <cite>FunctionNames</cite> parameters.</p>
-</div>
-<div class="section" id="creating-modules">
-<h2>Creating modules<a class="headerlink" href="#creating-modules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="creating-modules">
+<h2>Creating modules<a class="headerlink" href="#creating-modules" title="Link to this heading"></a></h2>
 <p>The <a class="reference internal" href="#CreatePyModule" title="CreatePyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">CreatePyModule()</span></code></a> function can be used to create a Python module from text within Excel:</p>
-<dl class="function">
-<dt id="CreatePyModule">
-<code class="descname">CreatePyModule</code><span class="sig-paren">(</span><em>PythonCode</em>, <em>ExecutablePath=None</em>, <em>ModulePrefix=None</em>, <em>ExtraModuleSearchLocations=None</em>, <em>ExtraDllSearchLocations=None</em>, <em>FunctionNames=None</em><span class="sig-paren">)</span><a class="headerlink" href="#CreatePyModule" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="CreatePyModule">
+<span class="sig-name descname"><span class="pre">CreatePyModule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">PythonCode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ExecutablePath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ModulePrefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ExtraModuleSearchLocations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ExtraDllSearchLocations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FunctionNames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CreatePyModule" title="Link to this definition"></a></dt>
 <dd><p>Creates a Python module from text and register the module for use in Excel.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>PythonCode</strong> (<em>str</em>) – Text to parse and from which to create a Python module.</li>
-<li><strong>ExecutablePath</strong> (<em>str</em><em> or </em><em>None</em>) – Optional location of the Python environment to use.</li>
-<li><strong>ModulePrefix</strong> (<em>str</em><em> or </em><em>None</em>) – Optional prefix to apply to the function names.</li>
-<li><strong>ExtraModuleSearchLocations</strong> (<em>str</em><em> or </em><em>None</em>) – Extra locations to be added to the Python module search path (sys.path).</li>
-<li><strong>ExtraDllSearchLocations</strong> (<em>str</em><em> or </em><em>None</em>) – Extra locations to be added to the Windows DLL search path (PATH).</li>
-<li><strong>FunctionNames</strong> (<em>Excel range</em><em> or </em><em>None</em>) – An Excel range specifying which functions to import. By default all functions in a module are imported. A single column range can specify only the functions to import. A two column range can specify the Python functions in the first column and the Excel function names in the second column.</li>
-<li><strong>HttpImportProfile</strong> (<em>str</em><em> or </em><em>None</em>) – Either the full path of an .ini file to use for remote import profiles, or a string with the profile in ini file format.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>PythonCode</strong> (<em>str</em>) – Text to parse and from which to create a Python module.</p></li>
+<li><p><strong>ExecutablePath</strong> (<em>str</em><em> or </em><em>None</em>) – Optional location of the Python environment to use.</p></li>
+<li><p><strong>ModulePrefix</strong> (<em>str</em><em> or </em><em>None</em>) – Optional prefix to apply to the function names.</p></li>
+<li><p><strong>ExtraModuleSearchLocations</strong> (<em>str</em><em> or </em><em>None</em>) – Extra locations to be added to the Python module search path (sys.path).</p></li>
+<li><p><strong>ExtraDllSearchLocations</strong> (<em>str</em><em> or </em><em>None</em>) – Extra locations to be added to the Windows DLL search path (PATH).</p></li>
+<li><p><strong>FunctionNames</strong> (<em>Excel range</em><em> or </em><em>None</em>) – An Excel range specifying which functions to import. By default all functions in a module are imported. A single column range can specify only the functions to import. A two column range can specify the Python functions in the first column and the Excel function names in the second column.</p></li>
+<li><p><strong>HttpImportProfile</strong> (<em>str</em><em> or </em><em>None</em>) – Either the full path of an .ini file to use for remote import profiles, or a string with the profile in ini file format.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <p>See <a class="reference internal" href="environments.html"><span class="doc">Python Environments</span></a> for details of the <cite>ExecutablePath</cite> parameter.
 See <a class="reference internal" href="../user/passing_arrays.html"><span class="doc">Passing lists</span></a> for an example using the <cite>ModulePrefix</cite> parameter.
 See <a class="reference internal" href="../user/imports.html"><span class="doc">Advanced Module Importing</span></a> for an example showing the use of the <cite>ExtraModuleSearchLocations</cite> and <cite>FunctionNames</cite> parameters.</p>
-</div>
-<div class="section" id="viewing-cached-objects">
-<h2>Viewing cached objects<a class="headerlink" href="#viewing-cached-objects" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="viewing-cached-objects">
+<h2>Viewing cached objects<a class="headerlink" href="#viewing-cached-objects" title="Link to this heading"></a></h2>
 <p>xlSlim automatically caches Python object. The <a class="reference internal" href="#ViewPyObject" title="ViewPyObject"><code class="xref py py-func docutils literal notranslate"><span class="pre">ViewPyObject()</span></code></a> function can be used to view these objects.</p>
-<dl class="function">
-<dt id="ViewPyObject">
-<code class="descname">ViewPyObject</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#ViewPyObject" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ViewPyObject">
+<span class="sig-name descname"><span class="pre">ViewPyObject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ViewPyObject" title="Link to this definition"></a></dt>
 <dd><p>View a cached Python object.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>key</strong> (<em>str</em>) – An xlSlim cached object handle.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An error message if the object was not found or an array of objects suitable for display in Excel.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str or list[object]</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>key</strong> (<em>str</em>) – An xlSlim cached object handle.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>An error message if the object was not found or an array of objects suitable for display in Excel.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str or list[object]</p>
+</dd>
+</dl>
 </dd></dl>
 
-</div>
-<div class="section" id="creating-ranges">
-<h2>Creating ranges<a class="headerlink" href="#creating-ranges" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="creating-ranges">
+<h2>Creating ranges<a class="headerlink" href="#creating-ranges" title="Link to this heading"></a></h2>
 <p>Often xlSlim functions will expect a list to be passed by using a contiguous Excel range. The <a class="reference internal" href="#CreateRange" title="CreateRange"><code class="xref py py-func docutils literal notranslate"><span class="pre">CreateRange()</span></code></a> function takes a set of non-adjacent ranges and creates a new Excel range object suitable for passing to xlSlim functions.</p>
-<dl class="function">
-<dt id="CreateRange">
-<code class="descname">CreateRange</code><span class="sig-paren">(</span><em>range1</em>, <em>range2</em>, <em>... rangen</em><span class="sig-paren">)</span><a class="headerlink" href="#CreateRange" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="CreateRange">
+<span class="sig-name descname"><span class="pre">CreateRange</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">range1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">range2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">...</span> <span class="pre">rangen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CreateRange" title="Link to this definition"></a></dt>
 <dd><p>Creates a new Excel range from non-adjacent cells.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>range1</strong> (<em>Excel range</em>) – An Excel range, can be a single cell or range.</li>
-<li><strong>range2</strong> (<em>Excel range</em>) – An Excel range, can be a single cell or range.</li>
-<li><strong>rangen</strong> (<em>Excel range</em>) – An Excel range, can be a single cell or range.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>range1</strong> (<em>Excel range</em>) – An Excel range, can be a single cell or range.</p></li>
+<li><p><strong>range2</strong> (<em>Excel range</em>) – An Excel range, can be a single cell or range.</p></li>
+<li><p><strong>rangen</strong> (<em>Excel range</em>) – An Excel range, can be a single cell or range.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A new Excel range object.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Excel range</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A new Excel range object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Excel range</p>
+</dd>
+</dl>
 </dd></dl>
 
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The inputs ranges 1 to <em>n</em> must be the same size for xlSlim to succesfully stitch them together.</p>
+<p class="admonition-title">Note</p>
+<p>The inputs ranges 1 to <em>n</em> must be the same size for xlSlim to succesfully stitch them together.</p>
 </div>
-</div>
-<div class="section" id="diagnostics">
-<h2>Diagnostics<a class="headerlink" href="#diagnostics" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="diagnostics">
+<h2>Diagnostics<a class="headerlink" href="#diagnostics" title="Link to this heading"></a></h2>
 <p>To troubleshoot the Python environment used in Excel you can use the <a class="reference internal" href="#PythonDetails" title="PythonDetails"><code class="xref py py-func docutils literal notranslate"><span class="pre">PythonDetails()</span></code></a> function:</p>
-<dl class="function">
-<dt id="PythonDetails">
-<code class="descname">PythonDetails</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PythonDetails" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="PythonDetails">
+<span class="sig-name descname"><span class="pre">PythonDetails</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PythonDetails" title="Link to this definition"></a></dt>
 <dd><p>Returns comprehensive details about the Python environment, including the module search paths and loaded packages.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Details of the Python environment.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list[str]</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Details of the Python environment.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[str]</p>
+</dd>
+</dl>
 </dd></dl>
 
-</div>
-<div class="section" id="clear-caches">
-<h2>Clear Caches<a class="headerlink" href="#clear-caches" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="clear-caches">
+<h2>Clear Caches<a class="headerlink" href="#clear-caches" title="Link to this heading"></a></h2>
 <p>To remove all cached objects you can use the <a class="reference internal" href="#ClearCaches" title="ClearCaches"><code class="xref py py-func docutils literal notranslate"><span class="pre">ClearCaches()</span></code></a> function:</p>
-<dl class="function">
-<dt id="ClearCaches">
-<code class="descname">ClearCaches</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ClearCaches" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearCaches">
+<span class="sig-name descname"><span class="pre">ClearCaches</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ClearCaches" title="Link to this definition"></a></dt>
 <dd><p>Removes all cached objects from xlSlim’s internal memory caches.</p>
 </dd></dl>
 
-</div>
-<div class="section" id="clear-cached-item">
-<h2>Clear Cached Item<a class="headerlink" href="#clear-cached-item" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="clear-cached-item">
+<h2>Clear Cached Item<a class="headerlink" href="#clear-cached-item" title="Link to this heading"></a></h2>
 <p>To remove a specific item from object caches you can use the <a class="reference internal" href="#ClearCacheItem" title="ClearCacheItem"><code class="xref py py-func docutils literal notranslate"><span class="pre">ClearCacheItem()</span></code></a> function:</p>
-<dl class="function">
-<dt id="ClearCacheItem">
-<code class="descname">ClearCacheItem</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#ClearCacheItem" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearCacheItem">
+<span class="sig-name descname"><span class="pre">ClearCacheItem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ClearCacheItem" title="Link to this definition"></a></dt>
 <dd><p>Removes a specific cached object from xlSlim’s internal memory caches.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>key</strong> (<em>str</em>) – An xlSlim cached object handle.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An error message if the object was not found else a message confirming the object removal.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>key</strong> (<em>str</em>) – An xlSlim cached object handle.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>An error message if the object was not found else a message confirming the object removal.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
-</div>
-<div class="section" id="use-the-bundled-python">
-<h2>Use the bundled Python<a class="headerlink" href="#use-the-bundled-python" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="use-the-bundled-python">
+<h2>Use the bundled Python<a class="headerlink" href="#use-the-bundled-python" title="Link to this heading"></a></h2>
 <p>xlSlim has a bundled version of Python 3.11. This bundled Python is used by default. However you can specify another Python environment when registering modules with <a class="reference internal" href="#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a> or <a class="reference internal" href="#CreatePyModule" title="CreatePyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">CreatePyModule()</span></code></a>. The <a class="reference internal" href="#ClearSavedPythonEnv" title="ClearSavedPythonEnv"><code class="xref py py-func docutils literal notranslate"><span class="pre">ClearSavedPythonEnv()</span></code></a> function will revert back to using the bundled Python.</p>
-<dl class="function">
-<dt id="ClearSavedPythonEnv">
-<code class="descname">ClearSavedPythonEnv</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ClearSavedPythonEnv" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearSavedPythonEnv">
+<span class="sig-name descname"><span class="pre">ClearSavedPythonEnv</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ClearSavedPythonEnv" title="Link to this definition"></a></dt>
 <dd><p>Reverts xlSlim to using the bundled Python environment.</p>
 </dd></dl>
 
-</div>
-<div class="section" id="get-the-current-workbook-location">
-<h2>Get the current workbook location<a class="headerlink" href="#get-the-current-workbook-location" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="get-the-current-workbook-location">
+<h2>Get the current workbook location<a class="headerlink" href="#get-the-current-workbook-location" title="Link to this heading"></a></h2>
 <p>The <a class="reference internal" href="#WorkbookLocation" title="WorkbookLocation"><code class="xref py py-func docutils literal notranslate"><span class="pre">WorkbookLocation()</span></code></a> function can be used to get the current workbook’s location.</p>
-<dl class="function">
-<dt id="WorkbookLocation">
-<code class="descname">WorkbookLocation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#WorkbookLocation" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="WorkbookLocation">
+<span class="sig-name descname"><span class="pre">WorkbookLocation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#WorkbookLocation" title="Link to this definition"></a></dt>
 <dd><p>Returns the location of the current Excel workbook. Unlike the standard Excel <cite>CELL()</cite> function this function is not volatile.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The path (excluding filename) of the current workbook.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The path (excluding filename) of the current workbook.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
-</div>
-<div class="section" id="get-the-log-location">
-<h2>Get the log location<a class="headerlink" href="#get-the-log-location" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="get-the-log-location">
+<h2>Get the log location<a class="headerlink" href="#get-the-log-location" title="Link to this heading"></a></h2>
 <p>The <a class="reference internal" href="#LogLocation" title="LogLocation"><code class="xref py py-func docutils literal notranslate"><span class="pre">LogLocation()</span></code></a> function can be used to get the location of xlSlim’s log file.</p>
-<dl class="function">
-<dt id="LogLocation">
-<code class="descname">LogLocation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#LogLocation" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="LogLocation">
+<span class="sig-name descname"><span class="pre">LogLocation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#LogLocation" title="Link to this definition"></a></dt>
 <dd><p>Returns the location of xlSlim’s log file. The log file is useful for troubleshooting.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The path (including filename) of the log file</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The path (including filename) of the log file</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
-</div>
-<div class="section" id="check-the-licensing-status">
-<h2>Check the licensing status<a class="headerlink" href="#check-the-licensing-status" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="check-the-licensing-status">
+<h2>Check the licensing status<a class="headerlink" href="#check-the-licensing-status" title="Link to this heading"></a></h2>
 <p>The <a class="reference internal" href="#IsPremiumLicensed" title="IsPremiumLicensed"><code class="xref py py-func docutils literal notranslate"><span class="pre">IsPremiumLicensed()</span></code></a> function can be used to check if xlSlim has a valid premium licence. See <a class="reference internal" href="licensing.html"><span class="doc">Licensing</span></a>.</p>
-<dl class="function">
-<dt id="IsPremiumLicensed">
-<code class="descname">IsPremiumLicensed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#IsPremiumLicensed" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="IsPremiumLicensed">
+<span class="sig-name descname"><span class="pre">IsPremiumLicensed</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#IsPremiumLicensed" title="Link to this definition"></a></dt>
 <dd><p>Checks if xlSlim has a premium licence.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if a valid premium licence was found, else false.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if a valid premium licence was found, else false.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
-</div>
-<div class="section" id="check-the-licence-expiry">
-<h2>Check the licence expiry<a class="headerlink" href="#check-the-licence-expiry" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="check-the-licence-expiry">
+<h2>Check the licence expiry<a class="headerlink" href="#check-the-licence-expiry" title="Link to this heading"></a></h2>
 <p>The <a class="reference internal" href="#LicenseExpiry" title="LicenseExpiry"><code class="xref py py-func docutils literal notranslate"><span class="pre">LicenseExpiry()</span></code></a> function can be used to check the expiry date of any existing premium licence.</p>
-<dl class="function">
-<dt id="LicenseExpiry">
-<code class="descname">LicenseExpiry</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#LicenseExpiry" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="LicenseExpiry">
+<span class="sig-name descname"><span class="pre">LicenseExpiry</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#LicenseExpiry" title="Link to this definition"></a></dt>
 <dd><p>Gets the expiry of the premium licence.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The expiry time of any premium licence found.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">datetime</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The expiry time of any premium licence found.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>datetime</p>
+</dd>
+</dl>
 </dd></dl>
 
-</div>
-<div class="section" id="activate-a-licence">
-<h2>Activate a licence<a class="headerlink" href="#activate-a-licence" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="activate-a-licence">
+<h2>Activate a licence<a class="headerlink" href="#activate-a-licence" title="Link to this heading"></a></h2>
 <p>The <a class="reference internal" href="#ActivatePremiumLicense" title="ActivatePremiumLicense"><code class="xref py py-func docutils literal notranslate"><span class="pre">ActivatePremiumLicense()</span></code></a> function can be used to request a trial licence or activate a premium licence. See <a class="reference internal" href="../user/licensing.html"><span class="doc">Licensing</span></a></p>
-<dl class="function">
-<dt id="ActivatePremiumLicense">
-<code class="descname">ActivatePremiumLicense</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#ActivatePremiumLicense" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ActivatePremiumLicense">
+<span class="sig-name descname"><span class="pre">ActivatePremiumLicense</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ActivatePremiumLicense" title="Link to this definition"></a></dt>
 <dd><p>Gets the expiry of the premium licence.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>key</strong> (<em>str</em>) – A premium licence key purchased from <a class="reference external" href="https://www.xlslim.com/">xlslim.com</a>.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The activation result.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>key</strong> (<em>str</em>) – A premium licence key purchased from <a class="reference external" href="https://www.xlslim.com/">xlslim.com</a>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The activation result.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
-</div>
-<div class="section" id="deactivate-a-licence">
-<h2>Deactivate a licence<a class="headerlink" href="#deactivate-a-licence" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="deactivate-a-licence">
+<h2>Deactivate a licence<a class="headerlink" href="#deactivate-a-licence" title="Link to this heading"></a></h2>
 <p>The <a class="reference internal" href="#DeactivatePremiumLicense" title="DeactivatePremiumLicense"><code class="xref py py-func docutils literal notranslate"><span class="pre">DeactivatePremiumLicense()</span></code></a> function can be used to deactivate a premium licence so it can be used on another PC. See <a class="reference internal" href="../user/licensing.html"><span class="doc">Licensing</span></a></p>
-<dl class="function">
-<dt id="DeactivatePremiumLicense">
-<code class="descname">DeactivatePremiumLicense</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#DeactivatePremiumLicense" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="DeactivatePremiumLicense">
+<span class="sig-name descname"><span class="pre">DeactivatePremiumLicense</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#DeactivatePremiumLicense" title="Link to this definition"></a></dt>
 <dd><p>Deactivates any current premium licence.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The deactivation result.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The deactivation result.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
-</div>
-<div class="section" id="version">
-<h2>Version<a class="headerlink" href="#version" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="version">
+<h2>Version<a class="headerlink" href="#version" title="Link to this heading"></a></h2>
 <p>To get the version of xlSlim used in Excel you can use the <a class="reference internal" href="#XlSlimVersion" title="XlSlimVersion"><code class="xref py py-func docutils literal notranslate"><span class="pre">XlSlimVersion()</span></code></a> function:</p>
-<dl class="function">
-<dt id="XlSlimVersion">
-<code class="descname">XlSlimVersion</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#XlSlimVersion" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="XlSlimVersion">
+<span class="sig-name descname"><span class="pre">XlSlimVersion</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#XlSlimVersion" title="Link to this definition"></a></dt>
 <dd><p>Returns the version of xlSlim in use.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The xlSlim version in use.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The xlSlim version in use.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
-</div>
-<div class="section" id="getattr">
-<h2>GetAttr<a class="headerlink" href="#getattr" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="getattr">
+<h2>GetAttr<a class="headerlink" href="#getattr" title="Link to this heading"></a></h2>
 <p>The <a class="reference internal" href="#GetAttr" title="GetAttr"><code class="xref py py-func docutils literal notranslate"><span class="pre">GetAttr()</span></code></a> function efficiently gets attributes from cached Python objects.</p>
-<dl class="function">
-<dt id="GetAttr">
-<code class="descname">GetAttr</code><span class="sig-paren">(</span><em>cacheKey</em>, <em>attribute</em>, <em>defaultValue</em><span class="sig-paren">)</span><a class="headerlink" href="#GetAttr" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>cacheKey</strong> (<em>str</em>) – An xlSlim cached object handle.</li>
-<li><strong>attribute</strong> (<em>str</em>) – The name of the attribute to retrieve.</li>
+<dl class="py function">
+<dt class="sig sig-object py" id="GetAttr">
+<span class="sig-name descname"><span class="pre">GetAttr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cacheKey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attribute</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">defaultValue</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#GetAttr" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cacheKey</strong> (<em>str</em>) – An xlSlim cached object handle.</p></li>
+<li><p><strong>attribute</strong> (<em>str</em>) – The name of the attribute to retrieve.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">An error message if the object was not found. If the attribute exists it is returned, else if a defaultValue was supplied this is returned, failing which an error message is returned.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">str or object</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>An error message if the object was not found. If the attribute exists it is returned, else if a defaultValue was supplied this is returned, failing which an error message is returned.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str or object</p>
+</dd>
+</dl>
 </dd></dl>
 
-</div>
-<div class="section" id="getitem">
-<h2>GetItem<a class="headerlink" href="#getitem" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="getitem">
+<h2>GetItem<a class="headerlink" href="#getitem" title="Link to this heading"></a></h2>
 <p>The <a class="reference internal" href="#GetItem" title="GetItem"><code class="xref py py-func docutils literal notranslate"><span class="pre">GetItem()</span></code></a> function efficiently gets items from cached Python dictionaries.</p>
-<dl class="function">
-<dt id="GetItem">
-<code class="descname">GetItem</code><span class="sig-paren">(</span><em>cacheKey</em>, <em>dictKey</em>, <em>defaultValue</em><span class="sig-paren">)</span><a class="headerlink" href="#GetItem" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>cacheKey</strong> (<em>str</em>) – An xlSlim cached dictionary handle.</li>
-<li><strong>dictKey</strong> (<em>str</em>) – The key of the item to retrieve.</li>
+<dl class="py function">
+<dt class="sig sig-object py" id="GetItem">
+<span class="sig-name descname"><span class="pre">GetItem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cacheKey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dictKey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">defaultValue</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#GetItem" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cacheKey</strong> (<em>str</em>) – An xlSlim cached dictionary handle.</p></li>
+<li><p><strong>dictKey</strong> (<em>str</em>) – The key of the item to retrieve.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">An error message if the cached dictionary was not found. If an item is stored against the key then the item is returned, else if a defaultValue was supplied this is returned, failing which an error message is returned.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">str or object</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>An error message if the cached dictionary was not found. If an item is stored against the key then the item is returned, else if a defaultValue was supplied this is returned, failing which an error message is returned.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str or object</p>
+</dd>
+</dl>
 </dd></dl>
 
-</div>
-<div class="section" id="link-a-python-function-to-key-combinations">
-<h2>Link a Python Function to Key Combinations<a class="headerlink" href="#link-a-python-function-to-key-combinations" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="link-a-python-function-to-key-combinations">
+<h2>Link a Python Function to Key Combinations<a class="headerlink" href="#link-a-python-function-to-key-combinations" title="Link to this heading"></a></h2>
 <p>Excel can be set to run a Python function when specific key combinations are pressed. Refer to the Microsoft <a class="reference external" href="https://learn.microsoft.com/en-us/office/vba/api/excel.application.onkey">OnKey</a> documentation for full details of how to specify the key combinations.</p>
-<dl class="function">
-<dt id="LinkPyFunctionToKeys">
-<code class="descname">LinkPyFunctionToKeys</code><span class="sig-paren">(</span><em>keyCombination</em>, <em>functionName</em><span class="sig-paren">)</span><a class="headerlink" href="#LinkPyFunctionToKeys" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>keyCombination</strong> (<em>str</em>) – The combination of keys, for example ^+P is Ctrl+Shift+P.</li>
-<li><strong>functionName</strong> (<em>str</em>) – The name of the function to run. The function cannot take any arguments. If the function name is omitted the key combination reverts to normal behaviour. The function must have already been registered with <a class="reference internal" href="#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a> or <a class="reference internal" href="#CreatePyModule" title="CreatePyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">CreatePyModule()</span></code></a>.</li>
+<dl class="py function">
+<dt class="sig sig-object py" id="LinkPyFunctionToKeys">
+<span class="sig-name descname"><span class="pre">LinkPyFunctionToKeys</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keyCombination</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">functionName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#LinkPyFunctionToKeys" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keyCombination</strong> (<em>str</em>) – The combination of keys, for example ^+P is Ctrl+Shift+P.</p></li>
+<li><p><strong>functionName</strong> (<em>str</em>) – The name of the function to run. The function cannot take any arguments. If the function name is omitted the key combination reverts to normal behaviour. The function must have already been registered with <a class="reference internal" href="#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a> or <a class="reference internal" href="#CreatePyModule" title="CreatePyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">CreatePyModule()</span></code></a>.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A confirmation that the combination of keys have been set or cleared.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">str</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A confirmation that the combination of keys have been set or cleared.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
-</div>
-<div class="section" id="schedule-a-python-function">
-<h2>Schedule a Python Function<a class="headerlink" href="#schedule-a-python-function" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="schedule-a-python-function">
+<h2>Schedule a Python Function<a class="headerlink" href="#schedule-a-python-function" title="Link to this heading"></a></h2>
 <p>Excel can run a Python function at a specified future time. Refer to the Microsoft <a class="reference external" href="https://learn.microsoft.com/en-us/office/vba/api/excel.application.ontime">OnTime</a> documentation for the conditions under which the scheduled execution will run.</p>
-<dl class="function">
-<dt id="SchedulePyFunction">
-<code class="descname">SchedulePyFunction</code><span class="sig-paren">(</span><em>earliestTime</em>, <em>functionName</em>, <em>latestTime</em>, <em>schedule</em><span class="sig-paren">)</span><a class="headerlink" href="#SchedulePyFunction" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>earliestTime</strong> (<em>datetime</em>) – When to run the function.</li>
-<li><strong>functionName</strong> (<em>str</em>) – The name of the function to run. The function cannot take any arguments. The function must have already been registered with <a class="reference internal" href="#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a> or <a class="reference internal" href="#CreatePyModule" title="CreatePyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">CreatePyModule()</span></code></a>.</li>
-<li><strong>latestTime</strong> (<em>datetime</em>) – Optionally set latest time at which the function can be run.</li>
-<li><strong>cancelSchedule</strong> (<em>bool</em>) – Optionally set to TRUE to cancel a scheduled run.</li>
+<dl class="py function">
+<dt class="sig sig-object py" id="SchedulePyFunction">
+<span class="sig-name descname"><span class="pre">SchedulePyFunction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">earliestTime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">functionName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">latestTime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">schedule</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SchedulePyFunction" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>earliestTime</strong> (<em>datetime</em>) – When to run the function.</p></li>
+<li><p><strong>functionName</strong> (<em>str</em>) – The name of the function to run. The function cannot take any arguments. The function must have already been registered with <a class="reference internal" href="#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a> or <a class="reference internal" href="#CreatePyModule" title="CreatePyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">CreatePyModule()</span></code></a>.</p></li>
+<li><p><strong>latestTime</strong> (<em>datetime</em>) – Optionally set latest time at which the function can be run.</p></li>
+<li><p><strong>cancelSchedule</strong> (<em>bool</em>) – Optionally set to TRUE to cancel a scheduled run.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A confirmation that the function has been scheduled or cleared.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">str</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A confirmation that the function has been scheduled or cleared.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
-</div>
-<div class="section" id="add-a-python-event-handler-to-process-excel-events">
-<h2>Add a Python Event Handler to process Excel events<a class="headerlink" href="#add-a-python-event-handler-to-process-excel-events" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="add-a-python-event-handler-to-process-excel-events">
+<h2>Add a Python Event Handler to process Excel events<a class="headerlink" href="#add-a-python-event-handler-to-process-excel-events" title="Link to this heading"></a></h2>
 <p>Excel raises events when various actions occur, such as activating a worksheet or changing a cell. xlSlim allows you to run Python code in response to these events. The internals are identical to Excel’s VBA event handling. Microsoft’s <a class="reference external" href="https://learn.microsoft.com/en-us/office/vba/api/overview/excel/object-model">VBA object and event model</a> documentation is a valuable resource when researching available events.</p>
-<dl class="function">
-<dt id="AddPyEventHandler">
-<code class="descname">AddPyEventHandler</code><span class="sig-paren">(</span><em>evtHandlerClass</em>, <em>wbName</em>, <em>sheetName</em><span class="sig-paren">)</span><a class="headerlink" href="#AddPyEventHandler" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>evtHandlerClass</strong> (<em>str</em>) – The xlSlim cache key of an event handler object. Note that the object itself is not used, only the class data.</li>
-<li><strong>wbName</strong> (<em>str</em>) – Optionally apply the event handler to this workbook. By default the event handler is applied at the application level.</li>
-<li><strong>sheetName</strong> (<em>str</em>) – Optionally apply the event handler to this sheet. By default the event handler is applied at the application level.</li>
+<dl class="py function">
+<dt class="sig sig-object py" id="AddPyEventHandler">
+<span class="sig-name descname"><span class="pre">AddPyEventHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">evtHandlerClass</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wbName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sheetName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AddPyEventHandler" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>evtHandlerClass</strong> (<em>str</em>) – The xlSlim cache key of an event handler object. Note that the object itself is not used, only the class data.</p></li>
+<li><p><strong>wbName</strong> (<em>str</em>) – Optionally apply the event handler to this workbook. By default the event handler is applied at the application level.</p></li>
+<li><p><strong>sheetName</strong> (<em>str</em>) – Optionally apply the event handler to this sheet. By default the event handler is applied at the application level.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-</div>
-<div class="section" id="update-the-right-click-context-menu">
-<h2>Update the Right-Click Context Menu<a class="headerlink" href="#update-the-right-click-context-menu" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="update-the-right-click-context-menu">
+<h2>Update the Right-Click Context Menu<a class="headerlink" href="#update-the-right-click-context-menu" title="Link to this heading"></a></h2>
 <p>The <a class="reference internal" href="#UpdateContextMenu" title="UpdateContextMenu"><code class="xref py py-func docutils literal notranslate"><span class="pre">UpdateContextMenu()</span></code></a> function can be used add items to the right-click context menu and link these items to functions.</p>
-<dl class="function">
-<dt id="UpdateContextMenu">
-<code class="descname">UpdateContextMenu</code><span class="sig-paren">(</span><em>Name</em>, <em>MenuItems</em>, <em>Image=None</em><span class="sig-paren">)</span><a class="headerlink" href="#UpdateContextMenu" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="UpdateContextMenu">
+<span class="sig-name descname"><span class="pre">UpdateContextMenu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">MenuItems</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Image</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#UpdateContextMenu" title="Link to this definition"></a></dt>
 <dd><p>Updates the Excel right-click context menu.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>Name</strong> (<em>str</em>) – The top level name for the menu.</li>
-<li><strong>MenuItems</strong> (<em>Excel range</em>) – An Excel range specifying the menu items. The first column must be the menu labels and the second column must be the function names. An optional third column can contain the images for the menu items. The functions cannot take any arguments. The functions must be registered with <a class="reference internal" href="#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a> or <a class="reference internal" href="#CreatePyModule" title="CreatePyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">CreatePyModule()</span></code></a>.</li>
-<li><strong>Image</strong> (<em>str</em><em> or </em><em>None</em>) – Optional image to use with the Name.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Name</strong> (<em>str</em>) – The top level name for the menu.</p></li>
+<li><p><strong>MenuItems</strong> (<em>Excel range</em>) – An Excel range specifying the menu items. The first column must be the menu labels and the second column must be the function names. An optional third column can contain the images for the menu items. The functions cannot take any arguments. The functions must be registered with <a class="reference internal" href="#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a> or <a class="reference internal" href="#CreatePyModule" title="CreatePyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">CreatePyModule()</span></code></a>.</p></li>
+<li><p><strong>Image</strong> (<em>str</em><em> or </em><em>None</em>) – Optional image to use with the Name.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <p>See <a class="reference internal" href="../user/menus.html"><span class="doc">Adding Context and Ribbon Menus</span></a> for an example using the <cite>UpdateContextMenu</cite> function.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The images are limited to specific images built into Excel. The available images can be found by searching for “imagemso gallery”, at the time of writing this <a class="reference external" href="https://bert-toolkit.com/imagemso-list.html">page</a> has a good list of the available images.</p>
+<p class="admonition-title">Note</p>
+<p>The images are limited to specific images built into Excel. The available images can be found by searching for “imagemso gallery”, at the time of writing this <a class="reference external" href="https://bert-toolkit.com/imagemso-list.html">page</a> has a good list of the available images.</p>
 </div>
-</div>
-<div class="section" id="update-the-ribbon-menu">
-<h2>Update the Ribbon Menu<a class="headerlink" href="#update-the-ribbon-menu" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="update-the-ribbon-menu">
+<h2>Update the Ribbon Menu<a class="headerlink" href="#update-the-ribbon-menu" title="Link to this heading"></a></h2>
 <p>The <a class="reference internal" href="#UpdateRibbonMenu" title="UpdateRibbonMenu"><code class="xref py py-func docutils literal notranslate"><span class="pre">UpdateRibbonMenu()</span></code></a> function can be used add items to the ribbon menu and link these items to functions.</p>
-<dl class="function">
-<dt id="UpdateRibbonMenu">
-<code class="descname">UpdateRibbonMenu</code><span class="sig-paren">(</span><em>Name</em>, <em>MenuItems</em>, <em>Image=None</em><span class="sig-paren">)</span><a class="headerlink" href="#UpdateRibbonMenu" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="UpdateRibbonMenu">
+<span class="sig-name descname"><span class="pre">UpdateRibbonMenu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">MenuItems</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Image</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#UpdateRibbonMenu" title="Link to this definition"></a></dt>
 <dd><p>Updates the Excel ribbon menu.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>Name</strong> (<em>str</em>) – The top level name for the menu.</li>
-<li><strong>MenuItems</strong> (<em>Excel range</em>) – An Excel range specifying the menu items. The first column must be the menu labels and the second column must be the function names. An optional third column can contain the images for the menu items. The functions cannot take any arguments. The functions must be registered with <a class="reference internal" href="#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a> or <a class="reference internal" href="#CreatePyModule" title="CreatePyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">CreatePyModule()</span></code></a>.</li>
-<li><strong>Image</strong> (<em>str</em><em> or </em><em>None</em>) – Optional image to use with the Name.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Name</strong> (<em>str</em>) – The top level name for the menu.</p></li>
+<li><p><strong>MenuItems</strong> (<em>Excel range</em>) – An Excel range specifying the menu items. The first column must be the menu labels and the second column must be the function names. An optional third column can contain the images for the menu items. The functions cannot take any arguments. The functions must be registered with <a class="reference internal" href="#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a> or <a class="reference internal" href="#CreatePyModule" title="CreatePyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">CreatePyModule()</span></code></a>.</p></li>
+<li><p><strong>Image</strong> (<em>str</em><em> or </em><em>None</em>) – Optional image to use with the Name.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <p>See <a class="reference internal" href="../user/menus.html"><span class="doc">Adding Context and Ribbon Menus</span></a> for an example using the <cite>UpdateRibbonMenu</cite> function.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The images are limited to specific images built into Excel. The available images can be found by searching for “imagemso gallery”, at the time of writing this <a class="reference external" href="https://bert-toolkit.com/imagemso-list.html">page</a> has a good list of the available images.</p>
+<p class="admonition-title">Note</p>
+<p>The images are limited to specific images built into Excel. The available images can be found by searching for “imagemso gallery”, at the time of writing this <a class="reference external" href="https://bert-toolkit.com/imagemso-list.html">page</a> has a good list of the available images.</p>
 </div>
-</div>
-<div class="section" id="activating-interactive-mode">
-<h2>Activating Interactive Mode<a class="headerlink" href="#activating-interactive-mode" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="activating-interactive-mode">
+<h2>Activating Interactive Mode<a class="headerlink" href="#activating-interactive-mode" title="Link to this heading"></a></h2>
 <p>The <a class="reference internal" href="#ActivateInteractiveMode" title="ActivateInteractiveMode"><code class="xref py py-func docutils literal notranslate"><span class="pre">ActivateInteractiveMode()</span></code></a> function enables interactive Python mode. In interactive mode any cells beginning with “#py” are treated as Python code and run within Excel. Cells can be executed with Ctrl+Enter and Shift+Enter, just like Jupyter notebooks. All Python cells can be run with Ctrl+R. Double clicking on cells opens a Python code editor.</p>
-<dl class="function">
-<dt id="ActivateInteractiveMode">
-<code class="descname">ActivateInteractiveMode</code><span class="sig-paren">(</span><em>ExecutablePath=None</em>, <em>ExtraModuleSearchLocations=None</em>, <em>ExtraDllSearchLocations=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ActivateInteractiveMode" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ActivateInteractiveMode">
+<span class="sig-name descname"><span class="pre">ActivateInteractiveMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ExecutablePath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ExtraModuleSearchLocations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ExtraDllSearchLocations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ActivateInteractiveMode" title="Link to this definition"></a></dt>
 <dd><p>Activates Interactive Python mode.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>ExecutablePath</strong> (<em>str</em><em> or </em><em>None</em>) – Optional location of the Python environment to use.</li>
-<li><strong>ExtraModuleSearchLocations</strong> (<em>str</em><em> or </em><em>None</em>) – Extra locations to be added to the Python module search path (sys.path).</li>
-<li><strong>ExtraDllSearchLocations</strong> (<em>str</em><em> or </em><em>None</em>) – Extra locations to be added to the Windows DLL search path (PATH).</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ExecutablePath</strong> (<em>str</em><em> or </em><em>None</em>) – Optional location of the Python environment to use.</p></li>
+<li><p><strong>ExtraModuleSearchLocations</strong> (<em>str</em><em> or </em><em>None</em>) – Extra locations to be added to the Python module search path (sys.path).</p></li>
+<li><p><strong>ExtraDllSearchLocations</strong> (<em>str</em><em> or </em><em>None</em>) – Extra locations to be added to the Windows DLL search path (PATH).</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <p>See <a class="reference internal" href="environments.html"><span class="doc">Python Environments</span></a> for details of the <cite>ExecutablePath</cite> parameter.</p>
-</div>
-<div class="section" id="deactivating-interactive-mode">
-<h2>Deactivating Interactive Mode<a class="headerlink" href="#deactivating-interactive-mode" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="deactivating-interactive-mode">
+<h2>Deactivating Interactive Mode<a class="headerlink" href="#deactivating-interactive-mode" title="Link to this heading"></a></h2>
 <p>The <a class="reference internal" href="#DeactivateInteractiveMode" title="DeactivateInteractiveMode"><code class="xref py py-func docutils literal notranslate"><span class="pre">DeactivateInteractiveMode()</span></code></a> function disables interactive Python mode. Keyboard shortcuts are reset to their defaults.</p>
-<dl class="function">
-<dt id="DeactivateInteractiveMode">
-<code class="descname">DeactivateInteractiveMode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#DeactivateInteractiveMode" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="DeactivateInteractiveMode">
+<span class="sig-name descname"><span class="pre">DeactivateInteractiveMode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#DeactivateInteractiveMode" title="Link to this definition"></a></dt>
 <dd><p>Deactivates Interactive Python mode.</p>
 </dd></dl>
 
-</div>
-<div class="section" id="running-duckdb-sql">
-<h2>Running DuckDB SQL<a class="headerlink" href="#running-duckdb-sql" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="running-duckdb-sql">
+<h2>Running DuckDB SQL<a class="headerlink" href="#running-duckdb-sql" title="Link to this heading"></a></h2>
 <p>The <a class="reference internal" href="#DuckDbQuery" title="DuckDbQuery"><code class="xref py py-func docutils literal notranslate"><span class="pre">DuckDbQuery()</span></code></a> function allows SQL statements to be executed within DuckDB.</p>
-<dl class="function">
-<dt id="DuckDbQuery">
-<code class="descname">DuckDbQuery</code><span class="sig-paren">(</span><em>SQL</em>, <em>DbFile=None</em><span class="sig-paren">)</span><a class="headerlink" href="#DuckDbQuery" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="DuckDbQuery">
+<span class="sig-name descname"><span class="pre">DuckDbQuery</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SQL</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DbFile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ExcelRange</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#DuckDbQuery" title="Link to this definition"></a></dt>
 <dd><p>Executes the supplied SQL statements.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>SQL</strong> (<em>str</em>) – The SQL statements to execute.</li>
-<li><strong>DbFile</strong> (<em>str</em><em> or </em><em>None</em>) – If not supplied then the statements run in a temporary in-memory database. Else the function creates or opens  a DuckDB database at the supplied location and runs the statements within this database.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>SQL</strong> (<em>str</em>) – The SQL statements to execute.</p></li>
+<li><p><strong>DbFile</strong> (<em>str</em><em> or </em><em>None</em>) – If not supplied then the statements run in a temporary in-memory database. Else the function creates or opens  a DuckDB database at the supplied location and runs the statements within this database.</p></li>
+<li><p><strong>ExcelRange</strong> (<em>Excel range</em><em> or </em><em>None</em>) – If an Excel range is passed then the range may be queried in SQL queries. The Excel range is referenced as xlRange in the SQL query, for example: SELECT * FROM xlRange. The Excel range can be a regular Excel range, a named range, a table, or an xlSlim cached pandas DataFrame handle.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">An error message if the SQL failed or an array of objects suitable for display in Excel.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">str or list[object]</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>An error message if the SQL failed or an array of objects suitable for display in Excel.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str or list[object]</p>
+</dd>
+</dl>
 </dd></dl>
 
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Multiple Excel ranges may be passed and then referenced in the SQL as xlRange[1], xlRange[2] .. xlRange[n].</p>
+</div>
 <p>See <a class="reference external" href="https://duckdb.org/docs/sql/introduction">DuckDB SQL</a> for details of DuckDB SQL statements.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="data_conversions.html" class="btn btn-neutral float-right" title="Data Conversions Between Excel and Python" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="environments.html" class="btn btn-neutral float-left" title="Python Environments" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="environments.html" class="btn btn-neutral float-left" title="Python Environments" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="data_conversions.html" class="btn btn-neutral float-right" title="Data Conversions Between Excel and Python" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &copy; Copyright 2022-2024, Russel Webber
-
-    </p>
+    <p>&#169; Copyright 2022-2025, Russel Webber.</p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

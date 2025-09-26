@@ -1,39 +1,24 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8">
-  <meta content="xlSlim makes it easy to use functions from VBA or other Excel add-ins in your Python code." lang="en" name="description" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="xlSlim makes it easy to use functions from VBA or other Excel add-ins in your Python code." lang="en" name="description" xml:lang="en" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Calling VBA and other Excel add-in functions &mdash; xlSlim v1.0 documentation</title>
-  
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
   
-  
-  
-  
-
-  
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="canonical" href="https://russelwebber.github.io/xlslim-docs/html/user/udfs.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=e160b93e"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="numpy Arrays" href="numpy.html" />
@@ -53,48 +38,26 @@
 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
 
           
-            <a href="../index.html" class="icon icon-home"> xlSlim
           
-
-          
+          <a href="../index.html" class="icon icon-home">
+            xlSlim
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">User Guide</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
@@ -124,7 +87,7 @@
 <li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="duckdb.html">DuckDB</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Examples</span></p>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../samples/read_json_from_web.html">Read JSON data from a URL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../samples/read_csv.html">Read CSV data from a file</a></li>
@@ -137,7 +100,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../samples/pivot_table.html">Creating a Pivot Table using Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../samples/equity_index_options.html">US Equity Index Option Pricing</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Reference</span></p>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../reference/environments.html">Python Environments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/api.html">Excel Functions</a></li>
@@ -148,93 +111,56 @@
 <li class="toctree-l1"><a class="reference internal" href="../reference/software_requirements.html">Software Requirements</a></li>
 </ul>
 
-            
-          
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">xlSlim</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html">Docs</a> &raquo;</li>
-        
-      <li>Calling VBA and other Excel add-in functions</li>
-    
-    
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Calling VBA and other Excel add-in functions</li>
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="../_sources/user/udfs.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="calling-vba-and-other-excel-add-in-functions">
-<h1>Calling VBA and other Excel add-in functions<a class="headerlink" href="#calling-vba-and-other-excel-add-in-functions" title="Permalink to this headline">¶</a></h1>
+             
+  <section id="calling-vba-and-other-excel-add-in-functions">
+<h1>Calling VBA and other Excel add-in functions<a class="headerlink" href="#calling-vba-and-other-excel-add-in-functions" title="Link to this heading"></a></h1>
 <p>xlSlim makes it easy to use functions from VBA or other Excel add-ins in your Python code.</p>
-<div class="section" id="calling-vba-functions">
-<h2>Calling VBA functions<a class="headerlink" href="#calling-vba-functions" title="Permalink to this headline">¶</a></h2>
+<section id="calling-vba-functions">
+<h2>Calling VBA functions<a class="headerlink" href="#calling-vba-functions" title="Link to this heading"></a></h2>
 <p>Add this little function to your Excel workbook:</p>
-<div class="highlight-vbnet notranslate"><div class="highlight"><pre><span></span><span class="k">Public</span><span class="w"> </span><span class="k">Function</span><span class="w"> </span><span class="nf">AreaCircle</span><span class="p">(</span><span class="n">radius</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Double</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="n">AreaCircle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">WorksheetFunction</span><span class="p">.</span><span class="n">Pi</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">radius</span><span class="w"></span>
-<span class="k">End</span><span class="w"> </span><span class="k">Function</span><span class="w"></span>
+<div class="highlight-vbnet notranslate"><div class="highlight"><pre><span></span><span class="k">Public</span><span class="w"> </span><span class="k">Function</span><span class="w"> </span><span class="nf">AreaCircle</span><span class="p">(</span><span class="n">radius</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Double</span><span class="p">)</span>
+<span class="w">        </span><span class="n">AreaCircle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">WorksheetFunction</span><span class="p">.</span><span class="n">Pi</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">radius</span>
+<span class="k">End</span><span class="w"> </span><span class="k">Function</span>
 </pre></div>
 </div>
 <p>The function must be defined in a VBA Module in the VBA editor (The VBA editor can be opened with Alt-F11 in Excel).</p>
-<a class="reference internal image-reference" href="../_images/udfs_define_vba_function.png"><img alt="Define function in VBA" src="../_images/udfs_define_vba_function.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/udfs_define_vba_function.png"><img alt="Define function in VBA" src="../_images/udfs_define_vba_function.png" style="width: 400px;" />
+</a>
 <p>This Python module accesses the VBA function. Note the global variable <cite>XLSLIM_UDF</cite> that is used to access VBA functions.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># This global is used to store a function pointer set by xlSlim</span>
 <span class="n">XLSLIM_UDFFUNC</span> <span class="o">=</span> <span class="kc">None</span>
 
-<span class="k">def</span> <span class="nf">udf_circle_area</span><span class="p">(</span><span class="n">radius</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Calculate the area of a circle using the VBA function AreaCircle&quot;&quot;&quot;</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">udf_circle_area</span><span class="p">(</span><span class="n">radius</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate the area of a circle using the VBA function AreaCircle&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">XLSLIM_UDFFUNC</span><span class="p">(</span><span class="s2">&quot;AreaCircle&quot;</span><span class="p">,</span> <span class="n">radius</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">All the Python code and Excel files shown are available from github in the <a class="reference external" href="https://github.com/RusselWebber/xlslim-code-samples/archive/refs/heads/main.zip">xlslim-code-samples</a> repo. I highly recommend downloading the samples from github. The Excel workbooks contain many tips and tricks.</p>
+<p class="admonition-title">Note</p>
+<p>All the Python code and Excel files shown are available from github in the <a class="reference external" href="https://github.com/RusselWebber/xlslim-code-samples/archive/refs/heads/main.zip">xlslim-code-samples</a> repo. I highly recommend downloading the samples from github. The Excel workbooks contain many tips and tricks.</p>
 </div>
 <p>Save the Python code as a new file on your PC. I saved the file in my Documents folder.</p>
 <p>Enter this <a class="reference internal" href="../reference/api.html#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a> formula in Excel (amending the location to match where you saved the file):</p>
@@ -242,92 +168,78 @@
 </pre></div>
 </div>
 <p>The function is now available to use in Excel.</p>
-<a class="reference internal image-reference" href="../_images/udfs_call_vba_function_in_python.png"><img alt="Call VBA function from Python" src="../_images/udfs_call_vba_function_in_python.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/udfs_call_vba_function_in_python.png"><img alt="Call VBA function from Python" src="../_images/udfs_call_vba_function_in_python.png" style="width: 400px;" />
+</a>
 <p>As you would expect, the result is exactly the same as calling the VBA function directly in Excel.</p>
-<a class="reference internal image-reference" href="../_images/udfs_call_vba_function_in_excel.png"><img alt="Call VBA function from Excel" src="../_images/udfs_call_vba_function_in_excel.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/udfs_call_vba_function_in_excel.png"><img alt="Call VBA function from Excel" src="../_images/udfs_call_vba_function_in_excel.png" style="width: 400px;" />
+</a>
 <p>The key is the global variable <cite>XLSLIM_UDF</cite>. Any function accessible to Excel can be called in Python using <cite>XLSLIM_UDF(&lt;function name&gt;, &lt;arg 1&gt;, &lt;arg 2&gt;…&lt;arg n&gt;)</cite></p>
-</div>
-<div class="section" id="calling-other-excel-add-in-functions">
-<h2>Calling other Excel add-in functions<a class="headerlink" href="#calling-other-excel-add-in-functions" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="calling-other-excel-add-in-functions">
+<h2>Calling other Excel add-in functions<a class="headerlink" href="#calling-other-excel-add-in-functions" title="Link to this heading"></a></h2>
 <p>Excel is distributed with an add-in to convert between the pre-unification currencies of Euro member countries. Install this add-in by following the instructions at <a class="reference external" href="https://support.microsoft.com/en-us/office/euroconvert-function-79c8fd67-c665-450c-bb6c-15fc92f8345c">EUROCONVERT_function</a></p>
 <p>Once the add-in is installed it can be used to convert 100 Austrian schillings to French francs.</p>
-<a class="reference internal image-reference" href="../_images/udfs_call_euroconvert_function_in_excel.png"><img alt="Call EUROCONVERT_function from Excel" src="../_images/udfs_call_euroconvert_function_in_excel.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/udfs_call_euroconvert_function_in_excel.png"><img alt="Call EUROCONVERT_function from Excel" src="../_images/udfs_call_euroconvert_function_in_excel.png" style="width: 400px;" />
+</a>
 <p>Add the <cite>eur_conversion()</cite> function below to the Python module. The module should now contain:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># This global is used to store a function pointer set by xlSlim</span>
 <span class="n">XLSLIM_UDFFUNC</span> <span class="o">=</span> <span class="kc">None</span>
 
 
-<span class="k">def</span> <span class="nf">udf_circle_area</span><span class="p">(</span><span class="n">radius</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Calculate the area of a circle using the VBA function AreaCircle&quot;&quot;&quot;</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">udf_circle_area</span><span class="p">(</span><span class="n">radius</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate the area of a circle using the VBA function AreaCircle&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">XLSLIM_UDFFUNC</span><span class="p">(</span><span class="s2">&quot;AreaCircle&quot;</span><span class="p">,</span> <span class="n">radius</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">eur_conversion</span><span class="p">(</span><span class="n">amount</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">from_currency</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">to_currency</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Convert to EUR using the Excel addin function EUROCONVERT.&quot;&quot;&quot;</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">eur_conversion</span><span class="p">(</span><span class="n">amount</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">from_currency</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">to_currency</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert to EUR using the Excel addin function EUROCONVERT.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">XLSLIM_UDFFUNC</span><span class="p">(</span><span class="s2">&quot;EUROCONVERT&quot;</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">from_currency</span><span class="p">,</span> <span class="n">to_currency</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">All the Python code and Excel files shown are available from github in the <a class="reference external" href="https://github.com/RusselWebber/xlslim-code-samples/archive/refs/heads/main.zip">xlslim-code-samples</a> repo. I highly recommend downloading the samples from github. The Excel workbooks contain many tips and tricks.</p>
+<p class="admonition-title">Note</p>
+<p>All the Python code and Excel files shown are available from github in the <a class="reference external" href="https://github.com/RusselWebber/xlslim-code-samples/archive/refs/heads/main.zip">xlslim-code-samples</a> repo. I highly recommend downloading the samples from github. The Excel workbooks contain many tips and tricks.</p>
 </div>
 <p>Reload the module in Excel (amending the location to match where you saved the file):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">RegisterPyModule</span><span class="p">(</span><span class="s2">&quot;C:\Users</span><span class="se">\r</span><span class="s2">usse\Documents\udfs.py&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The function is now available to use in Excel.</p>
-<a class="reference internal image-reference" href="../_images/udfs_call_euroconvert_function_in_python.png"><img alt="Call EUROCONVERT_function from Python" src="../_images/udfs_call_euroconvert_function_in_python.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/udfs_call_euroconvert_function_in_python.png"><img alt="Call EUROCONVERT_function from Python" src="../_images/udfs_call_euroconvert_function_in_python.png" style="width: 400px;" />
+</a>
 <p>As you would expect, the result is exactly the same as calling the add-in function directly in Excel.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="numpy.html" class="btn btn-neutral float-right" title="numpy Arrays" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="passing_dicts.html" class="btn btn-neutral float-left" title="Passing Python dictionaries" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="passing_dicts.html" class="btn btn-neutral float-left" title="Passing Python dictionaries" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="numpy.html" class="btn btn-neutral float-right" title="numpy Arrays" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &copy; Copyright 2022-2024, Russel Webber
-
-    </p>
+    <p>&#169; Copyright 2022-2025, Russel Webber.</p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

@@ -200,6 +200,131 @@ Generally, younger passengers were more likely to survive, with the curious exce
 
 Full details of DuckDB's `Parquet capabilities`_ are available in their documentation.
 
+.. _Range:
+
+Querying from Excel Ranges
+--------------------------
+
+Excel ranges can be queried as if the range was a regular DuckDb table. The keyword **xlRange** is used in queries, internally xlSlim substitutes the Excel range data.
+
+.. code-block:: sql
+
+	SELECT * FROM xlRange;
+	
+The range is passed as the third argument to the :func:`DuckDbQuery` function.
+
+Here we copy in the 2024 F1 Drivers Points and query the range:
+
+.. image:: ../_static/xlduckdb_rangequery.gif
+  :width: 400
+  :alt: Querying Excel Range.
+
+The data is in the range A1:E25
+
+.. image:: ../_static/ExcelRangeSourceData.png
+  :width: 400
+  :alt: Range Data.
+
+The range is passed as the third argument::
+
+=DuckDbQuery(A27,,A1:E25)
+
+And the query is run against the Excel range:
+
+.. image:: ../_static/ExcelRangeQuery.png
+  :width: 400
+  :alt: Range Query.
+
+.. note::
+   Multiple Excel ranges may be passed and then referenced in the SQL as xlRange[1], xlRange[2] .. xlRange[n].
+   See the duckdb\\duckdb_range_query.xlsx sheet in the `xlslim-code-samples`_ repo for an example.
+
+Named Ranges
+~~~~~~~~~~~~
+
+Queries can be run against named ranges.
+
+.. image:: ../_static/ExcelRangeDefineTable.png
+  :width: 400
+  :alt: Named Range Data.
+
+Here we pass the named range DriverPoints::
+
+=DuckDbQuery(A27,,DriverPoints)
+
+.. image:: ../_static/ExcelRangeNamedRangeQuery.png
+  :width: 400
+  :alt: Query Named Range.
+
+Table Data
+~~~~~~~~~~
+
+Queries can be run against Excel table data.
+
+.. image:: ../_static/ExcelRangeDefineTable.png
+  :width: 400
+  :alt: Table Data.
+
+Here we pass the table name PointsTable[All]::
+
+=DuckDbQuery(A27,,PointsTable[All])
+
+.. image:: ../_static/ExcelRangeTableQuery.png
+  :width: 400
+  :alt: Query Table.
+
+Querying from Cached Python pandas DataFrames
+---------------------------------------------
+
+Cached Python pandas DataFrames can be queried as if the DataFrame was a regular DuckDb table. Cached DataFrames are represented by cache handles as described in :doc:`/user/dataframes`
+
+This Python code defines a function `read_csv()` that reads a CSV file and returns a DataFrame.
+
+.. code-block:: python
+
+	import pandas as pd
+
+	def read_csv(filepath: str) -> pd.DataFrame:
+		"""Read a csv and return the dataframe."""
+		return pd.read_csv(filepath)
+
+.. note::
+	All the Python code and Excel files shown are available from github in the `xlslim-code-samples`_ repo. I highly recommend downloading the samples from github. The Excel workbooks contain many tips and tricks.
+
+.. _xlslim-code-samples: https://github.com/RusselWebber/xlslim-code-samples/archive/refs/heads/main.zip
+
+Save the Python code as a new file on your PC. I saved the file in my Documents folder.
+
+Open Excel and enter this :func:`RegisterPyModule` formula (amending the location to match where you saved the file): ::
+
+	=RegisterPyModule("c:\users\russe\documents\duckdb_object_query.py","C:\Users\russe\miniconda3\envs\py39")
+	
+.. note::
+	pandas and numpy are not available in the Python installation bundled with xlSlim. The Python module must be registered with an existing Python installation that has numpy and pandas installed.
+
+If we call the `read_csv()` function, passing in the location of a CSV file, we see that the result is automatically cached and a cache handle is returned to Excel.
+
+.. image:: ../_static/duckdb_read_csv_cached_object.png
+  :width: 400
+  :alt: DataFrame Cache Handle
+
+We can pass this cache handle as the third argument to the :func:`DuckDbQuery` function. 
+
+The keyword **xlRange** is used in queries, internally xlSlim substitutes the DataFrame data.
+
+.. code-block:: sql
+
+	SELECT Region, Country, Sum("Total Profit") AS Profit FROM xlRange GROUP BY Region, Country ORDER BY Profit DESC;
+	
+Here we pass in the SQL query and cache handle to :func:`DuckDbQuery` and the query is run against the DataFrame data:
+
+.. image:: ../_static/duckdb_query_cached_object.png
+  :width: 400
+  :alt: Querying Cached DataFrame.
+
+.. note::
+   Multiple cache handles may be passed and then referenced in the SQL as xlRange[1], xlRange[2] .. xlRange[n].
+
 .. _Remote:
 
 Querying from remote locations

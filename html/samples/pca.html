@@ -1,39 +1,24 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8">
-  <meta content="xlSlim makes it easy for Excel to access Python's sklearn library and perform PCA." lang="en" name="description" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="xlSlim makes it easy for Excel to access Python's sklearn library and perform PCA." lang="en" name="description" xml:lang="en" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Principal Components Analysis of Index Prices &mdash; xlSlim v1.0 documentation</title>
-  
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
   
-  
-  
-  
-
-  
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="canonical" href="https://russelwebber.github.io/xlslim-docs/html/samples/pca.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=e160b93e"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Monte Carlo Option Pricing" href="monte_carlo.html" />
@@ -53,48 +38,26 @@
 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
 
           
-            <a href="../index.html" class="icon icon-home"> xlSlim
           
-
-          
+          <a href="../index.html" class="icon icon-home">
+            xlSlim
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">User Guide</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../user/installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/quickstart.html">Quickstart</a></li>
@@ -120,7 +83,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting.html">Troubleshooting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/duckdb.html">DuckDB</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Examples</span></p>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="read_json_from_web.html">Read JSON data from a URL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="read_csv.html">Read CSV data from a file</a></li>
@@ -133,7 +96,7 @@
 <li class="toctree-l1"><a class="reference internal" href="pivot_table.html">Creating a Pivot Table using Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="equity_index_options.html">US Equity Index Option Pricing</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Reference</span></p>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../reference/environments.html">Python Environments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/api.html">Excel Functions</a></li>
@@ -144,87 +107,49 @@
 <li class="toctree-l1"><a class="reference internal" href="../reference/software_requirements.html">Software Requirements</a></li>
 </ul>
 
-            
-          
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">xlSlim</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html">Docs</a> &raquo;</li>
-        
-      <li>Principal Components Analysis of Index Prices</li>
-    
-    
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Principal Components Analysis of Index Prices</li>
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="../_sources/samples/pca.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="principal-components-analysis-of-index-prices">
-<h1>Principal Components Analysis of Index Prices<a class="headerlink" href="#principal-components-analysis-of-index-prices" title="Permalink to this headline">¶</a></h1>
+             
+  <section id="principal-components-analysis-of-index-prices">
+<h1>Principal Components Analysis of Index Prices<a class="headerlink" href="#principal-components-analysis-of-index-prices" title="Link to this heading"></a></h1>
 <p>This example builds on <a class="reference internal" href="yfinance.html"><span class="doc">Loading Stock Prices from Yahoo! Finance</span></a>, using the Python <a class="reference external" href="https://scikit-learn.org/stable/">sklearn</a> package to perform PCA on the downloaded prices.</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">The numpy functionality shown requires a premium licence. See <a class="reference internal" href="../reference/licensing.html"><span class="doc">Licensing</span></a></p>
+<p class="admonition-title">Warning</p>
+<p>The numpy functionality shown requires a premium licence. See <a class="reference internal" href="../reference/licensing.html"><span class="doc">Licensing</span></a></p>
 </div>
 <p>We will use this Python code to perform the PCA.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># example of performing pca on historical prices of indices</span>
 
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
-<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
 
 
-<span class="k">def</span> <span class="nf">pca</span><span class="p">(</span><span class="n">prices</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">],</span> <span class="n">num_comp</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">pca</span><span class="p">(</span><span class="n">prices</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">],</span> <span class="n">num_comp</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        prices: list of pandas dataframes extracted using yfinance historical data prices (assumes prices are for the same dates)</span>
 <span class="sd">        num_comp: int number of components to keep, if -1 then all components are kept</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -249,8 +174,8 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">All the Python code and Excel files shown are available from github in the <a class="reference external" href="https://github.com/RusselWebber/xlslim-code-samples/archive/refs/heads/main.zip">xlslim-code-samples</a> repo.</p>
+<p class="admonition-title">Note</p>
+<p>All the Python code and Excel files shown are available from github in the <a class="reference external" href="https://github.com/RusselWebber/xlslim-code-samples/archive/refs/heads/main.zip">xlslim-code-samples</a> repo.</p>
 </div>
 <p>Save the Python code as a new file on your PC. I saved the file in my Documents folder.</p>
 <p>Enter these two <a class="reference internal" href="../reference/api.html#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a> formulae (amending the location to match where you saved the files):</p>
@@ -259,11 +184,12 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">sklearn is not available in the Python installation bundled with xlSlim. The Python module must be registered with an existing Python installation that has sklearn installed. See <a class="reference external" href="https://scikit-learn.org/stable/">sklearn</a> for installation details.</p>
+<p class="admonition-title">Note</p>
+<p>sklearn is not available in the Python installation bundled with xlSlim. The Python module must be registered with an existing Python installation that has sklearn installed. See <a class="reference external" href="https://scikit-learn.org/stable/">sklearn</a> for installation details.</p>
 </div>
 <p>You should see a message similar to this confirming the module registrations:</p>
-<a class="reference internal image-reference" href="../_images/pca_registration.png"><img alt="Register pca function" src="../_images/pca_registration.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/pca_registration.png"><img alt="Register pca function" src="../_images/pca_registration.png" style="width: 400px;" />
+</a>
 <p>The <cite>get_historical_prices()</cite> and <cite>pca()</cite> functions are now available in Excel.</p>
 <p>Let’s load the last month of prices for the FTSE 100, FTSE MIB and AEX indices (UK, Italian and Dutch indices):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">get_historical_prices</span><span class="p">(</span><span class="s2">&quot;^FTSE&quot;</span><span class="p">,</span> <span class="s2">&quot;1mo&quot;</span><span class="p">)</span>
@@ -272,7 +198,8 @@
 </pre></div>
 </div>
 <p>A cache object handle is returned to Excel for each pandas DataFrame of index prices. Internally xlSlim has put the pandas DataFrames into an in-memory cache.</p>
-<a class="reference internal image-reference" href="../_images/pca_index_handles.png"><img alt="Index Price handles" src="../_images/pca_index_handles.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/pca_index_handles.png"><img alt="Index Price handles" src="../_images/pca_index_handles.png" style="width: 400px;" />
+</a>
 <p>Now we pass the prices into the PCA function:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">pca</span><span class="p">(</span><span class="n">A3</span><span class="p">:</span><span class="n">A5</span><span class="p">)</span>
 </pre></div>
@@ -281,57 +208,40 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">ViewPyObject</span><span class="p">(</span><span class="n">A6</span><span class="p">)</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="../_images/pca_view_results.png"><img alt="View PCA results in Excel" src="../_images/pca_view_results.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/pca_view_results.png"><img alt="View PCA results in Excel" src="../_images/pca_view_results.png" style="width: 400px;" />
+</a>
 <p>This example shows how neatly xlSlim handles both pandas DataFrames and numpy arrays.</p>
-</div>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="monte_carlo.html" class="btn btn-neutral float-right" title="Monte Carlo Option Pricing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="yfinance.html" class="btn btn-neutral float-left" title="Loading Stock Prices from Yahoo! Finance" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="yfinance.html" class="btn btn-neutral float-left" title="Loading Stock Prices from Yahoo! Finance" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="monte_carlo.html" class="btn btn-neutral float-right" title="Monte Carlo Option Pricing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &copy; Copyright 2022-2024, Russel Webber
-
-    </p>
+    <p>&#169; Copyright 2022-2025, Russel Webber.</p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

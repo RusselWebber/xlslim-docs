@@ -1,39 +1,24 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8">
-  <meta content="xlSlim was designed to support numpy arrays efficiently while keeping the interaction with Excel as intuitive as possible." lang="en" name="description" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="xlSlim was designed to support numpy arrays efficiently while keeping the interaction with Excel as intuitive as possible." lang="en" name="description" xml:lang="en" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>numpy Arrays &mdash; xlSlim v1.0 documentation</title>
-  
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
   
-  
-  
-  
-
-  
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="canonical" href="https://russelwebber.github.io/xlslim-docs/html/user/numpy.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=e160b93e"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="pandas Series" href="series.html" />
@@ -53,48 +38,26 @@
 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
 
           
-            <a href="../index.html" class="icon icon-home"> xlSlim
           
-
-          
+          <a href="../index.html" class="icon icon-home">
+            xlSlim
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">User Guide</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
@@ -125,7 +88,7 @@
 <li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="duckdb.html">DuckDB</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Examples</span></p>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../samples/read_json_from_web.html">Read JSON data from a URL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../samples/read_csv.html">Read CSV data from a file</a></li>
@@ -138,7 +101,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../samples/pivot_table.html">Creating a Pivot Table using Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../samples/equity_index_options.html">US Equity Index Option Pricing</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Reference</span></p>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../reference/environments.html">Python Environments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/api.html">Excel Functions</a></li>
@@ -149,109 +112,70 @@
 <li class="toctree-l1"><a class="reference internal" href="../reference/software_requirements.html">Software Requirements</a></li>
 </ul>
 
-            
-          
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">xlSlim</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html">Docs</a> &raquo;</li>
-        
-      <li>numpy Arrays</li>
-    
-    
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">numpy Arrays</li>
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="../_sources/user/numpy.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="numpy-arrays">
-<h1>numpy Arrays<a class="headerlink" href="#numpy-arrays" title="Permalink to this headline">¶</a></h1>
+             
+  <section id="numpy-arrays">
+<h1>numpy Arrays<a class="headerlink" href="#numpy-arrays" title="Link to this heading"></a></h1>
 <p>xlSlim was designed to support numpy arrays efficiently while keeping the interaction with Excel as intuitive as possible.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Type hints are essential for xlSlim to recognise numpy arrays passed between your functions.</p>
+<p class="admonition-title">Note</p>
+<p>Type hints are essential for xlSlim to recognise numpy arrays passed between your functions.</p>
 </div>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">numpy functionality requires a premium licence. See <a class="reference internal" href="../reference/licensing.html"><span class="doc">Licensing</span></a></p>
+<p class="admonition-title">Warning</p>
+<p>numpy functionality requires a premium licence. See <a class="reference internal" href="../reference/licensing.html"><span class="doc">Licensing</span></a></p>
 </div>
-<div class="section" id="creating-numpy-arrays">
-<h2>Creating numpy arrays<a class="headerlink" href="#creating-numpy-arrays" title="Permalink to this headline">¶</a></h2>
-<dl class="docutils">
-<dt>numpy arrays can be created in three ways:</dt>
-<dd><ul class="first last simple">
-<li>within a Python function</li>
-<li>from an Excel range</li>
-<li>from an Excel range of numbers (<strong>optimised</strong>)</li>
+<section id="creating-numpy-arrays">
+<h2>Creating numpy arrays<a class="headerlink" href="#creating-numpy-arrays" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>numpy arrays can be created in three ways:</dt><dd><ul class="simple">
+<li><p>within a Python function</p></li>
+<li><p>from an Excel range</p></li>
+<li><p>from an Excel range of numbers (<strong>optimised</strong>)</p></li>
 </ul>
 </dd>
 </dl>
-<div class="section" id="numpy-array-from-a-python-function">
-<h3>numpy Array from a Python function<a class="headerlink" href="#numpy-array-from-a-python-function" title="Permalink to this headline">¶</a></h3>
+<section id="numpy-array-from-a-python-function">
+<h3>numpy Array from a Python function<a class="headerlink" href="#numpy-array-from-a-python-function" title="Link to this heading"></a></h3>
 <p>This Python code defines a function <cite>create_random_array()</cite> that returns a numpy array of random numbers.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
 
-<span class="k">def</span> <span class="nf">create_random_array</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_random_array</span><span class="p">(</span>
         <span class="n">minimum</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
         <span class="n">maximum</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
         <span class="n">rows</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
         <span class="n">columns</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Create a matrix of random integers between minimum and maximum with x rows and y columns.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a matrix of random integers between minimum and maximum with x rows and y columns.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">minimum</span><span class="p">,</span> <span class="n">maximum</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">columns</span><span class="p">))</span>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">All the Python code and Excel files shown are available from github in the <a class="reference external" href="https://github.com/RusselWebber/xlslim-code-samples/archive/refs/heads/main.zip">xlslim-code-samples</a> repo. I highly recommend downloading the samples from github. The Excel workbooks contain many tips and tricks.</p>
+<p class="admonition-title">Note</p>
+<p>All the Python code and Excel files shown are available from github in the <a class="reference external" href="https://github.com/RusselWebber/xlslim-code-samples/archive/refs/heads/main.zip">xlslim-code-samples</a> repo. I highly recommend downloading the samples from github. The Excel workbooks contain many tips and tricks.</p>
 </div>
 <p>Save the Python code as a new file on your PC. I saved the file in my Documents folder.</p>
 <p>Open Excel and enter this <a class="reference internal" href="../reference/api.html#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a> formula (amending the location to match where you saved the file):</p>
@@ -259,94 +183,102 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">numpy is not available in the Python installation bundled with xlSlim. The Python module must be registered with an existing Python installation that has numpy installed.</p>
+<p class="admonition-title">Note</p>
+<p>numpy is not available in the Python installation bundled with xlSlim. The Python module must be registered with an existing Python installation that has numpy installed.</p>
 </div>
 <p>If we call the <cite>create_random_array()</cite> function we see that the result is automatically cached and a cache handle is returned to Excel.</p>
-<a class="reference internal image-reference" href="../_images/numpy_create_random_array.png"><img alt="Create numpy array in Python" src="../_images/numpy_create_random_array.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/numpy_create_random_array.png"><img alt="Create numpy array in Python" src="../_images/numpy_create_random_array.png" style="width: 400px;" />
+</a>
 <p>The xlSlim function <a class="reference internal" href="../reference/api.html#ViewPyObject" title="ViewPyObject"><code class="xref py py-func docutils literal notranslate"><span class="pre">ViewPyObject()</span></code></a> can be used to view any Python object stored in the memory cache.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">ViewPyObject</span><span class="p">(</span><span class="n">A3</span><span class="p">)</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="../_images/numpy_view_random_array.png"><img alt="View a cached PyObject in Excel" src="../_images/numpy_view_random_array.png" style="width: 400px;" /></a>
-</div>
-<div class="section" id="numpy-array-from-an-excel-range">
-<h3>numpy Array from an Excel Range<a class="headerlink" href="#numpy-array-from-an-excel-range" title="Permalink to this headline">¶</a></h3>
+<a class="reference internal image-reference" href="../_images/numpy_view_random_array.png"><img alt="View a cached PyObject in Excel" src="../_images/numpy_view_random_array.png" style="width: 400px;" />
+</a>
+</section>
+<section id="numpy-array-from-an-excel-range">
+<h3>numpy Array from an Excel Range<a class="headerlink" href="#numpy-array-from-an-excel-range" title="Link to this heading"></a></h3>
 <p>Any Excel range can be used to create a numpy array.</p>
 <p>Add this <cite>echo_array()</cite> function to the Python code and re-register the module with <a class="reference internal" href="../reference/api.html#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">echo_array</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Return the supplied array.&quot;&quot;&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">echo_array</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the supplied array.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">x</span>
 </pre></div>
 </div>
 <p>This function simply returns the numpy array passed in, we’ll use it to show how xlSlim creates numpy arrays directly from Excel if the Python function has a type hint for <cite>np.ndarray</cite>.</p>
 <p>We create a table of strings and numbers in Excel and pass this to the <cite>echo_array()</cite> function.</p>
-<a class="reference internal image-reference" href="../_images/numpy_create_array_from_range.png"><img alt="Create numpy array from Excel" src="../_images/numpy_create_array_from_range.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/numpy_create_array_from_range.png"><img alt="Create numpy array from Excel" src="../_images/numpy_create_array_from_range.png" style="width: 400px;" />
+</a>
 <p>The function returns a cached object handle to Excel.</p>
-<a class="reference internal image-reference" href="../_images/numpy_create_array_from_range_result.png"><img alt="Create numpy array from Excel" src="../_images/numpy_create_array_from_range_result.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/numpy_create_array_from_range_result.png"><img alt="Create numpy array from Excel" src="../_images/numpy_create_array_from_range_result.png" style="width: 400px;" />
+</a>
 <p>A few things have happened here. xlSlim created a numpy array from the range A2:B5 <em>before</em> passing the data to the Python code. The Python code received a regular numpy array as expected. The Python function <cite>echo_array()</cite> then returned the same numpy array. xlSlim automatically put this numpy array into a memory cache and returned the cache handle to Excel.</p>
 <p>Using <a class="reference internal" href="../reference/api.html#ViewPyObject" title="ViewPyObject"><code class="xref py py-func docutils literal notranslate"><span class="pre">ViewPyObject()</span></code></a> we can see the array has been created and passed around as expected.</p>
-<a class="reference internal image-reference" href="../_images/numpy_create_array_from_range_view_result.png"><img alt="Create numpy array from Excel view result" src="../_images/numpy_create_array_from_range_view_result.png" style="width: 400px;" /></a>
-</div>
-<div class="section" id="numpy-array-from-an-excel-range-of-numbers">
-<h3>numpy Array from an Excel Range of numbers<a class="headerlink" href="#numpy-array-from-an-excel-range-of-numbers" title="Permalink to this headline">¶</a></h3>
+<a class="reference internal image-reference" href="../_images/numpy_create_array_from_range_view_result.png"><img alt="Create numpy array from Excel view result" src="../_images/numpy_create_array_from_range_view_result.png" style="width: 400px;" />
+</a>
+</section>
+<section id="numpy-array-from-an-excel-range-of-numbers">
+<h3>numpy Array from an Excel Range of numbers<a class="headerlink" href="#numpy-array-from-an-excel-range-of-numbers" title="Link to this heading"></a></h3>
 <p>xlSlim is optimised to create numpy arrays from Excel ranges of numbers. Ranges of numbers are converted to numpy arrays very efficiently with only direct memory copies being used.</p>
 <p>xlSlim cannot determine if the Excel range passed in only contains numbers (Technically it could but this would be very slow). Therefore xlSlim creates a special version of every Python function that expects one or more numpy arrays - these special functions have the same names with “_num_only” appended.</p>
 <p>Let’s create a range of numbers and try the <cite>echo_array_num_only()</cite> function.</p>
-<a class="reference internal image-reference" href="../_images/numpy_create_array_from_range_num_only_view_result.png"><img alt="Create numpy from Excel numeric range" src="../_images/numpy_create_array_from_range_num_only_view_result.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/numpy_create_array_from_range_num_only_view_result.png"><img alt="Create numpy from Excel numeric range" src="../_images/numpy_create_array_from_range_num_only_view_result.png" style="width: 400px;" />
+</a>
 <p>The function <cite>echo_array_num_only()</cite> behaves exactly the same as <cite>echo_array()</cite> however it is <em>far</em> more efficient when passing in a range of numbers.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">For optimal performance always use the “_num_only” versions of xlSlim functions when creating numeric numpy arrays from Excel Ranges.</p>
+<p class="admonition-title">Note</p>
+<p>For optimal performance always use the “_num_only” versions of xlSlim functions when creating numeric numpy arrays from Excel Ranges.</p>
 </div>
-</div>
-</div>
-<div class="section" id="passing-numpy-arrays-to-python-functions">
-<h2>Passing numpy arrays to Python functions<a class="headerlink" href="#passing-numpy-arrays-to-python-functions" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="passing-numpy-arrays-to-python-functions">
+<h2>Passing numpy arrays to Python functions<a class="headerlink" href="#passing-numpy-arrays-to-python-functions" title="Link to this heading"></a></h2>
 <p>As shown above, numpy arrays can be created from Excel Ranges. xlSlim will create a numpy array from an Excel Range before passing the numpy array to the Python function.</p>
 <p>Another way to pass numpy arrays is to use the cache object handles corresponding to numpy arrays in xlSlim’s memory cache.</p>
 <p>Add this <cite>invert_array()</cite> function to the Python code and re-register the module with <a class="reference internal" href="../reference/api.html#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numpy.linalg</span> <span class="kn">import</span> <span class="n">inv</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">numpy.linalg</span><span class="w"> </span><span class="kn">import</span> <span class="n">inv</span>
 
-<span class="k">def</span> <span class="nf">invert_array</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Compute the (multiplicative) inverse of a matrix.&quot;&quot;&quot;</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">invert_array</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the (multiplicative) inverse of a matrix.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">inv</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Let’s create a square array using the <cite>create_random_array()</cite> function we defined before.</p>
-<a class="reference internal image-reference" href="../_images/numpy_pass_array_create_square_array.png"><img alt="Create a square array" src="../_images/numpy_pass_array_create_square_array.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/numpy_pass_array_create_square_array.png"><img alt="Create a square array" src="../_images/numpy_pass_array_create_square_array.png" style="width: 400px;" />
+</a>
 <p>The <a class="reference internal" href="../reference/api.html#ViewPyObject" title="ViewPyObject"><code class="xref py py-func docutils literal notranslate"><span class="pre">ViewPyObject()</span></code></a> in A4 shows the array.</p>
 <p>Remove the <a class="reference internal" href="../reference/api.html#ViewPyObject" title="ViewPyObject"><code class="xref py py-func docutils literal notranslate"><span class="pre">ViewPyObject()</span></code></a> function and replace it with the <cite>invert_array_from_handle()</cite> function</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">invert_array_from_handle</span><span class="p">(</span><span class="n">A3</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>This takes in the cache object handle from A3, gets the associated numpy array from xlSlim’s memory cache, passes the numpy array to the <cite>invert_array()</cite> Python function, and finally stores the result in the memory cache passing a cache object handle back to Excel.</p>
-<a class="reference internal image-reference" href="../_images/numpy_pass_array_handle.png"><img alt="Pass an object cache handle for an array" src="../_images/numpy_pass_array_handle.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/numpy_pass_array_handle.png"><img alt="Pass an object cache handle for an array" src="../_images/numpy_pass_array_handle.png" style="width: 400px;" />
+</a>
 <p>The new, inverted array can be viewed with <a class="reference internal" href="../reference/api.html#ViewPyObject" title="ViewPyObject"><code class="xref py py-func docutils literal notranslate"><span class="pre">ViewPyObject()</span></code></a> as usual.</p>
-<a class="reference internal image-reference" href="../_images/numpy_view_inverted_array.png"><img alt="View inverted array" src="../_images/numpy_view_inverted_array.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/numpy_view_inverted_array.png"><img alt="View inverted array" src="../_images/numpy_view_inverted_array.png" style="width: 400px;" />
+</a>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Passing numpy arrays using cache object handles is <em>much</em> more efficient than creating numpy arrays from Excel Ranges.</p>
+<p class="admonition-title">Note</p>
+<p>Passing numpy arrays using cache object handles is <em>much</em> more efficient than creating numpy arrays from Excel Ranges.</p>
 </div>
-</div>
-<div class="section" id="passing-multiple-numpy-arrays-to-python-functions">
-<h2>Passing multiple numpy arrays to Python functions<a class="headerlink" href="#passing-multiple-numpy-arrays-to-python-functions" title="Permalink to this headline">¶</a></h2>
-<dl class="docutils">
-<dt>Multiple numpy arrays can be passed to Python functions in two ways:</dt>
-<dd><ul class="first last simple">
-<li>As separate arguments as shown in the <cite>add_two_arrays()</cite> function below</li>
-<li>As a list of numpy arrays as shown in the <cite>multiply_arrays()</cite> function below</li>
+</section>
+<section id="passing-multiple-numpy-arrays-to-python-functions">
+<h2>Passing multiple numpy arrays to Python functions<a class="headerlink" href="#passing-multiple-numpy-arrays-to-python-functions" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>Multiple numpy arrays can be passed to Python functions in two ways:</dt><dd><ul class="simple">
+<li><p>As separate arguments as shown in the <cite>add_two_arrays()</cite> function below</p></li>
+<li><p>As a list of numpy arrays as shown in the <cite>multiply_arrays()</cite> function below</p></li>
 </ul>
 </dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
 
-<span class="k">def</span> <span class="nf">add_two_arrays</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Add two arrays.&quot;&quot;&quot;</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">add_two_arrays</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add two arrays.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
 
-<span class="k">def</span> <span class="nf">multiply_arrays</span><span class="p">(</span><span class="n">arrays</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Multiply the supplied arrays.&quot;&quot;&quot;</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">multiply_arrays</span><span class="p">(</span><span class="n">arrays</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Multiply the supplied arrays.&quot;&quot;&quot;</span>
         <span class="n">s</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">arrays</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">s</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -357,7 +289,8 @@
 </pre></div>
 </div>
 <p>Given this sheet, where the data is in A1:B2 and D1:E2 with cache object handles for each array below in A3 and D3:</p>
-<a class="reference internal image-reference" href="../_images/numpy_multiple_array_data.png"><img alt="Passing multiple arrays" src="../_images/numpy_multiple_array_data.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/numpy_multiple_array_data.png"><img alt="Passing multiple arrays" src="../_images/numpy_multiple_array_data.png" style="width: 400px;" />
+</a>
 <p>For the first case, functions with separate arguments, any of the techniques discussed so far can be use. These are all valid</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">add_two_arrays</span><span class="p">(</span><span class="n">A1</span><span class="p">:</span><span class="n">B2</span><span class="p">,</span><span class="n">D1</span><span class="p">:</span><span class="n">E2</span><span class="p">)</span>
 <span class="o">=</span><span class="n">add_two_arrays_num_only</span><span class="p">(</span><span class="n">A1</span><span class="p">:</span><span class="n">B2</span><span class="p">,</span><span class="n">D1</span><span class="p">:</span><span class="n">E2</span><span class="p">)</span>
@@ -369,56 +302,38 @@
 </pre></div>
 </div>
 <p>We use the <a class="reference internal" href="../reference/api.html#CreateRange" title="CreateRange"><code class="xref py py-func docutils literal notranslate"><span class="pre">CreateRange()</span></code></a> utility function to create a range as A3 and D3 are not adjacent cells.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="series.html" class="btn btn-neutral float-right" title="pandas Series" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="udfs.html" class="btn btn-neutral float-left" title="Calling VBA and other Excel add-in functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="udfs.html" class="btn btn-neutral float-left" title="Calling VBA and other Excel add-in functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="series.html" class="btn btn-neutral float-right" title="pandas Series" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &copy; Copyright 2022-2024, Russel Webber
-
-    </p>
+    <p>&#169; Copyright 2022-2025, Russel Webber.</p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

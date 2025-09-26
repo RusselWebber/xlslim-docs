@@ -5,12 +5,10 @@
 Software Requirements
 =====================
 
-v 1.0+
-------
+.. _DotNet8: https://dotnet.microsoft.com/en-us/download/dotnet/8.0
 
 xlSlim requires:
  * Microsoft Windows 8+
- * Microsoft .Net Framework 4.8+
  * Microsoft Excel 2010+
 
 For external Python environments, xlSlim supports:
@@ -21,5 +19,17 @@ For external Python environments, xlSlim supports:
  * Python 3.11
  * Python 3.12 
 
+xlSlim v 1.0 to v 4.0.2
+-----------------------
+
+xlSlim requires:
+ * Microsoft .Net Framework 4.8+
+
+xlSlim v 5.0+
+-------------
+
+xlSlim requires:
+ * Microsoft .Net 8.0+ (You can run `dotnet --list-runtimes` to see which .Net runtimes are installed.) xlSlim needs Microsoft.NETCore.App 8.x and Microsoft.WindowsDesktop.App 8.x The runtimes may be downloaded from `DotNet8`_. The .Net Desktop Runtime is the required download.
+
 .. note:: 
-    xlSlim is **64-bit only** at the moment. It will only work with 64-bit Excel and Python.
+    xlSlim is **64-bit only**. It will only work with 64-bit Excel and Python.

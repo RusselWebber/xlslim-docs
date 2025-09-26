@@ -1,39 +1,24 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8">
-  <meta content="xlSlim allows you to replace VBA code with Python code. The Python code has access to the same Excel object model." lang="en" name="description" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="xlSlim allows you to replace VBA code with Python code. The Python code has access to the same Excel object model." lang="en" name="description" xml:lang="en" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Replacing VBA with Python &mdash; xlSlim v1.0 documentation</title>
-  
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
   
-  
-  
-  
-
-  
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="canonical" href="https://russelwebber.github.io/xlslim-docs/html/user/vba_replacement.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=e160b93e"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Replacing VBA Event Handling with Python" href="vba_events.html" />
@@ -53,48 +38,26 @@
 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
 
           
-            <a href="../index.html" class="icon icon-home"> xlSlim
           
-
-          
+          <a href="../index.html" class="icon icon-home">
+            xlSlim
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">User Guide</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
@@ -124,7 +87,7 @@
 <li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="duckdb.html">DuckDB</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Examples</span></p>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../samples/read_json_from_web.html">Read JSON data from a URL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../samples/read_csv.html">Read CSV data from a file</a></li>
@@ -137,7 +100,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../samples/pivot_table.html">Creating a Pivot Table using Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../samples/equity_index_options.html">US Equity Index Option Pricing</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Reference</span></p>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../reference/environments.html">Python Environments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/api.html">Excel Functions</a></li>
@@ -148,95 +111,60 @@
 <li class="toctree-l1"><a class="reference internal" href="../reference/software_requirements.html">Software Requirements</a></li>
 </ul>
 
-            
-          
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">xlSlim</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html">Docs</a> &raquo;</li>
-        
-      <li>Replacing VBA with Python</li>
-    
-    
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Replacing VBA with Python</li>
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="../_sources/user/vba_replacement.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="replacing-vba-with-python">
-<h1>Replacing VBA with Python<a class="headerlink" href="#replacing-vba-with-python" title="Permalink to this headline">¶</a></h1>
+             
+  <section id="replacing-vba-with-python">
+<h1>Replacing VBA with Python<a class="headerlink" href="#replacing-vba-with-python" title="Link to this heading"></a></h1>
 <p>xlSlim allows you to replace VBA code with Python code. The Python code has access to the same objects as VBA so it is usually straightforward to translate VBA code to Python.</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This functionality requires a premium licence as a Python environment with the <a class="reference external" href="https://github.com/mhammond/pywin32">pywin32</a> extensions installed is required. Anaconda distributions include pywin32. See <a class="reference internal" href="../reference/licensing.html"><span class="doc">Licensing</span></a></p>
+<p class="admonition-title">Warning</p>
+<p>This functionality requires a premium licence as a Python environment with the <a class="reference external" href="https://github.com/mhammond/pywin32">pywin32</a> extensions installed is required. Anaconda distributions include pywin32. See <a class="reference internal" href="../reference/licensing.html"><span class="doc">Licensing</span></a></p>
 </div>
 <p>Let’s start with this very simple VBA subroutine that updates one cell:</p>
-<div class="highlight-vbnet notranslate"><div class="highlight"><pre><span></span><span class="k">Public</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">VBARules</span><span class="p">()</span><span class="w"></span>
-<span class="w">        </span><span class="n">ActiveWorkbook</span><span class="p">.</span><span class="n">ActiveSheet</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">).</span><span class="n">Value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;VBA Rules!&quot;</span><span class="w"></span>
-<span class="k">End</span><span class="w"> </span><span class="k">Sub</span><span class="w"></span>
+<div class="highlight-vbnet notranslate"><div class="highlight"><pre><span></span><span class="k">Public</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">VBARules</span><span class="p">()</span>
+<span class="w">        </span><span class="n">ActiveWorkbook</span><span class="p">.</span><span class="n">ActiveSheet</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">).</span><span class="n">Value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;VBA Rules!&quot;</span>
+<span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
 </pre></div>
 </div>
 <p>Add the subroutine into a Module:</p>
-<a class="reference internal image-reference" href="../_images/vba_simple_function_to_set_cell_value.png"><img alt="VBA function to set cell value" src="../_images/vba_simple_function_to_set_cell_value.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/vba_simple_function_to_set_cell_value.png"><img alt="VBA function to set cell value" src="../_images/vba_simple_function_to_set_cell_value.png" style="width: 400px;" />
+</a>
 <p>And then add a button calling the VBA macro.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The Developer ribbon can be enabled by editing your Ribbon layout under File-&gt;Options-&gt;Customize Ribbon</p>
+<p class="admonition-title">Note</p>
+<p>The Developer ribbon can be enabled by editing your Ribbon layout under File-&gt;Options-&gt;Customize Ribbon</p>
 </div>
-<a class="reference internal image-reference" href="../_images/vba_assign_macro_to_button.png"><img alt="Assign VBA function to button" src="../_images/vba_assign_macro_to_button.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/vba_assign_macro_to_button.png"><img alt="Assign VBA function to button" src="../_images/vba_assign_macro_to_button.png" style="width: 400px;" />
+</a>
 <p>When the button is clicked the value of cell B2 is modified:</p>
-<a class="reference internal image-reference" href="../_images/vba_simple_function_to_set_cell_value_works.png"><img alt="The VBA code modifies the cell value" src="../_images/vba_simple_function_to_set_cell_value_works.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/vba_simple_function_to_set_cell_value_works.png"><img alt="The VBA code modifies the cell value" src="../_images/vba_simple_function_to_set_cell_value_works.png" style="width: 400px;" />
+</a>
 <p>Accomplishing the same in Python is straightforward. This Python code defines a function that sets the value of one cell:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">XLSLIM_COMAPPFUNC</span> <span class="o">=</span> <span class="kc">None</span>
 
-<span class="k">def</span> <span class="nf">PythonRules</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">PythonRules</span><span class="p">():</span>
         <span class="n">excel_obj</span> <span class="o">=</span> <span class="n">XLSLIM_COMAPPFUNC</span><span class="p">()</span>
         <span class="n">app</span> <span class="o">=</span> <span class="n">excel_obj</span><span class="o">.</span><span class="n">Application</span>
 <span class="hll">        <span class="n">app</span><span class="o">.</span><span class="n">ActiveWorkbook</span><span class="o">.</span><span class="n">ActiveSheet</span><span class="o">.</span><span class="n">Cells</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">Value</span> <span class="o">=</span> <span class="s2">&quot;Python Rules!&quot;</span>
@@ -249,22 +177,24 @@
 </pre></div>
 </div>
 <p>Then add another button to call the Python function:</p>
-<a class="reference internal image-reference" href="../_images/vba_assign_python_to_button.png"><img alt="Assign Python function to button" src="../_images/vba_assign_python_to_button.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/vba_assign_python_to_button.png"><img alt="Assign Python function to button" src="../_images/vba_assign_python_to_button.png" style="width: 400px;" />
+</a>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The names of the Python macro functions do not appear in the list. However, if you type the name correctly the button will be linked to the Python code.</p>
+<p class="admonition-title">Note</p>
+<p>The names of the Python macro functions do not appear in the list. However, if you type the name correctly the button will be linked to the Python code.</p>
 </div>
 <p>Clicking on the button edits cell B2 to properly reflect the state of the world!</p>
-<a class="reference internal image-reference" href="../_images/vba_python_function_to_set_cell_value_works.png"><img alt="The Python button sets a cell value too" src="../_images/vba_python_function_to_set_cell_value_works.png" style="width: 400px;" /></a>
-<div class="section" id="easier-code-editing">
-<h2>Easier code editing<a class="headerlink" href="#easier-code-editing" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../_images/vba_python_function_to_set_cell_value_works.png"><img alt="The Python button sets a cell value too" src="../_images/vba_python_function_to_set_cell_value_works.png" style="width: 400px;" />
+</a>
+<section id="easier-code-editing">
+<h2>Easier code editing<a class="headerlink" href="#easier-code-editing" title="Link to this heading"></a></h2>
 <p>While editing your code it will be easiest to run the code from a Python editor so you can rapidly see the results and amend as required.</p>
 <p>Edit your Python code to match the code below, the amended lines are highlighted:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="kn">import</span> <span class="nn">win32com.client</span> <span class="k">as</span> <span class="nn">win32</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="kn">import</span><span class="w"> </span><span class="nn">win32com.client</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">win32</span>
 </span>
 <span class="n">XLSLIM_COMAPPFUNC</span> <span class="o">=</span> <span class="kc">None</span>
 
-<span class="k">def</span> <span class="nf">PythonRules</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">PythonRules</span><span class="p">():</span>
 <span class="hll">        <span class="k">if</span> <span class="n">XLSLIM_COMAPPFUNC</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 </span><span class="hll">                <span class="c1"># Running from Excel</span>
 </span><span class="hll">                <span class="n">excel_obj</span> <span class="o">=</span> <span class="n">XLSLIM_COMAPPFUNC</span><span class="p">()</span>
@@ -282,18 +212,18 @@
 </span></pre></div>
 </div>
 <p>This code will now open a new instance of Excel when run from an external editor. When run within Excel the code will behave as before and modify the active Excel instance. This code modification allows the Python code to be run and edited in a very similar manner to VBA code in the VBA editor.</p>
-</div>
-<div class="section" id="further-examples">
-<h2>Further examples<a class="headerlink" href="#further-examples" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="further-examples">
+<h2>Further examples<a class="headerlink" href="#further-examples" title="Link to this heading"></a></h2>
 <p>This code shows how to perform common tasks. See <a class="reference internal" href="../samples/pivot_table.html"><span class="doc">Creating a Pivot Table using Python</span></a> for an example how to replace VBA to create a pivot table.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">pythoncom</span>
-<span class="kn">import</span> <span class="nn">win32com.client</span> <span class="k">as</span> <span class="nn">win32</span>
-<span class="kn">from</span> <span class="nn">win32com.client</span> <span class="kn">import</span> <span class="n">constants</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pythoncom</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">win32com.client</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">win32</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">win32com.client</span><span class="w"> </span><span class="kn">import</span> <span class="n">constants</span>
 
 <span class="n">XLSLIM_COMAPPFUNC</span> <span class="o">=</span> <span class="kc">None</span>
 
-<span class="k">def</span> <span class="nf">manipulate_excel</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">manipulate_excel</span><span class="p">():</span>
         <span class="k">if</span> <span class="n">XLSLIM_COMAPPFUNC</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="c1"># Running from Excel</span>
                 <span class="c1"># Do be careful not to accidentally edit the calling cell</span>
@@ -354,56 +284,38 @@
         <span class="n">manipulate_excel</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="vba_events.html" class="btn btn-neutral float-right" title="Replacing VBA Event Handling with Python" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="streaming.html" class="btn btn-neutral float-left" title="Streaming data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="streaming.html" class="btn btn-neutral float-left" title="Streaming data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="vba_events.html" class="btn btn-neutral float-right" title="Replacing VBA Event Handling with Python" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &copy; Copyright 2022-2024, Russel Webber
-
-    </p>
+    <p>&#169; Copyright 2022-2025, Russel Webber.</p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

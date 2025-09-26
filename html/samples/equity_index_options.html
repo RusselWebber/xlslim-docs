@@ -1,39 +1,24 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8">
-  <meta content="xlSlim allows for very elegant modelling of US Equity Index Option books." lang="en" name="description" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="xlSlim allows for very elegant modelling of US Equity Index Option books." lang="en" name="description" xml:lang="en" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>US Equity Index Option Pricing &mdash; xlSlim v1.0 documentation</title>
-  
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
   
-  
-  
-  
-
-  
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="canonical" href="https://russelwebber.github.io/xlslim-docs/html/samples/equity_index_options.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=e160b93e"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Python Environments" href="../reference/environments.html" />
@@ -53,48 +38,26 @@
 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
 
           
-            <a href="../index.html" class="icon icon-home"> xlSlim
           
-
-          
+          <a href="../index.html" class="icon icon-home">
+            xlSlim
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">User Guide</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../user/installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/quickstart.html">Quickstart</a></li>
@@ -120,7 +83,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting.html">Troubleshooting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/duckdb.html">DuckDB</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Examples</span></p>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="read_json_from_web.html">Read JSON data from a URL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="read_csv.html">Read CSV data from a file</a></li>
@@ -138,7 +101,7 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">Reference</span></p>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../reference/environments.html">Python Environments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/api.html">Excel Functions</a></li>
@@ -149,77 +112,40 @@
 <li class="toctree-l1"><a class="reference internal" href="../reference/software_requirements.html">Software Requirements</a></li>
 </ul>
 
-            
-          
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">xlSlim</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html">Docs</a> &raquo;</li>
-        
-      <li>US Equity Index Option Pricing</li>
-    
-    
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">US Equity Index Option Pricing</li>
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="../_sources/samples/equity_index_options.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="us-equity-index-option-pricing">
-<h1>US Equity Index Option Pricing<a class="headerlink" href="#us-equity-index-option-pricing" title="Permalink to this headline">¶</a></h1>
+             
+  <section id="us-equity-index-option-pricing">
+<h1>US Equity Index Option Pricing<a class="headerlink" href="#us-equity-index-option-pricing" title="Link to this heading"></a></h1>
 <p>An example spreadsheet “finance\bs_optionpricing.xlsm” in the github <a class="reference external" href="https://github.com/RusselWebber/xlslim-code-samples/archive/refs/heads/main.zip">xlslim-code-samples</a> repo shows how xlSlim can be used to neatly model a book containing US equity index options.</p>
 <p>The spreadsheet shows how option positions are often modelled in practice, with the ability to view the impact of various spot and volatility moves on the book’s risk metrics. The calculations in the spreadsheet are accurate. The only area which has been greatly simplified is volatility - the spreadsheet uses a simple volatility curve with no interpolation between expiries and no ability to store different volatility levels by strike. In practice volatility levels are usually sourced from strike/expiry volatility surfaces that implement advanced interpolation and extrapolation techniques.</p>
 <p>We’ll first look at the spreadsheet itself and the functionality it contains, then we’ll go over how the calculations were implemented in Python and how xlSlim ties it all together.</p>
-<div class="section" id="option-pricing-and-scenarios">
-<h2>Option Pricing and Scenarios<a class="headerlink" href="#option-pricing-and-scenarios" title="Permalink to this headline">¶</a></h2>
+<section id="option-pricing-and-scenarios">
+<h2>Option Pricing and Scenarios<a class="headerlink" href="#option-pricing-and-scenarios" title="Link to this heading"></a></h2>
 <p>The first part of the sheet registers the Python module “bs_optionpricing.py”. Select cell B3 and press F2 followed by Enter to register the Python module and create new Excel functions.</p>
-<a class="reference internal image-reference" href="../_images/index_option_pricing_func_registration.png"><img alt="Register the bs_optionpricing.py module" src="../_images/index_option_pricing_func_registration.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_func_registration.png"><img alt="Register the bs_optionpricing.py module" src="../_images/index_option_pricing_func_registration.png" style="width: 400px;" />
+</a>
 <p>If you wished to have the module automatically register when the sheet is opened you could add this VBA code to the spreadsheet:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Private</span> <span class="n">Sub</span> <span class="n">Workbook_Open</span><span class="p">()</span>
         <span class="n">Sheets</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">Range</span><span class="p">(</span><span class="s2">&quot;B3&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Dirty</span>
@@ -228,42 +154,53 @@
 </pre></div>
 </div>
 <p>The next section is where the base state market data is entered. We will look at options on the S&amp;P 500 and the Russell 2000 indices. The values below are realistic for conditions in October 2022. The volatility inputs are greatly simplified, as discussed previously.</p>
-<a class="reference internal image-reference" href="../_images/index_option_pricing_initial_market_data.png"><img alt="Initial spot and vol data" src="../_images/index_option_pricing_initial_market_data.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_initial_market_data.png"><img alt="Initial spot and vol data" src="../_images/index_option_pricing_initial_market_data.png" style="width: 400px;" />
+</a>
 <p>We also enter the current risk free rate and option multipliers. Note the ability to map from the type of option to the model used in the <strong>Models</strong> section. Although not used here (we are always using Black Scholes) in practice this is where you would map to different valuation models for American options. US equity stocks are typically American.</p>
-<a class="reference internal image-reference" href="../_images/index_option_pricing_initial_market_data_part2.png"><img alt="Initial spot and vol data" src="../_images/index_option_pricing_initial_market_data_part2.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_initial_market_data_part2.png"><img alt="Initial spot and vol data" src="../_images/index_option_pricing_initial_market_data_part2.png" style="width: 400px;" />
+</a>
 <p>In the <strong>Data Tweaks</strong> section we can modify the spot and volatility levels. Spot levels are adjusted by multiplying the spot index level by a percentage and volatility levels are adjusted by adding fixed volatility units to all volatility levels. This is very similar to what is done in practice, although you would usually be able to do more sophisticated adjustments that are not constant across all expiries and strikes.</p>
-<a class="reference internal image-reference" href="../_images/index_option_pricing_initial_market_data_tweaks.png"><img alt="Spot and vol tweaks" src="../_images/index_option_pricing_initial_market_data_tweaks.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_initial_market_data_tweaks.png"><img alt="Spot and vol tweaks" src="../_images/index_option_pricing_initial_market_data_tweaks.png" style="width: 400px;" />
+</a>
 <p>Finally, in the <strong>Option Portfolio</strong> section we enter the option positions we would like to model. We will enter an SPX Long Condor with Put options as discussed in this Investopedia article <a class="reference external" href="https://www.investopedia.com/terms/c/condorspread.asp">Condor Spread</a>. We are long an SPX 3650 Dec22 Put, short an SPX 3700 Dec22 Put, short an SPX 3750 Dec22 Put and long an SPX 3800 Dec22 Put.</p>
-<a class="reference internal image-reference" href="../_images/index_option_pricing_condor_position.png"><img alt="Enter the combination of options for a condor" src="../_images/index_option_pricing_condor_position.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_condor_position.png"><img alt="Enter the combination of options for a condor" src="../_images/index_option_pricing_condor_position.png" style="width: 400px;" />
+</a>
 <p>Our position risks are shown, note the toggle in cell H20 that controls if details are shown per position. Showing details does take a little longer.</p>
-<a class="reference internal image-reference" href="../_images/index_option_pricing_position_risks.png"><img alt="Option position risks" src="../_images/index_option_pricing_position_risks.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_position_risks.png"><img alt="Option position risks" src="../_images/index_option_pricing_position_risks.png" style="width: 400px;" />
+</a>
 <p>Further down in the spreadsheet we reach the <strong>Portfolio Stress Testing</strong> section. The toggle in cell B35 enables or disables the calculations.</p>
-<a class="reference internal image-reference" href="../_images/index_option_pricing_position_pv_stress_test.png"><img alt="Option position pv under various spot and volatility moves" src="../_images/index_option_pricing_position_pv_stress_test.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_position_pv_stress_test.png"><img alt="Option position pv under various spot and volatility moves" src="../_images/index_option_pricing_position_pv_stress_test.png" style="width: 400px;" />
+</a>
 <p>The toggle in cell B36 is used to select which risk metric to display.</p>
-<a class="reference internal image-reference" href="../_images/index_option_pricing_position_risk_metric_toggle.png"><img alt="The risk metric displayed can be selected" src="../_images/index_option_pricing_position_risk_metric_toggle.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_position_risk_metric_toggle.png"><img alt="The risk metric displayed can be selected" src="../_images/index_option_pricing_position_risk_metric_toggle.png" style="width: 400px;" />
+</a>
 <p>Further down the sheet we have plots showing the effect of spot and volatility tweaks on the selected risk metric. We can see that the Condor strategy has low deltas for small spot moves.</p>
-<a class="reference internal image-reference" href="../_images/index_option_pricing_position_delta_plots.png"><img alt="Delta plots for the Condor strategy" src="../_images/index_option_pricing_position_delta_plots.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_position_delta_plots.png"><img alt="Delta plots for the Condor strategy" src="../_images/index_option_pricing_position_delta_plots.png" style="width: 400px;" />
+</a>
 <p>If we adjust the asof date in cell B5 to be the option expiry date of 16 Dec 2022,</p>
-<a class="reference internal image-reference" href="../_images/index_option_pricing_set_asof_to_expiry.png"><img alt="Set asof to the expiry date" src="../_images/index_option_pricing_set_asof_to_expiry.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_set_asof_to_expiry.png"><img alt="Set asof to the expiry date" src="../_images/index_option_pricing_set_asof_to_expiry.png" style="width: 400px;" />
+</a>
 <p>and select to view pv in the drop down at cell B36</p>
-<a class="reference internal image-reference" href="../_images/index_option_pricing_select_pv_as_risk_metric.png"><img alt="Select pv as the risk metric" src="../_images/index_option_pricing_select_pv_as_risk_metric.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_select_pv_as_risk_metric.png"><img alt="Select pv as the risk metric" src="../_images/index_option_pricing_select_pv_as_risk_metric.png" style="width: 400px;" />
+</a>
 <p>We can then see the traditional hockey stick plots for the strategy, this is a useful way to check you have correctly specified your positions.</p>
-<a class="reference internal image-reference" href="../_images/index_option_pricing_condor_position_hockey_stick_plots.png"><img alt="Hockey stick plots for the positions" src="../_images/index_option_pricing_condor_position_hockey_stick_plots.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_condor_position_hockey_stick_plots.png"><img alt="Hockey stick plots for the positions" src="../_images/index_option_pricing_condor_position_hockey_stick_plots.png" style="width: 400px;" />
+</a>
 <p>This spreadsheet presents a simplified - but still detailed enough to be realistic - view of how Equity Index option positions are analyzed in practice by portfolio managers. The spreadsheet does not account for option premiums so does not show PL, additionally the sheet does not allow for the simulation of various hedging techniques. Nevertheless I hope the spreadsheet is useful as it does present a more real world view of how options are modelled as compared to the more common presentations which simply show basic Black Scholes pricing and greeks.</p>
-</div>
-<div class="section" id="python-code">
-<h2>Python Code<a class="headerlink" href="#python-code" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="python-code">
+<h2>Python Code<a class="headerlink" href="#python-code" title="Link to this heading"></a></h2>
 <p>Let’s go through the code in “finance\bs_optionpricing.py”. The full file is avaliable in the github <a class="reference external" href="https://github.com/RusselWebber/xlslim-code-samples/archive/refs/heads/main.zip">xlslim-code-samples</a> repo.</p>
 <p>We start by importing the required functions from various modules in the Python standard library.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># An example of how option portfolios are risk managed</span>
 <span class="c1"># Requires Python 3.8+ due to the use of NormalDist</span>
-<span class="kn">import</span> <span class="nn">logging</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
-<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
-<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">nan</span><span class="p">,</span> <span class="n">log</span><span class="p">,</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">exp</span>
-<span class="kn">from</span> <span class="nn">statistics</span> <span class="kn">import</span> <span class="n">NormalDist</span>
-<span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Callable</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">nan</span><span class="p">,</span> <span class="n">log</span><span class="p">,</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">exp</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">statistics</span><span class="w"> </span><span class="kn">import</span> <span class="n">NormalDist</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">Enum</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Callable</span>
 </pre></div>
 </div>
 <p>Next we create two module level constants for logging and the normal distribution.</p>
@@ -275,8 +212,8 @@
 </div>
 <p>We define an OptionResults class to store pv and greeks for each option. Note how a <a class="reference external" href="https://docs.python.org/3/library/dataclasses.html">dataclass</a> is used to concisely specify the relevant properties. If you have not used dataclasses before I encourage you to read about them, they are very useful and integrate well with xlSlim.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="nb">repr</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="k">class</span> <span class="nc">OptionResults</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;An option price and analytical greeks.&quot;&quot;&quot;</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">OptionResults</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;An option price and analytical greeks.&quot;&quot;&quot;</span>
 
         <span class="n">pv</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">nan</span>
         <span class="n">delta</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">nan</span>
@@ -286,8 +223,8 @@
 </pre></div>
 </div>
 <p>We define an <a class="reference external" href="https://docs.python.org/3/library/enum.html">enum</a> to determine if an option is a call or put:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">OptionType</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Option type enum - CALL or PUT&quot;&quot;&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">OptionType</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Option type enum - CALL or PUT&quot;&quot;&quot;</span>
 
         <span class="n">CALL</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">PUT</span> <span class="o">=</span> <span class="mi">1</span>
@@ -295,8 +232,8 @@
 </div>
 <p>And another <a class="reference external" href="https://docs.python.org/3/library/dataclasses.html">dataclass</a>  to capture each option’s properties:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="nb">repr</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="k">class</span> <span class="nc">VanillaEuropeanOption</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;A vanilla European option&quot;&quot;&quot;</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">VanillaEuropeanOption</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;A vanilla European option&quot;&quot;&quot;</span>
 
         <span class="n">strike</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">nan</span>
         <span class="n">expiry</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span>
@@ -306,10 +243,10 @@
 </pre></div>
 </div>
 <p>The OptionPortfolio class gathers together option positions into a portfolio (often also called a book).</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">OptionPortfolio</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;A portfolio of options&quot;&quot;&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">OptionPortfolio</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;A portfolio of options&quot;&quot;&quot;</span>
 
-        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">options</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">VanillaEuropeanOption</span><span class="p">],</span> <span class="n">notionals</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]):</span>
+        <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">options</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">VanillaEuropeanOption</span><span class="p">],</span> <span class="n">notionals</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]):</span>
 
                 <span class="c1"># Exclude zero notionals</span>
                 <span class="n">notionals</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">notionals</span> <span class="k">if</span> <span class="n">n</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">]</span>
@@ -322,28 +259,28 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">_notionals</span> <span class="o">=</span> <span class="n">notionals</span>
 
         <span class="nd">@property</span>
-        <span class="k">def</span> <span class="nf">options</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">options</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span>
 
         <span class="nd">@property</span>
-        <span class="k">def</span> <span class="nf">notionals</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">notionals</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_notionals</span>
 </pre></div>
 </div>
 <p>We define a very simplified VolatilityCurve class to store the volatility levels per expiry. In practice volatility surfaces are used. Volatility surfaces typically store volatility levels in strike and expiry dimensions, with support for sophisticated interpolation and extrapolation in each dimension. Most of the code presented in this document is close to what is used in practice, the simplified VolatilityCurve class is the single biggest simplification I have made to keep the code length manageable.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">VolatilityCurve</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;A very simplistic volatility curve.</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">VolatilityCurve</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;A very simplistic volatility curve.</span>
 
 <span class="sd">        In practice volatilities are stored on a surface with strike and expiry dimensions.</span>
 <span class="sd">        Volatility surfaces also usually support interpolation and extrapolation in the strike and expiry dimensions.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expiries</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">datetime</span><span class="p">],</span> <span class="n">volatilties</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]):</span>
+        <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expiries</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">datetime</span><span class="p">],</span> <span class="n">volatilties</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]):</span>
                 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">expiries</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">volatilties</span><span class="p">):</span>
                         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The lengths of the expiries and volatilities must match.&quot;</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_vol_curve</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">expiries</span><span class="p">,</span> <span class="n">volatilties</span><span class="p">))</span>
 
-        <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
                 <span class="n">vol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vol_curve</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">vol</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                         <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Failed to find a vol level for </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">&quot;</span>
@@ -353,10 +290,10 @@
 </pre></div>
 </div>
 <p>The OptionPortfolioCalculator class pulls the classes defined so far together. An OptionPortfolio and all the required market data classes are supplied when creating an OptionPortfolioCalculator object and all the calculations are run.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">OptionPortfolioCalculator</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Calculate pv and risk for a portfolio of options.&quot;&quot;&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">OptionPortfolioCalculator</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate pv and risk for a portfolio of options.&quot;&quot;&quot;</span>
 
-        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
                 <span class="bp">self</span><span class="p">,</span>
                 <span class="n">models</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callable</span><span class="p">],</span>
                 <span class="n">option_portfolio</span><span class="p">:</span> <span class="n">OptionPortfolio</span><span class="p">,</span>
@@ -383,7 +320,7 @@
 
                 <span class="bp">self</span><span class="o">.</span><span class="n">_calculate</span><span class="p">()</span>
 
-        <span class="k">def</span> <span class="nf">_calculate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">_calculate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
                 <span class="n">asof</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_asof</span>
 
                 <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">o</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span>
@@ -414,32 +351,32 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">_vega</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">n</span> <span class="o">*</span> <span class="n">o</span><span class="o">.</span><span class="n">vega</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">o</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_option_results</span><span class="p">))</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_theta</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">n</span> <span class="o">*</span> <span class="n">o</span><span class="o">.</span><span class="n">theta</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">o</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_option_results</span><span class="p">))</span>
 
-        <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
                 <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;OptionPortfolioCalculator(pv=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">pv</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, delta=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">delta</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, gamma=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">gamma</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, vega=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">vega</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, theta=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">)&quot;</span>
 
         <span class="nd">@property</span>
-        <span class="k">def</span> <span class="nf">pv</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">pv</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pv</span>
 
         <span class="nd">@property</span>
-        <span class="k">def</span> <span class="nf">delta</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">delta</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_delta</span>
 
         <span class="nd">@property</span>
-        <span class="k">def</span> <span class="nf">gamma</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">gamma</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gamma</span>
 
         <span class="nd">@property</span>
-        <span class="k">def</span> <span class="nf">vega</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">vega</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vega</span>
 
         <span class="nd">@property</span>
-        <span class="k">def</span> <span class="nf">theta</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">theta</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_theta</span>
 </pre></div>
 </div>
 <p>Finally the bsm_option_calculator(..) function is where the Black-Scholes-Merton calculations are run. Note how in the highlighted lines we define terms and then reuse them to calculate pv and the various greeks as efficiently as possible. This is how these calculations are typically run in practice, reusing calculation terms and calculating all greeks at once is much more efficient than having a function defined for each option greek.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bsm_option_calculator</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">bsm_option_calculator</span><span class="p">(</span>
         <span class="n">opt</span><span class="p">:</span> <span class="n">VanillaEuropeanOption</span><span class="p">,</span>
         <span class="n">spot</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
         <span class="n">asof</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span>
@@ -447,7 +384,7 @@
         <span class="n">cost_of_carry</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
         <span class="n">volatility_curve</span><span class="p">:</span> <span class="n">VolatilityCurve</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">OptionResults</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;The Black-Scholes-Merton calculation.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The Black-Scholes-Merton calculation.&quot;&quot;&quot;</span>
 
         <span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="n">opt</span><span class="o">.</span><span class="n">expiry</span> <span class="o">-</span> <span class="n">asof</span><span class="p">)</span><span class="o">.</span><span class="n">days</span> <span class="o">/</span> <span class="mi">365</span>
         <span class="n">return_instrinsic</span> <span class="o">=</span> <span class="kc">False</span>
@@ -523,45 +460,51 @@
 </pre></div>
 </div>
 <p>This last little function is used to get a function pointer to the bsm_option_calculator(..) function.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_bsm_option_calculator</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Get a function pointer to the Black-Scholes-Merton calculator.&quot;&quot;&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_bsm_option_calculator</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get a function pointer to the Black-Scholes-Merton calculator.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">bsm_option_calculator</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="spreadsheet-implementation">
-<h2>Spreadsheet Implementation<a class="headerlink" href="#spreadsheet-implementation" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="spreadsheet-implementation">
+<h2>Spreadsheet Implementation<a class="headerlink" href="#spreadsheet-implementation" title="Link to this heading"></a></h2>
 <p>Several innovative features of xlSlim and Excel itself were used to create this spreadsheet.</p>
-<div class="section" id="object-caching">
-<h3>Object Caching<a class="headerlink" href="#object-caching" title="Permalink to this headline">¶</a></h3>
+<section id="object-caching">
+<h3>Object Caching<a class="headerlink" href="#object-caching" title="Link to this heading"></a></h3>
 <p>xlSlim automatically caches Python objects returned by functions, this is described in <a class="reference internal" href="../user/passing_objects.html"><span class="doc">Passing Python objects</span></a>. A good example of this is cell K9 where a function pointer is returned by the get_bsm_option_calculator() function and automatically cached by xlSlim.</p>
-<a class="reference internal image-reference" href="../_images/index_option_pricing_cache_function_pointer.png"><img alt="Caching a function pointer" src="../_images/index_option_pricing_cache_function_pointer.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_cache_function_pointer.png"><img alt="Caching a function pointer" src="../_images/index_option_pricing_cache_function_pointer.png" style="width: 400px;" />
+</a>
 <p>This cached object is later passed as an input to the OptionPortfolioCalculator() call in cell B33:</p>
-<a class="reference internal image-reference" href="../_images/index_option_pricing_use_cached_function_pointer.png"><img alt="Using the cached function pointer" src="../_images/index_option_pricing_use_cached_function_pointer.png" style="width: 400px;" /></a>
-</div>
-<div class="section" id="class-instantiation">
-<h3>Class Instantiation<a class="headerlink" href="#class-instantiation" title="Permalink to this headline">¶</a></h3>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_use_cached_function_pointer.png"><img alt="Using the cached function pointer" src="../_images/index_option_pricing_use_cached_function_pointer.png" style="width: 400px;" />
+</a>
+</section>
+<section id="class-instantiation">
+<h3>Class Instantiation<a class="headerlink" href="#class-instantiation" title="Link to this heading"></a></h3>
 <p>When xlSlim registers a module an Excel function is created for each class defined within the module. The function signature is taken from the class’s __init__ method. This functionality works particularly well with <a class="reference external" href="https://docs.python.org/3/library/dataclasses.html">dataclasses</a> . Each option is represented by a dataclass that neatly encapsulates the key economic properties:</p>
-<a class="reference internal image-reference" href="../_images/index_option_pricing_create_option_objects.png"><img alt="Create option objects" src="../_images/index_option_pricing_create_option_objects.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_create_option_objects.png"><img alt="Create option objects" src="../_images/index_option_pricing_create_option_objects.png" style="width: 400px;" />
+</a>
 <p>Another good example is the creation of volatility curves in cells F17 and F18.</p>
-<a class="reference internal image-reference" href="../_images/index_option_pricing_create_volatility_curve.png"><img alt="Create volatility curves" src="../_images/index_option_pricing_create_volatility_curve.png" style="width: 400px;" /></a>
-</div>
-<div class="section" id="getattr-1">
-<h3>GetAttr<a class="headerlink" href="#getattr-1" title="Permalink to this headline">¶</a></h3>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_create_volatility_curve.png"><img alt="Create volatility curves" src="../_images/index_option_pricing_create_volatility_curve.png" style="width: 400px;" />
+</a>
+</section>
+<section id="id1">
+<h3>GetAttr<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
 <p>Once you have cached objects in a spreadsheet you will often need to access attributes of the cached object, for example the strike of an option or the pv of a portfolio. The utility function <a class="reference internal" href="../reference/api.html#GetAttr" title="GetAttr"><code class="xref py py-func docutils literal notranslate"><span class="pre">GetAttr()</span></code></a> is functionally identical to Python’s <a class="reference external" href="https://docs.python.org/3/library/functions.html#getattr">getattr</a>.</p>
 <p>Here we fetch the calculated delta from a cached OptionResults object:</p>
-<a class="reference internal image-reference" href="../_images/index_option_pricing_using_getattr.png"><img alt="Using GetAttr" src="../_images/index_option_pricing_using_getattr.png" style="width: 400px;" /></a>
-</div>
-<div class="section" id="passing-dictionaries">
-<h3>Passing dictionaries<a class="headerlink" href="#passing-dictionaries" title="Permalink to this headline">¶</a></h3>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_using_getattr.png"><img alt="Using GetAttr" src="../_images/index_option_pricing_using_getattr.png" style="width: 400px;" />
+</a>
+</section>
+<section id="passing-dictionaries">
+<h3>Passing dictionaries<a class="headerlink" href="#passing-dictionaries" title="Link to this heading"></a></h3>
 <p>The OptionPortfolioCalculator class is passed several market data dictionaries on instantiation. xlSlim supports cached Python dictionaries as described in <a class="reference internal" href="../user/passing_dicts.html"><span class="doc">Passing Python dictionaries</span></a>. However in many cases it is simpler to create the required dictionaries directly from Excel ranges.</p>
 <p>We have spot levels per index:</p>
-<a class="reference internal image-reference" href="../_images/index_option_pricing_spot_data.png"><img alt="Spot data" src="../_images/index_option_pricing_spot_data.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_spot_data.png"><img alt="Spot data" src="../_images/index_option_pricing_spot_data.png" style="width: 400px;" />
+</a>
 <p>And the OptionPortfolioCalculator() class’s __init__ method expects a spot_dict:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">OptionPortfolioCalculator</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Calculate pv and risk for a portfolio of options.&quot;&quot;&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">OptionPortfolioCalculator</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate pv and risk for a portfolio of options.&quot;&quot;&quot;</span>
 
-        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
                 <span class="bp">self</span><span class="p">,</span>
                 <span class="n">models</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callable</span><span class="p">],</span>
                 <span class="n">option_portfolio</span><span class="p">:</span> <span class="n">OptionPortfolio</span><span class="p">,</span>
@@ -574,17 +517,18 @@
 </pre></div>
 </div>
 <p>xlSlim is able to create the input dictionary directly from the Excel range:</p>
-<a class="reference internal image-reference" href="../_images/index_option_pricing_create_spot_data_dict.png"><img alt="Create spot data dictionary from an Excel range" src="../_images/index_option_pricing_create_spot_data_dict.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_create_spot_data_dict.png"><img alt="Create spot data dictionary from an Excel range" src="../_images/index_option_pricing_create_spot_data_dict.png" style="width: 400px;" />
+</a>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The <a class="reference internal" href="../reference/api.html#CreateRange" title="CreateRange"><code class="xref py py-func docutils literal notranslate"><span class="pre">CreateRange()</span></code></a> is used to create the vol_dict input from non-adjacent ranges.</p>
+<p class="admonition-title">Note</p>
+<p>The <a class="reference internal" href="../reference/api.html#CreateRange" title="CreateRange"><code class="xref py py-func docutils literal notranslate"><span class="pre">CreateRange()</span></code></a> is used to create the vol_dict input from non-adjacent ranges.</p>
 </div>
-</div>
-<div class="section" id="enums">
-<h3>Enums<a class="headerlink" href="#enums" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="enums">
+<h3>Enums<a class="headerlink" href="#enums" title="Link to this heading"></a></h3>
 <p>We are using a Python <a class="reference external" href="https://docs.python.org/3/library/enum.html">enum</a> to specify whether an option is a call or put:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">OptionType</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Option type enum - CALL or PUT&quot;&quot;&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">OptionType</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Option type enum - CALL or PUT&quot;&quot;&quot;</span>
 
         <span class="n">CALL</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">PUT</span> <span class="o">=</span> <span class="mi">1</span>
@@ -593,8 +537,8 @@
 <p>xlSlim creates a dictionary of all enums defined in every registered module. This dictionary maps enum names, “CALL” or “PUT” in this case, to the Python enum objects.</p>
 <p>When xlSlim creates Excel functions that expect enums, such as the function to create new VanillaEuropeanOptions, xlSlim lets you pass the enum name as an input:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="nb">repr</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="k">class</span> <span class="nc">VanillaEuropeanOption</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;A vanilla European option&quot;&quot;&quot;</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">VanillaEuropeanOption</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;A vanilla European option&quot;&quot;&quot;</span>
 
         <span class="n">strike</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">nan</span>
         <span class="n">expiry</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span>
@@ -604,89 +548,81 @@
 </pre></div>
 </div>
 <p>Here we pass in the string “PUT” and xlSlim internally replaces “PUT” with the enum OptionType.PUT before creating the Python object:</p>
-<a class="reference internal image-reference" href="../_images/index_option_pricing_pass_enum_by_name.png"><img alt="Pass an enum input by name" src="../_images/index_option_pricing_pass_enum_by_name.png" style="width: 400px;" /></a>
-</div>
-<div class="section" id="viewing-objects">
-<h3>Viewing Objects<a class="headerlink" href="#viewing-objects" title="Permalink to this headline">¶</a></h3>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_pass_enum_by_name.png"><img alt="Pass an enum input by name" src="../_images/index_option_pricing_pass_enum_by_name.png" style="width: 400px;" />
+</a>
+</section>
+<section id="viewing-objects">
+<h3>Viewing Objects<a class="headerlink" href="#viewing-objects" title="Link to this heading"></a></h3>
 <p>While developing the spreadsheet I made extensive use of the <a class="reference internal" href="../reference/api.html#ViewPyObject" title="ViewPyObject"><code class="xref py py-func docutils literal notranslate"><span class="pre">ViewPyObject()</span></code></a> function to verify objects.</p>
 <p>The function can be used on all kinds of cached objects.</p>
 <p>View a cached volatility curve:</p>
-<a class="reference internal image-reference" href="../_images/index_option_pricing_view_vol_curve.png"><img alt="View cached volatility curve" src="../_images/index_option_pricing_view_vol_curve.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_view_vol_curve.png"><img alt="View cached volatility curve" src="../_images/index_option_pricing_view_vol_curve.png" style="width: 400px;" />
+</a>
 <p>View a cached option:</p>
-<a class="reference internal image-reference" href="../_images/index_option_pricing_view_option.png"><img alt="View cached option" src="../_images/index_option_pricing_view_option.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_view_option.png"><img alt="View cached option" src="../_images/index_option_pricing_view_option.png" style="width: 400px;" />
+</a>
 <p>View a cached portfolio calculator:</p>
-<a class="reference internal image-reference" href="../_images/index_option_pricing_view_portfolio_calcs.png"><img alt="View cached portfolio calculator" src="../_images/index_option_pricing_view_portfolio_calcs.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_view_portfolio_calcs.png"><img alt="View cached portfolio calculator" src="../_images/index_option_pricing_view_portfolio_calcs.png" style="width: 400px;" />
+</a>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The <a class="reference internal" href="../reference/api.html#ViewPyObject" title="ViewPyObject"><code class="xref py py-func docutils literal notranslate"><span class="pre">ViewPyObject()</span></code></a> is intended as a development tool to verify objects are created and behaving as expected. Please don’t build dependencies on the output.</p>
+<p class="admonition-title">Note</p>
+<p>The <a class="reference internal" href="../reference/api.html#ViewPyObject" title="ViewPyObject"><code class="xref py py-func docutils literal notranslate"><span class="pre">ViewPyObject()</span></code></a> is intended as a development tool to verify objects are created and behaving as expected. Please don’t build dependencies on the output.</p>
 </div>
-</div>
-<div class="section" id="datatables">
-<h3>DataTables<a class="headerlink" href="#datatables" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="datatables">
+<h3>DataTables<a class="headerlink" href="#datatables" title="Link to this heading"></a></h3>
 <p>The scenario calculations were created using Excel’s <a class="reference external" href="https://support.microsoft.com/en-us/office/calculate-multiple-results-by-using-a-data-table-e95e2487-6ca6-4413-ad12-77542a5ea50b">data table</a> functionality.</p>
 <p>I started by defining cell B38 to display the selected risk metric:</p>
-<a class="reference internal image-reference" href="../_images/index_option_pricing_scenario_base_cell.png"><img alt="Scenario base cell" src="../_images/index_option_pricing_scenario_base_cell.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_scenario_base_cell.png"><img alt="Scenario base cell" src="../_images/index_option_pricing_scenario_base_cell.png" style="width: 400px;" />
+</a>
 <p>Then I defined the list of spot and volatility tweaks:</p>
-<a class="reference internal image-reference" href="../_images/index_option_pricing_scenario_empty_grid.png"><img alt="Scenario grid with spot and volatility moves" src="../_images/index_option_pricing_scenario_empty_grid.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_scenario_empty_grid.png"><img alt="Scenario grid with spot and volatility moves" src="../_images/index_option_pricing_scenario_empty_grid.png" style="width: 400px;" />
+</a>
 <p>Next I selected the grid as shown.</p>
-<a class="reference internal image-reference" href="../_images/index_option_pricing_scenario_select_grid.png"><img alt="Scenario input selected" src="../_images/index_option_pricing_scenario_select_grid.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_scenario_select_grid.png"><img alt="Scenario input selected" src="../_images/index_option_pricing_scenario_select_grid.png" style="width: 400px;" />
+</a>
 <p>Then I clicked on the Data Table menu item within the Data&gt;What-If Analysis menu:</p>
-<a class="reference internal image-reference" href="../_images/index_option_pricing_scenario_data_table_menu_item.png"><img alt="Data Table menu item" src="../_images/index_option_pricing_scenario_data_table_menu_item.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_scenario_data_table_menu_item.png"><img alt="Data Table menu item" src="../_images/index_option_pricing_scenario_data_table_menu_item.png" style="width: 400px;" />
+</a>
 <p>I chose the volatility tweak input in D13 as the row input and the spot tweak input in B13 as the column input.</p>
-<a class="reference internal image-reference" href="../_images/index_option_pricing_scenario_specify_row_and_col_inputs.png"><img alt="Data Table row and column inputs" src="../_images/index_option_pricing_scenario_specify_row_and_col_inputs.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_scenario_specify_row_and_col_inputs.png"><img alt="Data Table row and column inputs" src="../_images/index_option_pricing_scenario_specify_row_and_col_inputs.png" style="width: 400px;" />
+</a>
 <p>This then generated the populated the data table:</p>
-<a class="reference internal image-reference" href="../_images/index_option_pricing_scenario_populated_grid.png"><img alt="Populated data table" src="../_images/index_option_pricing_scenario_populated_grid.png" style="width: 400px;" /></a>
-</div>
-</div>
-</div>
+<a class="reference internal image-reference" href="../_images/index_option_pricing_scenario_populated_grid.png"><img alt="Populated data table" src="../_images/index_option_pricing_scenario_populated_grid.png" style="width: 400px;" />
+</a>
+</section>
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../reference/environments.html" class="btn btn-neutral float-right" title="Python Environments" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="pivot_table.html" class="btn btn-neutral float-left" title="Creating a Pivot Table using Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="pivot_table.html" class="btn btn-neutral float-left" title="Creating a Pivot Table using Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../reference/environments.html" class="btn btn-neutral float-right" title="Python Environments" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &copy; Copyright 2022-2024, Russel Webber
-
-    </p>
+    <p>&#169; Copyright 2022-2025, Russel Webber.</p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

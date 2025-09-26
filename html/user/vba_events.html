@@ -1,39 +1,24 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8">
-  <meta content="xlSlim allows you to replace VBA event handling code with Python code. The Python code has access to the same Excel object and event model." lang="en" name="description" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="xlSlim allows you to replace VBA event handling code with Python code. The Python code has access to the same Excel object and event model." lang="en" name="description" xml:lang="en" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Replacing VBA Event Handling with Python &mdash; xlSlim v1.0 documentation</title>
-  
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
   
-  
-  
-  
-
-  
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="canonical" href="https://russelwebber.github.io/xlslim-docs/html/user/vba_events.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=e160b93e"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Adding Context and Ribbon Menus" href="menus.html" />
@@ -53,48 +38,26 @@
 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
 
           
-            <a href="../index.html" class="icon icon-home"> xlSlim
           
-
-          
+          <a href="../index.html" class="icon icon-home">
+            xlSlim
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">User Guide</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
@@ -127,7 +90,7 @@
 <li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="duckdb.html">DuckDB</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Examples</span></p>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../samples/read_json_from_web.html">Read JSON data from a URL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../samples/read_csv.html">Read CSV data from a file</a></li>
@@ -140,7 +103,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../samples/pivot_table.html">Creating a Pivot Table using Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../samples/equity_index_options.html">US Equity Index Option Pricing</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Reference</span></p>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../reference/environments.html">Python Environments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/api.html">Excel Functions</a></li>
@@ -151,117 +114,83 @@
 <li class="toctree-l1"><a class="reference internal" href="../reference/software_requirements.html">Software Requirements</a></li>
 </ul>
 
-            
-          
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">xlSlim</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html">Docs</a> &raquo;</li>
-        
-      <li>Replacing VBA Event Handling with Python</li>
-    
-    
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Replacing VBA Event Handling with Python</li>
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="../_sources/user/vba_events.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="replacing-vba-event-handling-with-python">
-<h1>Replacing VBA Event Handling with Python<a class="headerlink" href="#replacing-vba-event-handling-with-python" title="Permalink to this headline">¶</a></h1>
+             
+  <section id="replacing-vba-event-handling-with-python">
+<h1>Replacing VBA Event Handling with Python<a class="headerlink" href="#replacing-vba-event-handling-with-python" title="Link to this heading"></a></h1>
 <p>xlSlim allows you to replace VBA event handling code with Python code. The Python code has access to the same events and objects as VBA so it is usually straightforward to translate VBA code to Python. The Python code is often more concise and readable.</p>
 <p>We will start by building a very simple task management tool using VBA. Then we will build the same tool using Python and xlSlim. The tool simply lists one task per cell. When a cell is double clicked the task will be marked as completed by striking a line through the text. Double clicking again will mark the task as uncompleted.</p>
-<a class="reference internal image-reference" href="../_images/vba_events_simple_task_tool.png"><img alt="VBA task management tool." src="../_images/vba_events_simple_task_tool.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/vba_events_simple_task_tool.png"><img alt="VBA task management tool." src="../_images/vba_events_simple_task_tool.png" style="width: 400px;" />
+</a>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This functionality requires a premium licence as a Python environment with the <a class="reference external" href="https://github.com/mhammond/pywin32">pywin32</a> extensions installed is required. Anaconda distributions include pywin32. See <a class="reference internal" href="../reference/licensing.html"><span class="doc">Licensing</span></a></p>
+<p class="admonition-title">Warning</p>
+<p>This functionality requires a premium licence as a Python environment with the <a class="reference external" href="https://github.com/mhammond/pywin32">pywin32</a> extensions installed is required. Anaconda distributions include pywin32. See <a class="reference internal" href="../reference/licensing.html"><span class="doc">Licensing</span></a></p>
 </div>
-<div class="section" id="a-task-management-tool-using-vba">
-<h2>A Task Management Tool using VBA<a class="headerlink" href="#a-task-management-tool-using-vba" title="Permalink to this headline">¶</a></h2>
+<section id="a-task-management-tool-using-vba">
+<h2>A Task Management Tool using VBA<a class="headerlink" href="#a-task-management-tool-using-vba" title="Link to this heading"></a></h2>
 <p>We start by adding a new Class Module MyAppEvents to the workbook, this is done in the VBA Editor (Alt-F11):</p>
-<a class="reference internal image-reference" href="../_images/vba_events_class_module.png"><img alt="VBA Class module." src="../_images/vba_events_class_module.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/vba_events_class_module.png"><img alt="VBA Class module." src="../_images/vba_events_class_module.png" style="width: 400px;" />
+</a>
 <p>The Class Module must contain this code that creates a myApp Application object and creates a SheetBeforeDoubleClick event handler for myApp:</p>
-<div class="highlight-vbnet notranslate"><div class="highlight"><pre><span></span><span class="k">Private</span><span class="w"> </span><span class="k">WithEvents</span><span class="w"> </span><span class="n">myApp</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">Application</span><span class="w"></span>
+<div class="highlight-vbnet notranslate"><div class="highlight"><pre><span></span><span class="k">Private</span><span class="w"> </span><span class="k">WithEvents</span><span class="w"> </span><span class="n">myApp</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">Application</span>
 
-<span class="k">Private</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">Class_Initialize</span><span class="p">()</span><span class="w"></span>
-<span class="w">        </span><span class="k">Set</span><span class="w"> </span><span class="n">myApp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Application</span><span class="w"></span>
-<span class="k">End</span><span class="w"> </span><span class="k">Sub</span><span class="w"></span>
+<span class="k">Private</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">Class_Initialize</span><span class="p">()</span>
+<span class="w">        </span><span class="k">Set</span><span class="w"> </span><span class="n">myApp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Application</span>
+<span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
 
-<span class="k">Private</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">myApp_SheetBeforeDoubleClick</span><span class="p">(</span><span class="k">ByVal</span><span class="w"> </span><span class="n">Sh</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Object</span><span class="p">,</span><span class="w"> </span><span class="k">ByVal</span><span class="w"> </span><span class="n">Target</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">Range</span><span class="p">,</span><span class="w"> </span><span class="n">Cancel</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Boolean</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="k">If</span><span class="w"> </span><span class="n">Target</span><span class="p">.</span><span class="n">Font</span><span class="p">.</span><span class="n">Strikethrough</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">True</span><span class="w"> </span><span class="k">Then</span><span class="w"></span>
-<span class="w">                </span><span class="n">Target</span><span class="p">.</span><span class="n">Font</span><span class="p">.</span><span class="n">Strikethrough</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">False</span><span class="w"></span>
-<span class="w">        </span><span class="k">Else</span><span class="w"></span>
-<span class="w">                </span><span class="n">Target</span><span class="p">.</span><span class="n">Font</span><span class="p">.</span><span class="n">Strikethrough</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">True</span><span class="w"></span>
-<span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">If</span><span class="w"></span>
-<span class="w">        </span><span class="n">Cancel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">True</span><span class="w"></span>
-<span class="k">End</span><span class="w"> </span><span class="k">Sub</span><span class="w"></span>
+<span class="k">Private</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">myApp_SheetBeforeDoubleClick</span><span class="p">(</span><span class="k">ByVal</span><span class="w"> </span><span class="n">Sh</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Object</span><span class="p">,</span><span class="w"> </span><span class="k">ByVal</span><span class="w"> </span><span class="n">Target</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">Range</span><span class="p">,</span><span class="w"> </span><span class="n">Cancel</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Boolean</span><span class="p">)</span>
+<span class="w">        </span><span class="k">If</span><span class="w"> </span><span class="n">Target</span><span class="p">.</span><span class="n">Font</span><span class="p">.</span><span class="n">Strikethrough</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">True</span><span class="w"> </span><span class="k">Then</span>
+<span class="w">                </span><span class="n">Target</span><span class="p">.</span><span class="n">Font</span><span class="p">.</span><span class="n">Strikethrough</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">False</span>
+<span class="w">        </span><span class="k">Else</span>
+<span class="w">                </span><span class="n">Target</span><span class="p">.</span><span class="n">Font</span><span class="p">.</span><span class="n">Strikethrough</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">True</span>
+<span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">If</span>
+<span class="w">        </span><span class="n">Cancel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">True</span>
+<span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
 </pre></div>
 </div>
 <p>Next we need to add code to the Workbook so a MyAppEvents object is created when the workbook is opened.</p>
-<a class="reference internal image-reference" href="../_images/vba_events_workbook_module.png"><img alt="VBA Class module." src="../_images/vba_events_workbook_module.png" style="width: 400px;" /></a>
-<div class="highlight-vbnet notranslate"><div class="highlight"><pre><span></span><span class="k">Private</span><span class="w"> </span><span class="n">AppE</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">MyAppEvents</span><span class="w"></span>
+<a class="reference internal image-reference" href="../_images/vba_events_workbook_module.png"><img alt="VBA Class module." src="../_images/vba_events_workbook_module.png" style="width: 400px;" />
+</a>
+<div class="highlight-vbnet notranslate"><div class="highlight"><pre><span></span><span class="k">Private</span><span class="w"> </span><span class="n">AppE</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">MyAppEvents</span>
 
-<span class="k">Private</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">Workbook_Open</span><span class="p">()</span><span class="w"></span>
-<span class="w">        </span><span class="k">Set</span><span class="w"> </span><span class="n">AppE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">New</span><span class="w"> </span><span class="n">MyAppEvents</span><span class="w"></span>
-<span class="k">End</span><span class="w"> </span><span class="k">Sub</span><span class="w"></span>
+<span class="k">Private</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">Workbook_Open</span><span class="p">()</span>
+<span class="w">        </span><span class="k">Set</span><span class="w"> </span><span class="n">AppE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">New</span><span class="w"> </span><span class="n">MyAppEvents</span>
+<span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
 </pre></div>
 </div>
 <p>Save and reopen the Excel workbook. Now double clicking on a cell will strike a line through the text and the little task management tool is complete.</p>
-<a class="reference internal image-reference" href="../_images/vba_events_simple_task_tool.png"><img alt="VBA task management tool." src="../_images/vba_events_simple_task_tool.png" style="width: 400px;" /></a>
-</div>
-<div class="section" id="a-task-management-tool-using-python">
-<h2>A Task Management Tool using Python<a class="headerlink" href="#a-task-management-tool-using-python" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../_images/vba_events_simple_task_tool.png"><img alt="VBA task management tool." src="../_images/vba_events_simple_task_tool.png" style="width: 400px;" />
+</a>
+</section>
+<section id="a-task-management-tool-using-python">
+<h2>A Task Management Tool using Python<a class="headerlink" href="#a-task-management-tool-using-python" title="Link to this heading"></a></h2>
 <p>Accomplishing the same using xlSlim and Python is straightforward. This Python code defines an event handler that handles the SheetBeforeDoubleClick event:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyEventHandler</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;A very simple task manager.&quot;&quot;&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MyEventHandler</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;A very simple task manager.&quot;&quot;&quot;</span>
 
-        <span class="k">def</span> <span class="nf">SheetBeforeDoubleClick</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sh</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cancel</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">SheetBeforeDoubleClick</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sh</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cancel</span><span class="p">):</span>
                 <span class="k">if</span> <span class="n">target</span><span class="o">.</span><span class="n">Font</span><span class="o">.</span><span class="n">Strikethrough</span><span class="p">:</span>
                         <span class="n">target</span><span class="o">.</span><span class="n">Font</span><span class="o">.</span><span class="n">Strikethrough</span> <span class="o">=</span> <span class="kc">False</span>
                 <span class="k">else</span><span class="p">:</span>
@@ -286,49 +215,52 @@
 </pre></div>
 </div>
 <p>At this stage the Excel sheet should look like this:</p>
-<a class="reference internal image-reference" href="../_images/vba_events_register_py_module.png"><img alt="Registered Python module and added event handler." src="../_images/vba_events_register_py_module.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/vba_events_register_py_module.png"><img alt="Registered Python module and added event handler." src="../_images/vba_events_register_py_module.png" style="width: 400px;" />
+</a>
 <p>Add a few tasks and double click on some of the tasks. We have the same task management functionality working with Python and xlSlim!</p>
-<a class="reference internal image-reference" href="../_images/vba_events_py_task_tool.png"><img alt="Task management working with xlSlim and Python." src="../_images/vba_events_py_task_tool.png" style="width: 400px;" /></a>
-</div>
-<div class="section" id="workbook-and-worksheet-events">
-<h2>Workbook and Worksheet Events<a class="headerlink" href="#workbook-and-worksheet-events" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../_images/vba_events_py_task_tool.png"><img alt="Task management working with xlSlim and Python." src="../_images/vba_events_py_task_tool.png" style="width: 400px;" />
+</a>
+</section>
+<section id="workbook-and-worksheet-events">
+<h2>Workbook and Worksheet Events<a class="headerlink" href="#workbook-and-worksheet-events" title="Link to this heading"></a></h2>
 <p>The simple task management example above handled events at the Application level. Excel also exposes Workbook and Worksheet events. The Microsoft <a class="reference external" href="https://learn.microsoft.com/en-us/office/vba/api/overview/excel/object-model">VBA object and event model</a> documentation lists all available events. The <a class="reference external" href="https://learn.microsoft.com/en-us/office/vba/api/excel.application(object)">Application</a>, <a class="reference external" href="https://learn.microsoft.com/en-us/office/vba/api/excel.workbook">Workbook</a> and <a class="reference external" href="https://learn.microsoft.com/en-us/office/vba/api/excel.worksheet">Worksheet</a> sections each contain an Events group that show the available events:</p>
-<a class="reference internal image-reference" href="../_images/vba_events_ms_docs.png"><img alt="Microsoft VBA events documentation." src="../_images/vba_events_ms_docs.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/vba_events_ms_docs.png"><img alt="Microsoft VBA events documentation." src="../_images/vba_events_ms_docs.png" style="width: 400px;" />
+</a>
 <p>Create a new Python module and add the following Python code:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ctypes</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">ctypes</span>
 
 
-<span class="k">def</span> <span class="nf">messagebox</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Show a modal message box.&quot;&quot;&quot;</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">messagebox</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Show a modal message box.&quot;&quot;&quot;</span>
         <span class="n">WS_EX_TOPMOST</span> <span class="o">=</span> <span class="mh">0x40000</span>
         <span class="n">ctypes</span><span class="o">.</span><span class="n">windll</span><span class="o">.</span><span class="n">user32</span><span class="o">.</span><span class="n">MessageBoxExW</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">WS_EX_TOPMOST</span><span class="p">)</span>
 
 
-<span class="k">class</span> <span class="nc">ExcelApplicationEventHandler</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Some Application event handlers.&quot;&quot;&quot;</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ExcelApplicationEventHandler</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Some Application event handlers.&quot;&quot;&quot;</span>
 
-        <span class="k">def</span> <span class="nf">SheetActivate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sh</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">SheetActivate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sh</span><span class="p">):</span>
                 <span class="n">messagebox</span><span class="p">(</span>
                         <span class="n">sh</span><span class="o">.</span><span class="n">Application</span><span class="o">.</span><span class="n">Hwnd</span><span class="p">,</span>
                         <span class="s2">&quot;Application SheetActivate event&quot;</span><span class="p">,</span>
                         <span class="sa">f</span><span class="s2">&quot;Active sheet </span><span class="si">{</span><span class="n">sh</span><span class="o">.</span><span class="n">Name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
                 <span class="p">)</span>
 
-        <span class="k">def</span> <span class="nf">SheetChange</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sh</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">SheetChange</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sh</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
                 <span class="n">messagebox</span><span class="p">(</span>
                         <span class="n">sh</span><span class="o">.</span><span class="n">Application</span><span class="o">.</span><span class="n">Hwnd</span><span class="p">,</span>
                         <span class="s2">&quot;Application SheetChange Event&quot;</span><span class="p">,</span>
                         <span class="sa">f</span><span class="s2">&quot;Amended sheet </span><span class="si">{</span><span class="n">sh</span><span class="o">.</span><span class="n">Name</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">target</span><span class="o">.</span><span class="n">Address</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">target</span><span class="o">.</span><span class="n">Value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
                 <span class="p">)</span>
 
-        <span class="k">def</span> <span class="nf">NewWorkbook</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wb</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">NewWorkbook</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wb</span><span class="p">):</span>
                 <span class="n">messagebox</span><span class="p">(</span>
                         <span class="n">wb</span><span class="o">.</span><span class="n">Application</span><span class="o">.</span><span class="n">Hwnd</span><span class="p">,</span>
                         <span class="s2">&quot;Application NewWorkbook event&quot;</span><span class="p">,</span>
                         <span class="sa">f</span><span class="s2">&quot;New workbook </span><span class="si">{</span><span class="n">wb</span><span class="o">.</span><span class="n">Name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
                 <span class="p">)</span>
 
-        <span class="k">def</span> <span class="nf">WorkbookNewSheet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wb</span><span class="p">,</span> <span class="n">sh</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">WorkbookNewSheet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wb</span><span class="p">,</span> <span class="n">sh</span><span class="p">):</span>
                 <span class="n">messagebox</span><span class="p">(</span>
                         <span class="n">wb</span><span class="o">.</span><span class="n">Application</span><span class="o">.</span><span class="n">Hwnd</span><span class="p">,</span>
                         <span class="s2">&quot;Application WorkbookNewSheet event&quot;</span><span class="p">,</span>
@@ -336,27 +268,27 @@
                 <span class="p">)</span>
 
 
-<span class="k">class</span> <span class="nc">ExcelWorkbookEventHandler</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Some Workbook event handlers.&quot;&quot;&quot;</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ExcelWorkbookEventHandler</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Some Workbook event handlers.&quot;&quot;&quot;</span>
 
-        <span class="k">def</span> <span class="nf">NewSheet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sh</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">NewSheet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sh</span><span class="p">):</span>
                 <span class="n">messagebox</span><span class="p">(</span>
                         <span class="n">sh</span><span class="o">.</span><span class="n">Application</span><span class="o">.</span><span class="n">Hwnd</span><span class="p">,</span> <span class="s2">&quot;Workbook NewSheet event&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;New sheet </span><span class="si">{</span><span class="n">sh</span><span class="o">.</span><span class="n">Name</span><span class="si">}</span><span class="s2">&quot;</span>
                 <span class="p">)</span>
 
-        <span class="k">def</span> <span class="nf">SheetCalculate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sh</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">SheetCalculate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sh</span><span class="p">):</span>
                 <span class="c1"># Some colour constants are here</span>
                 <span class="c1"># https://learn.microsoft.com/en-us/office/vba/language/reference/user-interface-help/color-constants</span>
                 <span class="n">sh</span><span class="o">.</span><span class="n">Cells</span><span class="o">.</span><span class="n">Interior</span><span class="o">.</span><span class="n">Color</span> <span class="o">=</span> <span class="mh">0xFF00</span>  <span class="c1"># Green</span>
 
 
-<span class="k">class</span> <span class="nc">ExcelWorksheetEventHandler</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Some Worksheet event handlers.&quot;&quot;&quot;</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ExcelWorksheetEventHandler</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Some Worksheet event handlers.&quot;&quot;&quot;</span>
 
-        <span class="k">def</span> <span class="nf">SelectionChange</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">SelectionChange</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
                 <span class="n">target</span><span class="o">.</span><span class="n">Interior</span><span class="o">.</span><span class="n">Color</span> <span class="o">=</span> <span class="mh">0xFFFF</span>  <span class="c1"># Yellow</span>
 
-        <span class="k">def</span> <span class="nf">Change</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">Change</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
                 <span class="n">messagebox</span><span class="p">(</span>
                         <span class="n">target</span><span class="o">.</span><span class="n">Application</span><span class="o">.</span><span class="n">Hwnd</span><span class="p">,</span>
                         <span class="s2">&quot;Worksheet Change event&quot;</span><span class="p">,</span>
@@ -377,40 +309,45 @@
 </pre></div>
 </div>
 <p>Your workbook should look similar to this. The 3 classes above are created in cells B2, B3 and B4:</p>
-<a class="reference internal image-reference" href="../_images/vba_events_register_futher_events_module.png"><img alt="Register further event handling examples" src="../_images/vba_events_register_futher_events_module.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/vba_events_register_futher_events_module.png"><img alt="Register further event handling examples" src="../_images/vba_events_register_futher_events_module.png" style="width: 400px;" />
+</a>
 <p>First add the event handler for Application events using <a class="reference internal" href="../reference/api.html#AddPyEventHandler" title="AddPyEventHandler"><code class="xref py py-func docutils literal notranslate"><span class="pre">AddPyEventHandler()</span></code></a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">AddPyEventHandler</span><span class="p">(</span><span class="n">B2</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>You will immediately see the SheetChange event was triggered and handled by the ExcelApplicationEventHandler’s SheetChange method:</p>
-<a class="reference internal image-reference" href="../_images/vba_events_futher_events_added_to_application.png"><img alt="Register further application events" src="../_images/vba_events_futher_events_added_to_application.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/vba_events_futher_events_added_to_application.png"><img alt="Register further application events" src="../_images/vba_events_futher_events_added_to_application.png" style="width: 400px;" />
+</a>
 <p>Next add the event handler for Workbook events. The event handler is only added to the specified workbook “Book1” in this case:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">AddPyEventHandler</span><span class="p">(</span><span class="n">B3</span><span class="p">,</span><span class="s2">&quot;Book1&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Now you will again see the SheetChange event triggered and handled by the ExcelApplicationEventHandler’s SheetChange method. However the background is changed to green as the SheetCalculate event was triggered and handled by the ExcelWorkbookEventHandler’s SheetCalculate method:</p>
-<a class="reference internal image-reference" href="../_images/vba_events_futher_events_added_to_workbook.png"><img alt="Register further workbook events" src="../_images/vba_events_futher_events_added_to_workbook.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/vba_events_futher_events_added_to_workbook.png"><img alt="Register further workbook events" src="../_images/vba_events_futher_events_added_to_workbook.png" style="width: 400px;" />
+</a>
 <p>Finally add the event handler for Worksheet events. The event handler is also only added to the specified worksheet “Sheet1”:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">AddPyEventHandler</span><span class="p">(</span><span class="n">B4</span><span class="p">,,</span><span class="s2">&quot;Sheet1&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>You will see that the Change event was triggered and handled by the ExcelWorksheetEventHandler’s Change method.</p>
-<a class="reference internal image-reference" href="../_images/vba_events_futher_events_added_to_worksheet.png"><img alt="Register further worksheet events" src="../_images/vba_events_futher_events_added_to_worksheet.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/vba_events_futher_events_added_to_worksheet.png"><img alt="Register further worksheet events" src="../_images/vba_events_futher_events_added_to_worksheet.png" style="width: 400px;" />
+</a>
 <p>If you change the selected cell the SelectionChange event is triggered and handled by the ExcelWorksheetEventHandler’s SelectionChange method. The result is a yellow background for every selected cell:</p>
-<a class="reference internal image-reference" href="../_images/vba_events_futher_events_worksheet_selection_changed.png"><img alt="Worksheet SelectionChange handled" src="../_images/vba_events_futher_events_worksheet_selection_changed.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/vba_events_futher_events_worksheet_selection_changed.png"><img alt="Worksheet SelectionChange handled" src="../_images/vba_events_futher_events_worksheet_selection_changed.png" style="width: 400px;" />
+</a>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Workbook and Worksheet events are only handled for the workbook and worksheet specified when the <a class="reference internal" href="../reference/api.html#AddPyEventHandler" title="AddPyEventHandler"><code class="xref py py-func docutils literal notranslate"><span class="pre">AddPyEventHandler()</span></code></a> is called.</p>
+<p class="admonition-title">Note</p>
+<p>Workbook and Worksheet events are only handled for the workbook and worksheet specified when the <a class="reference internal" href="../reference/api.html#AddPyEventHandler" title="AddPyEventHandler"><code class="xref py py-func docutils literal notranslate"><span class="pre">AddPyEventHandler()</span></code></a> is called.</p>
 </div>
 <p>Sophisticated event-driven applications can be built within Excel using the building blocks shown.</p>
-</div>
-<div class="section" id="link-python-functions-to-key-combinations">
-<h2>Link Python Functions to Key Combinations<a class="headerlink" href="#link-python-functions-to-key-combinations" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="link-python-functions-to-key-combinations">
+<h2>Link Python Functions to Key Combinations<a class="headerlink" href="#link-python-functions-to-key-combinations" title="Link to this heading"></a></h2>
 <p>Simple Python functions, taking no arguments, can be assigned to various keyboard combinations. You can configure Excel to run your Python function in response to pressing Ctrl+Shift+P for example. Let’s see how to do this.</p>
 <p>Create a new Python module and add the following Python code:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">XLSLIM_COMAPPFUNC</span> <span class="o">=</span> <span class="kc">None</span>
 
-<span class="k">def</span> <span class="nf">PythonRules</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">PythonRules</span><span class="p">():</span>
         <span class="n">excel_obj</span> <span class="o">=</span> <span class="n">XLSLIM_COMAPPFUNC</span><span class="p">()</span>
         <span class="n">app</span> <span class="o">=</span> <span class="n">excel_obj</span><span class="o">.</span><span class="n">Application</span>
         <span class="n">app</span><span class="o">.</span><span class="n">ActiveWorkbook</span><span class="o">.</span><span class="n">ActiveSheet</span><span class="o">.</span><span class="n">Cells</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">Value</span> <span class="o">=</span> <span class="s2">&quot;Python Rules!&quot;</span>
@@ -425,23 +362,25 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">LinkPyFunctionToKeys</span><span class="p">(</span><span class="s2">&quot;^+P&quot;</span><span class="p">,</span> <span class="s2">&quot;PythonRules&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="../_images/vba_events_link_keycombo_to_func.png"><img alt="Keyboard combination linked to keys" src="../_images/vba_events_link_keycombo_to_func.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/vba_events_link_keycombo_to_func.png"><img alt="Keyboard combination linked to keys" src="../_images/vba_events_link_keycombo_to_func.png" style="width: 400px;" />
+</a>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The details of the available keys and how to specify keyboard combinations are described in Microsoft’s documentation of the  <a class="reference external" href="https://learn.microsoft.com/en-us/office/vba/api/excel.application.onkey">Application.OnKey</a> method.</p>
+<p class="admonition-title">Note</p>
+<p>The details of the available keys and how to specify keyboard combinations are described in Microsoft’s documentation of the  <a class="reference external" href="https://learn.microsoft.com/en-us/office/vba/api/excel.application.onkey">Application.OnKey</a> method.</p>
 </div>
 <p>Now if you hold down the Ctrl and Shift keys and then press P the value of C3 is set to “PythonRules!”</p>
-<a class="reference internal image-reference" href="../_images/vba_events_link_keycombo_to_func_pressed.png"><img alt="Keyboard combination activated" src="../_images/vba_events_link_keycombo_to_func_pressed.png" style="width: 400px;" /></a>
-</div>
-<div class="section" id="schedule-python-functions">
-<h2>Schedule Python functions<a class="headerlink" href="#schedule-python-functions" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../_images/vba_events_link_keycombo_to_func_pressed.png"><img alt="Keyboard combination activated" src="../_images/vba_events_link_keycombo_to_func_pressed.png" style="width: 400px;" />
+</a>
+</section>
+<section id="schedule-python-functions">
+<h2>Schedule Python functions<a class="headerlink" href="#schedule-python-functions" title="Link to this heading"></a></h2>
 <p>Simple Python functions, taking no arguments, can be scheduled to run at a future time.</p>
 <p>Create a new Python module and add the following Python code:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 
 <span class="n">XLSLIM_COMAPPFUNC</span> <span class="o">=</span> <span class="kc">None</span>
 
-<span class="k">def</span> <span class="nf">WriteTime</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">WriteTime</span><span class="p">():</span>
         <span class="n">excel_obj</span> <span class="o">=</span> <span class="n">XLSLIM_COMAPPFUNC</span><span class="p">()</span>
         <span class="n">app</span> <span class="o">=</span> <span class="n">excel_obj</span><span class="o">.</span><span class="n">Application</span>
         <span class="n">app</span><span class="o">.</span><span class="n">ActiveWorkbook</span><span class="o">.</span><span class="n">ActiveSheet</span><span class="o">.</span><span class="n">Cells</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">Value</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">()</span>
@@ -460,63 +399,47 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">SchedulePyFunction</span><span class="p">(</span><span class="n">A2</span><span class="p">,</span><span class="s2">&quot;WriteTime&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="../_images/vba_events_schedule_function.png"><img alt="Python function scheduled" src="../_images/vba_events_schedule_function.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/vba_events_schedule_function.png"><img alt="Python function scheduled" src="../_images/vba_events_schedule_function.png" style="width: 400px;" />
+</a>
 <p>After 10 seconds the schedule was triggered and my sheet was updated with the currrent time in cell C3:</p>
-<a class="reference internal image-reference" href="../_images/vba_events_scheduled_function_ran.png"><img alt="Scheduled Python function ran" src="../_images/vba_events_scheduled_function_ran.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/vba_events_scheduled_function_ran.png"><img alt="Scheduled Python function ran" src="../_images/vba_events_scheduled_function_ran.png" style="width: 400px;" />
+</a>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The specific conditions under which a scheduled function will or will not run are described in Microsoft’s documentation of the  <a class="reference external" href="https://learn.microsoft.com/en-us/office/vba/api/excel.application.ontime">Application.OnTime</a> method.</p>
+<p class="admonition-title">Note</p>
+<p>The specific conditions under which a scheduled function will or will not run are described in Microsoft’s documentation of the  <a class="reference external" href="https://learn.microsoft.com/en-us/office/vba/api/excel.application.ontime">Application.OnTime</a> method.</p>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="menus.html" class="btn btn-neutral float-right" title="Adding Context and Ribbon Menus" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="vba_replacement.html" class="btn btn-neutral float-left" title="Replacing VBA with Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="vba_replacement.html" class="btn btn-neutral float-left" title="Replacing VBA with Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="menus.html" class="btn btn-neutral float-right" title="Adding Context and Ribbon Menus" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &copy; Copyright 2022-2024, Russel Webber
-
-    </p>
+    <p>&#169; Copyright 2022-2025, Russel Webber.</p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

@@ -399,7 +399,7 @@ Running DuckDB SQL
 
 The :func:`DuckDbQuery` function allows SQL statements to be executed within DuckDB.
 
-.. py:function:: DuckDbQuery(SQL, DbFile=None)
+.. py:function:: DuckDbQuery(SQL, DbFile=None, ExcelRange=None)
 
    Executes the supplied SQL statements.
 
@@ -407,7 +407,12 @@ The :func:`DuckDbQuery` function allows SQL statements to be executed within Duc
    :type SQL: str
    :param DbFile: If not supplied then the statements run in a temporary in-memory database. Else the function creates or opens  a DuckDB database at the supplied location and runs the statements within this database.
    :type DbFile: str or None
+   :param ExcelRange: If an Excel range is passed then the range may be queried in SQL queries. The Excel range is referenced as xlRange in the SQL query, for example: SELECT * FROM xlRange. The Excel range can be a regular Excel range, a named range, a table, or an xlSlim cached pandas DataFrame handle.
+   :type ExcelRange: Excel range or None   
    :return: An error message if the SQL failed or an array of objects suitable for display in Excel.
    :rtype: str or list[object]
+
+.. note::
+   Multiple Excel ranges may be passed and then referenced in the SQL as xlRange[1], xlRange[2] .. xlRange[n].
 
 See `DuckDB SQL`_ for details of DuckDB SQL statements.

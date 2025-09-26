@@ -1,39 +1,24 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8">
-  <meta content="xlSlim was designed to support pandas DataFrames efficiently while keeping the interaction with Excel as intuitive as possible." lang="en" name="description" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="xlSlim was designed to support pandas DataFrames efficiently while keeping the interaction with Excel as intuitive as possible." lang="en" name="description" xml:lang="en" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>pandas DataFrames &mdash; xlSlim v1.0 documentation</title>
-  
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
   
-  
-  
-  
-
-  
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="canonical" href="https://russelwebber.github.io/xlslim-docs/html/user/dataframes.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=e160b93e"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Running Python in a background process" href="subprocess.html" />
@@ -53,48 +38,26 @@
 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
 
           
-            <a href="../index.html" class="icon icon-home"> xlSlim
           
-
-          
+          <a href="../index.html" class="icon icon-home">
+            xlSlim
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">User Guide</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
@@ -125,7 +88,7 @@
 <li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="duckdb.html">DuckDB</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Examples</span></p>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../samples/read_json_from_web.html">Read JSON data from a URL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../samples/read_csv.html">Read CSV data from a file</a></li>
@@ -138,7 +101,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../samples/pivot_table.html">Creating a Pivot Table using Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../samples/equity_index_options.html">US Equity Index Option Pricing</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Reference</span></p>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../reference/environments.html">Python Environments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/api.html">Excel Functions</a></li>
@@ -149,104 +112,65 @@
 <li class="toctree-l1"><a class="reference internal" href="../reference/software_requirements.html">Software Requirements</a></li>
 </ul>
 
-            
-          
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">xlSlim</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html">Docs</a> &raquo;</li>
-        
-      <li>pandas DataFrames</li>
-    
-    
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">pandas DataFrames</li>
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="../_sources/user/dataframes.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="pandas-dataframes">
-<h1>pandas DataFrames<a class="headerlink" href="#pandas-dataframes" title="Permalink to this headline">¶</a></h1>
+             
+  <section id="pandas-dataframes">
+<h1>pandas DataFrames<a class="headerlink" href="#pandas-dataframes" title="Link to this heading"></a></h1>
 <p>xlSlim was designed to support pandas DataFrames efficiently while keeping the interaction with Excel as intuitive as possible.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Type hints are essential for xlSlim to recognise pandas DataFrames passed between your functions.</p>
+<p class="admonition-title">Note</p>
+<p>Type hints are essential for xlSlim to recognise pandas DataFrames passed between your functions.</p>
 </div>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">pandas functionality requires a premium licence. See <a class="reference internal" href="../reference/licensing.html"><span class="doc">Licensing</span></a></p>
+<p class="admonition-title">Warning</p>
+<p>pandas functionality requires a premium licence. See <a class="reference internal" href="../reference/licensing.html"><span class="doc">Licensing</span></a></p>
 </div>
-<div class="section" id="creating-pandas-dataframes">
-<h2>Creating pandas DataFrames<a class="headerlink" href="#creating-pandas-dataframes" title="Permalink to this headline">¶</a></h2>
-<dl class="docutils">
-<dt>pandas DataFrames can be created in three ways:</dt>
-<dd><ul class="first last simple">
-<li>within a Python function</li>
-<li>from an Excel range</li>
-<li>from an Excel range of numbers (<strong>optimised</strong>)</li>
+<section id="creating-pandas-dataframes">
+<h2>Creating pandas DataFrames<a class="headerlink" href="#creating-pandas-dataframes" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pandas DataFrames can be created in three ways:</dt><dd><ul class="simple">
+<li><p>within a Python function</p></li>
+<li><p>from an Excel range</p></li>
+<li><p>from an Excel range of numbers (<strong>optimised</strong>)</p></li>
 </ul>
 </dd>
 </dl>
-<div class="section" id="pandas-dataframes-from-a-python-function">
-<h3>pandas DataFrames from a Python function<a class="headerlink" href="#pandas-dataframes-from-a-python-function" title="Permalink to this headline">¶</a></h3>
+<section id="pandas-dataframes-from-a-python-function">
+<h3>pandas DataFrames from a Python function<a class="headerlink" href="#pandas-dataframes-from-a-python-function" title="Link to this heading"></a></h3>
 <p>This Python code defines a function <cite>create_random_df()</cite> that returns a DataFrame of random numbers between 0 and the number of rows, the index is a DataFrame of integers for  to the number of rows.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
 
-<span class="k">def</span> <span class="nf">create_random_df</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_random_df</span><span class="p">(</span>
     <span class="n">minimum</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
         <span class="n">maximum</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
         <span class="n">rows</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
         <span class="n">columns</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Create a DataFrame of random integers.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a DataFrame of random integers.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
                 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">minimum</span><span class="p">,</span> <span class="n">maximum</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">columns</span><span class="p">)),</span>
                 <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;Col</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">columns</span><span class="p">)],</span>
@@ -254,8 +178,8 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">All the Python code and Excel files shown are available from github in the <a class="reference external" href="https://github.com/RusselWebber/xlslim-code-samples/archive/refs/heads/main.zip">xlslim-code-samples</a> repo. I highly recommend downloading the samples from github. The Excel workbooks contain many tips and tricks.</p>
+<p class="admonition-title">Note</p>
+<p>All the Python code and Excel files shown are available from github in the <a class="reference external" href="https://github.com/RusselWebber/xlslim-code-samples/archive/refs/heads/main.zip">xlslim-code-samples</a> repo. I highly recommend downloading the samples from github. The Excel workbooks contain many tips and tricks.</p>
 </div>
 <p>Save the Python code as a new file on your PC. I saved the file in my Documents folder.</p>
 <p>Open Excel and enter this <a class="reference internal" href="../reference/api.html#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a> formula (amending the location to match where you saved the file):</p>
@@ -263,98 +187,106 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">pandas and numpy are not available in the Python installation bundled with xlSlim. The Python module must be registered with an existing Python installation that has numpy and pandas installed.</p>
+<p class="admonition-title">Note</p>
+<p>pandas and numpy are not available in the Python installation bundled with xlSlim. The Python module must be registered with an existing Python installation that has numpy and pandas installed.</p>
 </div>
 <p>If we call the <cite>create_random_df()</cite> function we see that the result is automatically cached and a cache handle is returned to Excel.</p>
-<a class="reference internal image-reference" href="../_images/dataframe_create_random_df.png"><img alt="Create DataFrame in Python" src="../_images/dataframe_create_random_df.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/dataframe_create_random_df.png"><img alt="Create DataFrame in Python" src="../_images/dataframe_create_random_df.png" style="width: 400px;" />
+</a>
 <p>The xlSlim function <a class="reference internal" href="../reference/api.html#ViewPyObject" title="ViewPyObject"><code class="xref py py-func docutils literal notranslate"><span class="pre">ViewPyObject()</span></code></a> can be used to view any Python object stored in the memory cache. We see the DataFrame has three rows and two columns as expected.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">ViewPyObject</span><span class="p">(</span><span class="n">A3</span><span class="p">)</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="../_images/dataframe_view_random_df.png"><img alt="View a cached DataFrame in Excel" src="../_images/dataframe_view_random_df.png" style="width: 400px;" /></a>
-</div>
-<div class="section" id="pandas-dataframe-from-an-excel-range">
-<h3>pandas DataFrame from an Excel Range<a class="headerlink" href="#pandas-dataframe-from-an-excel-range" title="Permalink to this headline">¶</a></h3>
+<a class="reference internal image-reference" href="../_images/dataframe_view_random_df.png"><img alt="View a cached DataFrame in Excel" src="../_images/dataframe_view_random_df.png" style="width: 400px;" />
+</a>
+</section>
+<section id="pandas-dataframe-from-an-excel-range">
+<h3>pandas DataFrame from an Excel Range<a class="headerlink" href="#pandas-dataframe-from-an-excel-range" title="Link to this heading"></a></h3>
 <p>Any Excel range can be used to create a pandas DataFrame, however xlSlim does make assumptions about the columns and index. The first column is assumed to be the index. The first row is assumed to contain the column names. The top left cell is ignored. This does prevent the use of advanced indexing, DataFrames with advanced indexing should be created within Python functions as shown above.</p>
 <p>Add this <cite>describe_df()</cite> function to the Python code and re-register the module with <a class="reference internal" href="../reference/api.html#RegisterPyModule" title="RegisterPyModule"><code class="xref py py-func docutils literal notranslate"><span class="pre">RegisterPyModule()</span></code></a></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">describe_df</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Describe this DataFrame.&quot;&quot;&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">describe_df</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Describe this DataFrame.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>This function describes the pandas DataFrame passed in, we’ll use it to show how xlSlim creates pandas DataFrame directly from Excel if the Python function has a type hint for <cite>pd.DataFrame</cite>.</p>
 <p>We create a table of strings and numbers in Excel and pass this to the <cite>describe_df()</cite> function.</p>
-<a class="reference internal image-reference" href="../_images/dataframe_create_from_range.png"><img alt="Create DataFrame from Excel" src="../_images/dataframe_create_from_range.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/dataframe_create_from_range.png"><img alt="Create DataFrame from Excel" src="../_images/dataframe_create_from_range.png" style="width: 400px;" />
+</a>
 <p>The function returns a cached object handle to Excel.</p>
-<a class="reference internal image-reference" href="../_images/dataframe_create_from_range_result.png"><img alt="Create DataFrame from Excel" src="../_images/dataframe_create_from_range_result.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/dataframe_create_from_range_result.png"><img alt="Create DataFrame from Excel" src="../_images/dataframe_create_from_range_result.png" style="width: 400px;" />
+</a>
 <p>A few things have happened here. xlSlim created a pandas DataFrame from the range A1:C5 <em>before</em> passing the data to the Python code. The Python code received a regular pandas DataFrame as expected. The Python function <cite>describe_df()</cite> then returned a new pandas DataFrame. xlSlim automatically put this pandas DataFrame into a memory cache and returned the cache handle to Excel.</p>
 <p>Using <a class="reference internal" href="../reference/api.html#ViewPyObject" title="ViewPyObject"><code class="xref py py-func docutils literal notranslate"><span class="pre">ViewPyObject()</span></code></a> we can see the DataFrame has been created and passed around as expected.</p>
-<a class="reference internal image-reference" href="../_images/dataframe_create_from_range_view_result.png"><img alt="Create DataFrame from Excel view result" src="../_images/dataframe_create_from_range_view_result.png" style="width: 400px;" /></a>
-</div>
-<div class="section" id="pandas-dataframe-from-an-excel-range-of-numbers">
-<h3>pandas DataFrame from an Excel Range of numbers<a class="headerlink" href="#pandas-dataframe-from-an-excel-range-of-numbers" title="Permalink to this headline">¶</a></h3>
+<a class="reference internal image-reference" href="../_images/dataframe_create_from_range_view_result.png"><img alt="Create DataFrame from Excel view result" src="../_images/dataframe_create_from_range_view_result.png" style="width: 400px;" />
+</a>
+</section>
+<section id="pandas-dataframe-from-an-excel-range-of-numbers">
+<h3>pandas DataFrame from an Excel Range of numbers<a class="headerlink" href="#pandas-dataframe-from-an-excel-range-of-numbers" title="Link to this heading"></a></h3>
 <p>xlSlim is optimised to create pandas DataFrames from Excel ranges of numbers. Ranges of numbers are converted to pandas DataFrames very efficiently with only direct memory copies being used.</p>
 <p>xlSlim cannot determine if the Excel range passed in only contains numbers (Technically it could but this would be very slow). Therefore xlSlim creates a special version of every Python function that expects one or more pandas DataFrames - these special functions have the same names with “_num_only” appended.</p>
 <p>Let’s create a range of numbers and try the <cite>describe_df_num_only()</cite> function.</p>
-<a class="reference internal image-reference" href="../_images/dataframe_create_from_range_num_only_view_result.png"><img alt="Create DataFrame from Excel numeric range" src="../_images/dataframe_create_from_range_num_only_view_result.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/dataframe_create_from_range_num_only_view_result.png"><img alt="Create DataFrame from Excel numeric range" src="../_images/dataframe_create_from_range_num_only_view_result.png" style="width: 400px;" />
+</a>
 <p>The function <cite>describe_df_num_only()</cite> behaves exactly the same as <cite>describe_df()</cite> however it is <em>far</em> more efficient when passing in a range of numbers.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">For optimal performance always use the “_num_only” versions of xlSlim functions when creating numeric pandas DataFrames from Excel Ranges.</p>
+<p class="admonition-title">Note</p>
+<p>For optimal performance always use the “_num_only” versions of xlSlim functions when creating numeric pandas DataFrames from Excel Ranges.</p>
 </div>
-</div>
-</div>
-<div class="section" id="passing-pandas-dataframes-to-python-functions">
-<h2>Passing pandas DataFrames to Python functions<a class="headerlink" href="#passing-pandas-dataframes-to-python-functions" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="passing-pandas-dataframes-to-python-functions">
+<h2>Passing pandas DataFrames to Python functions<a class="headerlink" href="#passing-pandas-dataframes-to-python-functions" title="Link to this heading"></a></h2>
 <p>As shown above, pandas DataFrames can be created from Excel Ranges. xlSlim will create a pandas DataFrame from an Excel Range before passing the pandas DataFrame to the Python function.</p>
 <p>Another way to pass pandas DataFrames is to use the cache object handles corresponding to pandas DataFrames in xlSlim’s memory cache.</p>
 <p>Let’s create a DataFrame using the <cite>create_random_df()</cite> function we defined before.</p>
-<a class="reference internal image-reference" href="../_images/dataframe_pass_handle_create_dataframe.png"><img alt="Create a pandas DataFrame handle" src="../_images/dataframe_pass_handle_create_dataframe.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/dataframe_pass_handle_create_dataframe.png"><img alt="Create a pandas DataFrame handle" src="../_images/dataframe_pass_handle_create_dataframe.png" style="width: 400px;" />
+</a>
 <p>The <a class="reference internal" href="../reference/api.html#ViewPyObject" title="ViewPyObject"><code class="xref py py-func docutils literal notranslate"><span class="pre">ViewPyObject()</span></code></a> in A3 shows the DataFrame.</p>
 <p>Remove the <a class="reference internal" href="../reference/api.html#ViewPyObject" title="ViewPyObject"><code class="xref py py-func docutils literal notranslate"><span class="pre">ViewPyObject()</span></code></a> function and replace it with the <cite>describe_df_from_handle()</cite> function</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">describe_df_from_handle</span><span class="p">(</span><span class="n">A2</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>This takes in the cache object handle from A2, gets the associated pandas DataFrame from xlSlim’s memory cache, passes the pandas DataFrame to the <cite>describe_df()</cite> Python function, and finally stores the result in the memory cache passing a cache object handle back to Excel.</p>
-<a class="reference internal image-reference" href="../_images/dataframe_pass_handle.png"><img alt="Pass an object cache handle for a DataFrame" src="../_images/dataframe_pass_handle.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/dataframe_pass_handle.png"><img alt="Pass an object cache handle for a DataFrame" src="../_images/dataframe_pass_handle.png" style="width: 400px;" />
+</a>
 <p>The pandas DataFrame describing the object referred to in A2 can be viewed with <a class="reference internal" href="../reference/api.html#ViewPyObject" title="ViewPyObject"><code class="xref py py-func docutils literal notranslate"><span class="pre">ViewPyObject()</span></code></a> as usual.</p>
-<a class="reference internal image-reference" href="../_images/dataframe_view_description.png"><img alt="View description of DataFrame" src="../_images/dataframe_view_description.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/dataframe_view_description.png"><img alt="View description of DataFrame" src="../_images/dataframe_view_description.png" style="width: 400px;" />
+</a>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Passing pandas DataFrame using cache object handles is <em>much</em> more efficient than creating pandas DataFrame from Excel Ranges.</p>
+<p class="admonition-title">Note</p>
+<p>Passing pandas DataFrame using cache object handles is <em>much</em> more efficient than creating pandas DataFrame from Excel Ranges.</p>
 </div>
-</div>
-<div class="section" id="passing-multiple-pandas-dataframes-to-python-functions">
-<h2>Passing multiple pandas DataFrames to Python functions<a class="headerlink" href="#passing-multiple-pandas-dataframes-to-python-functions" title="Permalink to this headline">¶</a></h2>
-<dl class="docutils">
-<dt>Multiple pandas DataFrames can be passed to Python functions in two ways:</dt>
-<dd><ul class="first last simple">
-<li>As separate arguments as shown in the <cite>concat_two_df()</cite> function below</li>
-<li>As a list of numpy arrays as shown in the <cite>concat_df()</cite> function below</li>
+</section>
+<section id="passing-multiple-pandas-dataframes-to-python-functions">
+<h2>Passing multiple pandas DataFrames to Python functions<a class="headerlink" href="#passing-multiple-pandas-dataframes-to-python-functions" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>Multiple pandas DataFrames can be passed to Python functions in two ways:</dt><dd><ul class="simple">
+<li><p>As separate arguments as shown in the <cite>concat_two_df()</cite> function below</p></li>
+<li><p>As a list of numpy arrays as shown in the <cite>concat_df()</cite> function below</p></li>
 </ul>
 </dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
 <span class="n">XLSLIM_INWINDOWFUNC</span> <span class="o">=</span> <span class="kc">None</span>
 
-<span class="k">def</span> <span class="nf">concat_two_df</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">concat_two_df</span><span class="p">(</span>
         <span class="n">ds_a</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
         <span class="n">ds_b</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
         <span class="n">axis</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
         <span class="n">join</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;outer&quot;</span><span class="p">,</span>
         <span class="n">ignore_index</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Concatenate the two supplied DataFrames.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Concatenate the two supplied DataFrames.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">concat_df</span><span class="p">([</span><span class="n">df_a</span><span class="p">,</span> <span class="n">df_b</span><span class="p">],</span> <span class="n">axis</span><span class="p">,</span> <span class="n">join</span><span class="p">,</span> <span class="n">ignore_index</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">concat_df</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">concat_df</span><span class="p">(</span>
         <span class="n">series</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">],</span>
         <span class="n">axis</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
         <span class="n">join</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;outer&quot;</span><span class="p">,</span>
         <span class="n">ignore_index</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Concatenate the supplied DataFrames.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Concatenate the supplied DataFrames.&quot;&quot;&quot;</span>
         <span class="c1"># Note how this global function can be used to skip</span>
         <span class="c1"># running slow code in the Excel function wizard</span>
         <span class="k">if</span> <span class="n">XLSLIM_INWINDOWFUNC</span> <span class="ow">and</span> <span class="n">XLSLIM_INWINDOWFUNC</span><span class="p">():</span>
@@ -363,7 +295,8 @@
 </pre></div>
 </div>
 <p>Given this sheet, where cache object handles in A2 and D2 reference pandas DataFrames created from <cite>create_random_df()</cite> and <a class="reference internal" href="../reference/api.html#ViewPyObject" title="ViewPyObject"><code class="xref py py-func docutils literal notranslate"><span class="pre">ViewPyObject()</span></code></a> is used to display the DataFrames at A3 and D3:</p>
-<a class="reference internal image-reference" href="../_images/dataframe_multiple_array_data.png"><img alt="Passing multiple DataFrames" src="../_images/dataframe_multiple_array_data.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/dataframe_multiple_array_data.png"><img alt="Passing multiple DataFrames" src="../_images/dataframe_multiple_array_data.png" style="width: 400px;" />
+</a>
 <p>For the first case, functions with separate arguments, two of the techniques discussed so far can be use. These are both valid</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">concat_two_df</span><span class="p">(</span><span class="n">A3</span><span class="c1">#,D3#,,&quot;outer&quot;)</span>
 <span class="o">=</span><span class="n">concat_two_df_from_handle</span><span class="p">(</span><span class="n">A2</span><span class="p">,</span><span class="n">D2</span><span class="p">,,</span><span class="s2">&quot;outer&quot;</span><span class="p">)</span>
@@ -379,56 +312,38 @@
 </div>
 <p>We use the <a class="reference internal" href="../reference/api.html#CreateRange" title="CreateRange"><code class="xref py py-func docutils literal notranslate"><span class="pre">CreateRange()</span></code></a> utility function to create a range as A2 and D2 are not adjacent cells.</p>
 <p>Note the use of <a class="reference internal" href="../reference/globals.html#XLSLIM_INWINDOWFUNC" title="XLSLIM_INWINDOWFUNC"><code class="xref py py-func docutils literal notranslate"><span class="pre">XLSLIM_INWINDOWFUNC()</span></code></a> to not concatenate DataFrames if the Excel function wizard is open.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="subprocess.html" class="btn btn-neutral float-right" title="Running Python in a background process" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="series.html" class="btn btn-neutral float-left" title="pandas Series" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="series.html" class="btn btn-neutral float-left" title="pandas Series" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="subprocess.html" class="btn btn-neutral float-right" title="Running Python in a background process" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &copy; Copyright 2022-2024, Russel Webber
-
-    </p>
+    <p>&#169; Copyright 2022-2025, Russel Webber.</p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>
